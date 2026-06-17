@@ -9,8 +9,7 @@
   <!-- Spline Runtime -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+    /* System font stack - no Google Fonts */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --ink: #1a1341;
@@ -23,10 +22,12 @@
       --accent: #43ee93;
       --mid: #8a9ab5;
       --line: rgba(255,255,255,0.08);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: "Times New Roman", Times, serif;
     }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-sans);
       background: var(--ink);
       color: #fff;
       overflow-x: hidden;
@@ -149,6 +150,7 @@
       letter-spacing: -.03em;
       color: rgba(255,255,255,0.9);
       display: block;
+      font-family: var(--font-serif);
     }
     .hero-static-headline em { font-style: normal; color: var(--accent); }
     .typewriter-wrapper {
@@ -167,6 +169,7 @@
       min-width: 200px;
       white-space: nowrap;
       position: relative;
+      font-family: var(--font-serif);
     }
     .typewriter-text::after {
       content: '|';
@@ -230,7 +233,14 @@
     /* ABOUT SECTION CLARITY */
     #about { padding: 120px 48px; background: var(--ink); }
     .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .about-text h2 { font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; margin-bottom: 24px; }
+    .about-text h2 { 
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem); 
+      font-weight: 800; 
+      line-height: 1.08; 
+      letter-spacing: -.03em; 
+      margin-bottom: 24px;
+      font-family: var(--font-serif);
+    }
     .about-text h2 em { font-style: normal; color: var(--accent); }
     .about-text p { color: rgba(255,255,255,.55); line-height: 1.8; font-size: 1rem; font-weight: 300; margin-bottom: 16px; }
     .about-link { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: .85rem; text-decoration: none; letter-spacing: .06em; text-transform: uppercase; margin-top: 16px; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 4px; transition: border-color .2s, color .2s; }
@@ -375,6 +385,7 @@
       line-height: 1.06;
       letter-spacing: -.03em;
       margin-bottom: 12px;
+      font-family: var(--font-serif);
     }
     .svc-left-text h2 em { font-style: normal; color: var(--accent); }
     .svc-left-text p { color: rgba(255,255,255,.45); line-height: 1.7; font-size: .8rem; font-weight: 300; }
@@ -391,7 +402,12 @@
     /* SOLUTIONS STRUCTURE FIX */
     #solutions { padding: 120px 48px; background: var(--ink); border-top: 1px solid var(--line); }
     .solutions-head { text-align: center; margin-bottom: 80px; }
-    .solutions-head h2 { font-size: clamp(2.2rem, 3.8vw, 4rem); font-weight: 800; letter-spacing: -.04em; }
+    .solutions-head h2 { 
+      font-size: clamp(2.2rem, 3.8vw, 4rem); 
+      font-weight: 800; 
+      letter-spacing: -.04em;
+      font-family: var(--font-serif);
+    }
     .solutions-head h2 em { font-style: normal; color: var(--accent); }
     .solutions-head p { color: rgba(255,255,255,.4); margin-top: 16px; font-size: 1rem; font-weight: 300; }
     
@@ -452,7 +468,13 @@
     /* METRICS ALIGNMENT */
     #metrics { padding: 100px 48px; background: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .metrics-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2.5fr; gap: 60px; align-items: center; }
-    .metrics-lead h2 { font-size: 2.4rem; font-weight: 800; line-height: 1.1; letter-spacing: -.03em; }
+    .metrics-lead h2 { 
+      font-size: 2.4rem; 
+      font-weight: 800; 
+      line-height: 1.1; 
+      letter-spacing: -.03em;
+      font-family: var(--font-serif);
+    }
     .metrics-lead h2 em { font-style: normal; color: var(--accent); }
     .metrics-lead p { color: rgba(255,255,255,.4); margin-top: 12px; font-weight: 300; }
     
@@ -487,7 +509,12 @@
     /* TEAM GRID BALANCE */
     #team { padding: 120px 48px; background: #110e35; border-top: 1px solid var(--line); }
     .team-head { text-align: center; margin-bottom: 72px; }
-    .team-head h2 { font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 800; letter-spacing: -.03em; }
+    .team-head h2 { 
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem); 
+      font-weight: 800; 
+      letter-spacing: -.03em;
+      font-family: var(--font-serif);
+    }
     
     .team-grid { 
       display: grid; 
@@ -511,7 +538,14 @@
     /* CTA SECTION */
     #cta { padding: 120px 48px; background: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%); text-align: center; position: relative; overflow: hidden; border-top: 1px solid var(--line); }
     .cta-inner { max-width: 800px; margin: 0 auto; }
-    #cta h2 { font-size: clamp(2.6rem, 5vw, 5rem); font-weight: 800; line-height: 1.04; letter-spacing: -.04em; margin-bottom: 20px; }
+    #cta h2 { 
+      font-size: clamp(2.6rem, 5vw, 5rem); 
+      font-weight: 800; 
+      line-height: 1.04; 
+      letter-spacing: -.04em; 
+      margin-bottom: 20px;
+      font-family: var(--font-serif);
+    }
     #cta h2 em { font-style: normal; color: var(--accent); }
     #cta .cta-sub { color: rgba(255,255,255,.5); font-size: 1.05rem; font-weight: 300; line-height: 1.6; margin-bottom: 40px; }
     .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; }
@@ -602,18 +636,6 @@
     .glow-hover:hover::before {
       opacity: 1;
       transform: scale(1);
-    }
-
-    /* Brand kit typography update */
-    .hero-static-headline,
-    .typewriter-text,
-    .about-text h2,
-    .solutions-head h2,
-    .metrics-lead h2,
-    .team-head h2,
-    #cta h2,
-    .svc-left-text h2 {
-      font-family: "Times New Roman", serif;
     }
 
     /* Spline container - extreme right, full height, watermark completely removed */
@@ -747,7 +769,7 @@
         </div>
         <div class="about-card-text"><h4>Cloud Excellence</h4><p>Design, migrate, optimize, and secure your cloud infrastructure on AWS.</p></div>
       </div>
-      <!-- Data Analytics & Generative AI card with new Lordicon (replaced GIF) -->
+      <!-- Data Analytics & Generative AI card with Lordicon -->
       <div class="about-card glow-hover reveal">
         <div class="about-card-icon">
           <lord-icon
