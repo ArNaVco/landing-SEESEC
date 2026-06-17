@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>SEESEC — Cloud Excellence, GenAI & New-Age Communication</title>
   <!-- Lordicon library -->
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <!-- Spline Runtime -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js"></script>
+  <!-- Poppins from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* System font stack - no Google Fonts */
+    /* reset + base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --ink: #1a1341;
@@ -22,8 +26,7 @@
       --accent: #43ee93;
       --mid: #8a9ab5;
       --line: rgba(255,255,255,0.08);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --font-serif: "Times New Roman", Times, serif;
+      --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -51,6 +54,7 @@
       font-weight: 800; font-size: 1.35rem;
       letter-spacing: -.02em; color: #fff;
       text-decoration: none;
+      font-family: var(--font-sans);
     }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -114,20 +118,19 @@
     }
     @keyframes orbFloat1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,60px) scale(1.08); } }
     @keyframes orbFloat2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-40px); } }
-    .stars { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+    
+    /* STARS - more stars, no line animation */
+    .stars {
+      position: absolute; inset: 0; z-index: 1; overflow: hidden;
+      pointer-events: none;
+    }
     .star {
       position: absolute; border-radius: 50%;
       background: #fff; opacity: 0;
       animation: twinkle var(--d, 4s) var(--delay, 0s) ease-in-out infinite;
     }
     @keyframes twinkle { 0%,100% { opacity: 0; transform: scale(.5); } 50% { opacity: var(--op, .6); transform: scale(1); } }
-    .data-lines {
-      position: absolute; right: 8%; top: 0; bottom: 0;
-      width: 340px; z-index: 2; opacity: .35;
-      overflow: hidden;
-    }
-    .dl { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #0778b6, transparent); animation: dlMove var(--dur, 8s) var(--dly, 0s) linear infinite; }
-    @keyframes dlMove { from { transform: translateY(-10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { transform: translateY(100vh); opacity: 0; } }
+
     .hero-content { position: relative; z-index: 5; max-width: 780px; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
@@ -150,7 +153,7 @@
       letter-spacing: -.03em;
       color: rgba(255,255,255,0.9);
       display: block;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .hero-static-headline em { font-style: normal; color: var(--accent); }
     .typewriter-wrapper {
@@ -169,7 +172,7 @@
       min-width: 200px;
       white-space: nowrap;
       position: relative;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .typewriter-text::after {
       content: '|';
@@ -230,7 +233,7 @@
     }
     .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
 
-    /* ABOUT SECTION CLARITY */
+    /* ABOUT */
     #about { padding: 120px 48px; background: var(--ink); }
     .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
     .about-text h2 { 
@@ -239,7 +242,7 @@
       line-height: 1.08; 
       letter-spacing: -.03em; 
       margin-bottom: 24px;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .about-text h2 em { font-style: normal; color: var(--accent); }
     .about-text p { color: rgba(255,255,255,.55); line-height: 1.8; font-size: 1rem; font-weight: 300; margin-bottom: 16px; }
@@ -247,40 +250,91 @@
     .about-link:hover { border-color: var(--accent); color: var(--accent); }
     
     .about-visual { display: flex; flex-direction: column; gap: 20px; }
-    .about-card { 
-      background: rgba(255,255,255,.02); 
-      border: 1px solid rgba(255,255,255,.07); 
-      border-radius: 16px; 
-      padding: 28px; 
-      backdrop-filter: blur(10px); 
+    .about-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 28px 28px 28px 80px;
+      backdrop-filter: blur(16px);
       display: flex;
       align-items: flex-start;
       gap: 16px;
-    }
-    .about-card-icon { 
-      width: 54px; 
-      height: 54px; 
-      border-radius: 12px; 
-      background: rgba(7,120,182,.2);
-      flex-shrink: 0;
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
+      cursor: default;
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+      background: rgba(245, 244, 239, 0.06);
+      border: 1px solid rgba(245, 244, 239, 0.13);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.22);
     }
-    .about-card-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    /* Glowing left accent bar */
+    .about-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 16px; bottom: 16px;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: linear-gradient(180deg, var(--accent), var(--blue));
+      box-shadow: 0 0 16px rgba(67,238,147,0.5);
+      transition: height 0.4s, opacity 0.4s;
     }
-    .about-card-icon lord-icon {
-      width: 100%;
-      height: 100%;
+    /* Shimmer sweep */
+    .about-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.7s ease;
+      pointer-events: none;
     }
+    .about-card:hover::after { transform: translateX(100%); }
+    .about-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 8px 40px rgba(245,244,239,0.08), -4px 0 20px rgba(67,238,147,0.06);
+      border-color: rgba(245, 244, 239, 0.25);
+      background: rgba(245, 244, 239, 0.10);
+    }
+    /* Number badge */
+    .about-card-num {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      font-weight: 900;
+      color: rgba(67,238,147,0.12);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    .about-card:hover .about-card-num { color: rgba(67,238,147,0.22); }
+    .about-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(7,120,182,0.18);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .about-card:hover .about-card-icon {
+      background: rgba(7,120,182,0.32);
+      box-shadow: 0 0 16px rgba(7,120,182,0.3);
+    }
+    .about-card-icon lord-icon { width: 100%; height: 100%; }
     .about-card-text { flex: 1; }
-    .about-card-text h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
-    .about-card-text p { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+    .about-card-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .about-card-text p { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.6; }
 
     /* SERVICES */
     #services { padding: 0 48px; background: #110e35; border-top: 1px solid var(--line); }
@@ -288,22 +342,30 @@
     .services-left {
       position: sticky; top: 0; height: 100vh;
       display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      padding: 80px 40px 80px 0;
+      justify-content: flex-end; align-items: center;
+      gap: 0;
+      padding: 80px 40px 60px 0;
       border-right: 1px solid var(--line);
       overflow: hidden;
     }
+    .svc-slider-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      height: 260px;
+      width: 100%;
+    }
 
-    /* 3D CAROUSEL */
+    /* 3D CAROUSEL - fixed spacing */
     .svc-slider {
       position: relative;
       width: 160px;
-      height: 200px;
+      height: 180px;
       transform-style: preserve-3d;
       animation: svcAutoRun 28s linear infinite;
       flex-shrink: 0;
-      margin-top: -30px;
-      margin-bottom: 16px;
+      margin: 0;
     }
     @keyframes svcAutoRun {
       from { transform: perspective(1000px) rotateX(-6deg) rotateY(0deg); }
@@ -312,11 +374,11 @@
     .svc-slider .svc-slide {
       position: absolute;
       inset: 0;
-      transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(340px);
+      transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(360px);
     }
     .svc-slide-card {
       width: 160px;
-      height: 200px;
+      height: 180px;
       border-radius: 16px;
       display: flex;
       flex-direction: column;
@@ -326,8 +388,8 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
-      background: linear-gradient(145deg, rgba(7,120,182,0.2) 0%, rgba(26,246,221,0.05) 100%);
+      background: linear-gradient(145deg, rgba(7,120,182,0.25) 0%, rgba(26,246,221,0.08) 100%);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     .svc-slide-card::before {
       content: '';
@@ -335,13 +397,12 @@
       top: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.5;
+      opacity: 0.6;
     }
-    
     .svc-slide-card .sc-num {
       position: absolute;
       top: 10px; left: 14px;
-      font-size: 0.55rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       color: var(--accent);
@@ -349,7 +410,7 @@
     }
     .svc-slide-card .sc-tag {
       display: inline-block;
-      font-size: 0.5rem;
+      font-size: 0.55rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -361,16 +422,16 @@
       width: fit-content;
     }
     .sc-title {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #fff;
       line-height: 1.2;
       margin-bottom: 4px;
     }
     .sc-desc {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.6);
       line-height: 1.4;
     }
 
@@ -378,6 +439,8 @@
       text-align: center;
       padding: 0 20px;
       max-width: 90%;
+      margin-bottom: 32px;
+      flex-shrink: 0;
     }
     .svc-left-text h2 {
       font-size: clamp(1.3rem, 2vw, 2.2rem);
@@ -385,7 +448,7 @@
       line-height: 1.06;
       letter-spacing: -.03em;
       margin-bottom: 12px;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .svc-left-text h2 em { font-style: normal; color: var(--accent); }
     .svc-left-text p { color: rgba(255,255,255,.45); line-height: 1.7; font-size: .8rem; font-weight: 300; }
@@ -399,14 +462,14 @@
     .svc-body p { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.6; }
     .svc-tag { display: inline-block; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); border: 1px solid rgba(26,246,221,.35); padding: 2px 8px; border-radius: 16px; margin-top: 8px; width: fit-content; }
 
-    /* SOLUTIONS STRUCTURE FIX */
+    /* SOLUTIONS - FLIP CARDS */
     #solutions { padding: 120px 48px; background: var(--ink); border-top: 1px solid var(--line); }
     .solutions-head { text-align: center; margin-bottom: 80px; }
     .solutions-head h2 { 
       font-size: clamp(2.2rem, 3.8vw, 4rem); 
       font-weight: 800; 
       letter-spacing: -.04em;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .solutions-head h2 em { font-style: normal; color: var(--accent); }
     .solutions-head p { color: rgba(255,255,255,.4); margin-top: 16px; font-size: 1rem; font-weight: 300; }
@@ -414,58 +477,172 @@
     .solutions-grid { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-      gap: 24px; 
+      gap: 28px; 
       max-width: 1200px; 
       margin: 0 auto; 
     }
-    .sol-card { 
-      border: 1px solid rgba(255,255,255,.07); 
-      border-radius: 16px; 
-      padding: 36px 28px; 
-      background: rgba(255,255,255,.01); 
-      position: relative; 
+    .sol-card {
+      perspective: 1000px;
+      height: 320px;
+      cursor: pointer;
+    }
+    .sol-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      border-radius: 20px;
+    }
+    .sol-card.flipped .sol-card-inner {
+      transform: rotateY(180deg);
+    }
+    .sol-card-front, .sol-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 20px;
       display: flex;
       flex-direction: column;
-      height: 100%;
-      cursor: pointer; 
-    }
-    .sol-icon { 
-      width: 52px; 
-      height: 52px; 
-      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(7,120,182,.15);
-      flex-shrink: 0;
+    }
+    /* FRONT */
+    .sol-card-front {
+      background: linear-gradient(145deg, rgba(7,120,182,0.18) 0%, rgba(26,246,221,0.06) 100%);
+      border: 1px solid rgba(67,238,147,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 0;
+    }
+    /* top decorative band */
+    .sol-card-front::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+      border-radius: 20px 20px 0 0;
+    }
+    /* subtle grid texture */
+    .sol-card-front::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(7,120,182,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7,120,182,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      border-radius: 20px;
+      pointer-events: none;
+    }
+    .sol-front-body {
+      position: relative;
+      z-index: 2;
+      padding: 28px 24px;
+      width: 100%;
+    }
+    .sol-card-front .sol-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(7,120,182,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 4px 16px rgba(7,120,182,0.3);
     }
-    .sol-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .sol-card-front .sol-icon lord-icon { width: 100%; height: 100%; }
+    .sol-card-front h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
     }
-    .sol-icon lord-icon {
-      width: 100%;
-      height: 100%;
+    .sol-card-front .sol-sub {
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
     }
-    .sol-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
-    .sol-card p { font-size: .88rem; color: rgba(255,255,255,.45); line-height: 1.65; margin-bottom: 20px; }
-    .sol-arrow { 
-      margin-top: auto; 
-      font-size: .75rem; 
-      letter-spacing: .08em; 
-      text-transform: uppercase; 
-      color: var(--accent); 
-      opacity: 0; 
-      transition: opacity .3s, transform .3s; 
-      transform: translateX(-4px);
+    .sol-flip-hint {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.3s;
     }
-    .sol-card:hover .sol-arrow { opacity: 1; transform: translateX(0); }
+    .sol-flip-hint svg { width: 12px; height: 12px; opacity: 0.5; }
+    .sol-card:hover .sol-flip-hint { color: rgba(67,238,147,0.6); }
+    /* BACK */
+    .sol-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, rgba(26,246,221,0.1) 0%, rgba(7,120,182,0.18) 100%);
+      border: 1px solid rgba(26,246,221,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 36px 28px;
+    }
+    .sol-card-back::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--accent), var(--blue));
+      border-radius: 0 0 20px 20px;
+    }
+    .sol-back-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(26,246,221,0.12);
+      border: 1px solid rgba(26,246,221,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.2rem;
+    }
+    .sol-card-back p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .sol-card-back .sol-arrow {
+      margin-top: 22px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.8;
+      display: block;
+    }
+    .sol-card:hover .sol-card-front {
+      border-color: rgba(67,238,147,0.4);
+      box-shadow: 0 12px 40px rgba(67,238,147,0.08), 0 0 0 1px rgba(67,238,147,0.08);
+    }
+    .sol-card:hover .sol-card-back {
+      border-color: rgba(67,238,147,0.3);
+    }
 
-    /* METRICS ALIGNMENT */
+    /* METRICS - unique box design & hover */
     #metrics { padding: 100px 48px; background: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .metrics-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2.5fr; gap: 60px; align-items: center; }
     .metrics-lead h2 { 
@@ -473,31 +650,84 @@
       font-weight: 800; 
       line-height: 1.1; 
       letter-spacing: -.03em;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     .metrics-lead h2 em { font-style: normal; color: var(--accent); }
     .metrics-lead p { color: rgba(255,255,255,.4); margin-top: 12px; font-weight: 300; }
-    
     .metrics-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
       gap: 20px; 
     }
-    .metric-box { 
-      border: 1px solid rgba(255,255,255,.07); 
-      padding: 32px 24px; 
-      border-radius: 16px; 
-      background: rgba(255,255,255,.01); 
-      text-align: center; 
+    /* Unique box design: diagonal cut, gradient border, glassmorphism + glow */
+    .metric-box {
+      position: relative;
+      padding: 32px 20px;
+      border-radius: 12px;
+      text-align: center;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      overflow: hidden;
+      isolation: isolate;
+      cursor: default;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+    }
+    /* diagonal accent line */
+    .metric-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(67,238,147,0.3), rgba(7,120,182,0.1), rgba(67,238,147,0.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: opacity 0.5s;
+      opacity: 0.4;
+    }
+    .metric-box::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(67,238,147,0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.6s;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .metric-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(67,238,147,0.3);
+      box-shadow: 0 20px 50px rgba(7,120,182,0.25), 0 0 40px rgba(67,238,147,0.05);
+      background: rgba(7,120,182,0.08);
+    }
+    .metric-box:hover::after {
+      opacity: 1;
+    }
+    .metric-box:hover::before {
+      opacity: 1;
+    }
+    .metric-box .metric-val,
+    .metric-box .metric-desc {
+      position: relative;
+      z-index: 2;
     }
     .metric-val { font-size: 2.8rem; font-weight: 800; line-height: 1; letter-spacing: -.04em; color: #fff; }
     .metric-val span { color: var(--accent); }
-    .metric-desc { margin-top: 12px; font-size: .8rem; color: rgba(255,255,255,.45); letter-spacing: .02em; line-height: 1.5; }
+    .metric-desc { margin-top: 12px; font-size: .8rem; color: rgba(255,255,255,.5); letter-spacing: .02em; line-height: 1.5; }
 
     /* CLIENTS TICKER */
     #clients { padding: 80px 48px; background: var(--ink); }
     .clients-inner { max-width: 1200px; margin: 0 auto; }
-    .clients-head { text-align: center; margin-bottom: 52px; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em; color: #ffffff; }
+    .clients-head { text-align: center; margin-bottom: 52px; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em; color: #43ee93; }
     .clients-track-wrap { overflow: hidden; position: relative; }
     .clients-track { display: flex; gap: 60px; align-items: center; animation: ticker 20s linear infinite; white-space: nowrap; }
     .clients-track:hover { animation-play-state: paused; }
@@ -506,19 +736,18 @@
     .client-name:hover { color: var(--accent); }
     .client-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.2); flex-shrink: 0; }
 
-    /* TEAM GRID BALANCE */
+    /* TEAM */
     #team { padding: 120px 48px; background: #110e35; border-top: 1px solid var(--line); }
     .team-head { text-align: center; margin-bottom: 72px; }
     .team-head h2 { 
       font-size: clamp(2.2rem, 3.5vw, 3.4rem); 
       font-weight: 800; 
       letter-spacing: -.03em;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
-    
     .team-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
       gap: 24px; 
       max-width: 1200px; 
       margin: 0 auto; 
@@ -528,6 +757,11 @@
       border-radius: 16px; 
       overflow: hidden; 
       background: rgba(255,255,255,.01); 
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .team-card:hover {
+      background: rgba(7,120,182,0.05);
+      border-color: rgba(67,238,147,0.2);
     }
     .team-avatar { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #0d0a2e, #1a1341); display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; color: rgba(255,255,255,.15); position: relative; overflow: hidden; }
     .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
@@ -535,7 +769,7 @@
     .team-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
     .team-info p { font-size: .78rem; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
 
-    /* CTA SECTION */
+    /* CTA */
     #cta { padding: 120px 48px; background: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%); text-align: center; position: relative; overflow: hidden; border-top: 1px solid var(--line); }
     .cta-inner { max-width: 800px; margin: 0 auto; }
     #cta h2 { 
@@ -544,7 +778,7 @@
       line-height: 1.04; 
       letter-spacing: -.04em; 
       margin-bottom: 20px;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
     }
     #cta h2 em { font-style: normal; color: var(--accent); }
     #cta .cta-sub { color: rgba(255,255,255,.5); font-size: 1.05rem; font-weight: 300; line-height: 1.6; margin-bottom: 40px; }
@@ -573,72 +807,10 @@
     .float-cta:hover { transform: scale(1.05); }
     .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent)); z-index: 900; width: 0%; transition: width .1s; }
     
-    /* SCROLL ANIMATION CLASS */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1); }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* RESPONSIVE LAYOUT BREAKPOINTS */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; } .nav-links { display: none; } #hero { padding: 0 24px 70px; } .hero-stats { display: none; }
-      .about-inner, .services-sticky-wrap { grid-template-columns: 1fr; }
-      .services-left { position: static; height: auto; padding: 60px 0 0; border-right: none; }
-      .services-right { padding: 40px 0 60px; }
-      .metrics-inner { grid-template-columns: 1fr; gap: 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
-      section { padding-left: 24px !important; padding-right: 24px !important; }
-      .svc-slider { width: 140px; height: 180px; margin-top: -10px; }
-      .svc-slider .svc-slide { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(280px); }
-      .svc-slide-card { width: 140px; height: 180px; padding: 14px; }
-      .sc-title { font-size: 0.7rem; }
-      .sc-desc { font-size: 0.55rem; }
-      .about-card { flex-direction: column; align-items: flex-start; }
-      .spline-container { width: 100% !important; opacity: 0.3; right: -30% !important; }
-    }
-    @media (max-width: 600px) {
-      .svc-slider { width: 120px; height: 160px; }
-      .svc-slider .svc-slide { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(240px); }
-      .svc-slide-card { width: 120px; height: 160px; padding: 12px; }
-      .sc-title { font-size: 0.6rem; }
-      .sc-desc { font-size: 0.50rem; }
-      .cta-actions { flex-direction: column; width: 100%; }
-      .cta-actions .btn-primary, .cta-actions .btn-phone { width: 100%; justify-content: center; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .spline-container { opacity: 0.2; right: -50% !important; }
-    }
-  
-    /* CUSTOM CARD HOVER EFFECTS */
-    .glow-hover {
-      position: relative;
-      overflow: hidden;
-      transition: transform .6s cubic-bezier(.22,1,.36,1), box-shadow .6s, border-color .5s;
-      isolation: isolate;
-    }
-    .glow-hover::before {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      left: -70%;
-      top: -70%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(67,238,147,.35) 0%, rgba(67,238,147,.1) 35%, transparent 70%);
-      transform: scale(.55);
-      opacity: 0;
-      transition: transform .8s cubic-bezier(.16,1,.3,1), opacity .5s;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .glow-hover:hover {
-      transform: translateY(-6px);
-      border-color: rgba(67,238,147,.45) !important;
-      box-shadow: 0 15px 45px rgba(67,238,147,.08), inset 0 0 0 1px rgba(67,238,147,.1);
-    }
-    .glow-hover:hover::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Spline container - extreme right, full height, watermark completely removed */
+    /* Spline container */
     .spline-container {
       position: absolute;
       right: -15%;
@@ -657,19 +829,9 @@
       height: 100%;
       display: block;
     }
-    /* Completely hide Spline watermark - multiple methods */
-    spline-viewer::part(watermark) {
-      display: none !important;
-    }
-    spline-viewer {
-      --spline-watermark-opacity: 0 !important;
-    }
-    .spline-container canvas {
-      width: 100% !important;
-      height: 100% !important;
-      display: block;
-    }
-    /* Hide any watermark divs or elements */
+    spline-viewer::part(watermark) { display: none !important; }
+    spline-viewer { --spline-watermark-opacity: 0 !important; }
+    .spline-container canvas { width: 100% !important; height: 100% !important; display: block; }
     spline-viewer [data-watermark],
     spline-viewer .watermark,
     spline-viewer .spline-watermark,
@@ -689,12 +851,66 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
-    /* Also hide via shadow DOM if accessible */
     spline-viewer::part(container) [data-watermark],
     spline-viewer::part(container) .watermark,
     spline-viewer::part(container) .spline-watermark {
       display: none !important;
       opacity: 0 !important;
+    }
+
+    /* ===== New animation for CTA button ===== */
+    .cta-actions .btn-primary .btn-text {
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: popText 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    }
+    .cta-actions .btn-primary .btn-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      animation: arrowMove 1.2s ease-in-out infinite alternate;
+    }
+    .cta-actions .btn-primary:hover .btn-arrow {
+      animation-play-state: paused;
+      transform: translateX(6px);
+    }
+    @keyframes popText {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes arrowMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(8px); }
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; } .nav-links { display: none; } #hero { padding: 0 24px 70px; } .hero-stats { display: none; }
+      .about-inner, .services-sticky-wrap { grid-template-columns: 1fr; }
+      .services-left { position: static; height: auto; padding: 60px 0 0; border-right: none; }
+      .services-right { padding: 40px 0 60px; }
+      .metrics-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+      section { padding-left: 24px !important; padding-right: 24px !important; }
+      .svc-slider { width: 150px; height: 190px; margin: 0 0 20px 0; }
+      .svc-slider .svc-slide { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(280px); }
+      .svc-slide-card { width: 150px; height: 190px; padding: 14px; }
+      .sc-title { font-size: 0.75rem; }
+      .sc-desc { font-size: 0.55rem; }
+      .about-card { flex-direction: column; align-items: flex-start; }
+      .spline-container { width: 100% !important; opacity: 0.3; right: -30% !important; }
+    }
+    @media (max-width: 600px) {
+      .svc-slider { width: 130px; height: 170px; }
+      .svc-slider .svc-slide { transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(240px); }
+      .svc-slide-card { width: 130px; height: 170px; padding: 12px; }
+      .sc-title { font-size: 0.65rem; }
+      .sc-desc { font-size: 0.5rem; }
+      .cta-actions { flex-direction: column; width: 100%; }
+      .cta-actions .btn-primary, .cta-actions .btn-phone { width: 100%; justify-content: center; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .spline-container { opacity: 0.2; right: -50% !important; }
+      .sol-card { height: 280px; }
     }
   </style>
 </head>
@@ -717,7 +933,6 @@
 
 <section id="hero">
   <div class="hero-bg"></div>
-  <!-- Spline 3D Model - extreme right, watermark completely removed -->
   <div class="spline-container">
     <spline-viewer url="https://prod.spline.design/PEyx6WCdqGeSxOAQ/scene.splinecode"></spline-viewer>
   </div>
@@ -725,7 +940,6 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div class="stars" id="stars"></div>
-  <div class="data-lines" id="dataLines"></div>
   
   <div class="hero-content">
     <p class="hero-eyebrow">Cloud Excellence · AI & Data · Communication Automation</p>
@@ -737,7 +951,7 @@
     </div>
     <p class="hero-sub">SEESEC helps organizations reduce cloud waste, secure their infrastructure, and deploy AI-powered tools that improve operational efficiency — at scale.</p>
     <div class="hero-actions">
-      <a href="#services" class="btn-primary glow-hover">Explore Services →</a>
+      <a href="#services" class="btn-primary">Explore Services →</a>
       <a href="#about" class="btn-ghost">Learn More <span class="arrow">↓</span></a>
     </div>
   </div>
@@ -757,39 +971,24 @@
       <a href="https://seesec.io/about-us" target="_blank" class="about-link">Discover our story →</a>
     </div>
     <div class="about-visual">
-      <!-- Cloud Excellence card with Lordicon -->
       <div class="about-card glow-hover reveal">
+        <span class="about-card-num">01</span>
         <div class="about-card-icon">
-          <lord-icon
-            src="https://cdn.lordicon.com/evearxpv.json"
-            trigger="hover"
-            colors="primary:#16c72e,secondary:#110a5c"
-            style="width:100%;height:100%">
-          </lord-icon>
+          <lord-icon src="https://cdn.lordicon.com/evearxpv.json" trigger="hover" colors="primary:#16c72e,secondary:#110a5c" style="width:100%;height:100%"></lord-icon>
         </div>
         <div class="about-card-text"><h4>Cloud Excellence</h4><p>Design, migrate, optimize, and secure your cloud infrastructure on AWS.</p></div>
       </div>
-      <!-- Data Analytics & Generative AI card with Lordicon -->
       <div class="about-card glow-hover reveal">
+        <span class="about-card-num">02</span>
         <div class="about-card-icon">
-          <lord-icon
-            src="https://cdn.lordicon.com/wdztjihe.json"
-            trigger="hover"
-            colors="primary:#121331,secondary:#109121,tertiary:#1b1091,quaternary:#e83a30"
-            style="width:100%;height:100%">
-          </lord-icon>
+          <lord-icon src="https://cdn.lordicon.com/wdztjihe.json" trigger="hover" colors="primary:#121331,secondary:#109121,tertiary:#1b1091,quaternary:#e83a30" style="width:100%;height:100%"></lord-icon>
         </div>
         <div class="about-card-text"><h4>Data Analytics & Generative AI</h4><p>Unlock the true value of your data through AI-powered decision intelligence.</p></div>
       </div>
-      <!-- Communication Automation card with Lordicon -->
       <div class="about-card glow-hover reveal">
+        <span class="about-card-num">03</span>
         <div class="about-card-icon">
-          <lord-icon
-            src="https://cdn.lordicon.com/xvmmqwjv.json"
-            trigger="hover"
-            colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff"
-            style="width:100%;height:100%">
-          </lord-icon>
+          <lord-icon src="https://cdn.lordicon.com/xvmmqwjv.json" trigger="hover" colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff" style="width:100%;height:100%"></lord-icon>
         </div>
         <div class="about-card-text"><h4>Communication Automation</h4><p>AI-powered chatbots, SMS analytics, automated email, and call center compliance tools.</p></div>
       </div>
@@ -800,23 +999,25 @@
 <section id="services">
   <div class="services-sticky-wrap">
     <div class="services-left">
-      <div class="svc-slider" style="--quantity:10">
-        <div class="svc-slide" style="--position:1"><div class="svc-slide-card glow-hover"><span class="sc-num">01</span><span class="sc-tag">AWS Advanced</span><h3 class="sc-title">AWS Managed</h3><p class="sc-desc">End-to-end AWS management.</p></div></div>
-        <div class="svc-slide" style="--position:2"><div class="svc-slide-card glow-hover"><span class="sc-num">02</span><span class="sc-tag">Zero Downtime</span><h3 class="sc-title">Cloud Migration</h3><p class="sc-desc">Structured migration to AWS.</p></div></div>
-        <div class="svc-slide" style="--position:3"><div class="svc-slide-card glow-hover"><span class="sc-num">03</span><span class="sc-tag">Up to 70%</span><h3 class="sc-title">Cost Optimization</h3><p class="sc-desc">FinOps & rightsizing.</p></div></div>
-        <div class="svc-slide" style="--position:4"><div class="svc-slide-card glow-hover"><span class="sc-num">04</span><span class="sc-tag">99.9% Comp.</span><h3 class="sc-title">Cloud Security</h3><p class="sc-desc">Zero-trust, DPDP, SOC2.</p></div></div>
-        <div class="svc-slide" style="--position:5"><div class="svc-slide-card glow-hover"><span class="sc-num">05</span><span class="sc-tag">Real-Time</span><h3 class="sc-title">Data & AI</h3><p class="sc-desc">Pipelines & BI dashboards.</p></div></div>
-        <div class="svc-slide" style="--position:6"><div class="svc-slide-card glow-hover"><span class="sc-num">06</span><span class="sc-tag">Full AI Lifecycle</span><h3 class="sc-title">Generative AI</h3><p class="sc-desc">Custom LLMs, RAG, consulting.</p></div></div>
-        <div class="svc-slide" style="--position:7"><div class="svc-slide-card glow-hover"><span class="sc-num">07</span><span class="sc-tag">Innovation</span><h3 class="sc-title">GenAI Consulting</h3><p class="sc-desc">High-impact use cases.</p></div></div>
-        <div class="svc-slide" style="--position:8"><div class="svc-slide-card glow-hover"><span class="sc-num">08</span><span class="sc-tag">Edge</span><h3 class="sc-title">Modern Data Stack</h3><p class="sc-desc">Lakehouse architecture.</p></div></div>
-        <div class="svc-slide" style="--position:9"><div class="svc-slide-card glow-hover"><span class="sc-num">09</span><span class="sc-tag">Automation</span><h3 class="sc-title">AI Workflows</h3><p class="sc-desc">Process automation & agents.</p></div></div>
-        <div class="svc-slide" style="--position:10"><div class="svc-slide-card glow-hover"><span class="sc-num">10</span><span class="sc-tag">Compliance</span><h3 class="sc-title">DPDP Solutions</h3><p class="sc-desc">Data privacy automation.</p></div></div>
-      </div>
       <div class="svc-left-text">
         <p class="section-label" style="justify-content:center;">Our Services</p>
         <h2>Built for <em>Cloud Excellence</em> at Every Layer</h2>
         <p>From first migration to continuous optimization — we handle every layer of your cloud journey with precision.</p>
         <span class="scroll-hint">↻ Rotate to explore all services</span>
+      </div>
+      <div class="svc-slider-wrap">
+        <div class="svc-slider" style="--quantity:10">
+          <div class="svc-slide" style="--position:1"><div class="svc-slide-card"><span class="sc-num">01</span><span class="sc-tag">AWS Advanced</span><h3 class="sc-title">AWS Managed</h3><p class="sc-desc">End-to-end AWS management.</p></div></div>
+          <div class="svc-slide" style="--position:2"><div class="svc-slide-card"><span class="sc-num">02</span><span class="sc-tag">Zero Downtime</span><h3 class="sc-title">Cloud Migration</h3><p class="sc-desc">Structured migration to AWS.</p></div></div>
+          <div class="svc-slide" style="--position:3"><div class="svc-slide-card"><span class="sc-num">03</span><span class="sc-tag">Up to 70%</span><h3 class="sc-title">Cost Optimization</h3><p class="sc-desc">FinOps & rightsizing.</p></div></div>
+          <div class="svc-slide" style="--position:4"><div class="svc-slide-card"><span class="sc-num">04</span><span class="sc-tag">99.9% Comp.</span><h3 class="sc-title">Cloud Security</h3><p class="sc-desc">Zero-trust, DPDP, SOC2.</p></div></div>
+          <div class="svc-slide" style="--position:5"><div class="svc-slide-card"><span class="sc-num">05</span><span class="sc-tag">Real-Time</span><h3 class="sc-title">Data & AI</h3><p class="sc-desc">Pipelines & BI dashboards.</p></div></div>
+          <div class="svc-slide" style="--position:6"><div class="svc-slide-card"><span class="sc-num">06</span><span class="sc-tag">Full AI Lifecycle</span><h3 class="sc-title">Generative AI</h3><p class="sc-desc">Custom LLMs, RAG, consulting.</p></div></div>
+          <div class="svc-slide" style="--position:7"><div class="svc-slide-card"><span class="sc-num">07</span><span class="sc-tag">Innovation</span><h3 class="sc-title">GenAI Consulting</h3><p class="sc-desc">High-impact use cases.</p></div></div>
+          <div class="svc-slide" style="--position:8"><div class="svc-slide-card"><span class="sc-num">08</span><span class="sc-tag">Edge</span><h3 class="sc-title">Modern Data Stack</h3><p class="sc-desc">Lakehouse architecture.</p></div></div>
+          <div class="svc-slide" style="--position:9"><div class="svc-slide-card"><span class="sc-num">09</span><span class="sc-tag">Automation</span><h3 class="sc-title">AI Workflows</h3><p class="sc-desc">Process automation & agents.</p></div></div>
+          <div class="svc-slide" style="--position:10"><div class="svc-slide-card"><span class="sc-num">10</span><span class="sc-tag">Compliance</span><h3 class="sc-title">DPDP Solutions</h3><p class="sc-desc">Data privacy automation.</p></div></div>
+        </div>
       </div>
     </div>
     <div class="services-right">
@@ -837,66 +1038,101 @@
     <p>Four products. One mission — deliver faster, more personalized interactions.</p>
   </div>
   <div class="solutions-grid">
-    <div class="sol-card glow-hover">
-      <div class="sol-icon">
-        <lord-icon
-          src="https://cdn.lordicon.com/xvmmqwjv.json"
-          trigger="hover"
-          colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff"
-          style="width:100%;height:100%">
-        </lord-icon>
+    <div class="sol-card" onclick="this.classList.toggle('flipped')">
+      <div class="sol-card-inner">
+        <div class="sol-card-front">
+          <span class="sol-flip-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Tap to flip
+          </span>
+          <div class="sol-front-body">
+            <div class="sol-icon"><lord-icon src="https://cdn.lordicon.com/xvmmqwjv.json" trigger="hover" colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff" style="width:100%;height:100%"></lord-icon></div>
+            <h3>Chat-A-Lot</h3>
+            <span class="sol-sub">AI 24/7</span>
+          </div>
+        </div>
+        <div class="sol-card-back">
+          <div class="sol-back-icon">💬</div>
+          <p>AI-powered chatbot that handles queries and qualifies leads around the clock.</p>
+          <span class="sol-arrow">↩ Click to flip back</span>
+        </div>
       </div>
-      <h3>Chat-A-Lot</h3>
-      <p>AI-powered 24/7 chatbot that handles queries and qualifies leads.</p>
-      <p class="sol-arrow">Learn more →</p>
     </div>
-    
-    <div class="sol-card glow-hover">
-      <div class="sol-icon">
-        <lord-icon
-          src="https://cdn.lordicon.com/ckooqaow.json"
-          trigger="hover"
-          colors="primary:#ffffff,secondary:#000000,tertiary:#545454,quaternary:#109121,quinary:#000000"
-          style="width:100%;height:100%">
-        </lord-icon>
+    <div class="sol-card" onclick="this.classList.toggle('flipped')">
+      <div class="sol-card-inner">
+        <div class="sol-card-front">
+          <span class="sol-flip-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Tap to flip
+          </span>
+          <div class="sol-front-body">
+            <div class="sol-icon"><lord-icon src="https://cdn.lordicon.com/ckooqaow.json" trigger="hover" colors="primary:#ffffff,secondary:#000000,tertiary:#545454,quaternary:#109121,quinary:#000000" style="width:100%;height:100%"></lord-icon></div>
+            <h3>Talk Track</h3>
+            <span class="sol-sub">Compliance & Voice</span>
+          </div>
+        </div>
+        <div class="sol-card-back">
+          <div class="sol-back-icon">🎙️</div>
+          <p>Call center compliance monitoring and voice analytics for quality assurance.</p>
+          <span class="sol-arrow">↩ Click to flip back</span>
+        </div>
       </div>
-      <h3>Talk Track</h3>
-      <p>Call center compliance monitoring and voice analytics.</p>
-      <p class="sol-arrow">Learn more →</p>
     </div>
-    
-    <div class="sol-card glow-hover">
-      <div class="sol-icon">
-        <lord-icon
-          src="https://cdn.lordicon.com/gtvaxhwv.json"
-          trigger="in"
-          delay="1500"
-          stroke="bold"
-          state="in-assembly"
-          colors="primary:#000000,secondary:#109121,tertiary:#110a5c,quaternary:#545454"
-          style="width:100%;height:100%">
-        </lord-icon>
+    <div class="sol-card" onclick="this.classList.toggle('flipped')">
+      <div class="sol-card-inner">
+        <div class="sol-card-front">
+          <span class="sol-flip-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Tap to flip
+          </span>
+          <div class="sol-front-body">
+            <div class="sol-icon">
+              <lord-icon
+                  src="https://cdn.lordicon.com/gtvaxhwv.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#121331,secondary:#109121,tertiary:#104891,quaternary:#ffffff"
+                  style="width:100%;height:100%">
+              </lord-icon>
+            </div>
+            <h3>Interactive Email</h3>
+            <span class="sol-sub">Automated Responses</span>
+          </div>
+        </div>
+        <div class="sol-card-back">
+          <div class="sol-back-icon">📧</div>
+          <p>Automated email response with live forms and real-time data integration.</p>
+          <span class="sol-arrow">↩ Click to flip back</span>
+        </div>
       </div>
-      <h3>Interactive Email</h3>
-      <p>Automated email response with live forms and real-time data.</p>
-      <p class="sol-arrow">Learn more →</p>
     </div>
-    
-    <div class="sol-card glow-hover">
-      <div class="sol-icon">
-        <lord-icon
-          src="https://cdn.lordicon.com/qctplryk.json"
-          trigger="in"
-          delay="1500"
-          stroke="bold"
-          state="in-reveal"
-          colors="primary:#000000,secondary:#f9c9c0,tertiary:#109121"
-          style="width:100%;height:100%">
-        </lord-icon>
+    <div class="sol-card" onclick="this.classList.toggle('flipped')">
+      <div class="sol-card-inner">
+        <div class="sol-card-front">
+          <span class="sol-flip-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Tap to flip
+          </span>
+          <div class="sol-front-body">
+            <div class="sol-icon">
+              <lord-icon
+                  src="https://cdn.lordicon.com/qctplryk.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#121331,secondary:#e3c0ac,tertiary:#109121"
+                  style="width:100%;height:100%">
+              </lord-icon>
+            </div>
+            <h3>SMS Sense</h3>
+            <span class="sol-sub">Analytics & ROI</span>
+          </div>
+        </div>
+        <div class="sol-card-back">
+          <div class="sol-back-icon">📊</div>
+          <p>SMS data analytics: delivery patterns and engagement ROI for campaigns.</p>
+          <span class="sol-arrow">↩ Click to flip back</span>
+        </div>
       </div>
-      <h3>SMS Sense</h3>
-      <p>SMS data analytics: delivery patterns and engagement ROI.</p>
-      <p class="sol-arrow">Learn more →</p>
     </div>
   </div>
 </section>
@@ -909,10 +1145,10 @@
       <p>Measurable outcomes from reduced cloud costs to faster operations.</p>
     </div>
     <div class="metrics-grid">
-      <div class="metric-box glow-hover"><div class="metric-val"><span class="count-num" data-target="70">0</span><span>%</span></div><div class="metric-desc">Reduction in cloud costs</div></div>
-      <div class="metric-box glow-hover"><div class="metric-val"><span class="count-num" data-target="80">0</span><span>%</span></div><div class="metric-desc">Faster response times</div></div>
-      <div class="metric-box glow-hover"><div class="metric-val"><span class="count-num" data-target="99.9">0</span><span>%</span></div><div class="metric-desc">Compliance adherence</div></div>
-      <div class="metric-box glow-hover"><div class="metric-val"><span class="count-num" data-target="75">0</span><span>%</span></div><div class="metric-desc">Operational efficiency</div></div>
+      <div class="metric-box"><div class="metric-val"><span class="count-num" data-target="70">0</span><span>%</span></div><div class="metric-desc">Reduction in cloud costs</div></div>
+      <div class="metric-box"><div class="metric-val"><span class="count-num" data-target="80">0</span><span>%</span></div><div class="metric-desc">Faster response times</div></div>
+      <div class="metric-box"><div class="metric-val"><span class="count-num" data-target="99.9">0</span><span>%</span></div><div class="metric-desc">Compliance adherence</div></div>
+      <div class="metric-box"><div class="metric-val"><span class="count-num" data-target="75">0</span><span>%</span></div><div class="metric-desc">Operational efficiency</div></div>
     </div>
   </div>
 </section>
@@ -945,19 +1181,19 @@
     <h2>The Experts Behind SEESEC</h2>
   </div>
   <div class="team-grid">
-    <div class="team-card glow-hover">
+    <div class="team-card">
       <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=220%2C220&ssl=1" alt="Dinesh Singh" onerror="this.style.display='none'">DS</div>
       <div class="team-info"><h4>Dinesh Singh</h4><p>Founder & CEO</p></div>
     </div>
-    <div class="team-card glow-hover">
+    <div class="team-card">
       <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=220%2C220&ssl=1" alt="Eshita Singh">ES</div>
       <div class="team-info"><h4>Eshita Singh</h4><p>Director & CPO</p></div>
     </div>
-    <div class="team-card glow-hover">
+    <div class="team-card">
       <div class="team-avatar">SA</div>
       <div class="team-info"><h4>Shrey Agarwal</h4><p>Co-Founder & CTO</p></div>
     </div>
-    <div class="team-card glow-hover">
+    <div class="team-card">
       <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=220%2C220&ssl=1" alt="Shubh Sharma">SS</div>
       <div class="team-info"><h4>Shubh Sharma</h4><p>Chief Marketing Officer</p></div>
     </div>
@@ -970,8 +1206,10 @@
     <h2>Ready to Make Tech <em>Simple, Smart & Secure?</em></h2>
     <p class="cta-sub">Contact us today to learn how SEESEC can help your organization harness the full potential of cloud, data, and AI.</p>
     <div class="cta-actions">
-      <a href="https://seesec.io/contact/" target="_blank" class="btn-primary glow-hover">
-        <span>📅</span> Schedule Free Consultation →
+      <a href="https://seesec.io/contact/" target="_blank" class="btn-primary">
+        <span>📅</span>
+        <span class="btn-text">Schedule Free Consultation</span>
+        <span class="btn-arrow">→</span>
       </a>
       <a href="tel:+919220550666" class="btn-phone">
         <span class="phone-icon">📞</span> +91 922 055 0666
@@ -988,28 +1226,15 @@
     </div>
     <div class="footer-col">
       <h5>Services</h5>
-      <ul>
-        <li><a href="#">AWS Managed</a></li>
-        <li><a href="#">Cloud Optimization</a></li>
-        <li><a href="#">Cloud Migration</a></li>
-        <li><a href="#">Gen AI</a></li>
-      </ul>
+      <ul><li><a href="#">AWS Managed</a></li><li><a href="#">Cloud Optimization</a></li><li><a href="#">Cloud Migration</a></li><li><a href="#">Gen AI</a></li></ul>
     </div>
     <div class="footer-col">
       <h5>Solutions</h5>
-      <ul>
-        <li><a href="#">Chat-A-Lot</a></li>
-        <li><a href="#">Talk Track</a></li>
-        <li><a href="#">SMS Sense</a></li>
-      </ul>
+      <ul><li><a href="#">Chat-A-Lot</a></li><li><a href="#">Talk Track</a></li><li><a href="#">SMS Sense</a></li></ul>
     </div>
     <div class="footer-col">
       <h5>Company</h5>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Blogs</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+      <ul><li><a href="#">About Us</a></li><li><a href="#">Blogs</a></li><li><a href="#">Contact</a></li></ul>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1019,26 +1244,17 @@
 </footer>
 
 <script>
-  // Stars Background
+  // Stars - more stars (320)
   const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) { 
+  for (let i = 0; i < 320; i++) { 
     const s = document.createElement('div'); 
     s.className = 'star'; 
-    const size = Math.random() * 2.5 + .5; 
-    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${3+Math.random()*5}s;--delay:${Math.random()*6}s;--op:${.3+Math.random()*.7};`; 
+    const size = Math.random() * 3.2 + 0.5; 
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*8}s;--op:${0.45+Math.random()*0.75};`; 
     starsEl.appendChild(s); 
   }
 
-  // Vertical falling data animation lines
-  const dlWrap = document.getElementById('dataLines'); 
-  for (let i=0;i<12;i++){ 
-    const dl=document.createElement('div'); 
-    dl.className='dl'; 
-    dl.style.cssText=`top:${Math.random()*100}%;--dur:${6+Math.random()*8}s;--dly:${Math.random()*8}s;opacity:${.3+Math.random()*.5};`; 
-    dlWrap.appendChild(dl); 
-  }
-
-  // Active navigation styles on window scroll
+  // Nav scroll
   const navEl = document.getElementById('nav'); 
   const pb = document.getElementById('progressBar');
   window.addEventListener('scroll', () => { 
@@ -1049,96 +1265,63 @@
     pb.style.width = (scrolled / total * 100) + '%'; 
   });
 
-  // Reveal elements dynamically upon viewport entry
+  // Reveal
   const revealEls = document.querySelectorAll('.reveal'); 
   const io = new IntersectionObserver((entries) => { 
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }); 
   }, { threshold: .12 }); 
   revealEls.forEach(el => io.observe(el));
 
-  // Typewriter Engine
+  // Typewriter
   const words = ["Cloud & AI", "Intelligent Automation", "Data Intelligence", "Secure Cloud", "Generative AI"];
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+  let wordIndex = 0, charIndex = 0, isDeleting = false;
   const typewriterSpan = document.getElementById("typewriterSpan");
-
   function typeEffect() {
     const fullWord = words[wordIndex];
     let displayText;
-    if (isDeleting) {
-      displayText = fullWord.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      displayText = fullWord.substring(0, charIndex + 1);
-      charIndex++;
-    }
+    if (isDeleting) { displayText = fullWord.substring(0, charIndex - 1); charIndex--; } 
+    else { displayText = fullWord.substring(0, charIndex + 1); charIndex++; }
     typewriterSpan.textContent = displayText;
-
-    if (!isDeleting && charIndex === fullWord.length) {
-      isDeleting = true;
-      setTimeout(typeEffect, 2000);
-      return;
-    }
-    if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      setTimeout(typeEffect, 300);
-      return;
-    }
-    const speed = isDeleting ? 50 : 90;
-    setTimeout(typeEffect, speed);
+    if (!isDeleting && charIndex === fullWord.length) { isDeleting = true; setTimeout(typeEffect, 2000); return; }
+    if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(typeEffect, 300); return; }
+    setTimeout(typeEffect, isDeleting ? 50 : 90);
   }
   typeEffect();
 
-  // Numerical increments trigger
+  // Counters - even slower for hero percentages (duration 6000ms)
   const countElements = document.querySelectorAll('.count-num');
-
   function animateCount(el) {
     const target = parseFloat(el.getAttribute('data-target'));
     if (isNaN(target)) return;
-    const duration = 2800;
+    // slower duration for the hero stats
+    const duration = 6000; 
     const startTime = performance.now();
-    const isFloat = target % 1 !== 0;
-    const decimals = isFloat ? 1 : 0;
-
+    const isFloat = target % 1 !== 0, decimals = isFloat ? 1 : 0;
     function update(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 4);
-      const currentVal = eased * target;
-      el.textContent = currentVal.toFixed(decimals);
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = target.toFixed(decimals);
-      }
+      el.textContent = (eased * target).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target.toFixed(decimals);
     }
     requestAnimationFrame(update);
   }
-
   const countObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        if (!el.dataset.animated) {
-          el.dataset.animated = 'true';
-          animateCount(el);
-        }
+        if (!el.dataset.animated) { el.dataset.animated = 'true'; animateCount(el); }
       }
     });
   }, { threshold: 0.3 });
-
   countElements.forEach(el => countObserver.observe(el));
-
+  // Also trigger if already visible on load
   setTimeout(() => {
     countElements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        if (!el.dataset.animated) {
-          el.dataset.animated = 'true';
-          animateCount(el);
-        }
+      if (rect.top < window.innerHeight && rect.bottom > 0 && !el.dataset.animated) {
+        el.dataset.animated = 'true'; animateCount(el);
       }
     });
   }, 500);
