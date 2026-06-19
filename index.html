@@ -3865,7 +3865,7 @@
             });
         });
 
-        // ── SPLINE LOADING INDICATOR (centered card) ──
+        // ── SPLINE LOADING INDICATOR (centered card, faster) ──
         (function() {
             const loadingEl = document.getElementById('splineLoading');
             const progressBar = document.getElementById('loadProgressBar');
@@ -3878,7 +3878,7 @@
             // If there's no spline viewer or no loading element, return
             if (!viewer || !loadingEl) return;
 
-            // Simulate progress while loading
+            // Simulate progress while loading — faster now
             function startProgressSimulation() {
                 progress = 0;
                 progressBar.style.width = '0%';
@@ -3886,7 +3886,7 @@
                 progressInterval = setInterval(() => {
                     if (isLoaded) {
                         // Fast fill to 100% when loaded
-                        progress = Math.min(progress + 8, 100);
+                        progress = Math.min(progress + 15, 100);
                         progressBar.style.width = progress + '%';
                         if (progress >= 100) {
                             clearInterval(progressInterval);
@@ -3894,11 +3894,11 @@
                         }
                         return;
                     }
-                    // Slow, easing progress
-                    const increment = Math.max(0.3, (100 - progress) * 0.02);
+                    // Faster easing progress
+                    const increment = Math.max(0.6, (100 - progress) * 0.04);
                     progress = Math.min(progress + increment, 92);
                     progressBar.style.width = progress + '%';
-                }, 120);
+                }, 80); // reduced from 120ms to 80ms
             }
 
             // Hide loading overlay with fade
@@ -3914,7 +3914,7 @@
                 // Wait a beat then fade out
                 setTimeout(() => {
                     loadingEl.classList.add('hidden');
-                }, 400);
+                }, 300);
             }
 
             // Handle load event
@@ -3935,12 +3935,12 @@
             viewer.addEventListener('load', onSplineLoad);
             viewer.addEventListener('error', onSplineError);
 
-            // Fallback: if not loaded after 10 seconds, force hide
+            // Fallback: if not loaded after 6 seconds (was 10), force hide
             loadTimeout = setTimeout(() => {
                 if (!isLoaded) {
                     hideLoading();
                 }
-            }, 10000);
+            }, 6000);
 
             // Also check for the `loading` attribute removal as an additional signal
             const attrObserver = new MutationObserver(() => {
@@ -3984,7 +3984,7 @@
                         hideLoading();
                     }
                 }
-            }, 500);
+            }, 300);
         })();
     </script>
 </body>
