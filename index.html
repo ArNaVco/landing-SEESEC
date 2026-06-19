@@ -942,6 +942,129 @@
             opacity: 0 !important;
         }
 
+        /* ── SPLINE LOADING OVERLAY (centered card) ── */
+        .spline-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 32px 40px;
+            border-radius: 16px;
+            background: rgba(10, 8, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            min-width: 200px;
+            max-width: 280px;
+            transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.7s ease;
+            pointer-events: none;
+            opacity: 1;
+            visibility: visible;
+        }
+        .spline-loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .spline-loading .spinner-ring {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .spline-loading .spinner-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid rgba(67, 238, 147, 0.08);
+            border-top-color: var(--accent);
+            border-right-color: var(--cyan);
+            animation: spin 1s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.08);
+        }
+        .spline-loading .spinner-ring::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            border: 2px solid rgba(26, 246, 221, 0.04);
+            border-bottom-color: var(--cyan);
+            border-left-color: var(--accent);
+            animation: spin 1.4s cubic-bezier(0.4, 0.0, 0.6, 1.0) infinite reverse;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .spline-loading .spinner-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 20px rgba(67, 238, 147, 0.4);
+            animation: dotPulse 1.6s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+            0%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        .spline-loading .load-text {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+        .spline-loading .load-text span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        @keyframes textPulse {
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.9;
+            }
+        }
+        .spline-loading .load-progress {
+            width: 80px;
+            height: 2px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .spline-loading .load-progress-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            transition: width 0.15s ease;
+            box-shadow: 0 0 16px rgba(67, 238, 147, 0.2);
+        }
+
         /* ── SECTION LABEL ── */
         .section-label {
             font-size: 0.7rem;
@@ -3048,6 +3171,16 @@
     <section id="hero">
         <div class="hero-bg"></div>
         <div class="spline-container">
+            <!-- Loading Overlay (now a centered card) -->
+            <div class="spline-loading" id="splineLoading">
+                <div class="spinner-ring">
+                    <div class="spinner-dot"></div>
+                </div>
+                <div class="load-text">Loading <span>3D</span> Experience</div>
+                <div class="load-progress">
+                    <div class="load-progress-bar" id="loadProgressBar"></div>
+                </div>
+            </div>
             <spline-viewer url="https://prod.spline.design/PEyx6WCdqGeSxOAQ/scene.splinecode"></spline-viewer>
         </div>
         <div class="orb orb-1"></div>
@@ -3731,6 +3864,128 @@
                 }
             });
         });
+
+        // ── SPLINE LOADING INDICATOR (centered card) ──
+        (function() {
+            const loadingEl = document.getElementById('splineLoading');
+            const progressBar = document.getElementById('loadProgressBar');
+            const viewer = document.querySelector('spline-viewer');
+            let progress = 0;
+            let progressInterval = null;
+            let loadTimeout = null;
+            let isLoaded = false;
+
+            // If there's no spline viewer or no loading element, return
+            if (!viewer || !loadingEl) return;
+
+            // Simulate progress while loading
+            function startProgressSimulation() {
+                progress = 0;
+                progressBar.style.width = '0%';
+                if (progressInterval) clearInterval(progressInterval);
+                progressInterval = setInterval(() => {
+                    if (isLoaded) {
+                        // Fast fill to 100% when loaded
+                        progress = Math.min(progress + 8, 100);
+                        progressBar.style.width = progress + '%';
+                        if (progress >= 100) {
+                            clearInterval(progressInterval);
+                            progressInterval = null;
+                        }
+                        return;
+                    }
+                    // Slow, easing progress
+                    const increment = Math.max(0.3, (100 - progress) * 0.02);
+                    progress = Math.min(progress + increment, 92);
+                    progressBar.style.width = progress + '%';
+                }, 120);
+            }
+
+            // Hide loading overlay with fade
+            function hideLoading() {
+                if (isLoaded) return;
+                isLoaded = true;
+                if (progressInterval) {
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+                }
+                // Fill to 100% smoothly
+                progressBar.style.width = '100%';
+                // Wait a beat then fade out
+                setTimeout(() => {
+                    loadingEl.classList.add('hidden');
+                }, 400);
+            }
+
+            // Handle load event
+            function onSplineLoad() {
+                hideLoading();
+            }
+
+            // Handle error
+            function onSplineError() {
+                // Still hide loading but mark as loaded to avoid hanging
+                hideLoading();
+            }
+
+            // Start progress simulation immediately
+            startProgressSimulation();
+
+            // Listen for load event
+            viewer.addEventListener('load', onSplineLoad);
+            viewer.addEventListener('error', onSplineError);
+
+            // Fallback: if not loaded after 10 seconds, force hide
+            loadTimeout = setTimeout(() => {
+                if (!isLoaded) {
+                    hideLoading();
+                }
+            }, 10000);
+
+            // Also check for the `loading` attribute removal as an additional signal
+            const attrObserver = new MutationObserver(() => {
+                if (!viewer.hasAttribute('loading') && !isLoaded) {
+                    hideLoading();
+                }
+            });
+            attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
+
+            // Cleanup if the viewer gets removed
+            const cleanup = () => {
+                if (progressInterval) clearInterval(progressInterval);
+                if (loadTimeout) clearTimeout(loadTimeout);
+                attrObserver.disconnect();
+                viewer.removeEventListener('load', onSplineLoad);
+                viewer.removeEventListener('error', onSplineError);
+            };
+
+            // Use a weak reference or just attach to window unload
+            window.addEventListener('beforeunload', cleanup);
+
+            // Also if the viewer is removed from DOM
+            if (window.MutationObserver) {
+                const removalObserver = new MutationObserver(() => {
+                    if (!document.contains(viewer)) {
+                        cleanup();
+                        removalObserver.disconnect();
+                    }
+                });
+                removalObserver.observe(document.body, { childList: true, subtree: true });
+            }
+
+            // If the model is already loaded (race condition)
+            // Check if the viewer has a canvas child or if loading attribute is already gone
+            setTimeout(() => {
+                // If loading attribute is not present, it might already be loaded
+                if (!viewer.hasAttribute('loading') && !isLoaded) {
+                    // Check if there's a canvas inside (indicates loaded state)
+                    const canvas = viewer.querySelector('canvas');
+                    if (canvas) {
+                        hideLoading();
+                    }
+                }
+            }, 500);
+        })();
     </script>
 </body>
 </html>
