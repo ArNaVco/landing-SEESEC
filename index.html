@@ -358,7 +358,7 @@
             text-transform: uppercase;
         }
 
-        /* ── BUTTONS (shared) ── */
+        /* ── BUTTONS  ── */
         .btn-filters {
             position: absolute;
             width: 0;
@@ -1427,7 +1427,7 @@
             color: rgba(255, 255, 255, 0.15);
         }
 
-        /* ── UPDATED SERVICES RIGHT (CARDS) ── */
+        /* ── SERVICES RIGHT  ── */
         .services-right {
             padding: 80px 0 80px 60px;
             display: flex;
@@ -2666,7 +2666,7 @@
                 justify-content: center;
                 font-size: 0.78rem;
             }
-            /* Spline already hidden from tablet breakpoint, but ensure it's hidden */
+            /* Spline already hidden from tablet breakpoint */
             .spline-container {
                 display: none !important;
             }
@@ -3351,7 +3351,7 @@
             <p>Four products. One mission — deliver faster, more personalized interactions.</p>
         </div>
         <div class="solutions-grid" id="solutionsGrid">
-            <!-- Each card has data-url for detail page, and Lordicon with trigger="loop" -->
+            
             <div class="sol-card" data-url="solution-detail.html?name=Chat-A-Lot">
                 <div class="sol-card-inner">
                     <div class="sol-card-front">
@@ -3664,7 +3664,7 @@
                 window.requestAnimationFrame(() => {
                     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                    // Hide nav when scrolling down past 100px, show when scrolling up
+                    
                     if (currentScroll > lastScroll && currentScroll > 100) {
                         navEl.classList.add('nav-hidden');
                     } else {
@@ -3672,7 +3672,7 @@
                     }
                     lastScroll = currentScroll;
 
-                    // Update progress bar
+                    //  progress bar
                     const total = document.body.scrollHeight - window.innerHeight;
                     pb.style.width = (currentScroll / total * 100) + '%';
 
@@ -3797,7 +3797,7 @@
             });
         }
 
-        // ── SOLUTIONS: ROTATE ONLY ON HOVER (SLOWER) ──
+        // ── SOLUTIONS ──
         let flipIntervalId = null;
 
         function flipAllCards() {
@@ -3811,7 +3811,7 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            // Flip every 4 seconds (slower)
+            
             flipIntervalId = setInterval(flipAllCards, 4000);
         }
 
@@ -3820,7 +3820,7 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            // Reset all cards to front
+            
             document.querySelectorAll('.sol-card').forEach(card => {
                 card.classList.remove('flipped');
             });
@@ -3832,7 +3832,7 @@
             grid.addEventListener('mouseleave', stopFlipOnHover);
         }
 
-        // Click on a card opens the detail page (URL from data-url)
+        
         document.querySelectorAll('.sol-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const url = this.getAttribute('data-url');
@@ -3842,14 +3842,14 @@
             });
         });
 
-        // ── Keyboard: Escape to close mobile menu ──
+      
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
                 toggleMenu();
             }
         });
 
-        // ── Smooth anchor scroll with offset ──
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -3865,7 +3865,7 @@
             });
         });
 
-        // ── SPLINE LOADING INDICATOR (centered card, faster) ──
+        
         (function() {
             const loadingEl = document.getElementById('splineLoading');
             const progressBar = document.getElementById('loadProgressBar');
@@ -3875,17 +3875,17 @@
             let loadTimeout = null;
             let isLoaded = false;
 
-            // If there's no spline viewer or no loading element, return
+       
             if (!viewer || !loadingEl) return;
 
-            // Simulate progress while loading — faster now
+         
             function startProgressSimulation() {
                 progress = 0;
                 progressBar.style.width = '0%';
                 if (progressInterval) clearInterval(progressInterval);
                 progressInterval = setInterval(() => {
                     if (isLoaded) {
-                        // Fast fill to 100% when loaded
+                   
                         progress = Math.min(progress + 15, 100);
                         progressBar.style.width = progress + '%';
                         if (progress >= 100) {
@@ -3894,14 +3894,14 @@
                         }
                         return;
                     }
-                    // Faster easing progress
+              
                     const increment = Math.max(0.6, (100 - progress) * 0.04);
                     progress = Math.min(progress + increment, 92);
                     progressBar.style.width = progress + '%';
-                }, 80); // reduced from 120ms to 80ms
+                }, 80); 
             }
 
-            // Hide loading overlay with fade
+         
             function hideLoading() {
                 if (isLoaded) return;
                 isLoaded = true;
@@ -3909,40 +3909,40 @@
                     clearInterval(progressInterval);
                     progressInterval = null;
                 }
-                // Fill to 100% smoothly
+            
                 progressBar.style.width = '100%';
-                // Wait a beat then fade out
+               
                 setTimeout(() => {
                     loadingEl.classList.add('hidden');
                 }, 300);
             }
 
-            // Handle load event
+    
             function onSplineLoad() {
                 hideLoading();
             }
 
             // Handle error
             function onSplineError() {
-                // Still hide loading but mark as loaded to avoid hanging
+               
                 hideLoading();
             }
 
-            // Start progress simulation immediately
+      
             startProgressSimulation();
 
-            // Listen for load event
+
             viewer.addEventListener('load', onSplineLoad);
             viewer.addEventListener('error', onSplineError);
 
-            // Fallback: if not loaded after 6 seconds (was 10), force hide
+       
             loadTimeout = setTimeout(() => {
                 if (!isLoaded) {
                     hideLoading();
                 }
             }, 6000);
 
-            // Also check for the `loading` attribute removal as an additional signal
+         
             const attrObserver = new MutationObserver(() => {
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
                     hideLoading();
@@ -3950,7 +3950,7 @@
             });
             attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
 
-            // Cleanup if the viewer gets removed
+   
             const cleanup = () => {
                 if (progressInterval) clearInterval(progressInterval);
                 if (loadTimeout) clearTimeout(loadTimeout);
@@ -3959,10 +3959,10 @@
                 viewer.removeEventListener('error', onSplineError);
             };
 
-            // Use a weak reference or just attach to window unload
+        
             window.addEventListener('beforeunload', cleanup);
 
-            // Also if the viewer is removed from DOM
+      
             if (window.MutationObserver) {
                 const removalObserver = new MutationObserver(() => {
                     if (!document.contains(viewer)) {
@@ -3973,12 +3973,11 @@
                 removalObserver.observe(document.body, { childList: true, subtree: true });
             }
 
-            // If the model is already loaded (race condition)
-            // Check if the viewer has a canvas child or if loading attribute is already gone
+        
             setTimeout(() => {
-                // If loading attribute is not present, it might already be loaded
+                
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
-                    // Check if there's a canvas inside (indicates loaded state)
+                   
                     const canvas = viewer.querySelector('canvas');
                     if (canvas) {
                         hideLoading();
