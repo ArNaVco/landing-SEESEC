@@ -358,7 +358,7 @@
             text-transform: uppercase;
         }
 
-        /* ── BUTTONS  ── */
+        /* ── BUTTONS (shared) ── */
         .btn-filters {
             position: absolute;
             width: 0;
@@ -1427,7 +1427,7 @@
             color: rgba(255, 255, 255, 0.15);
         }
 
-        /* ── SERVICES RIGHT  ── */
+        /* ── UPDATED SERVICES RIGHT (CARDS) ── */
         .services-right {
             padding: 80px 0 80px 60px;
             display: flex;
@@ -2346,9 +2346,496 @@
             transform: none;
         }
 
+        /* ── READY TO DEPLOY (NEW CONTENT) ── */
+        #ready-to-deploy {
+            padding: 100px 48px;
+            background: #0d0a2e;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .deploy-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .deploy-head h2 {
+            font-size: clamp(2rem, 3.8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+        .deploy-head h2 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .deploy-head p {
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 12px;
+            font-size: 0.95rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .deploy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* flip card styles */
+        .deploy-card {
+            perspective: 1000px;
+            height: 380px;
+            cursor: pointer;
+            animation: deployFloat 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        .deploy-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .deploy-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes deployFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .deploy-card.flipped .deploy-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .deploy-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            border-radius: var(--radius);
+            will-change: transform;
+        }
+
+        .deploy-card-front,
+        .deploy-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            padding: 32px 28px;
+            overflow: hidden;
+        }
+
+        .deploy-card-front {
+            background: linear-gradient(145deg, rgba(7, 120, 182, 0.16) 0%, rgba(26, 246, 221, 0.04) 100%);
+            border: 1px solid rgba(67, 238, 147, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .deploy-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .deploy-card-front .deploy-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: rgba(7, 120, 182, 0.15);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(67, 238, 147, 0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        .deploy-card-front .deploy-icon lord-icon {
+            width: 100%;
+            height: 100%;
+        }
+        .deploy-card-front h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        .deploy-card-front .deploy-sub {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .deploy-flip-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            font-size: 0.5rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.4s ease;
+        }
+        .deploy-flip-hint svg {
+            width: 12px;
+            height: 12px;
+            opacity: 0.4;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+        .deploy-card:hover .deploy-flip-hint {
+            color: var(--accent);
+        }
+        .deploy-card:hover .deploy-flip-hint svg {
+            transform: rotate(180deg) scale(1.1);
+            opacity: 1;
+        }
+
+        .deploy-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(145deg, rgba(26, 246, 221, 0.08) 0%, rgba(7, 120, 182, 0.16) 100%);
+            border: 1px solid rgba(26, 246, 221, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+            padding: 28px 24px;
+            overflow-y: auto;
+        }
+        .deploy-card-back::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--accent), var(--blue));
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+        .deploy-card-back ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            width: 100%;
+        }
+        .deploy-card-back ul li {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .deploy-card-back ul li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .deploy-card-back .deploy-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: transparent;
+            border: 1.5px solid rgba(67, 238, 147, 0.3);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        .deploy-card-back .deploy-back-btn:hover {
+            background: var(--accent);
+            color: var(--ink);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ── CONTENT CREATION STACKED CARDS ── */
+        #content-creation {
+            padding: 100px 48px;
+            background: var(--ink);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .creation-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .creation-head h2 {
+            font-size: clamp(2rem, 3.8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+        .creation-head h2 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .creation-head p {
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 12px;
+            font-size: 0.95rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stack-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 360vh;
+        }
+
+        .stack-card-wrapper {
+            position: sticky;
+            top: 80px;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            will-change: transform;
+            transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @media (min-width: 768px) {
+            .stack-card-wrapper {
+                top: 100px;
+            }
+        }
+
+        .stack-card {
+            width: 100%;
+            max-width: 1100px;
+            height: 100%;
+            max-height: 700px;
+            border-radius: 40px;
+            border: 2px solid rgba(67, 238, 147, 0.15);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(4px);
+            padding: 32px 40px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            opacity: 0.4;
+            transition: opacity 0.4s ease;
+        }
+
+        .stack-card:hover {
+            border-color: rgba(67, 238, 147, 0.35);
+            box-shadow: 0 20px 60px rgba(7, 120, 182, 0.08);
+        }
+
+        .stack-card:hover::before {
+            opacity: 1;
+        }
+
+        .stack-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+
+        .stack-card-number {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: rgba(67, 238, 147, 0.12);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            transition: color 0.4s ease;
+        }
+
+        .stack-card:hover .stack-card-number {
+            color: rgba(67, 238, 147, 0.2);
+        }
+
+        .stack-card-title-group {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .stack-card-sub {
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-weight: 500;
+        }
+
+        .stack-card-title {
+            font-size: clamp(1.2rem, 2.2vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+        }
+
+        .stack-card:hover .stack-card-title {
+            color: var(--accent);
+        }
+
+        .stack-card-body {
+            flex: 1;
+            display: flex;
+            gap: 30px;
+            min-height: 0;
+        }
+
+        .stack-card-body .left-col {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stack-card-body .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stack-card-body .left-col .img-top {
+            height: clamp(100px, 14vw, 180px);
+            border-radius: 30px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stack-card-body .left-col .img-bottom {
+            flex: 1;
+            min-height: clamp(120px, 18vw, 240px);
+            border-radius: 30px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stack-card-body .right-col .img-tall {
+            flex: 1;
+            min-height: 200px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stack-card-body img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .stack-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .stack-card .card-desc {
+            font-size: clamp(0.75rem, 1.2vw, 1rem);
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.6;
+            font-weight: 300;
+            margin-top: 4px;
+            max-width: 80%;
+        }
+
+        .stack-card .card-desc span {
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .stack-card-live-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(67, 238, 147, 0.2);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .stack-card-live-btn:hover {
+            border-color: var(--accent);
+            background: rgba(67, 238, 147, 0.08);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.06);
+        }
+
+        .stack-card-live-btn .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .stack-card-live-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
         /* ── RESPONSIVE ── */
 
-        /* large tablet & small desktop */
         @media (max-width: 1024px) {
             #hero {
                 padding: 0 32px 60px;
@@ -2413,13 +2900,51 @@
             .svc-left-text h2 {
                 font-size: clamp(1.3rem, 2.2vw, 2.2rem);
             }
-            /* Responsive card adjustments */
             .svc-item {
                 padding: 20px;
             }
+            .deploy-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+
+            .stack-card {
+                padding: 24px 28px;
+                border-radius: 30px;
+                max-height: 600px;
+            }
+            .stack-card-body {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .stack-card-body .left-col {
+                flex: 1;
+                flex-direction: row;
+            }
+            .stack-card-body .left-col .img-top,
+            .stack-card-body .left-col .img-bottom {
+                flex: 1;
+                height: clamp(100px, 20vw, 180px);
+                min-height: 0;
+            }
+            .stack-card-body .right-col .img-tall {
+                min-height: 140px;
+                height: clamp(120px, 22vw, 200px);
+            }
+            .stack-card-body .right-col {
+                flex: 1;
+            }
+            .stack-card .card-desc {
+                max-width: 100%;
+                font-size: clamp(0.7rem, 1vw, 0.9rem);
+            }
+            .stack-card-top {
+                margin-bottom: 14px;
+            }
+            .stack-container {
+                height: 360vh;
+            }
         }
 
-        /* tablet */
         @media (max-width: 820px) {
             nav {
                 padding: 0 20px;
@@ -2434,7 +2959,6 @@
                 display: flex;
             }
 
-            /* Hide Spline model on mobile/tablet */
             .spline-container {
                 display: none !important;
             }
@@ -2492,7 +3016,9 @@
             #cta,
             #testimonials,
             #metrics,
-            #clients {
+            #clients,
+            #ready-to-deploy,
+            #content-creation {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
             }
@@ -2600,9 +3126,79 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .deploy-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 18px;
+            }
+            .deploy-card {
+                height: 340px;
+            }
+            .deploy-card-front h3 {
+                font-size: 1.1rem;
+            }
+            .deploy-card-back ul li {
+                font-size: 0.75rem;
+                padding: 4px 0;
+                padding-left: 20px;
+            }
+
+            .stack-card {
+                padding: 20px 22px;
+                border-radius: 24px;
+                max-height: 520px;
+            }
+            .stack-card-top {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .stack-card-title-group {
+                text-align: left;
+                align-items: flex-start;
+            }
+            .stack-card-number {
+                font-size: clamp(2rem, 6vw, 3.5rem);
+            }
+            .stack-card-body {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .stack-card-body .left-col {
+                flex: 1;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .stack-card-body .left-col .img-top,
+            .stack-card-body .left-col .img-bottom {
+                flex: 1;
+                height: clamp(80px, 18vw, 140px);
+                border-radius: 20px;
+            }
+            .stack-card-body .right-col .img-tall {
+                min-height: 100px;
+                height: clamp(100px, 20vw, 160px);
+                border-radius: 20px;
+            }
+            .stack-card .card-desc {
+                max-width: 100%;
+                font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+            }
+            .stack-card-title {
+                font-size: clamp(1rem, 2vw, 1.4rem);
+            }
+            .stack-card-live-btn {
+                padding: 6px 14px;
+                font-size: 0.5rem;
+            }
+            .stack-container {
+                height: 360vh;
+            }
+            .stack-card-wrapper {
+                top: 60px;
+                height: 80vh;
+            }
         }
 
-        /* mobile */
         @media (max-width: 520px) {
             :root {
                 --nav-height: 60px;
@@ -2666,7 +3262,6 @@
                 justify-content: center;
                 font-size: 0.78rem;
             }
-            /* Spline already hidden from tablet breakpoint */
             .spline-container {
                 display: none !important;
             }
@@ -2701,7 +3296,9 @@
             #cta,
             #testimonials,
             #metrics,
-            #clients {
+            #clients,
+            #ready-to-deploy,
+            #content-creation {
                 padding: 60px 16px !important;
             }
             #services {
@@ -3017,9 +3614,96 @@
             .read-more-link {
                 font-size: 0.7rem;
             }
+
+            .deploy-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                gap: 16px;
+            }
+            .deploy-card {
+                height: 320px;
+            }
+            .deploy-card-front h3 {
+                font-size: 1rem;
+            }
+            .deploy-card-front .deploy-icon {
+                width: 56px;
+                height: 56px;
+            }
+            .deploy-card-back ul li {
+                font-size: 0.7rem;
+                padding: 3px 0;
+                padding-left: 18px;
+            }
+            .deploy-card-back {
+                padding: 20px 16px;
+            }
+
+            .stack-card {
+                padding: 16px 18px;
+                border-radius: 20px;
+                max-height: 460px;
+            }
+            .stack-card-top {
+                flex-wrap: wrap;
+                gap: 4px;
+                margin-bottom: 10px;
+            }
+            .stack-card-title-group {
+                text-align: left;
+                align-items: flex-start;
+            }
+            .stack-card-number {
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
+            .stack-card-title {
+                font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+            }
+            .stack-card-sub {
+                font-size: 0.5rem;
+            }
+            .stack-card-body {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .stack-card-body .left-col {
+                flex: 1;
+                flex-direction: row;
+                gap: 8px;
+            }
+            .stack-card-body .left-col .img-top,
+            .stack-card-body .left-col .img-bottom {
+                flex: 1;
+                height: clamp(60px, 16vw, 100px);
+                border-radius: 14px;
+            }
+            .stack-card-body .right-col .img-tall {
+                min-height: 80px;
+                height: clamp(80px, 18vw, 130px);
+                border-radius: 14px;
+            }
+            .stack-card .card-desc {
+                max-width: 100%;
+                font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+                margin-top: 2px;
+                line-height: 1.5;
+            }
+            .stack-card-live-btn {
+                padding: 4px 12px;
+                font-size: 0.45rem;
+                gap: 4px;
+            }
+            .stack-container {
+                height: 360vh;
+            }
+            .stack-card-wrapper {
+                top: 50px;
+                height: 75vh;
+            }
         }
 
-        /* very small screens */
         @media (max-width: 380px) {
             .solutions-grid {
                 grid-template-columns: 1fr;
@@ -3098,6 +3782,38 @@
                 font-size: 0.6rem;
                 margin-top: 8px;
             }
+
+            .stack-card {
+                padding: 12px 14px;
+                border-radius: 16px;
+                max-height: 400px;
+            }
+            .stack-card-body .left-col .img-top,
+            .stack-card-body .left-col .img-bottom {
+                height: clamp(50px, 14vw, 80px);
+                border-radius: 10px;
+            }
+            .stack-card-body .right-col .img-tall {
+                min-height: 60px;
+                height: clamp(60px, 16vw, 100px);
+                border-radius: 10px;
+            }
+            .stack-card .card-desc {
+                font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+            }
+            .stack-card-title {
+                font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            }
+            .stack-card-number {
+                font-size: clamp(1.2rem, 4vw, 2rem);
+            }
+            .stack-container {
+                height: 360vh;
+            }
+            .stack-card-wrapper {
+                top: 40px;
+                height: 70vh;
+            }
         }
     </style>
     <!-- Favicon -->
@@ -3135,7 +3851,8 @@
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#aws-tnc">AWS T&C</a></li>
+            <li><a href="#ready-to-deploy">Ready to Deploy</a></li>
+            <li><a href="#content-creation">Content AI</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#cta">Contact</a></li>
             <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
@@ -3159,7 +3876,8 @@
         <a href="#hero" class="mobile-link">Home</a>
         <a href="#services" class="mobile-link">Services</a>
         <a href="#solutions" class="mobile-link">Solutions</a>
-        <a href="#aws-tnc" class="mobile-link">AWS T&C</a>
+        <a href="#ready-to-deploy" class="mobile-link">Ready to Deploy</a>
+        <a href="#content-creation" class="mobile-link">Content AI</a>
         <a href="#about" class="mobile-link">About Us</a>
         <a href="#cta" class="mobile-link">Contact</a>
         <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
@@ -3351,7 +4069,7 @@
             <p>Four products. One mission — deliver faster, more personalized interactions.</p>
         </div>
         <div class="solutions-grid" id="solutionsGrid">
-            
+            <!-- Each card has data-url for detail page, and Lordicon with trigger="loop" -->
             <div class="sol-card" data-url="solution-detail.html?name=Chat-A-Lot">
                 <div class="sol-card-inner">
                     <div class="sol-card-front">
@@ -3441,6 +4159,237 @@
         </div>
     </section>
 
+    <!-- ===== READY TO DEPLOY ===== -->
+    <section id="ready-to-deploy">
+        <div class="deploy-head reveal">
+            <p class="section-label centered">Ready to Deploy</p>
+            <h2>Production-Ready <em>Solutions</em></h2>
+            <p>Enterprise-grade solutions pre-built for compliance, archival, and disaster recovery — deploy in hours, not weeks.</p>
+        </div>
+        <div class="deploy-grid">
+            <!-- Card 1: Email Archival -->
+            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+                <div class="deploy-card-inner">
+                    <div class="deploy-card-front">
+                        <div class="deploy-icon">
+                            <lord-icon src="https://cdn.lordicon.com/tcbkwnah.json" trigger="loop" stroke="bold" style="width:100%;height:100%"></lord-icon>
+                        </div>
+                        <h3>Email Archival Solution</h3>
+                        <p class="deploy-sub">Cut email retention costs by more than half</p>
+                        <div class="deploy-flip-hint">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                            Click to flip
+                        </div>
+                    </div>
+                    <div class="deploy-card-back">
+                        <ul>
+                            <li>Regulatory-ready archival</li>
+                            <li>Role-based access control</li>
+                            <li>Secure cloud archival infrastructure</li>
+                            <li>Fast mailbox retrieval</li>
+                            <li>Microsoft 365 &amp; Google Workspace support</li>
+                        </ul>
+                        <a href="#cta" class="deploy-back-btn">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: DPDP Compliance -->
+            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+                <div class="deploy-card-inner">
+                    <div class="deploy-card-front">
+                        <div class="deploy-icon">
+                            <lord-icon src="https://cdn.lordicon.com/upmknvfw.json" trigger="loop" stroke="bold" style="width:100%;height:100%"></lord-icon>
+                        </div>
+                        <h3>DPDP Compliance Solution</h3>
+                        <p class="deploy-sub">Enterprise-grade privacy &amp; data governance</p>
+                        <div class="deploy-flip-hint">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                            Click to flip
+                        </div>
+                    </div>
+                    <div class="deploy-card-back">
+                        <ul>
+                            <li>DPDP readiness frameworks</li>
+                            <li>Consent orchestration</li>
+                            <li>Data principal request management</li>
+                            <li>Governance &amp; compliance reporting</li>
+                            <li>Privacy-first operational architecture</li>
+                        </ul>
+                        <a href="#cta" class="deploy-back-btn">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: DR Orchestration & Smoke Test -->
+            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+                <div class="deploy-card-inner">
+                    <div class="deploy-card-front">
+                        <div class="deploy-icon">
+                            <lord-icon src="https://cdn.lordicon.com/xpesqpji.json" trigger="loop" stroke="bold" style="width:100%;height:100%"></lord-icon>
+                        </div>
+                        <h3>DR Orchestration &amp; Smoke Test</h3>
+                        <p class="deploy-sub">Reduce recovery time from hours to minutes</p>
+                        <div class="deploy-flip-hint">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                            Click to flip
+                        </div>
+                    </div>
+                    <div class="deploy-card-back">
+                        <ul>
+                            <li>Automated DR execution</li>
+                            <li>Infrastructure dependency validation</li>
+                            <li>Smoke testing automation</li>
+                            <li>Recovery evidence generation</li>
+                            <li>Business continuity readiness</li>
+                        </ul>
+                        <p style="font-size:0.8rem; color:var(--accent); margin: 8px 0 12px; font-weight:500;">5-6 hours manual → 20-25 minutes automated</p>
+                        <a href="#cta" class="deploy-back-btn">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTENT CREATION AUTOMATION (STACKED CARDS) ===== -->
+    <section id="content-creation">
+        <div class="creation-head reveal">
+            <p class="section-label centered">SEESEC Content Automation Suite</p>
+            <h2>Turn Existing Content into <em>Engaging Videos</em></h2>
+            <p>AI-powered tools that help you denoise, repurpose, and transform content — from articles and images to long-form videos — into high-quality visual assets for marketing, training, and digital engagement.</p>
+        </div>
+
+        <div class="stack-container" id="stackContainer">
+            <!-- Card 1: Video Denoising -->
+            <div class="stack-card-wrapper" data-index="0">
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <span class="stack-card-number">01</span>
+                        <div class="stack-card-title-group">
+                            <span class="stack-card-sub">AI Audio Enhancement</span>
+                            <h3 class="stack-card-title">Video Denoising</h3>
+                        </div>
+                        <button class="stack-card-live-btn">
+                            Explore <span class="arrow">→</span>
+                        </button>
+                    </div>
+                    <div class="stack-card-body">
+                        <div class="left-col">
+                            <div class="img-top">
+                                <img src="content automation/audio waveform.png" alt="Audio waveform before denoising" loading="lazy" />
+                            </div>
+                            <div class="img-bottom">
+                                <img src="content automation/Noise reduction.png" alt="Noise reduction visualization" loading="lazy" />
+                            </div>
+                        </div>
+                        <div class="right-col">
+                            <div class="img-tall">
+                                <img src="content automation/Noise reduction.png" alt="Clear audio after denoising" loading="lazy" />
+                            </div>
+                            <p class="card-desc">Remove unwanted background noise — traffic, crowds, fans, or hum — and make <span>speakers sound clearer and sharper</span>. Perfect for interviews, webinars, training videos, podcasts, and customer testimonials.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Long-to-Short Video Conversion -->
+            <div class="stack-card-wrapper" data-index="1">
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <span class="stack-card-number">02</span>
+                        <div class="stack-card-title-group">
+                            <span class="stack-card-sub">AI Video Repurposing</span>
+                            <h3 class="stack-card-title">Long → Short Video</h3>
+                        </div>
+                        <button class="stack-card-live-btn">
+                            Explore <span class="arrow">→</span>
+                        </button>
+                    </div>
+                    <div class="stack-card-body">
+                        <div class="left-col">
+                            <div class="img-top">
+                                <img src="content automation/editing timeline.png" alt="Editing timeline" loading="lazy" />
+                            </div>
+                            <div class="img-bottom">
+                                <img src="content automation/video gen.png" alt="Video generation dashboard" loading="lazy" />
+                            </div>
+                        </div>
+                        <div class="right-col">
+                            <div class="img-tall">
+                                <img src="content automation/editing timeline.png" alt="Timeline to short clips" loading="lazy" />
+                            </div>
+                            <p class="card-desc">Turn webinars, interviews, podcasts, and event recordings into <span>short, engaging clips</span> for Instagram Reels, YouTube Shorts, LinkedIn, and WhatsApp — without manual editing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Article-to-Video Conversion -->
+            <div class="stack-card-wrapper" data-index="2">
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <span class="stack-card-number">03</span>
+                        <div class="stack-card-title-group">
+                            <span class="stack-card-sub">AI Content Transformation</span>
+                            <h3 class="stack-card-title">Article → Video</h3>
+                        </div>
+                        <button class="stack-card-live-btn">
+                            Explore <span class="arrow">→</span>
+                        </button>
+                    </div>
+                    <div class="stack-card-body">
+                        <div class="left-col">
+                            <div class="img-top">
+                                <img src="content automation/blog article.png" alt="Blog article text" loading="lazy" />
+                            </div>
+                            <div class="img-bottom">
+                                <img src="content automation/visual story.png" alt="Visual storytelling from text" loading="lazy" />
+                            </div>
+                        </div>
+                        <div class="right-col">
+                            <div class="img-tall">
+                                <img src="content automation/webinar footage clip.png" alt="Video generated from article" loading="lazy" />
+                            </div>
+                            <p class="card-desc">Transform articles, blogs, reports, and product information into <span>easy-to-understand videos</span>. Improve content reach, simplify complex topics, and make knowledge more visual and engaging.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Image-to-Video Conversion -->
+            <div class="stack-card-wrapper" data-index="3">
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <span class="stack-card-number">04</span>
+                        <div class="stack-card-title-group">
+                            <span class="stack-card-sub">AI Motion Generation</span>
+                            <h3 class="stack-card-title">Image → Video</h3>
+                        </div>
+                        <button class="stack-card-live-btn">
+                            Explore <span class="arrow">→</span>
+                        </button>
+                    </div>
+                    <div class="stack-card-body">
+                        <div class="left-col">
+                            <div class="img-top">
+                                <img src="content automation/static product.png" alt="Static product image" loading="lazy" />
+                            </div>
+                            <div class="img-bottom">
+                                <img src="content automation/dynamic motion.png" alt="Dynamic motion from still image" loading="lazy" />
+                            </div>
+                        </div>
+                        <div class="right-col">
+                            <div class="img-tall">
+                                <img src="content automation/animated product.png" alt="Animated product video" loading="lazy" />
+                            </div>
+                            <p class="card-desc">Add motion and visual engagement to static images — product visuals, event photos, campaign creatives — to create <span>dynamic video content</span> for social media, ads, and short visual stories without a full video shoot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== METRICS ===== -->
     <section id="metrics">
         <div class="metrics-inner">
@@ -3509,7 +4458,7 @@
             <div class="clients-head reveal">Trusted by forward-thinking companies</div>
             <div class="clients-track-wrap">
                 <div class="clients-track" id="clientsTrack">
-                  <!-- Client logos with images --> 
+                    <!-- Client logos with images -->
                     <div class="client-logo-item">
                         <img src="company/comp (1).png" alt="Advit" loading="lazy" />
                     </div>
@@ -3664,7 +4613,7 @@
                 window.requestAnimationFrame(() => {
                     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                    
+                    // Hide nav when scrolling down past 100px, show when scrolling up
                     if (currentScroll > lastScroll && currentScroll > 100) {
                         navEl.classList.add('nav-hidden');
                     } else {
@@ -3672,7 +4621,7 @@
                     }
                     lastScroll = currentScroll;
 
-                    //  progress bar
+                    // Update progress bar
                     const total = document.body.scrollHeight - window.innerHeight;
                     pb.style.width = (currentScroll / total * 100) + '%';
 
@@ -3797,7 +4746,7 @@
             });
         }
 
-        // ── SOLUTIONS ──
+        // ── SOLUTIONS: ROTATE ONLY ON HOVER (SLOWER) ──
         let flipIntervalId = null;
 
         function flipAllCards() {
@@ -3811,7 +4760,7 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            
+            // Flip every 4 seconds (slower)
             flipIntervalId = setInterval(flipAllCards, 4000);
         }
 
@@ -3820,7 +4769,7 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            
+            // Reset all cards to front
             document.querySelectorAll('.sol-card').forEach(card => {
                 card.classList.remove('flipped');
             });
@@ -3832,7 +4781,7 @@
             grid.addEventListener('mouseleave', stopFlipOnHover);
         }
 
-        
+        // Click on a card opens the detail page (URL from data-url)
         document.querySelectorAll('.sol-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const url = this.getAttribute('data-url');
@@ -3842,14 +4791,14 @@
             });
         });
 
-      
+        // ── Keyboard: Escape to close mobile menu ──
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
                 toggleMenu();
             }
         });
 
-        
+        // ── Smooth anchor scroll with offset ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -3865,7 +4814,7 @@
             });
         });
 
-        
+        // ── SPLINE LOADING INDICATOR (centered card, faster) ──
         (function() {
             const loadingEl = document.getElementById('splineLoading');
             const progressBar = document.getElementById('loadProgressBar');
@@ -3875,17 +4824,17 @@
             let loadTimeout = null;
             let isLoaded = false;
 
-       
+            // If there's no spline viewer or no loading element, return
             if (!viewer || !loadingEl) return;
 
-         
+            // Simulate progress while loading — faster now
             function startProgressSimulation() {
                 progress = 0;
                 progressBar.style.width = '0%';
                 if (progressInterval) clearInterval(progressInterval);
                 progressInterval = setInterval(() => {
                     if (isLoaded) {
-                   
+                        // Fast fill to 100% when loaded
                         progress = Math.min(progress + 15, 100);
                         progressBar.style.width = progress + '%';
                         if (progress >= 100) {
@@ -3894,14 +4843,14 @@
                         }
                         return;
                     }
-              
+                    // Faster easing progress
                     const increment = Math.max(0.6, (100 - progress) * 0.04);
                     progress = Math.min(progress + increment, 92);
                     progressBar.style.width = progress + '%';
-                }, 80); 
+                }, 80);
             }
 
-         
+            // Hide loading overlay with fade
             function hideLoading() {
                 if (isLoaded) return;
                 isLoaded = true;
@@ -3909,40 +4858,37 @@
                     clearInterval(progressInterval);
                     progressInterval = null;
                 }
-            
                 progressBar.style.width = '100%';
-               
                 setTimeout(() => {
                     loadingEl.classList.add('hidden');
                 }, 300);
             }
 
-    
+            // Handle load event
             function onSplineLoad() {
                 hideLoading();
             }
 
             // Handle error
             function onSplineError() {
-               
                 hideLoading();
             }
 
-      
+            // Start progress simulation immediately
             startProgressSimulation();
 
-
+            // Listen for load event
             viewer.addEventListener('load', onSplineLoad);
             viewer.addEventListener('error', onSplineError);
 
-       
+            // Fallback: if not loaded after 6 seconds, force hide
             loadTimeout = setTimeout(() => {
                 if (!isLoaded) {
                     hideLoading();
                 }
             }, 6000);
 
-         
+            // Also check for the `loading` attribute removal as an additional signal
             const attrObserver = new MutationObserver(() => {
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
                     hideLoading();
@@ -3950,7 +4896,7 @@
             });
             attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
 
-   
+            // Cleanup if the viewer gets removed
             const cleanup = () => {
                 if (progressInterval) clearInterval(progressInterval);
                 if (loadTimeout) clearTimeout(loadTimeout);
@@ -3959,10 +4905,8 @@
                 viewer.removeEventListener('error', onSplineError);
             };
 
-        
             window.addEventListener('beforeunload', cleanup);
 
-      
             if (window.MutationObserver) {
                 const removalObserver = new MutationObserver(() => {
                     if (!document.contains(viewer)) {
@@ -3973,17 +4917,74 @@
                 removalObserver.observe(document.body, { childList: true, subtree: true });
             }
 
-        
+            // If the model is already loaded (race condition)
             setTimeout(() => {
-                
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
-                   
                     const canvas = viewer.querySelector('canvas');
                     if (canvas) {
                         hideLoading();
                     }
                 }
             }, 300);
+        })();
+
+        // ── STACKED CARDS SCROLL ANIMATION (ENHANCED) ──
+        (function() {
+            const wrappers = document.querySelectorAll('.stack-card-wrapper');
+            const total = wrappers.length;
+            if (!total) return;
+
+            let ticking = false;
+            let cachedProgress = [];
+
+            // Pre-calculate min scale for each card
+            const minScales = [];
+            const yOffsets = [];
+            wrappers.forEach((_, index) => {
+                // Each card scales down more as index increases
+                const minScale = Math.max(0.65, 1 - (total - 1 - index) * 0.045);
+                minScales.push(minScale);
+                // Slight Y offset for parallax
+                yOffsets.push(-20 * (1 - minScale) / 0.35);
+            });
+
+            function updateCards() {
+                const viewportHeight = window.innerHeight;
+                const viewportCenter = viewportHeight / 2;
+
+                wrappers.forEach((wrapper, index) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    // Distance from viewport center normalized
+                    const distanceFromCenter = (cardCenter - viewportCenter) / viewportHeight;
+                    // Progress: 0 when centered, 1 when fully scrolled past
+                    const rawProgress = (distanceFromCenter + 0.6) / 1.2;
+                    const progress = Math.max(0, Math.min(1, rawProgress));
+
+                    const minScale = minScales[index];
+                    const scale = 1 - (1 - minScale) * progress;
+                    const yOffset = yOffsets[index] * progress;
+
+                    wrapper.style.transform =
+                        `scale(${scale}) translateY(${yOffset}px)`;
+                    wrapper.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+                });
+            }
+
+            // Initial update
+            updateCards();
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateCards();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            window.addEventListener('resize', updateCards, { passive: true });
         })();
     </script>
 </body>
