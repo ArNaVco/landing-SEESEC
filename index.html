@@ -73,7 +73,11 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 32px;
-            transition: transform 0.3s ease-in-out, background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s, border-color 0.4s;
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.4s ease,
+                backdrop-filter 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
             will-change: transform, background, backdrop-filter;
             background: transparent;
             border-bottom: 1px solid transparent;
@@ -83,14 +87,14 @@
             transform: translateY(-100%);
         }
         nav.scrolled {
-            background: rgba(10, 8, 30, 0.82);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            background: rgba(10, 8, 30, 0.85);
+            backdrop-filter: blur(24px) saturate(1.3);
+            -webkit-backdrop-filter: blur(24px) saturate(1.3);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
         }
         nav.scrolled .nav-logo {
-            text-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
+            text-shadow: 0 0 30px rgba(67, 238, 147, 0.12);
         }
 
         .nav-logo {
@@ -104,6 +108,11 @@
             gap: 10px;
             position: relative;
             transition: transform 0.3s ease;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+            flex-shrink: 0;
         }
         .nav-logo:hover {
             transform: scale(1.02);
@@ -112,6 +121,9 @@
             height: 36px;
             width: auto;
             display: block;
+            border: none;
+            outline: none;
+            box-shadow: none;
         }
         .nav-logo .logo-text {
             display: flex;
@@ -144,20 +156,23 @@
         /* desktop nav links */
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
         .nav-links a {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.55);
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
             font-weight: 500;
             position: relative;
             padding: 4px 0;
             transition: color 0.25s ease;
+            white-space: nowrap;
         }
         .nav-links a::after {
             content: '';
@@ -195,7 +210,7 @@
             color: #fff;
             padding: 8px 22px;
             border-radius: 50px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 0.06em;
             text-decoration: none;
@@ -205,6 +220,7 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             will-change: transform, box-shadow, border-color, color;
             cursor: pointer;
+            flex-shrink: 0;
         }
         .nav-cta .nav-shine {
             position: absolute;
@@ -252,6 +268,7 @@
             border: none;
             outline: none;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         .hamburger:hover {
             transform: scale(1.05);
@@ -285,14 +302,14 @@
             right: 0;
             bottom: 0;
             z-index: 750;
-            background: rgba(10, 8, 30, 0.96);
-            backdrop-filter: blur(30px) saturate(1.4);
-            -webkit-backdrop-filter: blur(30px) saturate(1.4);
+            background: rgba(10, 8, 30, 0.97);
+            backdrop-filter: blur(32px) saturate(1.4);
+            -webkit-backdrop-filter: blur(32px) saturate(1.4);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 28px;
+            gap: 24px;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -303,9 +320,9 @@
             pointer-events: all;
         }
         .mobile-menu a {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
             letter-spacing: 0.04em;
             transition: color 0.3s ease, transform 0.3s ease;
@@ -325,20 +342,20 @@
         }
         .mobile-menu a:hover {
             color: #fff;
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
         .mobile-menu a:hover::after {
             width: 100%;
             left: 0;
         }
         .mobile-menu .mobile-cta {
-            margin-top: 12px;
-            padding: 14px 40px;
+            margin-top: 16px;
+            padding: 14px 44px;
             border-radius: 50px;
             background: var(--accent);
             color: var(--ink);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.06em;
@@ -352,10 +369,11 @@
         .mobile-menu .close-hint {
             position: absolute;
             bottom: 40px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.2);
-            letter-spacing: 0.1em;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            font-weight: 300;
         }
 
         /* ── BUTTONS (shared) ── */
@@ -486,65 +504,6 @@
         }
         .btn-ghost:hover .arrow {
             transform: translateX(6px);
-        }
-
-        .btn-phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.04em;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-            will-change: transform, border-color, background;
-        }
-        .btn-phone .phone-ring {
-            position: absolute;
-            inset: -2px;
-            border-radius: 50px;
-            border: 2px solid var(--accent);
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.5s ease;
-            will-change: transform, opacity;
-        }
-        .btn-phone:hover .phone-ring {
-            opacity: 1;
-            transform: scale(1);
-            animation: phoneRingPulse 1.2s ease-in-out infinite;
-        }
-        @keyframes phoneRingPulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.08);
-                opacity: 0;
-            }
-        }
-        .btn-phone .phone-icon {
-            font-size: 1.1rem;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform;
-        }
-        .btn-phone:hover .phone-icon {
-            transform: rotate(-15deg) scale(1.1);
-        }
-        .btn-phone:hover {
-            background: rgba(67, 238, 147, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(67, 238, 147, 0.08);
         }
 
         .float-cta {
@@ -1742,6 +1701,349 @@
             border-color: rgba(67, 238, 147, 0.2);
         }
 
+        /* ── LIFECYCLE WHEEL ── */
+        .lifecycle-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 20px 0 40px;
+            flex-wrap: wrap;
+        }
+        .lifecycle-stage {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            flex-shrink: 0;
+        }
+        .lc-ring-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Centre text */
+        .lc-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .lc-center-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 14px;
+            transition: transform 0.5s ease;
+        }
+        .lc-center-title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.4;
+        }
+        .lc-center-title strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+            margin-top: 2px;
+        }
+        .lc-center-bar {
+            width: 48px;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #0778b6, #43ee93);
+            margin: 12px auto;
+        }
+        .lc-center-sub {
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: opacity 0.4s;
+        }
+
+        /* Nodes */
+        .lc-node {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 5;
+            cursor: pointer;
+        }
+        .lc-node-card {
+            position: relative;
+            width: 84px;
+            height: 84px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+        }
+        .lc-node-num {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--ink);
+            transition: background 0.4s;
+        }
+        .lc-node-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.4s;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Node hover + active */
+        .lc-node:hover .lc-node-card,
+        .lc-node.active .lc-node-card {
+            border-color: var(--accent);
+            background: rgba(67,238,147,0.08);
+            box-shadow: 0 0 0 6px rgba(67,238,147,0.08), 0 8px 32px rgba(67,238,147,0.15);
+            transform: scale(1.06);
+        }
+        .lc-node:hover .lc-node-num,
+        .lc-node.active .lc-node-num {
+            background: var(--accent);
+            color: var(--ink);
+        }
+        .lc-node:hover .lc-node-label,
+        .lc-node.active .lc-node-label {
+            color: #fff;
+        }
+
+        /* Tooltip */
+        .lc-tooltip {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10,8,30,0.95);
+            border: 1px solid rgba(67,238,147,0.2);
+            border-radius: 14px;
+            padding: 18px 20px;
+            width: 220px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            transform: translateX(-50%) translateY(6px);
+            z-index: 20;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        }
+        .lc-tooltip-left {
+            top: 50%;
+            left: auto;
+            right: calc(100% + 16px);
+            transform: translateY(-50%) translateX(6px);
+        }
+        .lc-tooltip-right {
+            top: 50%;
+            left: calc(100% + 16px);
+            right: auto;
+            transform: translateY(-50%) translateX(-6px);
+        }
+        .lc-tooltip-top {
+            top: auto;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+        }
+        .lc-node:hover .lc-tooltip {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .lc-node:hover .lc-tooltip {
+            transform: translateX(-50%) translateY(0);
+        }
+        .lc-node:hover .lc-tooltip-left {
+            transform: translateY(-50%) translateX(0);
+        }
+        .lc-node:hover .lc-tooltip-right {
+            transform: translateY(-50%) translateX(0);
+        }
+        .lc-node:hover .lc-tooltip-top {
+            transform: translateX(-50%) translateY(0);
+        }
+        .lc-tooltip strong {
+            display: block;
+            font-size: 0.88rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .lc-tooltip em {
+            display: block;
+            font-style: normal;
+            font-size: 0.65rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .lc-tooltip p {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.55;
+            margin-bottom: 14px;
+        }
+        .lc-tooltip-btn {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink);
+            background: var(--accent);
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .lc-tooltip-btn:hover { opacity: 0.85; }
+
+        /* Info panel */
+        .lc-info-panel {
+            flex: 1;
+            min-width: 260px;
+            max-width: 340px;
+        }
+        .lc-info-step {
+            font-size: 0.65rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .lc-info-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            transition: opacity 0.3s;
+        }
+        .lc-info-sub {
+            font-size: 0.78rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .lc-info-desc {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+        .lc-progress-track {
+            height: 3px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+        .lc-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--accent));
+            border-radius: 4px;
+            width: 0%;
+            transition: width 3s linear;
+        }
+        .lc-info-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            border: 1.5px solid rgba(67,238,147,0.3);
+            padding: 10px 24px;
+            border-radius: 30px;
+            transition: all 0.35s ease;
+            margin-bottom: 32px;
+        }
+        .lc-info-cta:hover {
+            background: var(--accent);
+            color: var(--ink);
+            border-color: var(--accent);
+        }
+        .lc-dots-nav {
+            display: flex;
+            gap: 10px;
+        }
+        .lc-dot-nav {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+        .lc-dot-nav.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .lifecycle-stage { width: 360px; height: 360px; }
+            .lc-node-card { width: 68px; height: 68px; font-size: 1.4rem; border-radius: 18px; }
+            .lc-info-panel { max-width: 100%; text-align: center; }
+            .lc-dots-nav { justify-content: center; }
+            .lc-center { padding: 0 60px; }
+            .lc-center-title { font-size: 0.85rem; }
+        }
+        @media (max-width: 560px) {
+            .lifecycle-stage { width: 300px; height: 300px; }
+            .lc-node-card { width: 56px; height: 56px; font-size: 1.1rem; border-radius: 14px; }
+            .lc-node-label { font-size: 0.6rem; }
+            .lc-tooltip { display: none; }
+        }
+
         /* ── METRICS ── */
         #metrics {
             padding: 80px 48px;
@@ -2012,19 +2314,17 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, filter 0.4s ease;
             padding: 6px 12px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
             min-width: 120px;
             height: 64px;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0;
         }
         .client-logo-item:hover {
             transform: scale(1.06);
-            background: rgba(67, 238, 147, 0.06);
-            border-color: rgba(67, 238, 147, 0.15);
-            box-shadow: 0 0 30px rgba(67, 238, 147, 0.06);
         }
         .client-logo-item img {
             max-width: 100%;
@@ -2033,7 +2333,7 @@
             height: auto;
             display: block;
             object-fit: contain;
-            filter: brightness(0.9) saturate(0.8);
+            filter: brightness(0.85) saturate(0.7);
             transition: filter 0.4s ease, transform 0.4s ease;
         }
         .client-logo-item:hover img {
@@ -2043,7 +2343,7 @@
         .client-logo-item .fallback-text {
             font-size: 0.85rem;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             letter-spacing: 0.06em;
             text-transform: uppercase;
             transition: color 0.3s ease;
@@ -2062,6 +2362,7 @@
         }
 
         /* ── TEAM ── */
+        /* ── TEAM — Stitch-style interactive list ── */
         #team {
             padding: 100px 48px;
             background: #110e35;
@@ -2078,62 +2379,272 @@
             font-weight: 800;
             letter-spacing: -0.03em;
         }
-        .team-grid {
+
+        /* Outer layout: list left + feature panel right */
+        .team-stitch {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+            max-width: 1100px;
             margin: 0 auto;
-        }
-        .team-card {
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius);
+            border-radius: 20px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.01);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform, border-color, background;
+            border: 1px solid rgba(255,255,255,0.06);
+            min-height: 420px;
         }
-        .team-card:hover {
-            background: rgba(7, 120, 182, 0.04);
-            border-color: rgba(67, 238, 147, 0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+        /* LEFT: list column */
+        .team-list {
+            background: rgba(255,255,255,0.015);
+            border-right: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            flex-direction: column;
         }
-        .team-avatar {
-            width: 100%;
-            aspect-ratio: 1;
+        .tm-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            cursor: pointer;
+            position: relative;
+            border-left: 3px solid transparent;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .tm-row:last-child { border-bottom: none; }
+        .tm-row:hover {
+            background: rgba(7,120,182,0.06);
+        }
+        .tm-row.active {
+            background: rgba(67,238,147,0.05);
+            border-left-color: var(--accent);
+        }
+        .tm-thumb {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
             background: linear-gradient(135deg, #0d0a2e, #1a1341);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+            font-size: 0.85rem;
             font-weight: 800;
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255,255,255,0.35);
             position: relative;
-            overflow: hidden;
+            transition: border-color 0.3s ease;
         }
-        .team-avatar img {
+        .tm-row.active .tm-thumb {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(67,238,147,0.12);
+        }
+        .tm-thumb img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            loading: lazy;
         }
-        .team-info {
-            padding: 16px 18px;
-        }
-        .team-info h4 {
-            font-size: 0.95rem;
+        .tm-meta { flex: 1; min-width: 0; }
+        .tm-meta strong {
+            display: block;
+            font-size: 0.88rem;
             font-weight: 700;
-            margin-bottom: 2px;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: color 0.3s;
+        }
+        .tm-row.active .tm-meta strong { color: #fff; }
+        .tm-meta span {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.38);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+        .tm-row.active .tm-meta span { color: var(--accent); opacity: 0.85; }
+        .tm-chevron {
+            width: 18px;
+            height: 18px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        .tm-row.active .tm-chevron { opacity: 1; }
+
+        /* RIGHT: feature panel */
+        .team-feature {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,0.01);
+            display: flex;
+            align-items: flex-end;
+        }
+        /* Background photo fill */
+        .tf-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .tf-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            opacity: 0;
+            transition: opacity 0.55s ease;
+            filter: brightness(0.55) saturate(0.9);
+        }
+        .tf-bg-img.visible { opacity: 1; }
+        /* Gradient overlay over photo */
+        .tf-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(10,8,30,0.15) 0%,
+                rgba(10,8,30,0.0) 40%,
+                rgba(10,8,30,0.0) 60%,
+                rgba(10,8,30,0.55) 100%
+            ),
+            linear-gradient(
+                to top,
+                rgba(10,8,30,0.92) 0%,
+                rgba(10,8,30,0.4) 45%,
+                rgba(10,8,30,0.0) 100%
+            );
+            z-index: 1;
+        }
+        /* Initials placeholder when no photo */
+        .tf-initials {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            letter-spacing: -0.04em;
+            z-index: 0;
+            user-select: none;
+        }
+
+        /* Content block bottom-left */
+        .tf-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 44px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .tf-text { flex: 1; }
+        .tf-role {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.45s 0.05s ease, transform 0.45s 0.05s ease;
+        }
+        .tf-name {
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 14px;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.45s 0.1s ease, transform 0.45s 0.1s ease;
+        }
+        .tf-bio {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.65;
+            font-weight: 300;
+            max-width: 400px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.45s 0.15s ease, transform 0.45s 0.15s ease;
+        }
+        .tf-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.45s 0.2s ease, transform 0.45s 0.2s ease;
+        }
+        /* Animate in when .active */
+        .team-feature.tf-active .tf-role,
+        .team-feature.tf-active .tf-name,
+        .team-feature.tf-active .tf-bio,
+        .team-feature.tf-active .tf-actions { opacity: 1; transform: translateY(0); }
+
+        .tf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 9px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .tf-btn-primary {
+            background: var(--accent);
+            color: var(--ink);
+            border: 1.5px solid var(--accent);
+        }
+        .tf-btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        .tf-btn-ghost {
+            background: transparent;
+            color: rgba(255,255,255,0.55);
+            border: 1.5px solid rgba(255,255,255,0.15);
+        }
+        .tf-btn-ghost:hover {
+            border-color: rgba(255,255,255,0.4);
             color: #fff;
         }
-        .team-info p {
-            font-size: 0.72rem;
-            color: var(--accent);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-weight: 500;
-            opacity: 0.7;
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .team-stitch {
+                grid-template-columns: 1fr;
+            }
+            .team-list {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            .team-feature {
+                min-height: 360px;
+            }
+            .tf-content { padding: 28px 28px; }
+        }
+        @media (max-width: 560px) {
+            #team { padding: 70px 20px; }
+            .tf-name { font-size: 1.8rem; }
+            .tf-content { flex-direction: column; align-items: flex-start; gap: 14px; }
         }
 
         /* ── CTA ── */
@@ -2248,10 +2759,17 @@
             margin-bottom: 12px;
             text-decoration: none;
             color: #fff;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
         }
         .footer-brand .nav-logo img {
             height: 32px;
             width: auto;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
         .footer-brand .nav-logo .logo-text span {
             color: var(--accent);
@@ -2726,6 +3244,7 @@
             position: relative;
             z-index: 1;
             padding: 20px 0;
+            min-height: 600px;
         }
 
         /* The central vertical line */
@@ -2750,41 +3269,57 @@
             z-index: 0;
         }
 
-        /* Pulsing dot at the top of the line */
-        .workflow-container .line-top-dot {
+        /* MOVING DOT — replaces the static top/bottom dots */
+        .moving-dot {
             position: absolute;
-            top: -6px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: var(--accent);
-            box-shadow: 0 0 30px rgba(67, 238, 147, 0.3);
-            z-index: 1;
-            animation: lineDotPulse 2s ease-in-out infinite;
-        }
-        .workflow-container .line-bottom-dot {
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.5), 0 0 60px rgba(67, 238, 147, 0.15);
+            z-index: 2;
             transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(67, 238, 147, 0.2);
-            border: 1px solid rgba(67, 238, 147, 0.1);
-            z-index: 1;
+            pointer-events: none;
+            transition: top 0.1s linear;
+            will-change: top;
         }
-        @keyframes lineDotPulse {
+        .moving-dot::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(67, 238, 147, 0.2);
+            animation: dotRingPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes dotRingPulse {
             0%,
             100% {
-                transform: translateX(-50%) scale(1);
-                opacity: 1;
+                transform: scale(1);
+                opacity: 0.6;
             }
             50% {
-                transform: translateX(-50%) scale(1.4);
-                opacity: 0.6;
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+        /* glow trail */
+        .moving-dot::before {
+            content: '';
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(67, 238, 147, 0.15), transparent 70%);
+            animation: dotGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes dotGlow {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0.7;
             }
         }
 
@@ -3148,9 +3683,11 @@
             .workflow-container::before {
                 left: 24px;
             }
-            .workflow-container .line-top-dot,
-            .workflow-container .line-bottom-dot {
+            .moving-dot {
                 left: 24px;
+                transform: translateX(0);
+                width: 14px;
+                height: 14px;
             }
             .workflow-item {
                 margin-bottom: 48px;
@@ -3398,9 +3935,11 @@
             .workflow-container::before {
                 left: 18px;
             }
-            .workflow-container .line-top-dot,
-            .workflow-container .line-bottom-dot {
+            .moving-dot {
                 left: 18px;
+                transform: translateX(0);
+                width: 12px;
+                height: 12px;
             }
             .workflow-item {
                 margin-bottom: 40px;
@@ -3754,12 +4293,6 @@
                 padding: 14px 24px;
                 font-size: 0.8rem;
             }
-            .cta-actions .btn-phone {
-                width: 100%;
-                justify-content: center;
-                padding: 12px 20px;
-                font-size: 0.82rem;
-            }
 
             footer {
                 padding: 40px 16px 24px;
@@ -3833,10 +4366,6 @@
                 padding: 10px 18px;
                 font-size: 0.72rem;
             }
-            .btn-phone {
-                padding: 10px 16px;
-                font-size: 0.75rem;
-            }
             .hero-static-headline {
                 white-space: nowrap;
             }
@@ -3898,15 +4427,17 @@
                 left: 14px;
                 width: 2px;
             }
-            .workflow-container .line-top-dot {
+            .moving-dot {
                 left: 14px;
+                transform: translateX(0);
                 width: 10px;
                 height: 10px;
             }
-            .workflow-container .line-bottom-dot {
-                left: 14px;
-                width: 8px;
-                height: 8px;
+            .moving-dot::after {
+                inset: -4px;
+            }
+            .moving-dot::before {
+                inset: -12px;
             }
             .workflow-item {
                 margin-bottom: 32px;
@@ -4058,15 +4589,17 @@
             .workflow-container::before {
                 left: 10px;
             }
-            .workflow-container .line-top-dot {
+            .moving-dot {
                 left: 10px;
+                transform: translateX(0);
                 width: 8px;
                 height: 8px;
             }
-            .workflow-container .line-bottom-dot {
-                left: 10px;
-                width: 6px;
-                height: 6px;
+            .moving-dot::after {
+                inset: -3px;
+            }
+            .moving-dot::before {
+                inset: -10px;
             }
             .workflow-item {
                 margin-bottom: 28px;
@@ -4341,102 +4874,144 @@
         </div>
     </section>
 
-    <!-- ===== SOLUTIONS ===== -->
+    <!-- ===== SOLUTIONS — Circular Lifecycle ===== -->
     <section id="solutions">
         <div class="solutions-head reveal">
             <p class="section-label" style="justify-content:center;">Communication Automation Solutions</p>
             <h2>Intelligent <em>Customer Communication</em></h2>
             <p>Four products. One mission — deliver faster, more personalized interactions.</p>
         </div>
-        <div class="solutions-grid" id="solutionsGrid">
-            <!-- Each card has data-url for detail page, and Lordicon with trigger="loop" -->
-            <div class="sol-card" data-url="solution-detail.html?name=Chat-A-Lot">
-                <div class="sol-card-inner">
-                    <div class="sol-card-front">
-                        <span class="sol-flip-hint">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Learn More
-                        </span>
-                        <div class="sol-front-body">
-                            <div class="sol-icon"><lord-icon src="https://cdn.lordicon.com/xvmmqwjv.json" trigger="loop" colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff" style="width:100%;height:100%"></lord-icon></div>
-                            <h3>Chat-A-Lot</h3>
-                            <span class="sol-sub">AI 24/7</span>
-                        </div>
+
+        <!-- Lifecycle wheel -->
+        <div class="lifecycle-wrapper">
+            <div class="lifecycle-stage" id="lifecycleStage">
+
+                <!-- SVG ring + animated dot -->
+                <svg class="lc-ring-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%"   stop-color="#0778b6"/>
+                            <stop offset="50%"  stop-color="#43ee93"/>
+                            <stop offset="100%" stop-color="#1af6dd"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Track ring (faint) -->
+                    <circle cx="250" cy="250" r="195" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+                    <!-- Animated arc -->
+                    <circle id="lcArc" cx="250" cy="250" r="195"
+                        fill="none"
+                        stroke="url(#ringGrad)"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-dasharray="1225"
+                        stroke-dashoffset="1225"
+                        transform="rotate(-90 250 250)"
+                        style="transition: stroke-dashoffset 0.8s cubic-bezier(0.23,1,0.32,1)"/>
+                    <!-- Traveling glow dot -->
+                    <circle id="lcDot" cx="250" cy="55" r="7"
+                        fill="#43ee93"
+                        filter="url(#glow)"
+                        opacity="0.9"/>
+                </svg>
+
+                <!-- Centre label -->
+                <div class="lc-center">
+                    <div class="lc-center-icon" id="lcCenterIcon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" stroke="#43ee93" stroke-width="1.5" opacity="0.3"/>
+                            <path d="M14 24a10 10 0 1 1 20 0 10 10 0 0 1-20 0" stroke="#0778b6" stroke-width="2"/>
+                            <path d="M24 18v6l4 3" stroke="#43ee93" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                     </div>
-                    <div class="sol-card-back">
-                        <div class="sol-back-icon">💬</div>
+                    <p class="lc-center-title">End-to-End<br><strong>Communication<br>Automation</strong></p>
+                    <div class="lc-center-bar"></div>
+                    <p class="lc-center-sub" id="lcCenterSub">Hover a step</p>
+                </div>
+
+                <!-- Step nodes (4 products around the circle) -->
+                <!-- top: Chat-A-Lot  right: Talk Track  bottom: Interactive Email  left: SMS Sense -->
+                <div class="lc-node" data-index="0" style="--lc-angle:0deg; top:4%; left:50%; transform:translate(-50%,0);">
+                    <div class="lc-node-card">
+                        <div class="lc-node-icon">💬</div>
+                        <span class="lc-node-num">1</span>
+                    </div>
+                    <div class="lc-node-label">Chat-A-Lot</div>
+                    <div class="lc-tooltip">
+                        <strong>Chat-A-Lot</strong>
+                        <em>AI 24/7 Chatbot</em>
                         <p>AI-powered chatbot that handles queries and qualifies leads around the clock.</p>
-                        <span class="sol-arrow">Click to open</span>
+                        <a href="solution-detail.html?name=Chat-A-Lot" class="lc-tooltip-btn">Explore →</a>
                     </div>
                 </div>
-            </div>
-            <div class="sol-card" data-url="solution-detail.html?name=Talk-Track">
-                <div class="sol-card-inner">
-                    <div class="sol-card-front">
-                        <span class="sol-flip-hint">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Learn More
-                        </span>
-                        <div class="sol-front-body">
-                            <div class="sol-icon"><lord-icon src="https://cdn.lordicon.com/ckooqaow.json" trigger="loop" colors="primary:#ffffff,secondary:#000000,tertiary:#545454,quaternary:#109121,quinary:#000000" style="width:100%;height:100%"></lord-icon></div>
-                            <h3>Talk Track</h3>
-                            <span class="sol-sub">Compliance & Voice</span>
-                        </div>
+
+                <div class="lc-node" data-index="1" style="top:50%; right:4%; left:auto; transform:translate(0,-50%);">
+                    <div class="lc-node-card">
+                        <div class="lc-node-icon">🎙️</div>
+                        <span class="lc-node-num">2</span>
                     </div>
-                    <div class="sol-card-back">
-                        <div class="sol-back-icon">🎙️</div>
+                    <div class="lc-node-label">Talk Track</div>
+                    <div class="lc-tooltip lc-tooltip-left">
+                        <strong>Talk Track</strong>
+                        <em>Compliance & Voice</em>
                         <p>Call center compliance monitoring and voice analytics for quality assurance.</p>
-                        <span class="sol-arrow">Click to open</span>
+                        <a href="solution-detail.html?name=Talk-Track" class="lc-tooltip-btn">Explore →</a>
                     </div>
                 </div>
-            </div>
-            <div class="sol-card" data-url="solution-detail.html?name=Interactive-Email">
-                <div class="sol-card-inner">
-                    <div class="sol-card-front">
-                        <span class="sol-flip-hint">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Learn More
-                        </span>
-                        <div class="sol-front-body">
-                            <div class="sol-icon">
-                                <lord-icon src="https://cdn.lordicon.com/gtvaxhwv.json" trigger="loop" stroke="bold" colors="primary:#121331,secondary:#109121,tertiary:#104891,quaternary:#ffffff" style="width:100%;height:100%">
-                                </lord-icon>
-                            </div>
-                            <h3>Interactive Email</h3>
-                            <span class="sol-sub">Automated Responses</span>
-                        </div>
+
+                <div class="lc-node" data-index="2" style="bottom:4%; top:auto; left:50%; transform:translate(-50%,0);">
+                    <div class="lc-node-card">
+                        <div class="lc-node-icon">📧</div>
+                        <span class="lc-node-num">3</span>
                     </div>
-                    <div class="sol-card-back">
-                        <div class="sol-back-icon">📧</div>
+                    <div class="lc-node-label">Interactive Email</div>
+                    <div class="lc-tooltip lc-tooltip-top">
+                        <strong>Interactive Email</strong>
+                        <em>Automated Responses</em>
                         <p>Automated email response with live forms and real-time data integration.</p>
-                        <span class="sol-arrow">Click to open</span>
+                        <a href="solution-detail.html?name=Interactive-Email" class="lc-tooltip-btn">Explore →</a>
                     </div>
                 </div>
-            </div>
-            <div class="sol-card" data-url="solution-detail.html?name=SMS-Sense">
-                <div class="sol-card-inner">
-                    <div class="sol-card-front">
-                        <span class="sol-flip-hint">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Learn More
-                        </span>
-                        <div class="sol-front-body">
-                            <div class="sol-icon">
-                                <lord-icon src="https://cdn.lordicon.com/qctplryk.json" trigger="loop" stroke="bold" colors="primary:#121331,secondary:#e3c0ac,tertiary:#109121" style="width:100%;height:100%">
-                                </lord-icon>
-                            </div>
-                            <h3>SMS Sense</h3>
-                            <span class="sol-sub">Analytics & ROI</span>
-                        </div>
+
+                <div class="lc-node" data-index="3" style="top:50%; left:4%; transform:translate(0,-50%);">
+                    <div class="lc-node-card">
+                        <div class="lc-node-icon">📊</div>
+                        <span class="lc-node-num">4</span>
                     </div>
-                    <div class="sol-card-back">
-                        <div class="sol-back-icon">📊</div>
+                    <div class="lc-node-label">SMS Sense</div>
+                    <div class="lc-tooltip lc-tooltip-right">
+                        <strong>SMS Sense</strong>
+                        <em>Analytics & ROI</em>
                         <p>SMS data analytics: delivery patterns and engagement ROI for campaigns.</p>
-                        <span class="sol-arrow">Click to open</span>
+                        <a href="solution-detail.html?name=SMS-Sense" class="lc-tooltip-btn">Explore →</a>
                     </div>
                 </div>
+
+            </div><!-- /lifecycle-stage -->
+
+            <!-- Info panel -->
+            <div class="lc-info-panel" id="lcInfoPanel">
+                <div class="lc-info-step" id="lcInfoStep">01 / 04</div>
+                <h3 class="lc-info-title" id="lcInfoTitle">Chat-A-Lot</h3>
+                <p class="lc-info-sub" id="lcInfoSub">AI 24/7 Chatbot</p>
+                <p class="lc-info-desc" id="lcInfoDesc">AI-powered chatbot that handles queries and qualifies leads around the clock.</p>
+                <div class="lc-progress-track">
+                    <div class="lc-progress-fill" id="lcProgressFill"></div>
+                </div>
+                <a class="lc-info-cta" id="lcInfoCta" href="solution-detail.html?name=Chat-A-Lot">
+                    Explore Solution <span>→</span>
+                </a>
+                <div class="lc-dots-nav" id="lcDotsNav">
+                    <span class="lc-dot-nav active" data-i="0"></span>
+                    <span class="lc-dot-nav" data-i="1"></span>
+                    <span class="lc-dot-nav" data-i="2"></span>
+                    <span class="lc-dot-nav" data-i="3"></span>
+                </div>
             </div>
-        </div>
+        </div><!-- /lifecycle-wrapper -->
     </section>
 
     <!-- ===== READY TO DEPLOY ===== -->
@@ -4446,9 +5021,9 @@
             <h2>Production-Ready <em>Solutions</em></h2>
             <p>Enterprise-grade solutions pre-built for compliance, archival, and disaster recovery — deploy in hours, not weeks.</p>
         </div>
-        <div class="deploy-grid">
+        <div class="deploy-grid" id="deployGrid">
             <!-- Card 1: Email Archival -->
-            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+            <div class="deploy-card" data-auto-flip="true">
                 <div class="deploy-card-inner">
                     <div class="deploy-card-front">
                         <div class="deploy-icon">
@@ -4458,7 +5033,7 @@
                         <p class="deploy-sub">Cut email retention costs by more than half</p>
                         <div class="deploy-flip-hint">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Click to flip
+                            Hover to flip
                         </div>
                     </div>
                     <div class="deploy-card-back">
@@ -4475,7 +5050,7 @@
             </div>
 
             <!-- Card 2: DPDP Compliance -->
-            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+            <div class="deploy-card" data-auto-flip="true">
                 <div class="deploy-card-inner">
                     <div class="deploy-card-front">
                         <div class="deploy-icon">
@@ -4485,7 +5060,7 @@
                         <p class="deploy-sub">Enterprise-grade privacy &amp; data governance</p>
                         <div class="deploy-flip-hint">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Click to flip
+                            Hover to flip
                         </div>
                     </div>
                     <div class="deploy-card-back">
@@ -4502,7 +5077,7 @@
             </div>
 
             <!-- Card 3: DR Orchestration & Smoke Test -->
-            <div class="deploy-card" onclick="this.classList.toggle('flipped')">
+            <div class="deploy-card" data-auto-flip="true">
                 <div class="deploy-card-inner">
                     <div class="deploy-card-front">
                         <div class="deploy-icon">
@@ -4512,7 +5087,7 @@
                         <p class="deploy-sub">Reduce recovery time from hours to minutes</p>
                         <div class="deploy-flip-hint">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-                            Click to flip
+                            Hover to flip
                         </div>
                     </div>
                     <div class="deploy-card-back">
@@ -4547,11 +5122,9 @@
             </div>
         </div>
 
-        <div class="workflow-container">
-            <!-- Top dot -->
-            <div class="line-top-dot"></div>
-            <!-- Bottom dot -->
-            <div class="line-bottom-dot"></div>
+        <div class="workflow-container" id="workflowContainer">
+            <!-- MOVING DOT (replaces the static top/bottom dots) -->
+            <div class="moving-dot" id="movingDot"></div>
 
             <!-- Item 1: Left -->
             <div class="workflow-item left" data-delay="0">
@@ -4727,7 +5300,7 @@
             <div class="clients-head reveal">Trusted by forward-thinking companies</div>
             <div class="clients-track-wrap">
                 <div class="clients-track" id="clientsTrack">
-                    <!-- Client logos with images -->
+                    <!-- Client logos with images — boxes are now invisible -->
                     <div class="client-logo-item">
                         <img src="company/comp (1).png" alt="Advit" loading="lazy" />
                     </div>
@@ -4782,24 +5355,92 @@
             <p class="section-label" style="justify-content:center;">Our Team</p>
             <h2>The Experts Behind SEESEC</h2>
         </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=220%2C220&ssl=1" alt="Dinesh Singh" loading="lazy" onerror="this.style.display='none'">DS</div>
-                <div class="team-info"><h4>Dinesh Singh</h4><p>Founder &amp; CEO</p></div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=220%2C220&ssl=1" alt="Eshita Singh" loading="lazy">ES</div>
-                <div class="team-info"><h4>Eshita Singh</h4><p>Director &amp; CPO</p></div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">SA</div>
-                <div class="team-info"><h4>Shrey Agarwal</h4><p>Co-Founder &amp; CTO</p></div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar"><img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=220%2C220&ssl=1" alt="Shubh Sharma" loading="lazy">SS</div>
-                <div class="team-info"><h4>Shubh Sharma</h4><p>Chief Marketing Officer</p></div>
-            </div>
-        </div>
+
+        <div class="team-stitch">
+            <!-- LEFT: clickable list -->
+            <div class="team-list" id="teamList">
+
+                <div class="tm-row active" data-index="0">
+                    <div class="tm-thumb">
+                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=220%2C220&ssl=1" alt="Dinesh Singh" loading="lazy">
+                        DS
+                    </div>
+                    <div class="tm-meta">
+                        <strong>Dinesh Singh</strong>
+                        <span>Founder &amp; CEO</span>
+                    </div>
+                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+
+                <div class="tm-row" data-index="1">
+                    <div class="tm-thumb">
+                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=220%2C220&ssl=1" alt="Eshita Singh" loading="lazy">
+                        ES
+                    </div>
+                    <div class="tm-meta">
+                        <strong>Eshita Singh</strong>
+                        <span>Director &amp; CPO</span>
+                    </div>
+                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+
+                <div class="tm-row" data-index="2">
+                    <div class="tm-thumb">SA</div>
+                    <div class="tm-meta">
+                        <strong>Shrey Agarwal</strong>
+                        <span>Co-Founder &amp; CTO</span>
+                    </div>
+                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+
+                <div class="tm-row" data-index="3">
+                    <div class="tm-thumb">
+                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=220%2C220&ssl=1" alt="Shubh Sharma" loading="lazy">
+                        SS
+                    </div>
+                    <div class="tm-meta">
+                        <strong>Shubh Sharma</strong>
+                        <span>Chief Marketing Officer</span>
+                    </div>
+                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+
+            </div><!-- /team-list -->
+
+            <!-- RIGHT: feature panel -->
+            <div class="team-feature tf-active" id="teamFeature">
+
+                <!-- Background photos (stacked, fade in/out) -->
+                <div class="tf-bg">
+                    <div class="tf-initials" id="tfInitials">DS</div>
+                    <img class="tf-bg-img visible" id="tfImg0"
+                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=600%2C600&ssl=1"
+                        alt="Dinesh Singh">
+                    <img class="tf-bg-img" id="tfImg1"
+                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=600%2C600&ssl=1"
+                        alt="Eshita Singh">
+                    <img class="tf-bg-img" id="tfImg2" src="" alt="Shrey Agarwal">
+                    <img class="tf-bg-img" id="tfImg3"
+                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=600%2C600&ssl=1"
+                        alt="Shubh Sharma">
+                </div>
+                <div class="tf-overlay"></div>
+
+                <!-- Content -->
+                <div class="tf-content">
+                    <div class="tf-text">
+                        <div class="tf-role" id="tfRole">Founder &amp; CEO</div>
+                        <div class="tf-name" id="tfName">Dinesh Singh</div>
+                        <div class="tf-bio" id="tfBio">Visionary leader driving SEESEC's mission to simplify, optimize, and secure enterprise technology. Over a decade of experience in cloud transformation and business strategy.</div>
+                        <div class="tf-actions">
+                            <a href="https://seesec.io/about" class="tf-btn tf-btn-primary">View Profile →</a>
+                            <a href="#cta" class="tf-btn tf-btn-ghost">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /team-feature -->
+        </div><!-- /team-stitch -->
     </section>
 
     <!-- ===== CTA ===== -->
@@ -4808,17 +5449,13 @@
             <p class="section-label" style="justify-content:center; margin-bottom:20px;">Get Started</p>
             <h2>Ready to Make Tech <em>Simple, Smart & Secure?</em></h2>
             <p class="cta-sub">Contact us today to learn how SEESEC can help your organization harness the full potential of cloud, data, and AI.</p>
-            <div class="cta-actions">
+            <div class="cta-actions" style="justify-content:center;">
                 <a href="https://seesec.io/contact/" target="_blank" class="btn btn-primary">
                     <span class="btn-bg"></span>
                     <span class="blobs"><div></div><div></div><div></div></span>
                     <span>📅</span>
                     <span class="btn-text">Schedule Free Consultation</span>
                     <span class="btn-arrow">→</span>
-                </a>
-                <a href="tel:+919220550666" class="btn-phone">
-                    <span class="phone-ring"></span>
-                    <span class="phone-icon">📞</span> +91 922 055 0666
                 </a>
             </div>
         </div>
@@ -4882,7 +5519,6 @@
                 window.requestAnimationFrame(() => {
                     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                    // Hide nav when scrolling down past 100px, show when scrolling up
                     if (currentScroll > lastScroll && currentScroll > 100) {
                         navEl.classList.add('nav-hidden');
                     } else {
@@ -4890,11 +5526,9 @@
                     }
                     lastScroll = currentScroll;
 
-                    // Update progress bar
                     const total = document.body.scrollHeight - window.innerHeight;
                     pb.style.width = (currentScroll / total * 100) + '%';
 
-                    // Add/remove scrolled class for background
                     if (currentScroll > 40) navEl.classList.add('scrolled');
                     else navEl.classList.remove('scrolled');
 
@@ -5029,7 +5663,6 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            // Flip every 4 seconds (slower)
             flipIntervalId = setInterval(flipAllCards, 4000);
         }
 
@@ -5038,7 +5671,6 @@
                 clearInterval(flipIntervalId);
                 flipIntervalId = null;
             }
-            // Reset all cards to front
             document.querySelectorAll('.sol-card').forEach(card => {
                 card.classList.remove('flipped');
             });
@@ -5050,7 +5682,6 @@
             grid.addEventListener('mouseleave', stopFlipOnHover);
         }
 
-        // Click on a card opens the detail page (URL from data-url)
         document.querySelectorAll('.sol-card').forEach(card => {
             card.addEventListener('click', function(e) {
                 const url = this.getAttribute('data-url');
@@ -5083,7 +5714,7 @@
             });
         });
 
-        // ── SPLINE LOADING INDICATOR (centered card, faster) ──
+        // ── SPLINE LOADING INDICATOR ──
         (function() {
             const loadingEl = document.getElementById('splineLoading');
             const progressBar = document.getElementById('loadProgressBar');
@@ -5093,17 +5724,14 @@
             let loadTimeout = null;
             let isLoaded = false;
 
-            // If there's no spline viewer or no loading element, return
             if (!viewer || !loadingEl) return;
 
-            // Simulate progress while loading — faster now
             function startProgressSimulation() {
                 progress = 0;
                 progressBar.style.width = '0%';
                 if (progressInterval) clearInterval(progressInterval);
                 progressInterval = setInterval(() => {
                     if (isLoaded) {
-                        // Fast fill to 100% when loaded
                         progress = Math.min(progress + 15, 100);
                         progressBar.style.width = progress + '%';
                         if (progress >= 100) {
@@ -5112,14 +5740,12 @@
                         }
                         return;
                     }
-                    // Faster easing progress
                     const increment = Math.max(0.6, (100 - progress) * 0.04);
                     progress = Math.min(progress + increment, 92);
                     progressBar.style.width = progress + '%';
                 }, 80);
             }
 
-            // Hide loading overlay with fade
             function hideLoading() {
                 if (isLoaded) return;
                 isLoaded = true;
@@ -5133,31 +5759,21 @@
                 }, 300);
             }
 
-            // Handle load event
-            function onSplineLoad() {
-                hideLoading();
-            }
+            function onSplineLoad() { hideLoading(); }
 
-            // Handle error
-            function onSplineError() {
-                hideLoading();
-            }
+            function onSplineError() { hideLoading(); }
 
-            // Start progress simulation immediately
             startProgressSimulation();
 
-            // Listen for load event
             viewer.addEventListener('load', onSplineLoad);
             viewer.addEventListener('error', onSplineError);
 
-            // Fallback: if not loaded after 6 seconds, force hide
             loadTimeout = setTimeout(() => {
                 if (!isLoaded) {
                     hideLoading();
                 }
             }, 6000);
 
-            // Also check for the `loading` attribute removal as an additional signal
             const attrObserver = new MutationObserver(() => {
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
                     hideLoading();
@@ -5165,7 +5781,6 @@
             });
             attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
 
-            // Cleanup if the viewer gets removed
             const cleanup = () => {
                 if (progressInterval) clearInterval(progressInterval);
                 if (loadTimeout) clearTimeout(loadTimeout);
@@ -5186,7 +5801,6 @@
                 removalObserver.observe(document.body, { childList: true, subtree: true });
             }
 
-            // If the model is already loaded (race condition)
             setTimeout(() => {
                 if (!viewer.hasAttribute('loading') && !isLoaded) {
                     const canvas = viewer.querySelector('canvas');
@@ -5197,22 +5811,366 @@
             }, 300);
         })();
 
-        // ── WORKFLOW ITEMS: SIDE ENTRY ANIMATION ──
+        // ── WORKFLOW: MOVING DOT & AUTO-FLOW CARDS ──
+        (function() {
+            const container = document.getElementById('workflowContainer');
+            const dot = document.getElementById('movingDot');
+            const items = document.querySelectorAll('.workflow-item');
+
+            if (!container || !dot || !items.length) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const containerHeight = container.scrollHeight - 40;
+
+            let dotProgress = 0;
+            const dotSpeed = 0.15;
+
+            function moveDot() {
+                const rect = container.getBoundingClientRect();
+                const height = container.scrollHeight - 40;
+                const topOffset = 20;
+
+                dotProgress += dotSpeed;
+                if (dotProgress > 100) {
+                    dotProgress = 0;
+                }
+
+                const eased = dotProgress / 100;
+                const topPos = topOffset + eased * (height - 30);
+                dot.style.top = topPos + 'px';
+
+                requestAnimationFrame(moveDot);
+            }
+
+            moveDot();
+
+            let currentIndex = 0;
+            let autoFlowTimer = null;
+            let isFlowing = true;
+
+            function showNextCard() {
+                items.forEach(el => el.classList.remove('visible'));
+
+                const item = items[currentIndex];
+                if (item) {
+                    const delay = parseInt(item.getAttribute('data-delay')) || 0;
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, delay);
+                }
+
+                currentIndex = (currentIndex + 1) % items.length;
+            }
+
+            function startAutoFlow() {
+                if (autoFlowTimer) clearInterval(autoFlowTimer);
+                showNextCard();
+                autoFlowTimer = setInterval(showNextCard, 1500);
+            }
+
+            function stopAutoFlow() {
+                if (autoFlowTimer) {
+                    clearInterval(autoFlowTimer);
+                    autoFlowTimer = null;
+                }
+                items.forEach(el => el.classList.add('visible'));
+            }
+
+            startAutoFlow();
+
+            container.addEventListener('mouseenter', () => {
+                if (autoFlowTimer) {
+                    clearInterval(autoFlowTimer);
+                    autoFlowTimer = null;
+                }
+                items.forEach(el => el.classList.add('visible'));
+            });
+
+            container.addEventListener('mouseleave', () => {
+                currentIndex = 0;
+                startAutoFlow();
+            });
+
+            container.addEventListener('touchstart', () => {
+                if (autoFlowTimer) {
+                    clearInterval(autoFlowTimer);
+                    autoFlowTimer = null;
+                }
+                items.forEach(el => el.classList.add('visible'));
+            });
+
+            container.addEventListener('touchend', () => {
+                currentIndex = 0;
+                startAutoFlow();
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const rect = container.getBoundingClientRect();
+                    const height = container.scrollHeight - 40;
+                    const topOffset = 20;
+                    const eased = dotProgress / 100;
+                    const topPos = topOffset + eased * (height - 30);
+                    dot.style.top = topPos + 'px';
+                }, 200);
+            });
+
+            if ('IntersectionObserver' in window) {
+                const visibilityObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!autoFlowTimer && isFlowing) {
+                                startAutoFlow();
+                            }
+                        } else {
+                            if (autoFlowTimer) {
+                                clearInterval(autoFlowTimer);
+                                autoFlowTimer = null;
+                            }
+                        }
+                    });
+                }, { threshold: 0.1 });
+                visibilityObserver.observe(container);
+            }
+
+            window.__workflow = { startAutoFlow, stopAutoFlow, showNextCard };
+        })();
+
+        // ── LIFECYCLE WHEEL ──
+        (function () {
+            const nodes = document.querySelectorAll('.lc-node');
+            if (!nodes.length) return;
+
+            const arc    = document.getElementById('lcArc');
+            const dot    = document.getElementById('lcDot');
+            const sub    = document.getElementById('lcCenterSub');
+            const fill   = document.getElementById('lcProgressFill');
+            const pTitle = document.getElementById('lcInfoTitle');
+            const pSub   = document.getElementById('lcInfoSub');
+            const pDesc  = document.getElementById('lcInfoDesc');
+            const pStep  = document.getElementById('lcInfoStep');
+            const pCta   = document.getElementById('lcInfoCta');
+            const navDots= document.querySelectorAll('.lc-dot-nav');
+
+            const CIRCUMFERENCE = 2 * Math.PI * 195; // ≈1225
+
+            const data = [
+                { title:'Chat-A-Lot',       sub:'AI 24/7 Chatbot',       desc:'AI-powered chatbot that handles queries and qualifies leads around the clock.',          url:'solution-detail.html?name=Chat-A-Lot',       angle:   0 },
+                { title:'Talk Track',        sub:'Compliance & Voice',    desc:'Call center compliance monitoring and voice analytics for quality assurance.',           url:'solution-detail.html?name=Talk-Track',        angle:  90 },
+                { title:'Interactive Email', sub:'Automated Responses',   desc:'Automated email response with live forms and real-time data integration.',              url:'solution-detail.html?name=Interactive-Email', angle: 180 },
+                { title:'SMS Sense',         sub:'Analytics & ROI',       desc:'SMS data analytics: delivery patterns and engagement ROI for campaigns.',               url:'solution-detail.html?name=SMS-Sense',         angle: 270 },
+            ];
+
+            let current  = 0;
+            let timer    = null;
+            let progTimer= null;
+            let dotRaf   = null;
+            let dotAngle = 0;
+            let targetAngle = 0;
+            let isHovered= false;
+
+            function updateDotPos(angleDeg) {
+                const r   = 195;
+                const cx  = 250, cy = 250;
+                const rad = (angleDeg - 90) * Math.PI / 180;
+                const x   = cx + r * Math.cos(rad);
+                const y   = cy + r * Math.sin(rad);
+                dot.setAttribute('cx', x);
+                dot.setAttribute('cy', y);
+            }
+
+            function setArcFraction(fraction) {
+                const offset = CIRCUMFERENCE * (1 - fraction);
+                arc.style.strokeDashoffset = offset;
+            }
+
+            function animateDot(to) {
+                if (dotRaf) cancelAnimationFrame(dotRaf);
+                let start = null;
+                const from = dotAngle;
+                let diff = ((to - from) % 360 + 360) % 360;
+                if (diff === 0) diff = 360; // full lap if same position
+
+                function step(ts) {
+                    if (!start) start = ts;
+                    const progress = Math.min((ts - start) / 800, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const cur  = from + diff * ease;
+                    updateDotPos(cur);
+                    if (progress < 1) dotRaf = requestAnimationFrame(step);
+                    else { dotAngle = to % 360; dotRaf = null; }
+                }
+                dotRaf = requestAnimationFrame(step);
+            }
+
+            function startProgress() {
+                if (progTimer) clearTimeout(progTimer);
+                fill.style.transition = 'none';
+                fill.style.width = '0%';
+                requestAnimationFrame(() => {
+                    fill.style.transition = 'width 3.2s linear';
+                    fill.style.width = '100%';
+                });
+                progTimer = setTimeout(() => {
+                    if (!isHovered) goTo((current + 1) % data.length);
+                }, 3200);
+            }
+
+            function goTo(index) {
+                nodes[current].classList.remove('active');
+                navDots[current].classList.remove('active');
+                current = index;
+                const d = data[index];
+
+                nodes[current].classList.add('active');
+                navDots[current].classList.add('active');
+
+                // Arc: fill up to this step fraction
+                setArcFraction((index + 1) / data.length);
+
+                // Animate dot around ring
+                animateDot(d.angle);
+
+                // Centre sub
+                if (sub) sub.textContent = d.title;
+
+                // Panel
+                pTitle.textContent = d.title;
+                pSub.textContent   = d.sub;
+                pDesc.textContent  = d.desc;
+                pStep.textContent  = '0' + (index + 1) + ' / 0' + data.length;
+                pCta.href          = d.url;
+                pCta.textContent   = 'Explore Solution →';
+
+                startProgress();
+            }
+
+            // Dot nav clicks
+            navDots.forEach((el, i) => {
+                el.addEventListener('click', () => {
+                    isHovered = true;
+                    goTo(i);
+                    setTimeout(() => { isHovered = false; startProgress(); }, 4000);
+                });
+            });
+
+            // Node clicks / hover → pause
+            nodes.forEach((node, i) => {
+                node.addEventListener('mouseenter', () => {
+                    isHovered = true;
+                    if (progTimer) clearTimeout(progTimer);
+                    fill.style.transition = 'none';
+                    fill.style.width = fill.style.width;
+                    goTo(i);
+                });
+                node.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                    startProgress();
+                });
+                node.addEventListener('click', () => {
+                    window.location.href = data[i].url;
+                });
+            });
+
+            // Start
+            goTo(0);
+        })();
+
+        // ── READY TO DEPLOY: HOVER FLIP + AUTO ROTATE BACK ──
+        (function() {
+            const deployCards = document.querySelectorAll('.deploy-card');
+            if (!deployCards.length) return;
+
+            let autoFlipTimers = {};
+
+            function flipCard(card) {
+                card.classList.add('flipped');
+            }
+
+            function unflipCard(card) {
+                card.classList.remove('flipped');
+            }
+
+            function startAutoUnflipTimer(card) {
+                if (autoFlipTimers[card.dataset.index]) {
+                    clearTimeout(autoFlipTimers[card.dataset.index]);
+                    delete autoFlipTimers[card.dataset.index];
+                }
+
+                const timer = setTimeout(() => {
+                    unflipCard(card);
+                    delete autoFlipTimers[card.dataset.index];
+                }, 5000);
+
+                autoFlipTimers[card.dataset.index] = timer;
+            }
+
+            deployCards.forEach((card, index) => {
+                card.dataset.index = index;
+
+                card.addEventListener('mouseenter', function() {
+                    flipCard(this);
+                    if (autoFlipTimers[this.dataset.index]) {
+                        clearTimeout(autoFlipTimers[this.dataset.index]);
+                        delete autoFlipTimers[this.dataset.index];
+                    }
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    startAutoUnflipTimer(this);
+                });
+
+                card.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    if (this.classList.contains('flipped')) {
+                        unflipCard(this);
+                        if (autoFlipTimers[this.dataset.index]) {
+                            clearTimeout(autoFlipTimers[this.dataset.index]);
+                            delete autoFlipTimers[this.dataset.index];
+                        }
+                    } else {
+                        flipCard(this);
+                        if (autoFlipTimers[this.dataset.index]) {
+                            clearTimeout(autoFlipTimers[this.dataset.index]);
+                            delete autoFlipTimers[this.dataset.index];
+                        }
+                        const timer = setTimeout(() => {
+                            unflipCard(this);
+                            delete autoFlipTimers[this.dataset.index];
+                        }, 5000);
+                        autoFlipTimers[this.dataset.index] = timer;
+                    }
+                }, { passive: false });
+
+                const backBtn = card.querySelector('.deploy-back-btn');
+                if (backBtn) {
+                    backBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                    });
+                }
+            });
+
+            deployCards.forEach(card => unflipCard(card));
+        })();
+
+        // ── WORKFLOW ITEMS: SIDE ENTRY ANIMATION (fallback) ──
         (function() {
             const items = document.querySelectorAll('.workflow-item');
             if (!items.length) return;
 
-            // Use IntersectionObserver for scroll-triggered entry
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             const el = entry.target;
-                            // Add a small delay based on data-delay attribute
-                            const delay = parseInt(el.getAttribute('data-delay')) || 0;
-                            setTimeout(() => {
-                                el.classList.add('visible');
-                            }, delay);
+                            if (!el.classList.contains('visible')) {
+                                const delay = parseInt(el.getAttribute('data-delay')) || 0;
+                                setTimeout(() => {
+                                    el.classList.add('visible');
+                                }, delay);
+                            }
                             observer.unobserve(el);
                         }
                     });
@@ -5222,28 +6180,94 @@
                 });
 
                 items.forEach(item => observer.observe(item));
-            } else {
-                // Fallback: show all immediately
-                items.forEach(item => item.classList.add('visible'));
+            }
+        })();
+
+        // ── TEAM STITCH PANEL ──
+        (function () {
+            const rows    = document.querySelectorAll('.tm-row');
+            const feature = document.getElementById('teamFeature');
+            const imgs    = document.querySelectorAll('.tf-bg-img');
+            const initEl  = document.getElementById('tfInitials');
+            const tfRole  = document.getElementById('tfRole');
+            const tfName  = document.getElementById('tfName');
+            const tfBio   = document.getElementById('tfBio');
+            if (!rows.length || !feature) return;
+
+            const members = [
+                {
+                    name: 'Dinesh Singh',
+                    role: 'Founder &amp; CEO',
+                    bio:  'Visionary leader driving SEESEC\'s mission to simplify, optimize, and secure enterprise technology. Over a decade of experience in cloud transformation and business strategy.',
+                    initials: 'DS',
+                    hasPhoto: true
+                },
+                {
+                    name: 'Eshita Singh',
+                    role: 'Director &amp; CPO',
+                    bio:  'Product strategist with a passion for building customer-centric platforms. Leads SEESEC\'s product vision across cloud, communication automation, and AI solutions.',
+                    initials: 'ES',
+                    hasPhoto: true
+                },
+                {
+                    name: 'Shrey Agarwal',
+                    role: 'Co-Founder &amp; CTO',
+                    bio:  'Architect of SEESEC\'s technology stack. Brings deep expertise in cloud infrastructure, GenAI, and scalable system design to every product decision.',
+                    initials: 'SA',
+                    hasPhoto: false
+                },
+                {
+                    name: 'Shubh Sharma',
+                    role: 'Chief Marketing Officer',
+                    bio:  'Crafting the narrative that shapes how the market sees SEESEC. Translates complex technical innovation into compelling brand stories that resonate with enterprise audiences.',
+                    initials: 'SS',
+                    hasPhoto: true
+                }
+            ];
+
+            let current = 0;
+
+            function activate(index) {
+                rows.forEach(r => r.classList.remove('active'));
+                rows[index].classList.add('active');
+
+                feature.classList.remove('tf-active');
+
+                imgs.forEach((img, i) => {
+                    img.classList.toggle('visible', i === index);
+                });
+
+                initEl.textContent = members[index].initials;
+                initEl.style.opacity = members[index].hasPhoto ? '0' : '1';
+
+                setTimeout(() => {
+                    tfRole.innerHTML = members[index].role;
+                    tfName.textContent = members[index].name;
+                    tfBio.textContent  = members[index].bio;
+                    feature.classList.add('tf-active');
+                }, 80);
+
+                current = index;
             }
 
-            // Also trigger on resize to re-check visibility
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    items.forEach(item => {
-                        const rect = item.getBoundingClientRect();
-                        const winHeight = window.innerHeight;
-                        if (rect.top < winHeight - 80 && rect.bottom > 40) {
-                            const delay = parseInt(item.getAttribute('data-delay')) || 0;
-                            setTimeout(() => {
-                                item.classList.add('visible');
-                            }, delay);
-                        }
-                    });
-                }, 200);
+            rows.forEach((row, i) => {
+                row.addEventListener('click', () => activate(i));
+                row.addEventListener('mouseenter', () => activate(i));
             });
+
+            let autoTimer = setInterval(() => {
+                activate((current + 1) % members.length);
+            }, 4000);
+
+            const stitch = document.querySelector('.team-stitch');
+            if (stitch) {
+                stitch.addEventListener('mouseenter', () => clearInterval(autoTimer));
+                stitch.addEventListener('mouseleave', () => {
+                    autoTimer = setInterval(() => activate((current + 1) % members.length), 4000);
+                });
+            }
+
+            activate(0);
         })();
     </script>
 </body>
