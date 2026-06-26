@@ -5,10 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>SEESEC — Cloud Excellence, GenAI & New-Age Communication</title>
 
+    <!-- ===== TEAM SECTION DEPENDENCIES ===== -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    </script>
+    <script>
+        tailwind.config = {
+            prefix: 'tw-',
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#44436b",
+                        "surface-container-highest": "#273647",
+                        "background": "#051424",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-tint": "#c4c2f2",
+                        "on-tertiary-container": "#6d66ff",
+                        "outline": "#928f99",
+                        "secondary": "#c9c0f4",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-fixed": "#e5deff",
+                        "primary": "#c4c2f2",
+                        "on-tertiary-fixed-variant": "#321ed2",
+                        "surface-container-low": "#0d1c2d",
+                        "on-primary-container": "#7977a3",
+                        "inverse-on-surface": "#233143",
+                        "on-primary-fixed": "#18173d",
+                        "surface": "#051424",
+                        "secondary-fixed-dim": "#c9c0f4",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#010f1f",
+                        "inverse-surface": "#d4e4fa",
+                        "on-background": "#d4e4fa",
+                        "primary-container": "#0b0930",
+                        "primary-fixed-dim": "#c4c2f2",
+                        "on-secondary-fixed-variant": "#47416d",
+                        "on-secondary-fixed": "#1c153f",
+                        "outline-variant": "#47464e",
+                        "on-tertiary": "#1d00a5",
+                        "tertiary-fixed-dim": "#c3c0ff",
+                        "surface-container": "#122131",
+                        "surface-bright": "#2c3a4c",
+                        "on-secondary-container": "#b7afe2",
+                        "on-primary": "#2d2c53",
+                        "tertiary": "#c3c0ff",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#c8c5cf",
+                        "surface-container-high": "#1c2b3c",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#312a55",
+                        "inverse-primary": "#5b5a84",
+                        "tertiary-container": "#070046",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#0f0069",
+                        "surface-dim": "#051424",
+                        "surface-variant": "#273647",
+                        "secondary-container": "#47416d",
+                        "on-surface": "#d4e4fa",
+                        "seesec-green": "#43ee93"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-padding-desktop": "80px",
+                        "unit": "8px",
+                        "container-padding-mobile": "24px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script src="https://cdn.lordicon.com/lordicon.js" async></script>
+    <script src="https://cdn.lordicon.com/lordicon.js" async>
+    </script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js">
     </script>
     <style>
@@ -1386,85 +1488,86 @@
             color: rgba(255, 255, 255, 0.15);
         }
 
-        /* ── UPDATED SERVICES RIGHT (CARDS) ── */
+        /* ── UPDATED SERVICES RIGHT (2x3 GRID) ── */
         .services-right {
-            padding: 80px 0 80px 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            padding: 40px 0 40px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 20px;
+            align-content: center;
         }
         .svc-item {
-            padding: 24px 28px;
-            border-bottom: none;
-            display: grid;
-            grid-template-columns: 40px 1fr;
-            gap: 20px;
-            align-items: start;
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
             cursor: default;
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             will-change: transform, box-shadow, border-color;
+            min-height: 160px;
+            justify-content: center;
         }
         .svc-item:hover {
-            transform: translateY(-4px) translateX(4px);
+            transform: translateY(-4px);
             background: rgba(7, 120, 182, 0.06);
             border-color: rgba(67, 238, 147, 0.15);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
-        .svc-num {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.15);
+        .svc-category {
+            font-size: 0.6rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
-            padding-top: 4px;
-            transition: color 0.3s ease;
-        }
-        .svc-item:hover .svc-num {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             color: var(--accent);
+            margin-bottom: 4px;
         }
-        .svc-body h3 {
-            font-size: 0.95rem;
+        .svc-item .svc-title {
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            color: #fff;
+            margin-bottom: 2px;
             transition: color 0.2s;
         }
-        .svc-item:hover .svc-body h3 {
+        .svc-item:hover .svc-title {
             color: var(--accent);
         }
-        .svc-body p {
+        .svc-item .svc-desc {
             font-size: 0.78rem;
             color: rgba(255, 255, 255, 0.55);
-            line-height: 1.6;
+            line-height: 1.5;
+            margin-bottom: 8px;
         }
         .svc-tag {
             display: inline-block;
             font-size: 0.55rem;
-            letter-spacing: 0.1em;
+            font-weight: 600;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--cyan);
-            border: 1px solid rgba(26, 246, 221, 0.25);
-            padding: 2px 8px;
+            color: var(--accent);
+            border: 1px solid rgba(67, 238, 147, 0.2);
+            padding: 2px 12px;
             border-radius: 16px;
-            margin-top: 8px;
             width: fit-content;
             transition: all 0.3s ease;
+            margin-bottom: 6px;
         }
         .svc-item:hover .svc-tag {
+            background: rgba(67, 238, 147, 0.08);
             border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 20px rgba(67, 238, 147, 0.06);
+            box-shadow: 0 0 20px rgba(67, 238, 147, 0.04);
         }
         .read-more-link {
             display: inline-block;
-            margin-top: 14px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: var(--accent);
             text-decoration: none;
             letter-spacing: 0.04em;
             transition: transform 0.3s ease;
+            margin-top: 4px;
         }
         .read-more-link:hover {
             transform: translateX(4px);
@@ -1748,7 +1851,7 @@
         .lc-center-title {
             font-size: 1rem;
             font-weight: 400;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
             line-height: 1.4;
         }
         .lc-center-title strong {
@@ -1790,14 +1893,14 @@
             width: 84px;
             height: 84px;
             border-radius: 22px;
-            background: rgba(255,255,255,0.04);
-            border: 1.5px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(8px);
         }
         .lc-node-num {
@@ -1820,7 +1923,7 @@
         .lc-node-label {
             font-size: 0.7rem;
             font-weight: 700;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             transition: color 0.4s;
@@ -1832,8 +1935,8 @@
         .lc-node:hover .lc-node-card,
         .lc-node.active .lc-node-card {
             border-color: var(--accent);
-            background: rgba(67,238,147,0.08);
-            box-shadow: 0 0 0 6px rgba(67,238,147,0.08), 0 8px 32px rgba(67,238,147,0.15);
+            background: rgba(67, 238, 147, 0.08);
+            box-shadow: 0 0 0 6px rgba(67, 238, 147, 0.08), 0 8px 32px rgba(67, 238, 147, 0.15);
             transform: scale(1.06);
         }
         .lc-node:hover .lc-node-num,
@@ -1852,8 +1955,8 @@
             top: calc(100% + 12px);
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10,8,30,0.95);
-            border: 1px solid rgba(67,238,147,0.2);
+            background: rgba(10, 8, 30, 0.95);
+            border: 1px solid rgba(67, 238, 147, 0.2);
             border-radius: 14px;
             padding: 18px 20px;
             width: 220px;
@@ -1863,7 +1966,7 @@
             transform: translateX(-50%) translateY(6px);
             z-index: 20;
             backdrop-filter: blur(16px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
         }
         .lc-tooltip-left {
             top: 50%;
@@ -1918,7 +2021,7 @@
         }
         .lc-tooltip p {
             font-size: 0.78rem;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.55;
             margin-bottom: 14px;
         }
@@ -1935,7 +2038,9 @@
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .lc-tooltip-btn:hover { opacity: 0.85; }
+        .lc-tooltip-btn:hover {
+            opacity: 0.85;
+        }
 
         /* Info panel */
         .lc-info-panel {
@@ -1970,14 +2075,14 @@
         }
         .lc-info-desc {
             font-size: 0.92rem;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             line-height: 1.7;
             font-weight: 300;
             margin-bottom: 28px;
         }
         .lc-progress-track {
             height: 3px;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 4px;
             margin-bottom: 28px;
             overflow: hidden;
@@ -1999,7 +2104,7 @@
             text-transform: uppercase;
             color: #fff;
             text-decoration: none;
-            border: 1.5px solid rgba(67,238,147,0.3);
+            border: 1.5px solid rgba(67, 238, 147, 0.3);
             padding: 10px 24px;
             border-radius: 30px;
             transition: all 0.35s ease;
@@ -2018,7 +2123,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             cursor: pointer;
             transition: all 0.35s ease;
         }
@@ -2030,18 +2135,47 @@
 
         /* Responsive */
         @media (max-width: 860px) {
-            .lifecycle-stage { width: 360px; height: 360px; }
-            .lc-node-card { width: 68px; height: 68px; font-size: 1.4rem; border-radius: 18px; }
-            .lc-info-panel { max-width: 100%; text-align: center; }
-            .lc-dots-nav { justify-content: center; }
-            .lc-center { padding: 0 60px; }
-            .lc-center-title { font-size: 0.85rem; }
+            .lifecycle-stage {
+                width: 360px;
+                height: 360px;
+            }
+            .lc-node-card {
+                width: 68px;
+                height: 68px;
+                font-size: 1.4rem;
+                border-radius: 18px;
+            }
+            .lc-info-panel {
+                max-width: 100%;
+                text-align: center;
+            }
+            .lc-dots-nav {
+                justify-content: center;
+            }
+            .lc-center {
+                padding: 0 60px;
+            }
+            .lc-center-title {
+                font-size: 0.85rem;
+            }
         }
         @media (max-width: 560px) {
-            .lifecycle-stage { width: 300px; height: 300px; }
-            .lc-node-card { width: 56px; height: 56px; font-size: 1.1rem; border-radius: 14px; }
-            .lc-node-label { font-size: 0.6rem; }
-            .lc-tooltip { display: none; }
+            .lifecycle-stage {
+                width: 300px;
+                height: 300px;
+            }
+            .lc-node-card {
+                width: 56px;
+                height: 56px;
+                font-size: 1.1rem;
+                border-radius: 14px;
+            }
+            .lc-node-label {
+                font-size: 0.6rem;
+            }
+            .lc-tooltip {
+                display: none;
+            }
         }
 
         /* ── METRICS ── */
@@ -2361,290 +2495,109 @@
             flex-shrink: 0;
         }
 
-        /* ── TEAM ── */
-        /* ── TEAM — Stitch-style interactive list ── */
-        #team {
-            padding: 100px 48px;
-            background: #110e35;
-            border-top: 1px solid var(--line);
-            content-visibility: auto;
-            contain-intrinsic-size: 600px;
+        /* ===== TEAM SECTION (MODULE) ===== */
+        .team-module {
+            background-color: #110e35;
+            color: #d4e4fa;
+            overflow-x: hidden;
+            font-family: 'Manrope', sans-serif;
         }
-        .team-head {
-            text-align: center;
-            margin-bottom: 56px;
+        .team-module .grain-texture {
+            position: relative;
         }
-        .team-head h2 {
-            font-size: clamp(2rem, 3.5vw, 3.4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
+        .team-module .grain-texture::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7kOf6RySR0Gb2h_Slt9gRxZqon5IQGAJniBNwhCGXcJB2cgMo0pza0AuqUB74mpsEdo3jsEEyRHvDGEyul6eDTYAUlPsm6jZxJZB8-ITL_09LosG_cGjf1HL0h2AtmIILmBqbyx1DkPjy5iOhEQ4UsuXrybJGA-IYGV8U6BadjhDusgAy_2fE4m59Xmk97y5EAgW_PdSXoFZMb0OWPtW6uT5h4XqvkVDab9WH8fHoEHfnhGuoYyUrgbhTJMXWihK_Mpj5XzwNw);
+            opacity: 0.03;
+            mix-blend-mode: overlay;
+            border-radius: inherit;
         }
-
-        /* Outer layout: list left + feature panel right */
-        .team-stitch {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 0;
-            max-width: 1100px;
-            margin: 0 auto;
-            border-radius: 20px;
+        .team-module .kinetic-panel {
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.06);
-            min-height: 420px;
-        }
-
-        /* LEFT: list column */
-        .team-list {
-            background: rgba(255,255,255,0.015);
-            border-right: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            flex-direction: column;
-        }
-        .tm-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 18px 22px;
             cursor: pointer;
-            position: relative;
-            border-left: 3px solid transparent;
-            transition: background 0.3s ease, border-color 0.3s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        .tm-row:last-child { border-bottom: none; }
-        .tm-row:hover {
-            background: rgba(7,120,182,0.06);
+        .team-module .kinetic-panel[data-active="true"] {
+            height: 300px;
+            background-color: #17103A;
+            border-color: rgba(67, 238, 147, 0.3);
         }
-        .tm-row.active {
-            background: rgba(67,238,147,0.05);
-            border-left-color: var(--accent);
+        .team-module .kinetic-panel[data-active="false"] {
+            height: 95px;
+            background-color: rgba(23, 16, 58, 0.4);
+            border-color: rgba(255, 255, 255, 0.05);
         }
-        .tm-thumb {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0d0a2e, #1a1341);
-            border: 1.5px solid rgba(255,255,255,0.08);
-            overflow: hidden;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.35);
-            position: relative;
-            transition: border-color 0.3s ease;
+        .team-module .kinetic-panel[data-active="true"] .panel-image-wrap {
+            width: 30%;
+            opacity: 1;
         }
-        .tm-row.active .tm-thumb {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(67,238,147,0.12);
+        .team-module .kinetic-panel[data-active="false"] .panel-image-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 9999px;
+            opacity: 0.6;
         }
-        .tm-thumb img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .team-module .marquee-line {
+            animation: teamMarquee 15s linear infinite;
         }
-        .tm-meta { flex: 1; min-width: 0; }
-        .tm-meta strong {
-            display: block;
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            transition: color 0.3s;
+        @keyframes teamMarquee {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
         }
-        .tm-row.active .tm-meta strong { color: #fff; }
-        .tm-meta span {
-            font-size: 0.68rem;
-            color: rgba(255,255,255,0.38);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 500;
+        .team-module .vertical-rail-indicator {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .tm-row.active .tm-meta span { color: var(--accent); opacity: 0.85; }
-        .tm-chevron {
-            width: 18px;
-            height: 18px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-        .tm-row.active .tm-chevron { opacity: 1; }
-
-        /* RIGHT: feature panel */
-        .team-feature {
-            position: relative;
-            overflow: hidden;
-            background: rgba(255,255,255,0.01);
-            display: flex;
-            align-items: flex-end;
-        }
-        /* Background photo fill */
-        .tf-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .tf-bg-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            opacity: 0;
-            transition: opacity 0.55s ease;
-            filter: brightness(0.55) saturate(0.9);
-        }
-        .tf-bg-img.visible { opacity: 1; }
-        /* Gradient overlay over photo */
-        .tf-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to right,
-                rgba(10,8,30,0.15) 0%,
-                rgba(10,8,30,0.0) 40%,
-                rgba(10,8,30,0.0) 60%,
-                rgba(10,8,30,0.55) 100%
-            ),
-            linear-gradient(
-                to top,
-                rgba(10,8,30,0.92) 0%,
-                rgba(10,8,30,0.4) 45%,
-                rgba(10,8,30,0.0) 100%
-            );
-            z-index: 1;
-        }
-        /* Initials placeholder when no photo */
-        .tf-initials {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 7rem;
-            font-weight: 900;
-            color: rgba(255,255,255,0.03);
-            letter-spacing: -0.04em;
-            z-index: 0;
+        .team-module .faded-text {
             user-select: none;
+            pointer-events: none;
         }
-
-        /* Content block bottom-left */
-        .tf-content {
-            position: relative;
-            z-index: 2;
-            padding: 40px 44px;
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 20px;
+        .team-module .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+            font-family: 'Material Symbols Outlined';
         }
-        .tf-text { flex: 1; }
-        .tf-role {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 8px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.45s 0.05s ease, transform 0.45s 0.05s ease;
+        /* Team module color overrides */
+        .team-module .tw-text-seesec-green {
+            color: #43ee93 !important;
         }
-        .tf-name {
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: #fff;
-            line-height: 1.05;
-            margin-bottom: 14px;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.45s 0.1s ease, transform 0.45s 0.1s ease;
+        .team-module .tw-bg-seesec-green {
+            background-color: #43ee93 !important;
         }
-        .tf-bio {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.65;
-            font-weight: 300;
-            max-width: 400px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.45s 0.15s ease, transform 0.45s 0.15s ease;
+        .team-module .tw-border-seesec-green {
+            border-color: #43ee93 !important;
         }
-        .tf-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 22px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.45s 0.2s ease, transform 0.45s 0.2s ease;
+        .team-module .tw-bg-background {
+            background-color: #110e35 !important;
         }
-        /* Animate in when .active */
-        .team-feature.tf-active .tf-role,
-        .team-feature.tf-active .tf-name,
-        .team-feature.tf-active .tf-bio,
-        .team-feature.tf-active .tf-actions { opacity: 1; transform: translateY(0); }
-
-        .tf-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 9px 20px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
+        .team-module .tw-text-on-surface {
+            color: #d4e4fa !important;
         }
-        .tf-btn-primary {
-            background: var(--accent);
-            color: var(--ink);
-            border: 1.5px solid var(--accent);
+        .team-module .tw-text-on-surface-variant {
+            color: #c8c5cf !important;
         }
-        .tf-btn-primary:hover {
-            background: transparent;
-            color: var(--accent);
+        .team-module .tw-bg-primary-container\/40 {
+            background-color: rgba(11, 9, 48, 0.4) !important;
         }
-        .tf-btn-ghost {
-            background: transparent;
-            color: rgba(255,255,255,0.55);
-            border: 1.5px solid rgba(255,255,255,0.15);
+        .team-module .tw-border-white\/5 {
+            border-color: rgba(255, 255, 255, 0.05) !important;
         }
-        .tf-btn-ghost:hover {
-            border-color: rgba(255,255,255,0.4);
-            color: #fff;
+        .team-module .tw-bg-white\/10 {
+            background-color: rgba(255, 255, 255, 0.1) !important;
         }
-
-        /* Responsive */
-        @media (max-width: 860px) {
-            .team-stitch {
-                grid-template-columns: 1fr;
-            }
-            .team-list {
-                border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-            }
-            .team-feature {
-                min-height: 360px;
-            }
-            .tf-content { padding: 28px 28px; }
+        .team-module .tw-bg-white\/5 {
+            background-color: rgba(255, 255, 255, 0.05) !important;
         }
-        @media (max-width: 560px) {
-            #team { padding: 70px 20px; }
-            .tf-name { font-size: 1.8rem; }
-            .tf-content { flex-direction: column; align-items: flex-start; gap: 14px; }
+        .team-module .tw-text-white\/40 {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+        .team-module .tw-text-white\/20 {
+            color: rgba(255, 255, 255, 0.2) !important;
         }
 
         /* ── CTA ── */
@@ -3615,7 +3568,9 @@
                 border-right: none;
             }
             .services-right {
-                padding: 20px 0 60px;
+                padding: 20px 0 40px;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
             }
             .svc-slider-wrap {
                 height: 180px;
@@ -3651,7 +3606,8 @@
                 font-size: clamp(1.3rem, 2.2vw, 2.2rem);
             }
             .svc-item {
-                padding: 20px;
+                padding: 16px;
+                min-height: 120px;
             }
             .deploy-grid {
                 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -3785,7 +3741,6 @@
 
             #about,
             #solutions,
-            #team,
             #cta,
             #testimonials,
             #metrics,
@@ -3802,17 +3757,18 @@
 
             .services-right {
                 padding: 16px 0 40px;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
             .svc-item {
-                padding: 18px;
-                grid-template-columns: 32px 1fr;
-                gap: 14px;
+                padding: 14px;
+                min-height: 100px;
             }
             .svc-body h3 {
-                font-size: 0.85rem;
+                font-size: 0.78rem;
             }
             .svc-body p {
-                font-size: 0.72rem;
+                font-size: 0.68rem;
             }
             .svc-left-text h2 {
                 font-size: clamp(1.2rem, 2.6vw, 1.8rem);
@@ -3852,10 +3808,6 @@
             }
             .testimonial-card {
                 padding: 24px 20px;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-inner {
@@ -3972,6 +3924,21 @@
                 font-size: 0.5rem;
                 padding: 4px 12px;
             }
+
+            /* Team module responsive */
+            .team-module .kinetic-panel[data-active="true"] {
+                height: 360px;
+            }
+            .team-module .kinetic-panel[data-active="false"] {
+                height: 85px;
+            }
+            .team-module .kinetic-panel[data-active="true"] .panel-image-wrap {
+                width: 40%;
+            }
+            .team-module .kinetic-panel[data-active="false"] .panel-image-wrap {
+                width: 48px;
+                height: 48px;
+            }
         }
 
         @media (max-width: 520px) {
@@ -4067,7 +4034,6 @@
 
             #about,
             #solutions,
-            #team,
             #cta,
             #testimonials,
             #metrics,
@@ -4148,25 +4114,29 @@
             }
             .services-right {
                 padding: 8px 0 32px;
-                gap: 12px;
+                gap: 10px;
+                grid-template-columns: 1fr 1fr;
             }
             .svc-item {
-                padding: 14px;
-                grid-template-columns: 24px 1fr;
-                gap: 10px;
+                padding: 12px;
+                min-height: 90px;
             }
             .svc-num {
-                font-size: 0.6rem;
+                font-size: 0.5rem;
             }
             .svc-body h3 {
-                font-size: 0.78rem;
+                font-size: 0.7rem;
             }
             .svc-body p {
-                font-size: 0.68rem;
+                font-size: 0.6rem;
             }
             .svc-tag {
-                font-size: 0.5rem;
+                font-size: 0.45rem;
                 padding: 1px 6px;
+                margin-top: 2px;
+            }
+            .read-more-link {
+                font-size: 0.55rem;
                 margin-top: 4px;
             }
 
@@ -4258,23 +4228,6 @@
             }
             .testimonial-card blockquote {
                 font-size: 0.8rem;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .team-info {
-                padding: 12px 14px;
-            }
-            .team-info h4 {
-                font-size: 0.8rem;
-            }
-            .team-info p {
-                font-size: 0.6rem;
-            }
-            .team-avatar {
-                font-size: 2rem;
             }
 
             #cta h2 {
@@ -4377,7 +4330,7 @@
                 align-items: flex-start;
             }
             .read-more-link {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
             }
 
             .deploy-grid {
@@ -4491,141 +4444,29 @@
                 width: 4px;
                 height: 4px;
             }
-        }
 
-        @media (max-width: 380px) {
-            .solutions-grid {
-                grid-template-columns: 1fr;
-                max-width: 280px;
-                margin: 0 auto;
+            /* Team module responsive mobile */
+            .team-module .kinetic-panel[data-active="true"] {
+                height: 420px;
             }
-            .sol-card {
-                height: 200px;
+            .team-module .kinetic-panel[data-active="false"] {
+                height: 75px;
             }
-            .team-grid {
-                grid-template-columns: 1fr;
-                max-width: 240px;
-                margin: 0 auto;
+            .team-module .kinetic-panel[data-active="true"] .panel-image-wrap {
+                width: 100%;
+                height: 120px;
+                border-radius: 12px;
             }
-            .metrics-grid {
-                grid-template-columns: 1fr;
-                max-width: 260px;
-                margin: 0 auto;
+            .team-module .kinetic-panel[data-active="false"] .panel-image-wrap {
+                width: 40px;
+                height: 40px;
             }
-            .about-card {
-                padding: 12px 12px 12px 42px;
+            .team-module .panel-inner {
+                flex-wrap: wrap;
+                gap: 12px;
             }
-            .about-card-num {
-                font-size: 0.85rem;
-                left: 12px;
-            }
-            .about-card-icon {
-                width: 28px;
-                height: 28px;
-            }
-            .about-card-text h4 {
-                font-size: 0.75rem;
-            }
-            .about-card-text p {
-                font-size: 0.68rem;
-            }
-            .client-logo-item {
-                min-width: 60px;
-                height: 34px;
-                padding: 2px 6px;
-            }
-            .client-logo-item img {
-                max-height: 22px;
-            }
-            .clients-track {
-                gap: 14px;
-            }
-            .hero-static-headline {
-                font-size: clamp(1rem, 6vw, 1.6rem);
-                white-space: nowrap;
-            }
-            .typewriter-text {
-                font-size: clamp(0.75rem, 5vw, 1.2rem);
-                min-width: 60px;
-                white-space: nowrap;
-            }
-            .hero-title-group {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .svc-left-text h2 {
-                font-size: clamp(0.9rem, 4.5vw, 1.2rem);
-            }
-            .svc-item {
-                padding: 12px;
-                grid-template-columns: 20px 1fr;
-                gap: 8px;
-            }
-            .svc-body h3 {
-                font-size: 0.7rem;
-            }
-            .svc-body p {
-                font-size: 0.6rem;
-            }
-            .read-more-link {
-                font-size: 0.6rem;
-                margin-top: 8px;
-            }
-
-            .workflow-item.left,
-            .workflow-item.right {
-                padding: 0 0 0 40px;
-            }
-            .workflow-item .connector {
-                left: 28px !important;
-                width: 10px;
-            }
-            .workflow-item .step-number {
-                left: 10px;
-                width: 24px;
-                height: 24px;
-                font-size: 0.45rem;
-            }
-            .workflow-container::before {
-                left: 10px;
-            }
-            .moving-dot {
-                left: 10px;
-                transform: translateX(0);
-                width: 8px;
-                height: 8px;
-            }
-            .moving-dot::after {
-                inset: -3px;
-            }
-            .moving-dot::before {
-                inset: -10px;
-            }
-            .workflow-item {
-                margin-bottom: 28px;
-                min-height: 120px;
-            }
-            .workflow-card {
-                padding: 14px 16px;
-                border-radius: 14px;
-            }
-            .workflow-card .card-title {
-                font-size: 0.8rem;
-            }
-            .workflow-card .card-desc {
-                font-size: 0.65rem;
-            }
-            .workflow-card .card-icon-wrap {
-                width: 28px;
-                height: 28px;
-            }
-            .workflow-item.right {
-                padding-left: 40px;
-            }
-            .workflow-item.left .connector,
-            .workflow-item.right .connector {
-                left: 28px !important;
-                right: auto !important;
+            .team-module .kinetic-panel {
+                padding: 12px 16px;
             }
         }
     </style>
@@ -4812,63 +4653,51 @@
             <div class="services-right">
                 <!-- Service Card 1 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">01</div>
-                    <div class="svc-body">
-                        <h3>AWS Managed Services</h3>
-                        <p>End-to-end AWS management with security-first architecture.</p>
-                        <span class="svc-tag">AWS Advanced Partner</span>
-                        <a href="service-detail.html?service=aws-managed" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">CLOUD OPERATIONS</div>
+                    <div class="svc-title">AWS Managed Services</div>
+                    <div class="svc-desc">End-to-end AWS management with security-first architecture.</div>
+                    <span class="svc-tag">AWS ADVANCED PARTNER</span>
+                    <a href="service-detail.html?service=aws-managed" class="read-more-link">Read More →</a>
                 </div>
                 <!-- Service Card 2 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">02</div>
-                    <div class="svc-body">
-                        <h3>Cloud Migration</h3>
-                        <p>Structured migration, minimal disruption.</p>
-                        <span class="svc-tag">Zero Downtime</span>
-                        <a href="service-detail.html?service=cloud-migration" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">CLOUD TRANSFORMATION</div>
+                    <div class="svc-title">Cloud Migration</div>
+                    <div class="svc-desc">Structured migration with minimal disruption.</div>
+                    <span class="svc-tag">ZERO DOWNTIME</span>
+                    <a href="service-detail.html?service=cloud-migration" class="read-more-link">Read More →</a>
                 </div>
                 <!-- Service Card 3 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">03</div>
-                    <div class="svc-body">
-                        <h3>Cloud Cost Optimization</h3>
-                        <p>Up to 70% cloud savings via FinOps.</p>
-                        <span class="svc-tag">Cost Intelligence</span>
-                        <a href="service-detail.html?service=cost-optimization" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">FINOPS &amp; OPTIMIZATION</div>
+                    <div class="svc-title">Cloud Cost Optimization</div>
+                    <div class="svc-desc">Up to 70% cloud savings through intelligent FinOps.</div>
+                    <span class="svc-tag">COST INTELLIGENCE</span>
+                    <a href="service-detail.html?service=cost-optimization" class="read-more-link">Read More →</a>
                 </div>
                 <!-- Service Card 4 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">04</div>
-                    <div class="svc-body">
-                        <h3>Cloud Security</h3>
-                        <p>Zero-trust, DPDP, SOC2 compliance.</p>
-                        <span class="svc-tag">99.9% Compliance</span>
-                        <a href="service-detail.html?service=cloud-security" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">SECURITY &amp; COMPLIANCE</div>
+                    <div class="svc-title">Cloud Security</div>
+                    <div class="svc-desc">Continuous security monitoring, governance, and protection.</div>
+                    <span class="svc-tag">SECURE BY DESIGN</span>
+                    <a href="service-detail.html?service=cloud-security" class="read-more-link">Read More →</a>
                 </div>
                 <!-- Service Card 5 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">05</div>
-                    <div class="svc-body">
-                        <h3>Data Analytics & AI</h3>
-                        <p>Real-time pipelines & decision intelligence.</p>
-                        <span class="svc-tag">Real-Time Insights</span>
-                        <a href="service-detail.html?service=data-analytics" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">DATA INTELLIGENCE</div>
+                    <div class="svc-title">Data &amp; AI</div>
+                    <div class="svc-desc">Data pipelines, analytics, dashboards, and business insights.</div>
+                    <span class="svc-tag">DATA DRIVEN</span>
+                    <a href="service-detail.html?service=data-analytics" class="read-more-link">Read More →</a>
                 </div>
                 <!-- Service Card 6 -->
                 <div class="svc-item reveal">
-                    <div class="svc-num">06</div>
-                    <div class="svc-body">
-                        <h3>Generative AI Solutions</h3>
-                        <p>Custom LLMs, RAG, GenAI consulting.</p>
-                        <span class="svc-tag">AI Lifecycle</span>
-                        <a href="service-detail.html?service=genai" class="read-more-link">Read More →</a>
-                    </div>
+                    <div class="svc-category">ENTERPRISE AI</div>
+                    <div class="svc-title">Generative AI</div>
+                    <div class="svc-desc">Custom LLMs, RAG and AI automation.</div>
+                    <span class="svc-tag">FULL AI LIFECYCLE</span>
+                    <a href="service-detail.html?service=genai" class="read-more-link">Read More →</a>
                 </div>
             </div>
         </div>
@@ -5349,99 +5178,209 @@
         </div>
     </section>
 
-    <!-- ===== TEAM ===== -->
-    <section id="team">
-        <div class="team-head reveal">
-            <p class="section-label" style="justify-content:center;">Our Team</p>
-            <h2>The Experts Behind SEESEC</h2>
-        </div>
-
-        <div class="team-stitch">
-            <!-- LEFT: clickable list -->
-            <div class="team-list" id="teamList">
-
-                <div class="tm-row active" data-index="0">
-                    <div class="tm-thumb">
-                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=220%2C220&ssl=1" alt="Dinesh Singh" loading="lazy">
-                        DS
-                    </div>
-                    <div class="tm-meta">
-                        <strong>Dinesh Singh</strong>
-                        <span>Founder &amp; CEO</span>
-                    </div>
-                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    <!-- ============================================================
+         TEAM SECTION (REPLACED WITH NEW MODULE)
+         ============================================================ -->
+    <div id="team" class="team-module">
+        <!-- Section 1: Hero Area -->
+        <header class="tw-relative tw-pt-24 tw-pb-16 tw-px-container-padding-mobile md:tw-px-container-padding-desktop tw-max-w-[1440px] tw-mx-auto tw-overflow-hidden">
+            <div class="tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2 tw-text-[20vw] tw-font-extrabold tw-text-white tw-opacity-[0.02] faded-text tw-leading-none tw-uppercase tw-italic tw-tracking-tighter">
+                MOTION
+            </div>
+            <div class="tw-relative tw-z-10 tw-max-w-4xl">
+                <div class="tw-flex tw-items-center tw-gap-3 tw-mb-6">
+                    <span class="tw-w-8 tw-h-px tw-bg-[#43ee93]"></span>
+                    <span class="tw-font-label-sm tw-text-label-sm tw-text-[#43ee93] tw-uppercase tw-tracking-[0.2em]">Our People</span>
                 </div>
+                <h1 class="tw-font-display-lg-mobile md:tw-font-display-lg tw-text-display-lg-mobile md:tw-text-display-lg tw-text-white tw-mb-8 tw-leading-[1.1]">
+                    The Minds Moving <br class="tw-hidden md:tw-block" />SEESEC Forward
+                </h1>
+                <p class="tw-font-body-lg tw-text-body-lg tw-text-[#c8c5cf] tw-max-w-2xl">
+                    Expertise isn't a destination; it's a constant evolution. Our leadership bridges the gap between emerging AI potential and enterprise-grade reliability, crafting cloud-native futures.
+                </p>
+            </div>
+            <div class="tw-mt-20 tw-w-full tw-h-px tw-bg-white/5 tw-relative tw-overflow-hidden">
+                <div class="marquee-line tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-1/4 tw-bg-[#43ee93]/50 tw-shadow-[0_0_15px_rgba(67,238,147,0.4)]"></div>
+            </div>
+        </header>
 
-                <div class="tm-row" data-index="1">
-                    <div class="tm-thumb">
-                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=220%2C220&ssl=1" alt="Eshita Singh" loading="lazy">
-                        ES
-                    </div>
-                    <div class="tm-meta">
-                        <strong>Eshita Singh</strong>
-                        <span>Director &amp; CPO</span>
-                    </div>
-                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        <!-- Section 2: Kinetic Leadership Accordion -->
+        <section class="tw-py-section-gap tw-px-container-padding-mobile md:tw-px-container-padding-desktop tw-max-w-[1440px] tw-mx-auto">
+            <div class="tw-bg-[#0b0930]/40 tw-rounded-xl md:tw-rounded-lg tw-border tw-border-white/5 tw-p-4 md:tw-p-12 grain-texture tw-relative tw-overflow-hidden">
+                <!-- Background Faded Text -->
+                <div class="tw-absolute -tw-right-20 tw-top-1/2 -tw-translate-y-1/2 tw-text-[12vw] tw-font-extrabold tw-text-white tw-opacity-[0.01] faded-text tw-leading-none tw-uppercase tw-vertical-rl tw-rotate-180">
+                    LEADERSHIP
                 </div>
-
-                <div class="tm-row" data-index="2">
-                    <div class="tm-thumb">SA</div>
-                    <div class="tm-meta">
-                        <strong>Shrey Agarwal</strong>
-                        <span>Co-Founder &amp; CTO</span>
+                <div class="tw-flex tw-gap-8 tw-relative tw-z-10">
+                    <!-- Vertical Rail -->
+                    <div class="tw-hidden md:tw-block tw-w-px tw-bg-white/10 tw-relative">
+                        <div class="vertical-rail-indicator tw-absolute tw-w-1 tw-bg-[#43ee93] tw-h-24 -tw-left-[1.5px] tw-shadow-[0_0_10px_rgba(67,238,147,0.3)]" id="rail-indicator"></div>
                     </div>
-                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                </div>
-
-                <div class="tm-row" data-index="3">
-                    <div class="tm-thumb">
-                        <img src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=220%2C220&ssl=1" alt="Shubh Sharma" loading="lazy">
-                        SS
-                    </div>
-                    <div class="tm-meta">
-                        <strong>Shubh Sharma</strong>
-                        <span>Chief Marketing Officer</span>
-                    </div>
-                    <svg class="tm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                </div>
-
-            </div><!-- /team-list -->
-
-            <!-- RIGHT: feature panel -->
-            <div class="team-feature tf-active" id="teamFeature">
-
-                <!-- Background photos (stacked, fade in/out) -->
-                <div class="tf-bg">
-                    <div class="tf-initials" id="tfInitials">DS</div>
-                    <img class="tf-bg-img visible" id="tfImg0"
-                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.41_0a794b39.jpg?resize=600%2C600&ssl=1"
-                        alt="Dinesh Singh">
-                    <img class="tf-bg-img" id="tfImg1"
-                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-24-at-12.44.56_c9f38da3-e1753346688438.jpg?resize=600%2C600&ssl=1"
-                        alt="Eshita Singh">
-                    <img class="tf-bg-img" id="tfImg2" src="" alt="Shrey Agarwal">
-                    <img class="tf-bg-img" id="tfImg3"
-                        src="https://i0.wp.com/seesec.io/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-31-at-14.32.11_b88a5ebc.jpg?resize=600%2C600&ssl=1"
-                        alt="Shubh Sharma">
-                </div>
-                <div class="tf-overlay"></div>
-
-                <!-- Content -->
-                <div class="tf-content">
-                    <div class="tf-text">
-                        <div class="tf-role" id="tfRole">Founder &amp; CEO</div>
-                        <div class="tf-name" id="tfName">Dinesh Singh</div>
-                        <div class="tf-bio" id="tfBio">Visionary leader driving SEESEC's mission to simplify, optimize, and secure enterprise technology. Over a decade of experience in cloud transformation and business strategy.</div>
-                        <div class="tf-actions">
-                            <a href="https://seesec.io/about" class="tf-btn tf-btn-primary">View Profile →</a>
-                            <a href="#cta" class="tf-btn tf-btn-ghost">Get in Touch</a>
+                    <!-- Accordion Stack -->
+                    <div class="tw-flex-1 tw-flex tw-flex-col tw-gap-3" id="kinetic-stack">
+                        <!-- Profile 1 -->
+                        <div class="kinetic-panel tw-group tw-border tw-px-6 tw-flex tw-items-center tw-cursor-pointer tw-rounded-lg tw-relative" data-active="true" data-id="0" onclick="activatePanel(0)">
+                            <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-8 tw-h-full">
+                                <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors">01</span>
+                                <div class="panel-image-wrap tw-transition-all tw-duration-700 tw-overflow-hidden tw-rounded-full md:tw-rounded-lg tw-shrink-0 tw-h-[80%] tw-my-auto">
+                                    <img alt="Dinesh Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top tw-transition-transform tw-duration-1000 group-data-[active=true]:tw-scale-110" src="team/dinesh singh.png" />
+                                </div>
+                                <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
+                                    <div class="tw-flex tw-flex-col tw-gap-1">
+                                        <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Dinesh Singh</h3>
+                                        <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">FOUNDER & CEO</span>
+                                        <!-- Expanded Content Only -->
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-4 tw-gap-4 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
+                                            <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">
+                                                Leading SEESEC's vision to redefine digital infrastructure through human-centric AI and cloud engineering. 20+ years of pioneering tech strategy.
+                                            </p>
+                                            <div class="tw-flex tw-gap-2">
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Strategic Vision</span>
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Global Scale</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-mt-4 md:tw-mt-0">
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-items-center tw-gap-2 group/btn">
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-white">View Profile</span>
+                                            <span class="material-symbols-outlined tw-text-[#43ee93] group-hover/btn:tw-translate-x-1 tw-transition-transform">arrow_forward</span>
+                                        </div>
+                                        <span class="material-symbols-outlined tw-text-white/20 group-data-[active=true]:tw-hidden">arrow_outward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile 2 -->
+                        <div class="kinetic-panel tw-group tw-border tw-px-6 tw-flex tw-items-center tw-cursor-pointer tw-rounded-lg tw-relative" data-active="false" data-id="1" onclick="activatePanel(1)">
+                            <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-8 tw-h-full">
+                                <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors">02</span>
+                                <div class="panel-image-wrap tw-transition-all tw-duration-700 tw-overflow-hidden tw-rounded-full md:tw-rounded-lg tw-shrink-0 tw-h-[80%] tw-my-auto">
+                                    <img alt="Eshita Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top tw-transition-transform tw-duration-1000 group-data-[active=true]:tw-scale-110" src="team/eshita singh.png" />
+                                </div>
+                                <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
+                                    <div class="tw-flex tw-flex-col tw-gap-1">
+                                        <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Eshita Singh</h3>
+                                        <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">DIRECTOR & CPO</span>
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-4 tw-gap-4 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
+                                            <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">
+                                                Orchestrating product ecosystems that balance technical complexity with intuitive user experiences. Focused on sustainable digital growth.
+                                            </p>
+                                            <div class="tw-flex tw-gap-2">
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Product Strategy</span>
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">UX Design</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-mt-4 md:tw-mt-0">
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-items-center tw-gap-2 group/btn">
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-white">View Profile</span>
+                                            <span class="material-symbols-outlined tw-text-[#43ee93] group-hover/btn:tw-translate-x-1 tw-transition-transform">arrow_forward</span>
+                                        </div>
+                                        <span class="material-symbols-outlined tw-text-white/20 group-data-[active=true]:tw-hidden">arrow_outward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile 3 -->
+                        <div class="kinetic-panel tw-group tw-border tw-px-6 tw-flex tw-items-center tw-cursor-pointer tw-rounded-lg tw-relative" data-active="false" data-id="2" onclick="activatePanel(2)">
+                            <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-8 tw-h-full">
+                                <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors">03</span>
+                                <div class="panel-image-wrap tw-transition-all tw-duration-700 tw-overflow-hidden tw-rounded-full md:tw-rounded-lg tw-shrink-0 tw-h-[80%] tw-my-auto">
+                                    <img alt="Shrey Agarwal" class="tw-w-full tw-h-full tw-object-cover tw-object-top tw-transition-transform tw-duration-1000 group-data-[active=true]:tw-scale-110" src="team/shrey agarwal.png" />
+                                </div>
+                                <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
+                                    <div class="tw-flex tw-flex-col tw-gap-1">
+                                        <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Shrey Agarwal</h3>
+                                        <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">CO-FOUNDER & CTO</span>
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-4 tw-gap-4 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
+                                            <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">
+                                                The architect behind our high-availability cloud solutions. Expert in distributed systems and next-gen cybersecurity frameworks.
+                                            </p>
+                                            <div class="tw-flex tw-gap-2">
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">System Architecture</span>
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Security</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-mt-4 md:tw-mt-0">
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-items-center tw-gap-2 group/btn">
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-white">View Profile</span>
+                                            <span class="material-symbols-outlined tw-text-[#43ee93] group-hover/btn:tw-translate-x-1 tw-transition-transform">arrow_forward</span>
+                                        </div>
+                                        <span class="material-symbols-outlined tw-text-white/20 group-data-[active=true]:tw-hidden">arrow_outward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile 4 -->
+                        <div class="kinetic-panel tw-group tw-border tw-px-6 tw-flex tw-items-center tw-cursor-pointer tw-rounded-lg tw-relative" data-active="false" data-id="3" onclick="activatePanel(3)">
+                            <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-8 tw-h-full">
+                                <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors">04</span>
+                                <div class="panel-image-wrap tw-transition-all tw-duration-700 tw-overflow-hidden tw-rounded-full md:tw-rounded-lg tw-shrink-0 tw-h-[80%] tw-my-auto">
+                                    <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top tw-transition-transform tw-duration-1000 group-data-[active=true]:tw-scale-110" src="team/shubh sharma.png" />
+                                </div>
+                                <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
+                                    <div class="tw-flex tw-flex-col tw-gap-1">
+                                        <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Shubh Sharma</h3>
+                                        <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">CHIEF MARKETING OFFICER</span>
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-4 tw-gap-4 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
+                                            <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">
+                                                Crafting the narrative of the future. Shubh translates complex technical innovations into compelling brand stories that resonate globally.
+                                            </p>
+                                            <div class="tw-flex tw-gap-2">
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Brand Narrative</span>
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Growth</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-mt-4 md:tw-mt-0">
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-items-center tw-gap-2 group/btn">
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-white">View Profile</span>
+                                            <span class="material-symbols-outlined tw-text-[#43ee93] group-hover/btn:tw-translate-x-1 tw-transition-transform">arrow_forward</span>
+                                        </div>
+                                        <span class="material-symbols-outlined tw-text-white/20 group-data-[active=true]:tw-hidden">arrow_outward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile 5 -->
+                        <div class="kinetic-panel tw-group tw-border tw-px-6 tw-flex tw-items-center tw-cursor-pointer tw-rounded-lg tw-relative" data-active="false" data-id="4" onclick="activatePanel(4)">
+                            <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-8 tw-h-full">
+                                <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors">05</span>
+                                <div class="panel-image-wrap tw-transition-all tw-duration-700 tw-overflow-hidden tw-rounded-full md:tw-rounded-lg tw-shrink-0 tw-h-[80%] tw-my-auto">
+                                    <img alt="Karan Chhabra" class="tw-w-full tw-h-full tw-object-cover tw-object-top tw-transition-transform tw-duration-1000 group-data-[active=true]:tw-scale-110" src="team/karan chhabra.png" />
+                                </div>
+                                <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
+                                    <div class="tw-flex tw-flex-col tw-gap-1">
+                                        <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Karan Chhabra</h3>
+                                        <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">HEAD OF AI RESEARCH</span>
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-4 tw-gap-4 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
+                                            <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">
+                                                Pushing the boundaries of generative AI and machine learning.Karan leads our R&D lab in developing ethical, scalable AI solutions.
+                                            </p>
+                                            <div class="tw-flex tw-gap-2">
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">AI Research</span>
+                                                <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Innovation</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-mt-4 md:tw-mt-0">
+                                        <div class="tw-hidden group-data-[active=true]:tw-flex tw-items-center tw-gap-2 group/btn">
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-white">View Profile</span>
+                                            <span class="material-symbols-outlined tw-text-[#43ee93] group-hover/btn:tw-translate-x-1 tw-transition-transform">arrow_forward</span>
+                                        </div>
+                                        <span class="material-symbols-outlined tw-text-white/20 group-data-[active=true]:tw-hidden">arrow_outward</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-            </div><!-- /team-feature -->
-        </div><!-- /team-stitch -->
-    </section>
+        
+    <!-- ===== END TEAM MODULE ===== -->
 
     <!-- ===== CTA ===== -->
     <section id="cta">
@@ -5939,44 +5878,45 @@
         })();
 
         // ── LIFECYCLE WHEEL ──
-        (function () {
+        (function() {
             const nodes = document.querySelectorAll('.lc-node');
             if (!nodes.length) return;
 
-            const arc    = document.getElementById('lcArc');
-            const dot    = document.getElementById('lcDot');
-            const sub    = document.getElementById('lcCenterSub');
-            const fill   = document.getElementById('lcProgressFill');
+            const arc = document.getElementById('lcArc');
+            const dot = document.getElementById('lcDot');
+            const sub = document.getElementById('lcCenterSub');
+            const fill = document.getElementById('lcProgressFill');
             const pTitle = document.getElementById('lcInfoTitle');
-            const pSub   = document.getElementById('lcInfoSub');
-            const pDesc  = document.getElementById('lcInfoDesc');
-            const pStep  = document.getElementById('lcInfoStep');
-            const pCta   = document.getElementById('lcInfoCta');
-            const navDots= document.querySelectorAll('.lc-dot-nav');
+            const pSub = document.getElementById('lcInfoSub');
+            const pDesc = document.getElementById('lcInfoDesc');
+            const pStep = document.getElementById('lcInfoStep');
+            const pCta = document.getElementById('lcInfoCta');
+            const navDots = document.querySelectorAll('.lc-dot-nav');
 
             const CIRCUMFERENCE = 2 * Math.PI * 195; // ≈1225
 
             const data = [
-                { title:'Chat-A-Lot',       sub:'AI 24/7 Chatbot',       desc:'AI-powered chatbot that handles queries and qualifies leads around the clock.',          url:'solution-detail.html?name=Chat-A-Lot',       angle:   0 },
-                { title:'Talk Track',        sub:'Compliance & Voice',    desc:'Call center compliance monitoring and voice analytics for quality assurance.',           url:'solution-detail.html?name=Talk-Track',        angle:  90 },
-                { title:'Interactive Email', sub:'Automated Responses',   desc:'Automated email response with live forms and real-time data integration.',              url:'solution-detail.html?name=Interactive-Email', angle: 180 },
-                { title:'SMS Sense',         sub:'Analytics & ROI',       desc:'SMS data analytics: delivery patterns and engagement ROI for campaigns.',               url:'solution-detail.html?name=SMS-Sense',         angle: 270 },
+                { title: 'Chat-A-Lot', sub: 'AI 24/7 Chatbot', desc: 'AI-powered chatbot that handles queries and qualifies leads around the clock.', url: 'solution-detail.html?name=Chat-A-Lot', angle: 0 },
+                { title: 'Talk Track', sub: 'Compliance & Voice', desc: 'Call center compliance monitoring and voice analytics for quality assurance.', url: 'solution-detail.html?name=Talk-Track', angle: 90 },
+                { title: 'Interactive Email', sub: 'Automated Responses', desc: 'Automated email response with live forms and real-time data integration.', url: 'solution-detail.html?name=Interactive-Email', angle: 180 },
+                { title: 'SMS Sense', sub: 'Analytics & ROI', desc: 'SMS data analytics: delivery patterns and engagement ROI for campaigns.', url: 'solution-detail.html?name=SMS-Sense', angle: 270 },
             ];
 
-            let current  = 0;
-            let timer    = null;
-            let progTimer= null;
-            let dotRaf   = null;
+            let current = 0;
+            let timer = null;
+            let progTimer = null;
+            let dotRaf = null;
             let dotAngle = 0;
             let targetAngle = 0;
-            let isHovered= false;
+            let isHovered = false;
 
             function updateDotPos(angleDeg) {
-                const r   = 195;
-                const cx  = 250, cy = 250;
+                const r = 195;
+                const cx = 250,
+                    cy = 250;
                 const rad = (angleDeg - 90) * Math.PI / 180;
-                const x   = cx + r * Math.cos(rad);
-                const y   = cy + r * Math.sin(rad);
+                const x = cx + r * Math.cos(rad);
+                const y = cy + r * Math.sin(rad);
                 dot.setAttribute('cx', x);
                 dot.setAttribute('cy', y);
             }
@@ -5997,10 +5937,11 @@
                     if (!start) start = ts;
                     const progress = Math.min((ts - start) / 800, 1);
                     const ease = 1 - Math.pow(1 - progress, 3);
-                    const cur  = from + diff * ease;
+                    const cur = from + diff * ease;
                     updateDotPos(cur);
                     if (progress < 1) dotRaf = requestAnimationFrame(step);
-                    else { dotAngle = to % 360; dotRaf = null; }
+                    else { dotAngle = to % 360;
+                        dotRaf = null; }
                 }
                 dotRaf = requestAnimationFrame(step);
             }
@@ -6038,11 +5979,11 @@
 
                 // Panel
                 pTitle.textContent = d.title;
-                pSub.textContent   = d.sub;
-                pDesc.textContent  = d.desc;
-                pStep.textContent  = '0' + (index + 1) + ' / 0' + data.length;
-                pCta.href          = d.url;
-                pCta.textContent   = 'Explore Solution →';
+                pSub.textContent = d.sub;
+                pDesc.textContent = d.desc;
+                pStep.textContent = '0' + (index + 1) + ' / 0' + data.length;
+                pCta.href = d.url;
+                pCta.textContent = 'Explore Solution →';
 
                 startProgress();
             }
@@ -6052,7 +5993,8 @@
                 el.addEventListener('click', () => {
                     isHovered = true;
                     goTo(i);
-                    setTimeout(() => { isHovered = false; startProgress(); }, 4000);
+                    setTimeout(() => { isHovered = false;
+                        startProgress(); }, 4000);
                 });
             });
 
@@ -6183,91 +6125,59 @@
             }
         })();
 
-        // ── TEAM STITCH PANEL ──
-        (function () {
-            const rows    = document.querySelectorAll('.tm-row');
-            const feature = document.getElementById('teamFeature');
-            const imgs    = document.querySelectorAll('.tf-bg-img');
-            const initEl  = document.getElementById('tfInitials');
-            const tfRole  = document.getElementById('tfRole');
-            const tfName  = document.getElementById('tfName');
-            const tfBio   = document.getElementById('tfBio');
-            if (!rows.length || !feature) return;
+        // ── TEAM KINETIC ACCORDION ──
+        (function() {
+            let currentIndex = 0;
+            let isPaused = false;
+            const totalPanels = 5;
+            const autoInterval = 5000;
+            const stack = document.querySelector('.team-module #kinetic-stack');
+            const rail = document.querySelector('.team-module #rail-indicator');
 
-            const members = [
-                {
-                    name: 'Dinesh Singh',
-                    role: 'Founder &amp; CEO',
-                    bio:  'Visionary leader driving SEESEC\'s mission to simplify, optimize, and secure enterprise technology. Over a decade of experience in cloud transformation and business strategy.',
-                    initials: 'DS',
-                    hasPhoto: true
-                },
-                {
-                    name: 'Eshita Singh',
-                    role: 'Director &amp; CPO',
-                    bio:  'Product strategist with a passion for building customer-centric platforms. Leads SEESEC\'s product vision across cloud, communication automation, and AI solutions.',
-                    initials: 'ES',
-                    hasPhoto: true
-                },
-                {
-                    name: 'Shrey Agarwal',
-                    role: 'Co-Founder &amp; CTO',
-                    bio:  'Architect of SEESEC\'s technology stack. Brings deep expertise in cloud infrastructure, GenAI, and scalable system design to every product decision.',
-                    initials: 'SA',
-                    hasPhoto: false
-                },
-                {
-                    name: 'Shubh Sharma',
-                    role: 'Chief Marketing Officer',
-                    bio:  'Crafting the narrative that shapes how the market sees SEESEC. Translates complex technical innovation into compelling brand stories that resonate with enterprise audiences.',
-                    initials: 'SS',
-                    hasPhoto: true
-                }
-            ];
+            if (!stack) return;
 
-            let current = 0;
+            window.activatePanel = function(index) {
+                currentIndex = index;
+                const panels = document.querySelectorAll('.team-module .kinetic-panel');
 
-            function activate(index) {
-                rows.forEach(r => r.classList.remove('active'));
-                rows[index].classList.add('active');
-
-                feature.classList.remove('tf-active');
-
-                imgs.forEach((img, i) => {
-                    img.classList.toggle('visible', i === index);
+                panels.forEach((panel, i) => {
+                    const isActive = i === index;
+                    panel.setAttribute('data-active', isActive);
                 });
 
-                initEl.textContent = members[index].initials;
-                initEl.style.opacity = members[index].hasPhoto ? '0' : '1';
-
-                setTimeout(() => {
-                    tfRole.innerHTML = members[index].role;
-                    tfName.textContent = members[index].name;
-                    tfBio.textContent  = members[index].bio;
-                    feature.classList.add('tf-active');
-                }, 80);
-
-                current = index;
+                // Update Rail Indicator Position
+                const activePanel = panels[index];
+                if (rail && activePanel) {
+                    const offsetTop = activePanel.offsetTop - stack.offsetTop;
+                    rail.style.top = `${offsetTop}px`;
+                    rail.style.height = `${activePanel.offsetHeight}px`;
+                }
             }
 
-            rows.forEach((row, i) => {
-                row.addEventListener('click', () => activate(i));
-                row.addEventListener('mouseenter', () => activate(i));
+            function rotate() {
+                if (!isPaused) {
+                    currentIndex = (currentIndex + 1) % totalPanels;
+                    activatePanel(currentIndex);
+                }
+            }
+
+            let interval = setInterval(rotate, autoInterval);
+
+            stack.addEventListener('mouseenter', () => {
+                isPaused = true;
             });
 
-            let autoTimer = setInterval(() => {
-                activate((current + 1) % members.length);
-            }, 4000);
+            stack.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
 
-            const stitch = document.querySelector('.team-stitch');
-            if (stitch) {
-                stitch.addEventListener('mouseenter', () => clearInterval(autoTimer));
-                stitch.addEventListener('mouseleave', () => {
-                    autoTimer = setInterval(() => activate((current + 1) % members.length), 4000);
-                });
-            }
+            window.addEventListener('load', () => {
+                activatePanel(0);
+            });
 
-            activate(0);
+            window.addEventListener('resize', () => {
+                activatePanel(currentIndex);
+            });
         })();
     </script>
 </body>
