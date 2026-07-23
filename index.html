@@ -5,36 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>SEESEC — Cloud Excellence, GenAI & New-Age Communication</title>
 
-    <!-- ===== SECURITY HEADERS (meta-deliverable subset) =====
-         The following can be enforced via <meta>. X-Frame-Options,
-         X-Content-Type-Options and Strict-Transport-Security CANNOT be set
-         via <meta> per spec — they only take effect as real HTTP response
-         headers. See the accompanying headers config (_headers /
-         vercel.json / nginx.conf) for the complete header set that must be
-         applied at the server/CDN level for this page to be fully hardened. -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' https://cdn.tailwindcss.com https://cdn.lordicon.com https://unpkg.com 'wasm-unsafe-eval'
-            'sha256-o0bvs7cMH69A2jqaC75cPWuAFfeZCgQRUvc9GT0+w8U='
-            'sha256-wFk++xDq595KbK7TIARiYltjOnbRmHiFyEFXEFYKo4Y='
-            'sha256-hmuwnFZtbQ9ZnSwoBXHKkdKNZF2bFVlEsovqDfwJOIA='
-            'sha256-JERcZI8BRBrOTqu+7Cje5aEH3FCedmkfP3dhvcKJME8=';
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        font-src 'self' https://fonts.gstatic.com;
-        img-src 'self' data: https://lh3.googleusercontent.com https://seesec.io;
-        connect-src 'self' https://cdn.lordicon.com https://prod.spline.design https://unpkg.com;
-        worker-src 'self' blob:;
-        child-src 'self' blob:;
-        frame-src 'none';
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        frame-ancestors 'self';
-        upgrade-insecure-requests;
-    " />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()" />
-
     <!-- ===== THEME INIT (runs before paint to avoid flash) ===== -->
     <script>
         (function () {
@@ -4982,7 +4952,7 @@
             <li><a href="#content-creation">Content AI</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#cta">Contact</a></li>
-            <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
+            <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
         </ul>
 
         <a href="#cta" class="nav-cta">
@@ -5012,7 +4982,7 @@
         <a href="#content-creation" class="mobile-link">Content AI</a>
         <a href="#about" class="mobile-link">About Us</a>
         <a href="#cta" class="mobile-link">Contact</a>
-        <a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer" class="mobile-link">Blogs</a>
+        <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
         <a href="#cta" class="mobile-cta">Get a Quote →</a>
 
         <div class="mobile-theme-row" role="group" aria-label="Color theme">
@@ -5075,7 +5045,7 @@
                 <p class="section-label">About SEESEC</p>
                 <h2>Making Tech <em>Simple, Smart & Secure</em></h2>
                 <p>SEESEC is a technology solutions company focused on helping organizations simplify, optimize, and secure their technology ecosystems. As an AWS Advanced Tier Services Partner, we deliver solutions that bring efficiency, intelligence, and reliability to modern environments.</p>
-                <a href="https://seesec.io/about-us" target="_blank" rel="noopener noreferrer" class="about-link">
+                <a href="https://seesec.io/about-us" target="_blank" class="about-link">
                     Discover our story <span class="link-arrow">→</span>
                 </a>
             </div>
@@ -5913,7 +5883,7 @@
             <h2>Ready to Make Tech <em>Simple, Smart & Secure?</em></h2>
             <p class="cta-sub">Contact us today to learn how SEESEC can help your organization harness the full potential of cloud, data, and AI.</p>
             <div class="cta-actions" style="justify-content:center;">
-                <a href="https://seesec.io/contact/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <a href="https://seesec.io/contact/" target="_blank" class="btn btn-primary">
                     <span class="btn-bg"></span>
                     <span class="blobs"><div></div><div></div><div></div></span>
                     <span>📅</span>
@@ -5944,7 +5914,7 @@
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
-                <ul><li><a href="#about">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li><li><a href="#cta">Contact</a></li></ul>
+                <ul><li><a href="#about">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="#cta">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">
