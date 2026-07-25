@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>SEESEC — Corporate Infrastructure Network Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght=0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#02060d;
+  --surface:#060d1a;
+  --surface2:#0a1528;
+  --border:rgba(0, 229, 192, 0.1);
+  --accent:#00e5c0;
+  --accent2:#0099ff;
+  --text:#e2eaf8;
+  --muted:#6b7fa0;
+  --muted2:#4a5a78;
+}
+html,body{
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:0 24px 80px;
+  position:relative;
+}
+
+.page::before{
+  content:'';position:fixed;inset:0;
+  background-image: 
+    linear-gradient(rgba(0, 229, 192, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 192, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+  pointer-events:none;z-index:0;
+}
+
+nav{
+  width:100%;max-width:1200px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 0 0;
+  position:relative;z-index:10;
+}
+.logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;font-size:1.3rem;letter-spacing:.04em;
+  color:var(--text);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-mark{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:800;color:#03080f;letter-spacing:.02em;
+}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.85rem;
+  letter-spacing:.02em;transition:color .2s;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a.active{color:var(--accent);}
+
+.hero{
+  text-align:center;
+  margin:72px 0 48px;
+  position:relative;z-index:2;
+  max-width:680px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(0,229,192,.25);
+  border-radius:100px;padding:5px 14px 5px 10px;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;
+  background:rgba(0,229,192,.05);
+}
+.hero-tag::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);animation:tagPulse 2s infinite;
+}
+@keyframes tagPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.2rem,5vw,3.2rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-.03em;
+  margin-bottom:20px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--accent2) 0%,var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero p{
+  font-size:1.05rem;color:var(--muted);
+  line-height:1.75;font-weight:300;
+}
+
+.main-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:28px;
+  width:100%;max-width:1200px;
+  position:relative;z-index:2;
+}
+
+/* INDIA MAP PANEL */
+.map-panel{
+  position:relative;
+  border-radius:24px;
+  border:1px solid rgba(255, 255, 255, 0.05);
+  background: #040a14;
+  overflow:hidden;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.map-panel:hover {
+  border-color: rgba(0, 229, 192, 0.2);
+  box-shadow: 0 30px 60px -10px rgba(0, 229, 192, 0.05), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.map-container{
+  width:100%;
+  height:100%;
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 620px;
+}
+
+#indiaMapCanvas{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio: 1000 / 780;
+  background: transparent;
+  cursor: crosshair;
+}
+
+.map-overlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 153, 255, 0.05) 0%, transparent 70%);
+}
+.map-badge{
+  position:absolute;
+  bottom:24px;
+  left:24px;
+  background:rgba(4, 10, 20, 0.9);
+  border:1px solid rgba(255,255,255,0.08);
+  border-left:3px solid var(--accent);
+  border-radius:14px;
+  padding:16px 20px;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  z-index:12;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  min-width: 280px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.map-badge:hover {
+  border-color: rgba(0, 229, 192, 0.4);
+  transform: translateY(-2px);
+}
+.map-badge .gb-label{font-size:.68rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+.map-badge .gb-val{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);}
+.map-badge .gb-sub{font-size:.72rem;color:var(--muted);margin-top:4px;}
+
+.map-hint{
+  position:absolute;
+  bottom:24px;
+  right:24px;
+  background:rgba(4, 10, 20, 0.6);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  padding:6px 14px;
+  border-radius:40px;
+  font-size:.68rem;
+  color:var(--muted);
+  letter-spacing:.04em;
+  pointer-events:none;
+  z-index:12;
+  font-family: monospace;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* CONTACT PANEL */
+.contact-panel{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.info-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;padding:22px;
+  display:flex;gap:16px;align-items:flex-start;
+  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.info-card:hover, .info-card.active-card{
+  border-color:rgba(0,229,192,.35);
+  background:rgba(0,229,192,.02);
+}
+.ic-icon{
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  background:rgba(0,229,192,.04);
+  border:1px solid rgba(0,229,192,.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.ic-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;}
+.ic-label{font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+.ic-val{font-size:.95rem;color:var(--text);font-weight:600;line-height:1.4;}
+.ic-meta{font-size:.75rem;color:var(--muted);margin-top:3px;}
+
+.hours-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:24px;
+}
+.hc-title{
+  font-size:.7rem;color:var(--accent2);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:16px;
+}
+.hc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.hc-day{font-size:.88rem;color:var(--text);}
+.hc-time{font-size:.88rem;color:var(--accent);font-weight:600;}
+.hc-closed{font-size:.88rem;color:var(--muted2);}
+
+.bottom-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,0.05);
+  width:100%;max-width:1200px;
+  border:1px solid rgba(255,255,255,0.05);border-radius:20px;
+  overflow:hidden;margin-top:32px;
+  position:relative;z-index:2;
+}
+.bs-item{
+  background:var(--surface);padding:28px 24px;
+  text-align:center;
+}
+.bs-val{
+  font-family:'Syne',sans-serif;font-size:2rem;
+  font-weight:800;letter-spacing:-.04em;margin-bottom:4px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.bs-label{font-size:.75rem;color:var(--muted);letter-spacing:.04em;}
+
+@media(max-width:900px){
+  .main-grid{grid-template-columns:1fr;}
+  .map-panel{min-height:450px;order:-1;}
+  .map-container{min-height:450px;}
+  .bottom-strip{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:520px){
+  .hero h1{font-size:2rem;}
+  .bottom-strip{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="logo" href="#">
+      <div class="logo-mark">SE</div>
+      SEESEC
+    </a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#" class="active">Infrastructure</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">System Architecture Topology</div>
+    <h1>Regional Operations &<br><em>Infrastructure</em> Nodes</h1>
+    <p>Real-time node cluster sync between our Signature Tower Head Office and core Regional Operation structures across North-Western territories.</p>
+  </div>
+
+  <div class="main-grid">
+    <div class="map-panel" id="mapPanel">
+      <div class="map-container">
+        <canvas id="indiaMapCanvas" width="1000" height="780"></canvas>
+        <div class="map-overlay"></div>
+        <div class="map-badge" id="mapBadgeBox" onclick="openGoogleMaps(activeNodeId)">
+          <div class="gb-label" id="badgeLabel">📍 Location Map View</div>
+          <div class="gb-val" id="badgeTitle">Gurugram (HO)</div>
+          <div class="gb-sub" id="badgeSub">Signature Tower 3, Sec-15<br>28.461° N, 77.052° E</div>
+        </div>
+        <div class="map-hint">
+          ⚡ Click focused nodes or info badge to launch Google Maps
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-panel">
+      <div class="info-card active-card" id="card-ho" onclick="handleCardClick('ho')">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="ic-body">
+          <div class="ic-label">Head Office</div>
+          <div class="ic-val">Signature Tower 3</div>
+          <div class="ic-meta">Sec-15, Gurugram · Click to view Google Maps</div>
+        </div>
+      </div>
+
+      <div class="info-card" id="card-ro1" onclick="handleCardClick('ro1')">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="ic-body">
+          <div class="ic-label">Regional Office 1</div>
+          <div class="ic-val">Shivbari Road</div>
+          <div class="ic-meta">Bikaner, Rajasthan · Click to view Google Maps</div>
+        </div>
+      </div>
+
+      <div class="info-card" id="card-ro2" onclick="handleCardClick('ro2')">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="ic-body">
+          <div class="ic-label">Regional Office 2</div>
+          <div class="ic-val">Sanskar Chand Road</div>
+          <div class="ic-meta">Jaipur, Rajasthan · Click to view Google Maps</div>
+        </div>
+      </div>
+
+      <div class="hours-card">
+        <div class="hc-title">⏱️ SYNCHRONIZATION RUNTIME</div>
+        <div class="hc-row">
+          <span class="hc-day">Mainframe Pipeline</span>
+          <span class="hc-time">24 / 7 Live Monitoring</span>
+        </div>
+        <div class="hc-row" style="margin-bottom:0">
+          <span class="hc-day">Regional Gateways</span>
+          <span class="hc-time" style="color:var(--accent2)">Active Sync</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-strip">
+    <div class="bs-item">
+      <div class="bs-val">3 ms</div>
+      <div class="bs-label">HO to Jaipur Core Edge Latency</div>
+    </div>
+    <div class="bs-item">
+      <div class="bs-val">4.8 ms</div>
+      <div class="bs-label">HO to Bikaner Node Latency</div>
+    </div>
+    <div class="bs-item">
+      <div class="bs-val">99.99%</div>
+      <div class="bs-label">Infrastructure Backbone Uptime</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===================================================================
+// HIGH-FIDELITY REGIONAL PROJECTOR MAP ENGINE
+// ===================================================================
+
+const canvas = document.getElementById('indiaMapCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = 1000;
+canvas.height = 780;
+
+const MIN_LAT = 6.5;   
+const MAX_LAT = 36.5;   
+const MIN_LON = 67.5;   
+const MAX_LON = 98.0;   
+
+let activeNodeId = 'ho';
+
+function latLonToPixel(lat, lon, w = 1000, h = 780) {
+  const x = ((lon - MIN_LON) / (MAX_LON - MIN_LON)) * w;
+  const y = ((MAX_LAT - lat) / (MAX_LAT - MIN_LAT)) * h;
+  return { x, y };
+}
+
+const fineIndiaOutline = [
+  {lat: 34.7, lon: 73.8}, {lat: 35.6, lon: 74.0}, {lat: 36.3, lon: 74.6}, 
+  {lat: 35.8, lon: 76.2}, {lat: 35.1, lon: 77.3}, {lat: 34.6, lon: 78.8}, 
+  {lat: 33.5, lon: 79.1}, {lat: 32.5, lon: 78.4}, {lat: 31.8, lon: 78.9},
+  {lat: 31.0, lon: 78.1}, {lat: 30.1, lon: 79.6}, {lat: 29.6, lon: 80.3}, 
+  {lat: 28.5, lon: 80.4}, {lat: 28.2, lon: 81.5}, {lat: 27.4, lon: 83.2}, 
+  {lat: 27.2, lon: 84.9}, {lat: 26.4, lon: 86.0}, {lat: 26.3, lon: 87.3}, 
+  {lat: 26.9, lon: 88.1}, {lat: 28.1, lon: 88.6}, {lat: 27.1, lon: 88.9}, 
+  {lat: 26.7, lon: 89.9}, {lat: 27.4, lon: 91.6}, {lat: 27.9, lon: 91.9}, 
+  {lat: 28.6, lon: 94.1}, {lat: 28.1, lon: 96.3}, {lat: 28.2, lon: 97.4}, 
+  {lat: 27.0, lon: 97.1}, {lat: 25.8, lon: 95.3}, {lat: 24.3, lon: 94.6}, 
+  {lat: 22.3, lon: 93.3}, {lat: 21.8, lon: 92.7}, {lat: 23.1, lon: 91.4}, 
+  {lat: 24.4, lon: 92.3}, {lat: 25.3, lon: 92.4}, {lat: 25.1, lon: 89.9}, 
+  {lat: 26.1, lon: 89.7}, {lat: 24.9, lon: 88.9}, {lat: 22.3, lon: 88.9}, 
+  {lat: 21.5, lon: 88.1}, {lat: 21.4, lon: 86.9}, {lat: 20.1, lon: 86.4}, 
+  {lat: 19.2, lon: 84.8}, {lat: 17.4, lon: 83.3}, {lat: 15.9, lon: 81.1}, 
+  {lat: 13.9, lon: 80.3}, {lat: 13.0, lon: 80.4}, {lat: 11.4, lon: 79.7}, 
+  {lat: 10.2, lon: 79.9}, {lat: 9.1, lon: 79.1}, {lat: 8.0, lon: 77.4}, 
+  {lat: 9.4, lon: 76.2}, {lat: 11.1, lon: 75.7}, {lat: 12.6, lon: 74.7}, 
+  {lat: 14.4, lon: 74.2}, {lat: 15.6, lon: 73.6}, {lat: 17.1, lon: 73.2}, 
+  {lat: 19.1, lon: 72.7}, {lat: 20.2, lon: 72.7}, {lat: 21.1, lon: 72.4}, 
+  {lat: 20.7, lon: 70.9}, {lat: 21.6, lon: 69.1}, {lat: 22.9, lon: 69.9}, 
+  {lat: 23.1, lon: 68.4}, {lat: 23.9, lon: 68.1}, {lat: 24.3, lon: 70.4}, 
+  {lat: 24.6, lon: 71.4}, {lat: 25.6, lon: 70.1}, {lat: 27.1, lon: 69.4}, 
+  {lat: 28.6, lon: 70.2}, {lat: 30.1, lon: 71.9}, {lat: 31.1, lon: 74.1}, 
+  {lat: 32.6, lon: 74.7}, {lat: 33.6, lon: 73.9}
+];
+
+const nodes = {
+  ho: {
+    id: "ho",
+    name: "Head Office — Gurugram",
+    sub: "Signature Tower 3, Sec-15, Gurugram",
+    lat: 28.461, lon: 77.052,
+    googleMaps: "https://www.google.com/maps/search/?api=1&query=Signature+Tower+3+Gurugram"
+  },
+  ro1: {
+    id: "ro1",
+    name: "Regional Office 1 — Bikaner",
+    sub: "Shivbari Road, Bikaner",
+    lat: 28.002, lon: 73.360,
+    googleMaps: "https://www.google.com/maps/search/?api=1&query=Shivbari+Road+Bikaner"
+  },
+  ro2: {
+    id: "ro2",
+    name: "Regional Office 2 — Jaipur",
+    sub: "Sanskar Chand Road, Jaipur",
+    lat: 26.924, lon: 75.803,
+    googleMaps: "https://www.google.com/maps/search/?api=1&query=Sanskar+Chand+Road+Jaipur"
+  }
+};
+
+function drawBackgroundGrid(w, h) {
+  ctx.strokeStyle = 'rgba(0, 229, 192, 0.015)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < w; i += 35) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
+  }
+  for (let j = 0; j < h; j += 35) {
+    ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke();
+  }
+}
+
+function drawSystemMap() {
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  
+  ctx.fillStyle = '#030914';
+  ctx.fillRect(0, 0, w, h);
+
+  drawBackgroundGrid(w, h);
+
+  ctx.beginPath();
+  fineIndiaOutline.forEach((pt, idx) => {
+    const { x, y } = latLonToPixel(pt.lat, pt.lon, w, h);
+    if(idx === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  
+  const landGrad = ctx.createLinearGradient(0, 0, w, h);
+  landGrad.addColorStop(0, '#061429');
+  landGrad.addColorStop(0.4, '#0a1f38');
+  landGrad.addColorStop(0.7, '#0a213f');
+  landGrad.addColorStop(1, '#040d1a');
+  ctx.fillStyle = landGrad;
+  ctx.fill();
+
+  ctx.strokeStyle = 'rgba(0, 229, 192, 0.45)';
+  ctx.lineWidth = 3.5;
+  ctx.stroke();
+
+  ctx.strokeStyle = 'rgba(0, 153, 255, 0.2)';
+  ctx.lineWidth = 8;
+  ctx.stroke();
+
+  const hoPos = latLonToPixel(nodes.ho.lat, nodes.ho.lon, w, h);
+  const ro1Pos = latLonToPixel(nodes.ro1.lat, nodes.ro1.lon, w, h);
+  const ro2Pos = latLonToPixel(nodes.ro2.lat, nodes.ro2.lon, w, h);
+
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6, 4]);
+
+  ctx.beginPath(); ctx.moveTo(hoPos.x, hoPos.y); ctx.lineTo(ro1Pos.x, ro1Pos.y);
+  ctx.strokeStyle = activeNodeId === 'ro1' ? '#00e5c0' : 'rgba(0, 153, 255, 0.35)';
+  ctx.stroke();
+
+  ctx.beginPath(); ctx.moveTo(hoPos.x, hoPos.y); ctx.lineTo(ro2Pos.x, ro2Pos.y);
+  ctx.strokeStyle = activeNodeId === 'ro2' ? '#00e5c0' : 'rgba(0, 153, 255, 0.35)';
+  ctx.stroke();
+
+  ctx.setLineDash([]);
+
+  Object.keys(nodes).forEach(key => {
+    const node = nodes[key];
+    const pos = latLonToPixel(node.lat, node.lon, w, h);
+    const isActive = activeNodeId === key;
+    const radius = node.id === 'ho' ? 11 : 9;
+
+    if (isActive) {
+      ctx.save();
+      ctx.shadowBlur = 35;
+      ctx.shadowColor = node.id === 'ho' ? '#00e5c0' : '#0099ff';
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, radius + 8, 0, Math.PI * 2);
+      ctx.strokeStyle = node.id === 'ho' ? 'rgba(0, 229, 192, 0.6)' : 'rgba(0, 153, 255, 0.5)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = node.id === 'ho' ? '#00e5c0' : '#0099ff';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#02060d';
+    ctx.fill();
+
+    ctx.font = "bold 13px 'Syne', sans-serif";
+    ctx.fillStyle = isActive ? '#ffffff' : '#a0b0d0';
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = 'rgba(0,0,0,0.8)';
+    ctx.fillText(node.id === 'ho' ? "⚡ HEAD OFFICE" : `NODE ${node.id.toUpperCase()}`, pos.x + 18, pos.y - 6);
+
+    ctx.font = "500 10.5px 'DM Sans', sans-serif";
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = isActive ? '#00e5c0' : '#536685';
+    ctx.fillText(node.id === 'ho' ? "Gurugram HQ" : (node.id === 'ro1' ? "Bikaner" : "Jaipur"), pos.x + 18, pos.y + 10);
+  });
+}
+
+function animateSystemLoop() {
+  drawSystemMap();
+  
+  const activeNode = nodes[activeNodeId];
+  const pos = latLonToPixel(activeNode.lat, activeNode.lon);
+  
+  const pulse = 14 + (Date.now() % 1200) / 45;
+  ctx.beginPath();
+  ctx.arc(pos.x, pos.y, pulse, 0, Math.PI * 2);
+  ctx.strokeStyle = activeNode.id === 'ho' 
+    ? `rgba(0, 229, 192, ${0.6 - (pulse/50)})` 
+    : `rgba(0, 153, 255, ${0.5 - (pulse/50)})`;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  requestAnimationFrame(animateSystemLoop);
+}
+
+// Open Google Maps feature function
+function openGoogleMaps(id) {
+  const node = nodes[id];
+  if (node && node.googleMaps) {
+    window.open(node.googleMaps, '_blank');
+  }
+}
+
+// Click detection on canvas
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const clickY = e.clientY - rect.top;
+
+  // Check distance to each node
+  for (const key in nodes) {
+    const node = nodes[key];
+    const pos = latLonToPixel(node.lat, node.lon);
+    const dist = Math.hypot(clickX - pos.x, clickY - pos.y);
+    
+    if (dist < 25) {  // Click radius
+      focusNode(key);
+      openGoogleMaps(key);
+      return;
+    }
+  }
+});
+
+function handleCardClick(id) {
+  focusNode(id);
+  openGoogleMaps(id);
+}
+
+function focusNode(id) {
+  activeNodeId = id;
+  
+  document.querySelectorAll('.info-card').forEach(card => card.classList.remove('active-card'));
+  document.getElementById(`card-${id}`).classList.add('active-card');
+
+  const node = nodes[id];
+  document.getElementById('badgeTitle').innerText = node.name.split(' — ')[1] + (node.id === 'ho' ? ' (HO)' : '');
+  document.getElementById('badgeSub').innerHTML = `${node.sub}<br>${node.lat.toFixed(3)}° N, ${node.lon.toFixed(3)}° E`;
+}
+
+// Initialize
+focusNode('ho');
+animateSystemLoop();
+</script>
+</body>
+</html>

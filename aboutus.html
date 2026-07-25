@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SEESEC | About — Trusted Partner in Digital Transformation</title>
+  
+  <!-- Fonts: Poppins as used in index page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* SEESEC Index Page Color Scheme */
+    :root {
+      --ink: #1a1341;
+      --paper: #f5f4ef;
+      --sky: #e8f0ff;
+      --blue: #0778b6;
+      --blue-mid: #0778b6;
+      --blue-pale: #dde8ff;
+      --cyan: #1af6dd;
+      --accent: #43ee93;
+      --mid: #8a9ab5;
+      --line: rgba(255,255,255,0.08);
+      --glass-bg: rgba(255,255,255,0.03);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--ink);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.5;
+      cursor: auto;
+    }
+
+    /* Animation keyframes */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 18px rgba(67, 238, 147, 0.15); }
+      50% { box-shadow: 0 0 35px rgba(67, 238, 147, 0.3); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes orbFloat1 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-40px,60px) scale(1.08); }
+    }
+    @keyframes orbFloat2 {
+      0%,100% { transform: translate(0,0); }
+      50% { transform: translate(30px,-40px); }
+    }
+
+    .animate-blink { animation: blink 0.8s step-end infinite; }
+    .animate-pulse-slow { animation: pulse 2.5s ease-in-out infinite; }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+    .animate-glow { animation: glow 3.5s ease-in-out infinite; }
+    .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0d0a2e; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
+
+    /* Spline viewer */
+    spline-viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+      background: transparent;
+    }
+    spline-viewer:active { cursor: grabbing; }
+
+    /* Card hover */
+    .card-hover {
+      transition: all 0.3s ease;
+      background: var(--glass-bg);
+      border: 1px solid var(--line);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(67,238,147,0.3);
+      background: rgba(67,238,147,.03);
+    }
+
+    /* Navigation (matching index) */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      transition: background .4s, backdrop-filter .4s, padding .3s;
+    }
+    nav.scrolled {
+      background: rgba(5,6,13,.88);
+      backdrop-filter: blur(18px);
+      padding: 14px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800; font-size: 1.35rem;
+      letter-spacing: -.02em; color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); text-decoration: none;
+      transition: color .2s;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: transparent; border: 1px solid rgba(255,255,255,.25);
+      color: #fff; padding: 9px 22px; border-radius: 50px;
+      font-size: .82rem; font-weight: 500; letter-spacing: .05em;
+      text-decoration: none; text-transform: uppercase;
+      transition: background .2s, border-color .2s;
+    }
+    .nav-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+
+    .section-label {
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+    /* Hero background orbs */
+    .hero-bg-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(7,120,182,.22) 0%, transparent 70%); top: -100px; right: 5%; animation: orbFloat1 12s ease-in-out infinite; }
+    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(26,246,221,.15) 0%, transparent 70%); bottom: 10%; left: 10%; animation: orbFloat2 16s ease-in-out infinite; }
+    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(67,238,147,.1) 0%, transparent 70%); top: 40%; left: 40%; animation: orbFloat2 10s ease-in-out infinite reverse; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--blue); color: #fff;
+      padding: 14px 30px; border-radius: 50px;
+      font-size: .88rem; font-weight: 500; letter-spacing: .04em;
+      text-decoration: none; text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.6); padding: 14px 30px; border-radius: 50px;
+      font-size: .88rem; font-weight: 500; text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: #fff; background: rgba(67,238,147,.05); }
+
+    /* Progress bar */
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent)); z-index: 900; width: 0%; transition: width .1s; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+  </style>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            'seesec-green': '#43ee93',
+            'seesec-dark': '#1a1341',
+            'seesec-teal': '#1af6dd',
+            'seesec-blue': '#0778b6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation (matching index) -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">SEE<span>SEC</span></a>
+    <ul class="nav-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Solutions</a></li><li><a href="#">Insights</a></li></ul>
+    <a href="#contact" class="nav-cta">Get in touch →</a>
+  </nav>
+
+  <div x-data="seesecApp()" class="relative overflow-x-hidden">
+    
+    <!-- ==================== HERO SECTION with Index Color Scheme ==================== -->
+    <section class="relative min-h-screen pt-36 lg:pt-40 pb-20 overflow-hidden">
+      <!-- Background orbs -->
+      <div class="hero-bg-orb orb-1"></div>
+      <div class="hero-bg-orb orb-2"></div>
+      <div class="hero-bg-orb orb-3"></div>
+      
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-14 lg:gap-12">
+          
+          <!-- Left Column -->
+          <div class="flex-1 lg:max-w-xl animate-fade-up">
+            <div class="section-label">AWS Advanced Partner</div>
+            
+            <!-- Typewriter Heading -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.15] mb-6" style="color: #fff;">
+              <span x-text="displayedText"></span>
+              <span x-show="!typewriterDone" class="inline-block w-[3px] h-[1.1em] bg-[#43ee93] align-middle ml-1 animate-blink"></span>
+            </h1>
+            
+            <p class="text-lg leading-relaxed mb-8 max-w-lg" style="color: rgba(255,255,255,.55); font-weight: 300;">
+              We help organizations unlock sustainable growth through cloud excellence, AI-driven insights, and cutting-edge communication tools — making technology simple, smart, and secure.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 mb-10">
+              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">70% cloud cost reduction</span></div>
+              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">99.9% enterprise compliance</span></div>
+              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">24/7 intelligent support</span></div>
+            </div>
+            
+            <div class="flex flex-wrap gap-4">
+              <a href="#services-core" class="btn-primary">Explore Solutions</a>
+              <a href="#contact" class="btn-outline">Talk to Experts</a>
+            </div>
+          </div>
+          
+          <!-- Right Column: 3D Model with glass effect matching index -->
+          <div class="flex-1 relative">
+            <div class="absolute -top-4 -right-2 z-10 bg-black/40 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-md border border-[#43ee93]/40 text-xs font-semibold text-white flex items-center gap-2 animate-float">
+              <svg class="w-3.5 h-3.5 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+              </svg>
+              <span>Interactive 3D — Drag to rotate</span>
+            </div>
+            
+            <div class="relative w-full h-[380px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden bg-black/20 backdrop-blur-sm shadow-xl border border-white/10 animate-glow">
+              <div class="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#43ee93]/50 rounded-tl-lg z-10 pointer-events-none"></div>
+              <div class="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#43ee93]/50 rounded-br-lg z-10 pointer-events-none"></div>
+              <spline-viewer 
+                url="https://prod.spline.design/CYYWjR739gNgcAK9/scene.splinecode"
+                class="w-full h-full"
+                style="background: transparent;"
+              ></spline-viewer>
+            </div>
+            
+            <p class="text-center text-xs mt-4 flex items-center justify-center gap-2" style="color: rgba(255,255,255,.4);">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+              Click, drag, and rotate to explore
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== STATS SECTION ==================== -->
+    <section class="py-14 border-t border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">70%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Cloud cost reduction</div></div>
+          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">80%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Faster response</div></div>
+          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">99.9%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Compliance rate</div></div>
+          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">24/7</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Expert support</div></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== TRUSTED PARTNER SECTION ==================== -->
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="section-label" style="justify-content: center;">Why clients trust us</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-5" style="color: #fff;">We become your <span class="text-[#43ee93]">strategic partner</span>, not just a vendor</h2>
+          <p class="text-lg" style="color: rgba(255,255,255,.5);">Long-term relationships built on transparency, measurable outcomes, and shared success.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="card-hover rounded-2xl p-7 text-center">
+            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-white">Enterprise-grade security</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">Zero-trust architecture, SOC2 alignment, and end-to-end encryption baked into every solution.</p>
+          </div>
+          <div class="card-hover rounded-2xl p-7 text-center">
+            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-white">Dedicated success teams</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">Solution architects and customer success managers committed to your outcomes from day one.</p>
+          </div>
+          <div class="card-hover rounded-2xl p-7 text-center">
+            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-white">Outcome-based roadmaps</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">Technology investments aligned directly with your business KPIs and growth targets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== CORE PRINCIPLES ==================== -->
+    <section class="py-20 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our core principles</h2>
+          <p class="text-lg" style="color: rgba(255,255,255,.5);">Guided by values that put your success first — simplicity, security, and intelligent innovation.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="card-hover rounded-xl p-8">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-2 text-white">Simplicity</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">Technology should simplify operations, not introduce complexity. We reduce friction relentlessly.</p>
+          </div>
+          <div class="card-hover rounded-xl p-8">
+            <div class="text-4xl mb-4">🌍</div>
+            <h3 class="text-xl font-bold mb-2 text-white">Social Good & Ethics</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">Commitment to ethical AI, sustainable infrastructure, and empowering communities globally.</p>
+          </div>
+          <div class="card-hover rounded-xl p-8">
+            <div class="text-4xl mb-4">🤝</div>
+            <h3 class="text-xl font-bold mb-2 text-white">Trusted Partner</h3>
+            <p class="text-sm" style="color: rgba(255,255,255,.5);">We become integral partners in your success, driving sustained growth with transparency.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== TEAM SECTION ==================== -->
+    <section class="py-20 bg-black/20 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Meet the experts</h2>
+          <p class="text-lg" style="color: rgba(255,255,255,.5);">Seasoned professionals from Microsoft, Amazon, and Google — now united at SEESEC.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105 duration-200">👩‍💼</div><h4 class="font-bold text-lg text-white">Eshita Singh</h4><p class="text-[#43ee93] text-sm">Director & CPO</p></div>
+          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👨‍💼</div><h4 class="font-bold text-lg text-white">Dinesh Singh</h4><p class="text-[#43ee93] text-sm">Founder & CEO</p></div>
+          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👨‍🔧</div><h4 class="font-bold text-lg text-white">Shrey Agarwal</h4><p class="text-[#43ee93] text-sm">Co-Founder & CTO</p></div>
+          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👩‍🎨</div><h4 class="font-bold text-lg text-white">Shubh Sharma</h4><p class="text-[#43ee93] text-sm">Chief Marketing Officer</p></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== SERVICE SELECTOR ==================== -->
+    <section class="py-16 border-t border-white/5" id="services-core">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h3 class="text-2xl font-bold text-white mb-2">What sort of service?</h3>
+        <p class="mb-8 text-sm" style="color: rgba(255,255,255,.5);">Select all that apply — our experts will tailor a response</p>
+        
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+          <template x-for="service in servicesList" :key="service">
+            <button @click="toggleService(service)" class="px-5 py-3 rounded-full text-base font-medium flex items-center gap-2 transition-all duration-150 cursor-pointer font-poppins" :class="selectedServices.includes(service) ? 'bg-[#43ee93] text-[#1a1341] shadow-md' : 'bg-white/5 text-white border border-white/20 hover:border-[#43ee93]/40'">
+              <span x-text="service"></span>
+              <span x-show="selectedServices.includes(service)" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100">
+                <svg class="w-4 h-4 stroke-[3px] text-[#1a1341]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </span>
+            </button>
+          </template>
+        </div>
+        
+        <div class="min-h-[80px]">
+          <div x-show="selectedServices.length === 0" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-50" class="italic text-sm" style="color: rgba(255,255,255,.4);">
+            Please click to select services above.
+          </div>
+          <div x-show="selectedServices.length > 0" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95 -translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" class="bg-[#43ee93]/10 backdrop-blur-sm rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 border border-[#43ee93]/30">
+            <span class="text-sm font-medium text-white">Ready to inquire about: <span class="text-[#43ee93] font-semibold" x-text="selectedServices.join(', ')"></span></span>
+            <a href="#contact" class="flex items-center gap-1.5 text-[#43ee93] font-bold uppercase text-xs tracking-wider group hover:text-white transition">
+              Let's Go
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="py-20" id="contact">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-[#0d0a2e] to-[#1a1341] rounded-2xl p-10 md:p-14 text-center border border-white/10">
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Ready to transform your business?</h3>
+          <p class="mb-7 max-w-lg mx-auto" style="color: rgba(255,255,255,.5);">Let's discuss how SEESEC can help you achieve cloud excellence, AI-driven growth, and intelligent automation.</p>
+          <a href="#" class="inline-block bg-[#0778b6] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[#43ee93] hover:text-[#1a1341] transition shadow-lg">
+            Talk to an expert →
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="border-t border-white/10 py-12 text-center">
+      <p class="text-sm" style="color: rgba(255,255,255,.6);">
+        <span class="font-bold text-[#43ee93]">SEESEC</span> — Cloud · AI · Data · Communication Automation
+      </p>
+      <p class="text-xs mt-2" style="color: rgba(255,255,255,.4);">© 2025 SEESEC. Make Tech Simple, Smart & Secure.</p>
+      <div class="flex justify-center gap-6 mt-5 text-xs text-[#43ee93]">
+        <a href="#" class="hover:text-white transition">Privacy</a>
+        <a href="#" class="hover:text-white transition">Imprint</a>
+        <a href="#" class="hover:text-white transition">AWS Advanced Partner</a>
+      </div>
+    </footer>
+    
+    <!-- ==================== FLOATING ASSISTANT ==================== -->
+    <div class="fixed bottom-6 right-6 z-30">
+      <button @click="alert('💬 SEESEC AI assistant — ready to help with cloud excellence, GenAI, data analytics, and communication automation.')" class="bg-[#0778b6] text-white px-5 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105 hover:bg-[#43ee93] hover:text-[#1a1341] cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+        SeesecAI Assistant
+        <span class="w-2 h-2 bg-[#43ee93] rounded-full animate-pulse-slow"></span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll & progress bar
+    const navEl = document.getElementById('nav'); 
+    const pb = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => { 
+      const scrolled = window.scrollY; 
+      if (scrolled > 60) navEl.classList.add('scrolled'); 
+      else navEl.classList.remove('scrolled'); 
+      const total = document.body.scrollHeight - window.innerHeight; 
+      pb.style.width = (scrolled / total * 100) + '%'; 
+    });
+    
+    // Alpine.js App
+    function seesecApp() {
+      return {
+        isMobileMenuOpen: false,
+        servicesList: ["Cloud Excellence", "Data Analytics", "GenAI Services", "Communication Suite"],
+        selectedServices: [],
+        fullText: "Trusted partner in\ndigital transformation.",
+        displayedText: "",
+        typewriterDone: false,
+        typewriterSpeed: 40,
+        
+        init() {
+          setTimeout(() => {
+            let i = 0;
+            const interval = setInterval(() => {
+              if (i < this.fullText.length) {
+                i++;
+                this.displayedText = this.fullText.slice(0, i);
+              } else {
+                this.typewriterDone = true;
+                clearInterval(interval);
+              }
+            }, this.typewriterSpeed);
+          }, 200);
+        },
+        
+        toggleService(service) {
+          if (this.selectedServices.includes(service)) {
+            this.selectedServices = this.selectedServices.filter(s => s !== service);
+          } else {
+            this.selectedServices.push(service);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
