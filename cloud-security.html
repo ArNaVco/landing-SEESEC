@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Cloud Security — SEESEC</title>
+    <!-- Theme detection script (same as other pages) -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('seesec-theme') || 'purple';
+                if (stored !== 'purple' && stored !== 'dark' && stored !== 'midnight') stored = 'purple';
+                var effective = (stored === 'dark') ? 'midnight' : stored;
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', stored);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'purple');
+            }
+        })();
+    </script>
     <script src="https://cdn.lordicon.com/lordicon.js">
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,7 +26,7 @@
 
     <style>
         /* ============================================================
-           RESET & BASE
+           RESET & BASE – using purple/midnight theming
            ============================================================ */
         * {
             margin: 0;
@@ -21,6 +35,7 @@
         }
 
         :root {
+            /* Default: purple theme */
             --ink: #1a1341;
             --paper: #f5f4ef;
             --blue: #0778b6;
@@ -28,41 +43,75 @@
             --accent: #43ee93;
             --cyan: #1af6dd;
             --font-sans: 'Poppins', -apple-system, sans-serif;
-
-            /* Dark mode defaults */
             --bg-primary: #1a1341;
             --bg-secondary: #110e35;
             --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%, #0d0a2e 0%, #1a1341 70%);
-            --bg-nav-scrolled: rgba(5, 6, 13, .88);
+            --bg-nav-scrolled: rgba(8, 5, 28, .6);
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, .6);
+            --text-secondary: rgba(255, 255, 255, .62);
             --text-muted: rgba(255, 255, 255, .4);
             --text-faint: rgba(255, 255, 255, .22);
-            --surface-card: rgba(255, 255, 255, .02);
-            --surface-card-strong: rgba(255, 255, 255, .06);
+            --surface-card: rgba(26, 19, 65, .55);
+            --surface-card-strong: rgba(26, 19, 65, .7);
             --border-soft: rgba(255, 255, 255, .06);
-            --border-card: rgba(255, 255, 255, .12);
+            --border-card: rgba(139, 92, 246, .18);
             --line: rgba(255, 255, 255, 0.08);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35);
-            --shadow-card-hover: 0 16px 56px rgba(0, 0, 0, 0.5);
+            --shadow-card: 0 2px 20px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(139, 92, 246, .1);
+            --shadow-card-hover: 0 16px 56px rgba(0, 0, 0, .5), inset 0 0 0 1px rgba(139, 92, 246, .15);
+            /* component overrides */
+            --hero-glyph-bg: linear-gradient(145deg, rgba(7, 120, 182, .28) 0%, rgba(26, 246, 221, .10) 100%);
+            --hero-glyph-border: rgba(67, 238, 147, .22);
+            --visual-card-bg: linear-gradient(145deg, rgba(7, 120, 182, .18) 0%, rgba(26, 246, 221, .06) 100%);
+            --visual-card-border: rgba(67, 238, 147, .18);
+            --cap-icon-bg: linear-gradient(135deg, rgba(7, 120, 182, .15), rgba(67, 238, 147, .15));
+            --cap-icon-border: rgba(67, 238, 147, .2);
+            --cta-bg: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%);
+            --cta-overlay: radial-gradient(circle at 20% 80%, rgba(7, 120, 182, .10), transparent 60%), radial-gradient(circle at 80% 20%, rgba(67, 238, 147, .06), transparent 50%);
+            --orb-1-bg: radial-gradient(circle, rgba(7, 120, 182, .22) 0%, transparent 70%);
+            --orb-2-bg: radial-gradient(circle, rgba(26, 246, 221, .15) 0%, transparent 70%);
+            --orb-3-bg: radial-gradient(circle, rgba(67, 238, 147, .10) 0%, transparent 70%);
+            --btn-text: #ffffff;
+            --btn-border: rgba(255, 255, 255, 0.25);
+            --btn-hover-text: var(--ink);
+            --btn-fill: var(--accent);
+            --clients-bg: var(--ink);
         }
 
-        [data-theme="light"] {
-            --bg-primary: #f5f4ef;
-            --bg-secondary: #ffffff;
-            --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%, #ffffff 0%, #f5f4ef 70%);
-            --bg-nav-scrolled: rgba(245, 244, 239, .92);
-            --text-primary: #1a1341;
-            --text-secondary: rgba(26, 19, 65, .7);
-            --text-muted: rgba(26, 19, 65, .55);
-            --text-faint: rgba(26, 19, 65, .35);
-            --surface-card: rgba(26, 19, 65, .03);
-            --surface-card-strong: rgba(26, 19, 65, .08);
-            --border-soft: rgba(26, 19, 65, .08);
-            --border-card: rgba(26, 19, 65, .14);
-            --line: rgba(26, 19, 65, 0.1);
-            --shadow-card: 0 8px 32px rgba(26, 19, 65, 0.08);
-            --shadow-card-hover: 0 16px 56px rgba(26, 19, 65, 0.14);
+        /* ===== Midnight Theme – Pure Black ===== */
+        [data-theme="midnight"] {
+            --bg-primary: #000000;
+            --bg-secondary: #000000;
+            --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%, #000000 0%, #000000 70%);
+            --bg-nav-scrolled: rgba(0, 0, 0, .92);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, .55);
+            --text-muted: rgba(255, 255, 255, .35);
+            --text-faint: rgba(255, 255, 255, .18);
+            --surface-card: rgba(255, 255, 255, .025);
+            --surface-card-strong: rgba(255, 255, 255, .05);
+            --border-soft: rgba(255, 255, 255, .04);
+            --border-card: rgba(255, 255, 255, .07);
+            --line: rgba(255, 255, 255, .04);
+            --shadow-card: 0 2px 20px rgba(0, 0, 0, .7), inset 0 0 0 1px rgba(255, 255, 255, .04);
+            --shadow-card-hover: 0 16px 56px rgba(0, 0, 0, .8), inset 0 0 0 1px rgba(255, 255, 255, .06);
+            --hero-glyph-bg: rgba(255, 255, 255, .02);
+            --hero-glyph-border: rgba(255, 255, 255, .08);
+            --visual-card-bg: rgba(255, 255, 255, .02);
+            --visual-card-border: rgba(255, 255, 255, .06);
+            --cap-icon-bg: rgba(255, 255, 255, .04);
+            --cap-icon-border: rgba(255, 255, 255, .06);
+            --cta-bg: #000000;
+            --cta-overlay: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, .02), transparent 60%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, .01), transparent 50%);
+            --orb-1-bg: radial-gradient(circle, rgba(255, 255, 255, .02) 0%, transparent 70%);
+            --orb-2-bg: radial-gradient(circle, rgba(255, 255, 255, .015) 0%, transparent 70%);
+            --orb-3-bg: radial-gradient(circle, rgba(255, 255, 255, .01) 0%, transparent 70%);
+            --blue: #2a2a2a;
+            --blue-mid: #1a1a1a;
+            --btn-text: #ffffff;
+            --btn-border: rgba(255, 255, 255, 0.15);
+            --btn-hover-text: #000000;
+            --clients-bg: #000000;
+            --ink: #000000;
         }
 
         html {
@@ -194,7 +243,7 @@
             transform: translateY(-2px);
         }
 
-        /* ── Uiverse Theme Switch ── */
+        /* ── Theme Switch ── */
         .switch {
             display: block;
             --width-of-switch: 3.5em;
@@ -238,12 +287,12 @@
             box-shadow: 0 2px 6px rgba(255, 0, 128, 0.25);
         }
         input:checked+.slider {
-            background-color: #303136;
+            background-color: #1a1a1a;
         }
         input:checked+.slider:before {
             left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
-            background: #303136;
-            box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+            background: #1a1a1a;
+            box-shadow: inset -3px -2px 5px -2px #555, inset -10px -4px 0 0 #777;
         }
         .slider:hover {
             box-shadow: 0 0 0 3px rgba(67, 238, 147, 0.15);
@@ -272,8 +321,8 @@
             inset: 0;
             z-index: 1;
             background-image:
-                linear-gradient(rgba(7, 120, 182, .04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(7, 120, 182, .04) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
         }
@@ -290,11 +339,12 @@
             border-radius: 50%;
             filter: blur(80px);
             pointer-events: none;
+            transition: background .4s;
         }
         .orb-1 {
             width: 520px;
             height: 520px;
-            background: radial-gradient(circle, rgba(7, 120, 182, .22) 0%, transparent 70%);
+            background: var(--orb-1-bg);
             top: -80px;
             right: 5%;
             animation: orbFloat1 12s ease-in-out infinite;
@@ -302,7 +352,7 @@
         .orb-2 {
             width: 320px;
             height: 320px;
-            background: radial-gradient(circle, rgba(26, 246, 221, .15) 0%, transparent 70%);
+            background: var(--orb-2-bg);
             bottom: 8%;
             left: 12%;
             animation: orbFloat2 16s ease-in-out infinite;
@@ -310,7 +360,7 @@
         .orb-3 {
             width: 180px;
             height: 180px;
-            background: radial-gradient(circle, rgba(67, 238, 147, .1) 0%, transparent 70%);
+            background: var(--orb-3-bg);
             top: 38%;
             left: 42%;
             animation: orbFloat2 10s ease-in-out infinite reverse;
@@ -358,9 +408,6 @@
                 opacity: var(--op, .6);
                 transform: scale(1);
             }
-        }
-        [data-theme="light"] .star {
-            display: none;
         }
 
         .hero-inner {
@@ -451,12 +498,12 @@
             letter-spacing: .04em;
             text-decoration: none;
             text-transform: uppercase;
-            color: #fff;
-            border: 2px solid rgba(67, 238, 147, 0.25);
+            color: var(--btn-text);
+            border: 2px solid var(--btn-border);
             background: transparent;
             cursor: pointer;
             overflow: hidden;
-            transition: color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+            transition: color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             box-shadow: 0 0 30px rgba(7, 120, 182, 0.08);
             will-change: transform, color;
         }
@@ -468,7 +515,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50px;
-            background: var(--blue);
+            background: var(--btn-fill);
             z-index: -1;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             transform: scaleX(0);
@@ -496,10 +543,10 @@
         }
 
         .btn-primary:hover {
-            color: var(--ink);
+            color: var(--btn-hover-text);
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 40px rgba(7, 120, 182, 0.3);
-            border-color: var(--accent);
+            border-color: var(--btn-fill);
         }
 
         .btn-primary .btn-arrow {
@@ -574,19 +621,25 @@
             width: 320px;
             height: 320px;
             border-radius: 28px;
-            background: linear-gradient(145deg, rgba(7, 120, 182, 0.28) 0%, rgba(26, 246, 221, 0.10) 100%);
-            border: 1px solid rgba(67, 238, 147, 0.22);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 80px rgba(7, 120, 182, 0.25);
+            background: var(--hero-glyph-bg);
+            border: 1px solid var(--hero-glyph-border);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .4), 0 0 80px rgba(7, 120, 182, .15);
             backdrop-filter: blur(16px);
             display: flex;
             align-items: center;
             justify-content: center;
             animation: glyphFloat 6s ease-in-out infinite;
             overflow: hidden;
+            transition: background .4s, border-color .4s, box-shadow .4s;
         }
-        .hero-glyph-card lord-icon {
-            width: 70%;
-            height: 70%;
+        [data-theme="midnight"] .hero-glyph-card {
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 40px rgba(255, 255, 255, .02);
+        }
+        .hero-glyph-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
         }
         @keyframes glyphFloat {
             0%,
@@ -607,6 +660,10 @@
             border-radius: 28px 28px 0 0;
             background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
             z-index: 2;
+            transition: background .3s;
+        }
+        [data-theme="midnight"] .hero-glyph-card::before {
+            background: linear-gradient(90deg, #555, var(--accent), #555);
         }
 
         /* ============================================================
@@ -749,8 +806,8 @@
             max-width: 380px;
             aspect-ratio: 1;
             border-radius: 24px;
-            background: linear-gradient(145deg, rgba(7, 120, 182, 0.18) 0%, rgba(26, 246, 221, 0.06) 100%);
-            border: 1px solid rgba(67, 238, 147, 0.18);
+            background: var(--visual-card-bg);
+            border: 1px solid var(--visual-card-border);
             box-shadow: var(--shadow-card);
             display: flex;
             flex-direction: column;
@@ -759,16 +816,18 @@
             padding: 36px;
             backdrop-filter: blur(12px);
             overflow: hidden;
-            transition: border-color .4s, box-shadow .4s, transform .4s;
+            transition: border-color .4s, box-shadow .4s, transform .4s, background .4s;
         }
         .info-visual-card:hover {
             border-color: rgba(67, 238, 147, 0.35);
             box-shadow: var(--shadow-card-hover);
             transform: translateY(-4px);
         }
-        .info-visual-card lord-icon {
-            width: 60%;
-            height: 60%;
+        .info-visual-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
         }
         .info-visual-card::before {
             content: '';
@@ -776,8 +835,8 @@
             inset: 0;
             border-radius: 24px;
             background-image:
-                linear-gradient(rgba(7, 120, 182, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(7, 120, 182, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
             background-size: 28px 28px;
             pointer-events: none;
         }
@@ -794,8 +853,37 @@
         }
 
         /* ============================================================
-           SOLUTIONS / LIFECYCLE WHEEL (copied from index.html)
+           FEATURES / LIFECYCLE WHEEL (Security Framework)
            ============================================================ */
+        .features-section {
+            padding: 120px 48px;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .solutions-head {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .solutions-head h2 {
+            font-size: clamp(2rem, 3.4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+        }
+        .solutions-head h2 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .solutions-head p {
+            color: var(--text-muted);
+            margin-top: 14px;
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .lifecycle-wrapper {
             max-width: 1100px;
             margin: 0 auto;
@@ -820,7 +908,6 @@
             pointer-events: none;
         }
 
-        /* Centre text */
         .lc-center {
             position: absolute;
             inset: 0;
@@ -857,7 +944,7 @@
             width: 48px;
             height: 3px;
             border-radius: 3px;
-            background: linear-gradient(90deg, #0778b6, #43ee93);
+            background: linear-gradient(90deg, var(--blue), var(--accent));
             margin: 12px auto;
         }
         .lc-center-sub {
@@ -869,7 +956,6 @@
             transition: opacity 0.4s;
         }
 
-        /* Nodes */
         .lc-node {
             position: absolute;
             display: flex;
@@ -911,6 +997,9 @@
             border: 2px solid var(--ink);
             transition: background 0.4s;
         }
+        [data-theme="midnight"] .lc-node-num {
+            border-color: #000;
+        }
         .lc-node-label {
             font-size: 0.7rem;
             font-weight: 700;
@@ -922,7 +1011,6 @@
             white-space: nowrap;
         }
 
-        /* Node hover + active */
         .lc-node:hover .lc-node-card,
         .lc-node.active .lc-node-card {
             border-color: var(--accent);
@@ -940,7 +1028,6 @@
             color: #fff;
         }
 
-        /* Tooltip */
         .lc-tooltip {
             position: absolute;
             top: calc(100% + 12px);
@@ -958,6 +1045,10 @@
             z-index: 20;
             backdrop-filter: blur(16px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        [data-theme="midnight"] .lc-tooltip {
+            background: rgba(0, 0, 0, 0.95);
+            border-color: rgba(255, 255, 255, 0.08);
         }
         .lc-tooltip-left {
             top: 50%;
@@ -1033,7 +1124,6 @@
             opacity: 0.85;
         }
 
-        /* Info panel */
         .lc-info-panel {
             flex: 1;
             min-width: 260px;
@@ -1129,8 +1219,9 @@
            ============================================================ */
         .badge-section {
             padding: 100px 48px;
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
         }
         .badge-head {
             text-align: center;
@@ -1184,13 +1275,16 @@
             color: var(--accent);
             transform: translateY(-4px);
         }
+        [data-theme="midnight"] .badge-chip:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
 
         /* ============================================================
            CLIENTS
            ============================================================ */
         #clients {
             padding: 64px 48px;
-            background: var(--ink);
+            background: var(--clients-bg);
             border-top: 1px solid var(--line);
         }
         .clients-inner {
@@ -1222,11 +1316,11 @@
         }
         .clients-track-wrap::before {
             left: 0;
-            background: linear-gradient(90deg, var(--ink), transparent);
+            background: linear-gradient(90deg, var(--clients-bg), transparent);
         }
         .clients-track-wrap::after {
             right: 0;
-            background: linear-gradient(270deg, var(--ink), transparent);
+            background: linear-gradient(270deg, var(--clients-bg), transparent);
         }
         .clients-track {
             display: flex;
@@ -1280,19 +1374,6 @@
             filter: brightness(1.1) saturate(1);
             transform: scale(1.02);
         }
-        .client-logo-item .fallback-text {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-        .client-logo-item:hover .fallback-text {
-            color: var(--accent);
-            text-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
-        }
         .client-dot {
             width: 4px;
             height: 4px;
@@ -1340,6 +1421,10 @@
             border-color: rgba(67, 238, 147, 0.3);
             background: rgba(7, 120, 182, 0.04);
         }
+        [data-theme="midnight"] .faq-item.open {
+            border-color: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+        }
         .faq-q {
             width: 100%;
             text-align: left;
@@ -1379,6 +1464,9 @@
             transform: rotate(45deg);
             background: rgba(67, 238, 147, 0.1);
         }
+        [data-theme="midnight"] .faq-item.open .faq-marker {
+            background: rgba(255, 255, 255, 0.04);
+        }
         .faq-a {
             max-height: 0;
             overflow: hidden;
@@ -1400,20 +1488,20 @@
            ============================================================ */
         #cta {
             padding: 100px 48px;
-            background: linear-gradient(135deg, #0d0a2e 0%, #1a1341 100%);
+            background: var(--cta-bg);
             text-align: center;
             position: relative;
             overflow: hidden;
             border-top: 1px solid var(--line);
+            transition: background .4s;
         }
         #cta::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(7, 120, 182, 0.10), transparent 60%),
-                radial-gradient(circle at 80% 20%, rgba(67, 238, 147, 0.06), transparent 50%);
+            background: var(--cta-overlay);
             pointer-events: none;
+            transition: background .4s;
         }
         .cta-inner {
             max-width: 800px;
@@ -1427,6 +1515,7 @@
             line-height: 1.04;
             letter-spacing: -0.04em;
             margin-bottom: 16px;
+            color: #fff;
         }
         #cta h2 em {
             font-style: normal;
@@ -1445,6 +1534,13 @@
             justify-content: center;
             align-items: center;
             gap: 18px;
+        }
+        #cta .btn-primary {
+            color: #fff;
+            border-color: rgba(67, 238, 147, 0.35);
+        }
+        #cta .btn-primary:hover {
+            color: var(--ink);
         }
 
         /* ============================================================
@@ -1468,6 +1564,11 @@
             font-size: 1.5rem;
             display: block;
             margin-bottom: 16px;
+        }
+        .footer-brand .nav-logo img {
+            height: 48px;
+            width: auto;
+            display: block;
         }
         .footer-col a {
             font-size: .88rem;
@@ -1559,15 +1660,23 @@
             font-weight: 500;
             text-decoration: none;
             box-shadow: 0 8px 40px rgba(7, 120, 182, .45);
-            transition: transform .3s, box-shadow .3s;
+            transition: transform .3s, box-shadow .3s, background .3s;
         }
         .float-cta:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 50px rgba(7, 120, 182, .6);
         }
+        [data-theme="midnight"] .float-cta {
+            background: #2a2a2a;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .6);
+        }
+        [data-theme="midnight"] .float-cta:hover {
+            background: #3a3a3a;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, .7);
+        }
 
         /* ============================================================
-           REVEAL ANIMATION (for other sections)
+           REVEAL ANIMATION
            ============================================================ */
         .reveal {
             opacity: 0;
@@ -1631,7 +1740,7 @@
             .info-section,
             .badge-section,
             .faq-section,
-            .stories-section {
+            .features-section {
                 padding-left: 24px !important;
                 padding-right: 24px !important;
             }
@@ -1639,7 +1748,6 @@
                 font-size: clamp(2rem, 5vw, 3.2rem);
             }
 
-            /* Lifecycle responsive */
             .lifecycle-stage {
                 width: 360px;
                 height: 360px;
@@ -1703,7 +1811,6 @@
                 padding: 10px 18px;
             }
 
-            /* Lifecycle responsive */
             .lifecycle-stage {
                 width: 300px;
                 height: 300px;
@@ -1800,7 +1907,7 @@
             <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
         </ul>
         <div class="nav-right">
-            <label class="switch" id="themeSwitchLabel" title="Toggle dark/light mode">
+            <label class="switch" id="themeSwitchLabel" title="Toggle midnight mode">
                 <input type="checkbox" id="themeToggleCheckbox" />
                 <span class="slider"></span>
             </label>
@@ -1872,9 +1979,7 @@
             </div>
             <div class="info-visual reveal">
                 <div class="info-visual-card">
-                    <div class="hero-glyph-card">
-                     <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Optimization Visualization" />
-                </div>
+                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Optimization Visualization" />
                 </div>
             </div>
         </div>
@@ -1894,17 +1999,17 @@
                 </div>
             </div>
             <div class="info-visual reveal">
-                <div class="hero-glyph-card">
-                     <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Optimization Visualization" />
+                <div class="info-visual-card">
+                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Optimization Visualization" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         FEATURES — REPLACED WITH LIFECYCLE ANIMATION (SECURITY FRAMEWORK)
+         FEATURES — LIFECYCLE ANIMATION (SECURITY FRAMEWORK)
          ============================================================ -->
-    <section class="features-section alt" id="features">
+    <section class="features-section" id="features">
         <div class="solutions-head reveal">
             <p class="section-label centered">How We Secure</p>
             <h2>Our <em>Security</em> Framework</h2>
@@ -2077,7 +2182,7 @@
     </section>
 
     <!-- ============================================================
-         STORIES / CLIENTS
+         CLIENTS
          ============================================================ -->
     <section id="clients">
         <div class="clients-inner">
@@ -2183,8 +2288,6 @@
                 <a href="https://seesec.io/contact/" target="_blank" class="btn-primary">
                     📅 Schedule Free Consultation →
                 </a>
-                
-                </a>
             </div>
         </div> 
     </section>
@@ -2195,25 +2298,28 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <a href="seesec.html" class="nav-logo">SEE<span>SEC</span></a>
-                <p style="color: var(--text-muted); font-size: .88rem; line-height: 1.6; margin-top: 16px;">Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                <a href="#hero" class="nav-logo">
+                    <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                    <span class="logo-text">SEE<span>SEC</span></span>
+                </a>
+                <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                <p style="margin-top:12px; font-size:0.7rem; color:rgba(var(--fg-rgb),0.25);">
+                    <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed rgba(var(--fg-rgb),0.1);">
+                        <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                    </a>
+                </p>
             </div>
             <div class="footer-col">
                 <h5>Services</h5>
-                <ul>
-                    <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
-                    <li><a href="cloud-security.html">Cloud Security</a></li>
-                    <li><a href="data-analytics.html">Data Analytics</a></li>
-                    <li><a href="gen-ai.html">Gen AI</a></li>
-                </ul>
+                <ul><li><a href="aws-managed.html">AWS Managed</a></li><li><a href="cloud-optimization.html">Cloud Optimization</a></li><li><a href="cloud-security.html">Cloud Security</a></li><li><a href="gen-ai.html">Gen AI</a></li><li><a href="data-analytics.html">Data Analytics</a></li><li><a href="cloud-compliance.html">Cloud Compliance</a></li></ul>
             </div>
             <div class="footer-col">
                 <h5>Solutions</h5>
-                <ul><li><a href="seesec.html#solutions">Chat-A-Lot</a></li><li><a href="seesec.html#solutions">Talk Track</a></li><li><a href="seesec.html#solutions">SMS Sense</a></li></ul>
+                <ul><li><a href="chat-a-lot.html">Chat-A-Lot</a></li><li><a href="talk-track.html">Talk Track</a></li><li><a href="sms-sense.html">SMS Sense</a></li><li><a href="interactive-email.html">Interactive Email</a></li><li><a href="email-archival.html">Email Archival</a></li></ul>
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
-                <ul><li><a href="seesec.html#about">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="https://seesec.io/contact/" target="_blank">Contact</a></li></ul>
+                <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">
@@ -2226,31 +2332,24 @@
          JAVASCRIPT
          ============================================================ -->
     <script>
-        // ── Theme toggle (Uiverse switch) ──
+        // ── Theme toggle (purple ↔ midnight) ──
         (function initTheme() {
             const STORAGE_KEY = 'seesec-theme';
             const root = document.documentElement;
-            const stored = localStorage.getItem(STORAGE_KEY);
-            const initial = stored || 'light';
-            root.setAttribute('data-theme', initial);
+            const stored = localStorage.getItem(STORAGE_KEY) || 'purple';
+            const effective = (stored === 'dark') ? 'midnight' : stored;
+            root.setAttribute('data-theme', effective);
+            root.setAttribute('data-theme-pref', stored);
 
             const checkbox = document.getElementById('themeToggleCheckbox');
             if (checkbox) {
-                checkbox.checked = (initial === 'dark');
+                checkbox.checked = (stored === 'dark' || stored === 'midnight');
                 checkbox.addEventListener('change', function() {
-                    const next = this.checked ? 'dark' : 'light';
+                    const next = this.checked ? 'midnight' : 'purple';
+                    const pref = this.checked ? 'dark' : 'purple';
                     root.setAttribute('data-theme', next);
-                    localStorage.setItem(STORAGE_KEY, next);
-                });
-            }
-
-            if (window.matchMedia) {
-                window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-                    if (!localStorage.getItem(STORAGE_KEY)) {
-                        const theme = e.matches ? 'light' : 'dark';
-                        root.setAttribute('data-theme', theme);
-                        if (checkbox) checkbox.checked = (theme === 'dark');
-                    }
+                    root.setAttribute('data-theme-pref', pref);
+                    localStorage.setItem(STORAGE_KEY, pref);
                 });
             }
         })();
@@ -2377,7 +2476,7 @@
             type();
         })();
 
-        // ── LIFECYCLE WHEEL ── (updated for 5 Security Framework steps)
+        // ── LIFECYCLE WHEEL ── (Security Framework)
         (function() {
             const nodes = document.querySelectorAll('.lc-node');
             if (!nodes.length) return;
