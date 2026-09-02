@@ -1,32 +1,47 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>SEESEC — Living Intelligence</title>
+    <!-- Theme detection script (same as other pages) -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('seesec-theme') || 'purple';
+                if (stored !== 'purple' && stored !== 'dark' && stored !== 'midnight') stored = 'purple';
+                var effective = (stored === 'dark') ? 'midnight' : stored;
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', stored);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'purple');
+            }
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script>
         tailwind.config = {
-            darkMode: "class",
+            // darkMode: "class",  // removed, we use data-theme
             theme: {
                 extend: {
                     colors: {
-                        surface: "#141316",
-                        "primary-container": "#1a1341",
-                        "glass-border": "rgba(255,255,255,0.12)",
-                        "on-surface-variant": "#c9c5d0",
-                        secondary: "#42ed92",
-                        "neon-cyan": "#1af6dd",
-                        tertiary: "#94ccff",
-                        primary: "#c8c0f8",
-                        "surface-container-lowest": "#0e0e11",
-                        "surface-container-high": "#2b292d",
-                        "surface-variant": "#353438",
-                        "on-surface": "#e5e1e6",
-                        background: "#141316",
+                        // All colors now use CSS custom properties
+                        surface: 'var(--color-surface)',
+                        'primary-container': 'var(--color-primary-container)',
+                        'glass-border': 'var(--color-glass-border)',
+                        'on-surface-variant': 'var(--color-on-surface-variant)',
+                        secondary: 'var(--color-secondary)',
+                        'neon-cyan': 'var(--color-neon-cyan)',
+                        tertiary: 'var(--color-tertiary)',
+                        primary: 'var(--color-primary)',
+                        'surface-container-lowest': 'var(--color-surface-container-lowest)',
+                        'surface-container-high': 'var(--color-surface-container-high)',
+                        'surface-variant': 'var(--color-surface-variant)',
+                        'on-surface': 'var(--color-on-surface)',
+                        background: 'var(--color-background)',
                     },
                     borderRadius: { organic: "60px", blob: "40% 60% 70% 30% / 40% 50% 60% 50%" },
                     spacing: { "section-gap": "120px", "container-max": "1240px", gutter: "24px", "card-padding": "32px" },
@@ -45,6 +60,74 @@
         }
     </script>
     <style>
+        /* ---- CSS variables for theming (matches purple & midnight from other pages) ---- */
+        :root {
+            /* Defaults (purple theme) */
+            --color-surface: #1a1341;
+            --color-background: #1a1341;
+            --color-primary-container: #110e35;
+            --color-secondary: #43ee93;
+            --color-neon-cyan: #1af6dd;
+            --color-tertiary: #94ccff;
+            --color-primary: #c8c0f8;
+            --color-on-surface-variant: rgba(255, 255, 255, 0.62);
+            --color-surface-container-lowest: #0d0a2e;
+            --color-surface-container-high: #2a1f5a;
+            --color-surface-variant: #353438;
+            --color-on-surface: #ffffff;
+            --color-glass-border: rgba(255, 255, 255, 0.12);
+
+            /* Other reusable variables */
+            --bg-primary: #1a1341;
+            --bg-secondary: #110e35;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.62);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --text-faint: rgba(255, 255, 255, 0.22);
+            --surface-card: rgba(26, 19, 65, 0.55);
+            --border-soft: rgba(255, 255, 255, 0.06);
+            --border-card: rgba(139, 92, 246, 0.18);
+            --line: rgba(255, 255, 255, 0.08);
+            --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(139, 92, 246, 0.1);
+            --shadow-card-hover: 0 16px 56px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(139, 92, 246, 0.15);
+            --accent: #43ee93;
+            --cyan: #1af6dd;
+            --blue: #0778b6;
+        }
+
+        [data-theme="midnight"] {
+            --color-surface: #000000;
+            --color-background: #000000;
+            --color-primary-container: #000000;
+            --color-secondary: #43ee93;
+            --color-neon-cyan: #1af6dd;
+            --color-tertiary: #94ccff;
+            --color-primary: #c8c0f8;
+            --color-on-surface-variant: rgba(255, 255, 255, 0.55);
+            --color-surface-container-lowest: #000000;
+            --color-surface-container-high: #1a1a1a;
+            --color-surface-variant: #222222;
+            --color-on-surface: #ffffff;
+            --color-glass-border: rgba(255, 255, 255, 0.06);
+
+            --bg-primary: #000000;
+            --bg-secondary: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.55);
+            --text-muted: rgba(255, 255, 255, 0.35);
+            --text-faint: rgba(255, 255, 255, 0.18);
+            --surface-card: rgba(255, 255, 255, 0.025);
+            --border-soft: rgba(255, 255, 255, 0.04);
+            --border-card: rgba(255, 255, 255, 0.07);
+            --line: rgba(255, 255, 255, 0.04);
+            --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+            --shadow-card-hover: 0 16px 56px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+            --accent: #43ee93;
+            --cyan: #1af6dd;
+            --blue: #2a2a2a;
+        }
+
+        /* ---- Base styles ---- */
         * {
             margin: 0;
             padding: 0;
@@ -54,29 +137,31 @@
             scroll-behavior: smooth;
         }
         body {
-            background: #141316;
-            color: #e5e1e6;
+            background: var(--color-background);
+            color: var(--color-on-surface);
             overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
+            transition: background 0.3s, color 0.3s;
         }
 
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #141316;
+            background: var(--color-background);
         }
         ::-webkit-scrollbar-thumb {
-            background: #42ed92;
+            background: var(--color-secondary);
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(66, 237, 146, 0.3);
         }
 
+        /* Glass panel – now uses variables */
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.10);
+            border: 1px solid var(--color-glass-border);
             box-shadow: 0 24px 64px -16px rgba(148, 204, 255, 0.08);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -90,7 +175,7 @@
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.10);
+            border: 1px solid var(--color-glass-border);
         }
 
         .neon-text-glow {
@@ -148,7 +233,7 @@
             background: rgba(20, 19, 22, 0.55);
             backdrop-filter: blur(30px) saturate(1.4);
             -webkit-backdrop-filter: blur(30px) saturate(1.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--color-glass-border);
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
         }
 
@@ -163,7 +248,7 @@
             animation: slideRight 1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
             opacity: 0;
             transform: translateX(12px);
-            color: #42ed92;
+            color: var(--color-secondary);
         }
         @keyframes slideLeft {
             to {
@@ -190,7 +275,7 @@
             background: rgba(20, 19, 22, 0.92);
             backdrop-filter: blur(30px) saturate(1.4);
             -webkit-backdrop-filter: blur(30px) saturate(1.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--color-glass-border);
             box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
         }
 
@@ -219,7 +304,7 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #42ed92;
+            background: var(--color-secondary);
             cursor: pointer;
             box-shadow: 0 0 24px rgba(66, 237, 146, 0.5);
             border: 2px solid rgba(20, 19, 22, 0.8);
@@ -233,7 +318,7 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #42ed92;
+            background: var(--color-secondary);
             cursor: pointer;
             border: 2px solid rgba(20, 19, 22, 0.8);
             box-shadow: 0 0 24px rgba(66, 237, 146, 0.5);
@@ -261,12 +346,257 @@
             }
         }
 
-        /* ===== Philosophy animation canvas ===== */
         #philosophy-canvas {
             width: 100%;
             height: 100%;
             display: block;
             border-radius: 40px;
+        }
+
+        /* Override any remaining hardcoded colors with variables */
+        .bg-surface-container-lowest\/30 {
+            background-color: var(--color-surface-container-lowest) !important;
+        }
+        .bg-primary-container\/20 {
+            background-color: var(--color-primary-container) !important;
+        }
+        .bg-secondary\/10 {
+            background-color: rgba(66, 237, 146, 0.1) !important;
+        }
+        .bg-secondary\/20 {
+            background-color: rgba(66, 237, 146, 0.2) !important;
+        }
+        .bg-tertiary\/10 {
+            background-color: rgba(148, 204, 255, 0.1) !important;
+        }
+        .bg-tertiary\/20 {
+            background-color: rgba(148, 204, 255, 0.2) !important;
+        }
+        .bg-neon-cyan\/10 {
+            background-color: rgba(26, 246, 221, 0.1) !important;
+        }
+        .bg-neon-cyan\/20 {
+            background-color: rgba(26, 246, 221, 0.2) !important;
+        }
+        .bg-primary\/10 {
+            background-color: rgba(200, 192, 248, 0.1) !important;
+        }
+        .bg-primary\/20 {
+            background-color: rgba(200, 192, 248, 0.2) !important;
+        }
+        .border-neon-cyan\/30 {
+            border-color: rgba(26, 246, 221, 0.3) !important;
+        }
+        .border-secondary\/20 {
+            border-color: rgba(66, 237, 146, 0.2) !important;
+        }
+        .border-tertiary\/20 {
+            border-color: rgba(148, 204, 255, 0.2) !important;
+        }
+        .border-primary\/30 {
+            border-color: rgba(200, 192, 248, 0.3) !important;
+        }
+        .text-neon-cyan {
+            color: var(--color-neon-cyan) !important;
+        }
+        .text-secondary {
+            color: var(--color-secondary) !important;
+        }
+        .text-tertiary {
+            color: var(--color-tertiary) !important;
+        }
+        .text-primary {
+            color: var(--color-primary) !important;
+        }
+        .text-on-surface {
+            color: var(--color-on-surface) !important;
+        }
+        .text-on-surface-variant {
+            color: var(--color-on-surface-variant) !important;
+        }
+        .bg-surface {
+            background-color: var(--color-surface) !important;
+        }
+        .bg-surface\/20 {
+            background-color: rgba(20, 19, 22, 0.2) !important;
+        }
+        .bg-surface\/30 {
+            background-color: rgba(20, 19, 22, 0.3) !important;
+        }
+        .bg-surface-container-lowest {
+            background-color: var(--color-surface-container-lowest) !important;
+        }
+        .bg-surface-container-high {
+            background-color: var(--color-surface-container-high) !important;
+        }
+        .bg-surface-container-high\/60 {
+            background-color: rgba(43, 41, 45, 0.6) !important;
+        }
+        .bg-surface-variant {
+            background-color: var(--color-surface-variant) !important;
+        }
+        .border-surface-variant {
+            border-color: var(--color-surface-variant) !important;
+        }
+        .bg-primary-container {
+            background-color: var(--color-primary-container) !important;
+        }
+        .border-primary-container {
+            border-color: var(--color-primary-container) !important;
+        }
+        .border-primary {
+            border-color: var(--color-primary) !important;
+        }
+        .border-secondary {
+            border-color: var(--color-secondary) !important;
+        }
+        .border-neon-cyan {
+            border-color: var(--color-neon-cyan) !important;
+        }
+        .border-tertiary {
+            border-color: var(--color-tertiary) !important;
+        }
+        .border-glass-border {
+            border-color: var(--color-glass-border) !important;
+        }
+        /* Background gradients */
+        .from-primary-container\/30 {
+            --tw-gradient-from: var(--color-primary-container) !important;
+            --tw-gradient-from-opacity: 0.3 !important;
+        }
+        .via-background\/70 {
+            --tw-gradient-via: var(--color-background) !important;
+            --tw-gradient-via-opacity: 0.7 !important;
+        }
+        .to-background\/95 {
+            --tw-gradient-to: var(--color-background) !important;
+            --tw-gradient-to-opacity: 0.95 !important;
+        }
+        /* Other utilities */
+        .bg-black\/20 {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+        .bg-black\/40 {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+        .bg-black\/50 {
+            background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+        .border-white\/10 {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        .border-white\/05 {
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        /* Adjust text colors for midnight */
+        [data-theme="midnight"] .text-on-surface-variant {
+            color: rgba(255, 255, 255, 0.55) !important;
+        }
+        [data-theme="midnight"] .bg-surface\/20 {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+        [data-theme="midnight"] .bg-surface\/30 {
+            background-color: rgba(0, 0, 0, 0.3) !important;
+        }
+        [data-theme="midnight"] .bg-surface-container-high\/60 {
+            background-color: rgba(26, 26, 26, 0.6) !important;
+        }
+        [data-theme="midnight"] .border-white\/10 {
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        [data-theme="midnight"] .bg-black\/20 {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+        [data-theme="midnight"] .bg-black\/40 {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        [data-theme="midnight"] .bg-black\/50 {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        /* For the knowledge graph container and other overlays */
+        .bg-primary-container\/20 {
+            background-color: rgba(26, 19, 65, 0.2) !important;
+        }
+        [data-theme="midnight"] .bg-primary-container\/20 {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+        /* Fix for the AI readiness panel shadow */
+        .shadow-\[0_0_40px_rgba\(66\2c 237\2c 146\2c 0\.1\)\] {
+            box-shadow: 0 0 40px rgba(66, 237, 146, 0.1) !important;
+        }
+        [data-theme="midnight"] .shadow-\[0_0_40px_rgba\(66\2c 237\2c 146\2c 0\.1\)\] {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.4) !important;
+        }
+        /* Keep the footer styles consistent */
+        footer .footer-inner,
+        footer .footer-bottom {
+            /* already using variables */;
+        }
+        /* Ensure the hero background shader uses variables */
+        .bg-\[radial-gradient\(ellipse_at_top_right\,_var\(--tw-gradient-stops\)\)\] {
+            background-image: radial-gradient(ellipse at top right, var(--color-primary-container) 0%, var(--color-background) 70%, var(--color-background) 95%) !important;
+        }
+
+        /* ---- Theme toggle switch (from other pages) ---- */
+        .switch {
+            display: block;
+            --w: 3.5em;
+            --h: 2em;
+            --i: 1.4em;
+            --o: .3em;
+            position: relative;
+            width: var(--w);
+            height: var(--h);
+            flex-shrink: 0;
+            margin: 0 6px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #f4f4f5;
+            transition: .4s;
+            border-radius: 30px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, .08);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: var(--i);
+            width: var(--i);
+            border-radius: 50%;
+            left: var(--o);
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+            transition: .4s;
+            box-shadow: 0 2px 6px rgba(255, 0, 128, .25);
+        }
+        input:checked+.slider {
+            background: #1a1a1a;
+        }
+        input:checked+.slider:before {
+            left: calc(100% - (var(--i) + var(--o)));
+            background: #1a1a1a;
+            box-shadow: inset -3px -2px 5px -2px #555, inset -10px -4px 0 0 #777;
+        }
+        /* Ensure switch is visible on dark backgrounds */
+        .switch .slider {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        input:checked+.slider {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        [data-theme="purple"] .switch .slider {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        [data-theme="purple"] input:checked+.slider {
+            background: rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
@@ -288,9 +618,16 @@
             <a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Network</a>
             <a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Solutions</a>
         </div>
-        <button class="bg-secondary text-[#00391d] px-7 py-2 rounded-full text-sm font-semibold hover:shadow-[0_0_30px_rgba(66,237,146,0.5)] transition-all hover:scale-105 active:scale-95">
-            Get Started
-        </button>
+        <div class="flex items-center gap-2">
+            <!-- Theme toggle switch -->
+            <label class="switch" title="Toggle midnight mode">
+                <input type="checkbox" id="themeToggleCheckbox" />
+                <span class="slider"></span>
+            </label>
+            <button class="bg-secondary text-[#00391d] px-7 py-2 rounded-full text-sm font-semibold hover:shadow-[0_0_30px_rgba(66,237,146,0.5)] transition-all hover:scale-105 active:scale-95">
+                Get Started
+            </button>
+        </div>
     </nav>
 
     <!-- ===== Mobile Nav ===== -->
@@ -298,9 +635,16 @@
         <div class="text-2xl font-bold tracking-tight text-on-surface flex">
             <span class="logo-see">SEE</span><span class="logo-sec">SEC</span>
         </div>
-        <button id="mobile-menu-btn" aria-expanded="false" aria-label="Menu" class="text-on-surface">
-            <span class="material-symbols-outlined text-3xl" id="mobile-menu-icon">menu</span>
-        </button>
+        <div class="flex items-center gap-2">
+            <!-- Theme toggle switch for mobile -->
+            <label class="switch" title="Toggle midnight mode">
+                <input type="checkbox" id="themeToggleCheckboxMobile" />
+                <span class="slider"></span>
+            </label>
+            <button id="mobile-menu-btn" aria-expanded="false" aria-label="Menu" class="text-on-surface">
+                <span class="material-symbols-outlined text-3xl" id="mobile-menu-icon">menu</span>
+            </button>
+        </div>
     </header>
     <div class="fixed top-[88px] left-4 right-4 z-40 md:hidden rounded-3xl p-6 hidden flex-col gap-5" id="mobile-menu-panel">
         <a class="text-secondary font-bold" href="#">Platform</a>
@@ -324,7 +668,7 @@
                     <span class="text-secondary green-glow">Intelligence.</span>
                     <span class="text-secondary/80">We Help You Use It.</span>
                 </h1>
-                <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-light bg-black/20 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/5">
+                <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-light bg-black/20 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/05">
                     Every organization generates extraordinary knowledge. We connect it, transforming raw data streams into a living, flowing consciousness.
                 </p>
                 <div class="mt-6 relative group">
@@ -713,23 +1057,64 @@
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="relative bg-surface-container-lowest/70 backdrop-blur-lg rounded-t-[80px] md:rounded-t-[120px] w-full pt-20 pb-12 overflow-hidden flex flex-col items-center gap-6 px-section-gap z-10 mt-section-gap border-t border-white/10">
-        <div class="wave-mask"></div>
-        <div class="text-3xl md:text-4xl font-bold text-on-surface z-10 relative flex tracking-tight">
-            <span class="logo-see" style="animation-delay:0.4s">SEE</span><span class="logo-sec" style="animation-delay:0.4s">SEC</span>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-logo">
+                    <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                    <span class="logo-text">SEE<span>SEC</span></span>
+                </a>
+                <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                <p style="margin-top:12px; font-size:0.7rem; color:rgba(var(--fg-rgb),0.25);">
+                    <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed rgba(var(--fg-rgb),0.1);">
+                        <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                    </a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul><li><a href="aws-managed.html">AWS Managed</a></li><li><a href="cloud-optimization.html">Cloud Optimization</a></li><li><a href="cloud-security.html">Cloud Security</a></li><li><a href="gen-ai.html">Gen AI</a></li><li><a href="data-analytics.html">Data Analytics</a></li><li><a href="cloud-compliance.html">Cloud Compliance</a></li></ul>
+            </div>
+            <div class="footer-col">
+                <h5>Solutions</h5>
+                <ul><li><a href="chat-a-lot.html">Chat-A-Lot</a></li><li><a href="talk-track.html">Talk Track</a></li><li><a href="sms-sense.html">SMS Sense</a></li><li><a href="interactive-email.html">Interactive Email</a></li><li><a href="email-archival.html">Email Archival</a></li></ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
+            </div>
         </div>
-        <div class="flex flex-wrap gap-6 md:gap-10 z-10 relative justify-center">
-            <a class="text-sm text-on-surface-variant hover:text-neon-cyan transition" href="#">Privacy</a>
-            <a class="text-sm text-on-surface-variant hover:text-neon-cyan transition" href="#">Security</a>
-            <a class="text-sm text-on-surface-variant hover:text-neon-cyan transition" href="#">Contact</a>
-            <a class="text-sm text-on-surface-variant hover:text-neon-cyan transition" href="#">Ethics</a>
+        <div class="footer-bottom">
+            <p>© 2025 SEESEC Infotech. All rights reserved.</p>
+            <div class="footer-socials"><a href="#">in</a><a href="#">IG</a><a href="#">YT</a></div>
         </div>
-        <div class="text-sm text-tertiary/60 z-10 relative mt-2">© 2024 SEESEC. Living Intelligence.</div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
     </script>
     <script>
+        // ============================================================
+        // 0. THEME TOGGLE (for both desktop and mobile switches)
+        // ============================================================
+        (function() {
+            const KEY = 'seesec-theme';
+            const root = document.documentElement;
+            const pref = localStorage.getItem(KEY) || 'purple';
+            const cbs = document.querySelectorAll('#themeToggleCheckbox, #themeToggleCheckboxMobile');
+            cbs.forEach(cb => {
+                cb.checked = (pref === 'dark' || pref === 'midnight');
+                cb.addEventListener('change', function() {
+                    const stored = this.checked ? 'dark' : 'purple';
+                    const effective = this.checked ? 'midnight' : 'purple';
+                    root.setAttribute('data-theme', effective);
+                    root.setAttribute('data-theme-pref', stored);
+                    localStorage.setItem(KEY, stored);
+                    // Sync both checkboxes
+                    cbs.forEach(other => { if (other !== this) other.checked = this.checked; });
+                });
+            });
+        })();
+
         // ============================================================
         // 1. INTERSECTION OBSERVER
         // ============================================================
@@ -1881,5 +2266,128 @@
         })();
     </script>
 
+    <style>
+        /* Additional footer styles to match the theme */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-glass-border);
+            padding: 64px 48px 40px;
+            transition: background 0.3s;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding-bottom: 52px;
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+        .footer-brand .nav-logo {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 16px;
+            color: var(--color-on-surface);
+            text-decoration: none;
+            font-weight: 800;
+        }
+        .footer-brand .nav-logo span {
+            color: var(--color-secondary);
+        }
+        .footer-brand p {
+            color: var(--color-on-surface-variant);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-top: 16px;
+        }
+        .footer-col h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-on-surface);
+            margin-bottom: 16px;
+            letter-spacing: 0.04em;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col a {
+            font-size: 0.88rem;
+            color: var(--color-on-surface-variant);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: block;
+            padding: 4px 0;
+            position: relative;
+        }
+        .footer-col a::before {
+            content: '▸';
+            color: var(--color-secondary);
+            opacity: 0;
+            margin-right: 6px;
+            transition: opacity 0.3s, transform 0.3s;
+            display: inline-block;
+            transform: translateX(-8px);
+        }
+        .footer-col a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .footer-col a:hover {
+            color: var(--color-secondary);
+            transform: translateX(4px);
+        }
+        .footer-bottom {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: var(--text-faint, rgba(255, 255, 255, 0.22));
+        }
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-socials a {
+            color: var(--text-faint, rgba(255, 255, 255, 0.22));
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--color-glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s, transform 0.3s, border-color 0.3s;
+        }
+        .footer-socials a:hover {
+            color: var(--color-secondary);
+            transform: translateY(-3px);
+            border-color: var(--color-secondary);
+        }
+        @media (max-width: 900px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+        @media (max-width: 600px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>
