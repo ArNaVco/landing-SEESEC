@@ -3,16 +3,42 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <title>SEESEC — Cloud Excellence, GenAI & New-Age Communication</title>
+    <title>SEESEC | AWS Cloud Migration, Cloud Security &amp; Generative AI Services</title>
+    <meta name="description" content="SEESEC is an AWS Advanced Tier Partner helping enterprises cut cloud costs by up to 70%, secure infrastructure, and deploy Generative AI, data analytics & communication automation solutions." />
+    <link rel="canonical" href="https://seesec.io/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="SEESEC Infotech" />
+    <meta name="theme-color" content="#051424" />
+    <link rel="alternate" hreflang="en" href="https://seesec.io/" />
+    <link rel="alternate" hreflang="x-default" href="https://seesec.io/" />
+
+    <!-- ===== OPEN GRAPH (Facebook, LinkedIn, AI crawlers) ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SEESEC" />
+    <meta property="og:title" content="SEESEC | AWS Cloud Migration, Cloud Security & Generative AI Services" />
+    <meta property="og:description" content="AWS Advanced Tier Partner helping enterprises reduce cloud costs, secure infrastructure, and deploy Generative AI, data analytics & communication automation solutions." />
+    <meta property="og:url" content="https://seesec.io/" />
+    <meta property="og:image" content="https://seesec.io/wp-content/uploads/2025/03/logo.png" />
+    <meta property="og:image:alt" content="SEESEC logo" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SEESEC | AWS Cloud Migration, Cloud Security & Generative AI Services" />
+    <meta name="twitter:description" content="AWS Advanced Tier Partner helping enterprises reduce cloud costs, secure infrastructure, and deploy Generative AI & communication automation solutions." />
+    <meta name="twitter:image" content="https://seesec.io/wp-content/uploads/2025/03/logo.png" />
 
     <!-- ===== THEME INIT (runs before paint to avoid flash) ===== -->
     <script>
-        (function () {
+        (function() {
             try {
-                var stored = localStorage.getItem('seesec-theme') || 'purple';
+                var stored = localStorage.getItem('seesec-theme') || 'system';
+                // Migrate 'light' to 'dark' since light mode is removed
+                if (stored === 'light') stored = 'dark';
                 var effective;
-                if (stored === 'purple') {
-                    effective = 'purple';
+                if (stored === 'system') {
+                    var isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+                    effective = isLight ? 'dark' : 'dark';
                 } else if (stored === 'dark') {
                     effective = 'midnight';
                 } else {
@@ -21,147 +47,118 @@
                 document.documentElement.setAttribute('data-theme', effective);
                 document.documentElement.setAttribute('data-theme-pref', stored);
             } catch (e) {
-                document.documentElement.setAttribute('data-theme', 'purple');
-                document.documentElement.setAttribute('data-theme-pref', 'purple');
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-theme-pref', 'system');
             }
         })();
     </script>
 
-    <!-- ===== TEAM SECTION STYLES (static, replaces Tailwind Play CDN) ===== -->
-    <style>
-/* ===== Static replacement for Tailwind Play CDN (team section) ===== */
-/* Generated from the inline tailwind.config (prefix 'tw-'). Only classes actually used in the HTML. */
+    <!-- ===== TEAM SECTION DEPENDENCIES ===== -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    </script>
+    <script>
+        tailwind.config = {
+            prefix: 'tw-',
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#44436b",
+                        "surface-container-highest": "#273647",
+                        "background": "#051424",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-tint": "#c4c2f2",
+                        "on-tertiary-container": "#6d66ff",
+                        "outline": "#928f99",
+                        "secondary": "#c9c0f4",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-fixed": "#e5deff",
+                        "primary": "#c4c2f2",
+                        "on-tertiary-fixed-variant": "#321ed2",
+                        "surface-container-low": "#0d1c2d",
+                        "on-primary-container": "#7977a3",
+                        "inverse-on-surface": "#233143",
+                        "on-primary-fixed": "#18173d",
+                        "surface": "#051424",
+                        "secondary-fixed-dim": "#c9c0f4",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#010f1f",
+                        "inverse-surface": "#d4e4fa",
+                        "on-background": "#d4e4fa",
+                        "primary-container": "#0b0930",
+                        "primary-fixed-dim": "#c4c2f2",
+                        "on-secondary-fixed-variant": "#47416d",
+                        "on-secondary-fixed": "#1c153f",
+                        "outline-variant": "#47464e",
+                        "on-tertiary": "#1d00a5",
+                        "tertiary-fixed-dim": "#c3c0ff",
+                        "surface-container": "#122131",
+                        "surface-bright": "#2c3a4c",
+                        "on-secondary-container": "#b7afe2",
+                        "on-primary": "#2d2c53",
+                        "tertiary": "#c3c0ff",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#c8c5cf",
+                        "surface-container-high": "#1c2b3c",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#312a55",
+                        "inverse-primary": "#5b5a84",
+                        "tertiary-container": "#070046",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#0f0069",
+                        "surface-dim": "#051424",
+                        "surface-variant": "#273647",
+                        "secondary-container": "#47416d",
+                        "on-surface": "#d4e4fa",
+                        "seesec-green": "#43ee93"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-padding-desktop": "80px",
+                        "unit": "8px",
+                        "container-padding-mobile": "24px",
+                        "section-gap": "60px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&family=Geist:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-/* --- Layout / position --- */
-.tw-relative { position: relative; }
-.tw-absolute { position: absolute; }
-.tw-z-10 { z-index: 10; }
-.-tw-left-\[1\.5px\] { left: -1.5px; }
-.tw-hidden { display: none; }
-.tw-flex { display: flex; }
-.tw-flex-1 { flex: 1 1 0%; }
-.tw-flex-col { flex-direction: column; }
-.tw-flex-wrap { flex-wrap: wrap; }
-.tw-items-center { align-items: center; }
-.tw-justify-between { justify-content: space-between; }
-.tw-shrink-0 { flex-shrink: 0; }
-.tw-overflow-hidden { overflow: hidden; }
-.tw-cursor-pointer { cursor: pointer; }
-
-/* --- Gap (custom spacing extends default scale; numeric scale intact) --- */
-.tw-gap-1 { gap: 0.25rem; }
-.tw-gap-2 { gap: 0.5rem; }
-.tw-gap-3 { gap: 0.75rem; }
-.tw-gap-4 { gap: 1rem; }
-.tw-gap-6 { gap: 1.5rem; }
-
-/* --- Spacing --- */
-.tw-p-4 { padding: 1rem; }
-.tw-px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-.tw-px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
-.tw-py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-.tw-mt-3 { margin-top: 0.75rem; }
-.tw-my-auto { margin-top: auto; margin-bottom: auto; }
-
-/* --- Sizing --- */
-.tw-w-1 { width: 0.25rem; }
-.tw-w-px { width: 1px; }
-.tw-w-full { width: 100%; }
-.tw-h-24 { height: 6rem; }
-.tw-h-full { height: 100%; }
-.tw-max-w-lg { max-width: 32rem; }
-
-/* --- Borders --- */
-/* Preflight equivalent, scoped: zero-specificity default so .kinetic-panel[data-active] border-color rules still override it (as they did against the CDN's * reset). */
-:where(.tw-border) { border-style: solid; border-color: #e5e7eb; }
-.tw-border { border-width: 1px; }
-.tw-border-white\/5 { border-color: rgb(255 255 255 / 0.05); }
-.tw-rounded-lg { border-radius: 2rem; }   /* config override */
-.tw-rounded-xl { border-radius: 3rem; }   /* config override */
-.tw-rounded-full { border-radius: 9999px; }
-
-/* --- Backgrounds --- */
-.tw-bg-\[\#0b0930\]\/40 { background-color: rgb(11 9 48 / 0.4); }
-.tw-bg-\[\#43ee93\] { background-color: #43ee93; }
-.tw-bg-\[\#43ee93\]\/10 { background-color: rgb(67 238 147 / 0.1); }
-.tw-bg-white\/10 { background-color: rgb(255 255 255 / 0.1); }
-
-/* --- Typography --- */
-.tw-font-headline-md { font-family: "Hanken Grotesk"; }
-.tw-font-body-md { font-family: "Manrope"; }
-.tw-font-label-md { font-family: "Geist"; }
-.tw-font-label-sm { font-family: "Geist"; }
-.tw-text-xs { font-size: 0.75rem; line-height: 1rem; }
-.tw-text-headline-md { font-size: 24px; line-height: 32px; letter-spacing: -0.01em; font-weight: 600; }
-.tw-text-label-md { font-size: 14px; line-height: 20px; letter-spacing: 0.05em; font-weight: 500; }
-.tw-text-white { color: rgb(255 255 255); }
-.tw-text-white\/20 { color: rgb(255 255 255 / 0.2); }
-.tw-text-white\/40 { color: rgb(255 255 255 / 0.4); }
-.tw-text-\[\#43ee93\] { color: #43ee93; }
-.tw-text-\[\#c8c5cf\] { color: #c8c5cf; }
-.tw-line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
-
-/* --- Object fit --- */
-.tw-object-cover { object-fit: cover; }
-.tw-object-top { object-position: top; }
-
-/* --- Effects --- */
-.tw-shadow-\[0_0_10px_rgba\(67\,238\,147\,0\.3\)\] { box-shadow: 0 0 10px rgba(67, 238, 147, 0.3); }
-
-/* --- Transitions --- */
-.tw-transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-.tw-transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-.tw-transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-
-/* --- Enter animation --- */
-/* tw-animate-in / tw-fade-in / tw-slide-in-from-bottom-2 come from the tailwindcss-animate
-   plugin, which the CDN build (plugins=forms,container-queries) did NOT include — they were
-   no-ops. This is a simple equivalent of the intended effect (fade + slide up 0.5rem),
-   running at 500ms via .tw-duration-500 below. tw-fade-in and tw-slide-in-from-bottom-2 are
-   folded into the keyframes; they need no rules of their own. */
-@keyframes tw-enter { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: translateY(0); } }
-.tw-animate-in { animation: tw-enter 150ms cubic-bezier(0.4, 0, 0.2, 1); }
-
-/* duration-500 must follow BOTH the transition-* rules and .tw-animate-in: the `animation`
-   shorthand above resets animation-duration, so this rule must come later in the sheet to
-   win at equal specificity. animation-duration matches tailwindcss-animate's shared
-   duration-* utility. */
-.tw-duration-500 { transition-duration: 500ms; animation-duration: 500ms; }
-
-/* --- Group variants --- */
-/* .tw-group and .group\/btn are marker classes; they generate no CSS themselves. */
-.tw-group:hover .group-hover\:tw-text-\[\#43ee93\] { color: #43ee93; }
-.group\/btn:hover .group-hover\/btn\:tw-translate-x-1 { transform: translateX(0.25rem); }
-.tw-group[data-active="true"] .group-data-\[active\=true\]\:tw-flex { display: flex; }
-.tw-group[data-active="true"] .group-data-\[active\=true\]\:tw-hidden { display: none; }
-.tw-group[data-active="true"] .group-data-\[active\=true\]\:tw-text-headline-lg { font-size: 40px; line-height: 48px; letter-spacing: -0.02em; font-weight: 700; }
-
-/* --- md: breakpoint (last, so it overrides base utilities at equal specificity) --- */
-@media (min-width: 768px) {
-    .md\:tw-block { display: block; }
-    .md\:tw-flex-row { flex-direction: row; }
-    .md\:tw-items-center { align-items: center; }
-    .md\:tw-mt-0 { margin-top: 0; }
-    .md\:tw-p-6 { padding: 1.5rem; }
-    .md\:tw-rounded-lg { border-radius: 2rem; }
-    .tw-group[data-active="true"] .group-data-\[active\=true\]\:md\:tw-text-headline-lg { font-size: 40px; line-height: 48px; letter-spacing: -0.02em; font-weight: 700; }
-}
-    </style>
-    <link rel="icon" href="logo.png" sizes="32x32" />
-    <link rel="icon" href="logo.png" sizes="192x192" />
-    <link rel="apple-touch-icon" href="logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.lordicon.com" />
-    <link rel="preconnect" href="https://unpkg.com" crossorigin />
-    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
-    <!-- start the 3D hero's downloads early, in parallel, without blocking render -->
-    <link rel="modulepreload" href="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js" crossorigin />
-    <link rel="preload" as="fetch" href="https://prod.spline.design/PEyx6WCdqGeSxOAQ/scene.splinecode" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&family=Geist:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <!-- Material Symbols subset: only the 2 icons the page uses (full variable font is ~300KB) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward,arrow_outward&display=block" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.lordicon.com/lordicon.js" async>
+    </script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js">
     </script>
     <style>
         /* ── reset + base ── */
@@ -206,191 +203,7 @@
             --loader-bg: #0a0820;
         }
 
-        /* ── LIGHT THEME OVERRIDES ── */
-        [data-theme="light"] {
-            color-scheme: light;
-            --fg-rgb: 26, 19, 65;
-            --bg-0: var(--paper);
-            --bg-1: var(--sky);
-            --bg-2: #eef1fb;
-            --page-text: var(--ink);
-            --page-text-soft: rgba(26, 19, 65, 0.62);
-            --nav-bg: rgba(245, 244, 239, 0.82);
-            --nav-bg-scrolled: rgba(245, 244, 239, 0.95);
-            --loader-bg: #f5f4ef;
-            --mid: #5b6478;
-        }
-
-        [data-theme="light"] body {
-            background: var(--bg-0);
-        }
-        /* Light theme: nav link text must be dark/visible */
-        [data-theme="light"] nav {
-            background: rgba(245, 244, 239, 0.82);
-            border-color: rgba(26, 19, 65, 0.1);
-            box-shadow: 0 10px 32px rgba(26, 19, 65, 0.10), 0 1px 0 rgba(26, 19, 65, 0.05) inset;
-        }
-        [data-theme="light"] .nav-links a {
-            color: rgba(26, 19, 65, 0.65);
-        }
-        [data-theme="light"] .nav-links a:hover,
-        [data-theme="light"] .nav-links a.active {
-            color: var(--ink);
-        }
-        [data-theme="light"] .nav-logo {
-            color: var(--ink);
-        }
-        [data-theme="light"] .nav-cta {
-            color: var(--ink);
-        }
-        [data-theme="light"] .hamburger span {
-            background: var(--ink);
-        }
-
-        [data-theme="light"] .svc-slide-card {
-            background: linear-gradient(145deg, rgba(7, 120, 182, 0.5) 0%, rgba(26, 246, 221, 0.22) 100%);
-        }
-        [data-theme="light"] nav,
-        [data-theme="light"] nav.scrolled {
-            box-shadow:
-                0 10px 32px rgba(26, 19, 65, 0.10),
-                0 1px 0 rgba(26, 19, 65, 0.05) inset,
-                0 0 0 1px rgba(67, 238, 147, 0.08) inset;
-        }
-        [data-theme="light"] .float-cta {
-            color: var(--ink) !important;
-        }
-        [data-theme="light"] ::selection {
-            background: rgba(67, 238, 147, 0.3);
-            color: var(--ink);
-        }
-        /* Light theme: card color fixes */
-        [data-theme="light"] .svc-glass-card {
-            background: rgba(255, 255, 255, 0.55);
-            border-color: rgba(26, 19, 65, 0.1);
-            box-shadow: 0 4px 24px rgba(26, 19, 65, 0.08);
-            backdrop-filter: blur(12px);
-        }
-        [data-theme="light"] .svc-glass-card:hover {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(67, 238, 147, 0.4);
-        }
-        [data-theme="light"] .svc-glass-card p,
-        [data-theme="light"] .about-text p,
-        [data-theme="light"] .about-card-text p,
-        [data-theme="light"] .svc-left-text p,
-        [data-theme="light"] .solutions-head p,
-        [data-theme="light"] .metrics-lead p,
-        [data-theme="light"] .deploy-sub,
-        [data-theme="light"] .lc-info-desc,
-        [data-theme="light"] .creation-head .sub-head,
-        [data-theme="light"] .cf-card .tool-desc,
-        [data-theme="light"] .hero-sub {
-            color: #1a1341 !important;
-        }
-        [data-theme="light"] .svc-ghost-num {
-            color: rgba(26, 19, 65, 0.04);
-        }
-        [data-theme="light"] .svc-glass-card h3 {
-            color: var(--ink);
-        }
-        [data-theme="light"] .about-card {
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(26, 19, 65, 0.1);
-        }
-        [data-theme="light"] .about-card:hover {
-            background: rgba(255, 255, 255, 0.85);
-        }
-        [data-theme="light"] .deploy-card-front,
-        [data-theme="light"] .deploy-card-back {
-            background: rgba(255, 255, 255, 0.72);
-            border-color: rgba(67, 238, 147, 0.2);
-            box-shadow: inset 0 0 20px rgba(7, 120, 182, 0.06);
-            backdrop-filter: blur(14px);
-        }
-        [data-theme="light"] .deploy-card-front h4,
-        [data-theme="light"] .deploy-card-back h4 {
-            color: var(--ink);
-        }
-        [data-theme="light"] .deploy-card-back ul li {
-            color: rgba(26, 19, 65, 0.75);
-        }
-        [data-theme="light"] .cf-card {
-            background: rgba(255, 255, 255, 0.78);
-            border-color: rgba(26, 19, 65, 0.1);
-        }
-        [data-theme="light"] .cf-card.is-active {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(67, 238, 147, 0.4);
-        }
-        /* Light theme: ALL remaining grey/muted text → near-black */
-        [data-theme="light"] .metric-desc,
-        [data-theme="light"] .metrics-lead p,
-        [data-theme="light"] .testimonial-card .author-info p,
-        [data-theme="light"] .hero-stat-label,
-        [data-theme="light"] .footer-brand p,
-        [data-theme="light"] .footer-col a,
-        [data-theme="light"] .footer-bottom p,
-        [data-theme="light"] .footer-socials a,
-        [data-theme="light"] .cta-sub,
-        [data-theme="light"] .team-left p,
-        [data-theme="light"] .sc-desc,
-        [data-theme="light"] .clients-sub,
-        [data-theme="light"] .creation-head .brand-tag,
-        [data-theme="light"] .cf-card .tool-step,
-        [data-theme="light"] .lc-center-title,
-        [data-theme="light"] .svc-left-text .scroll-hint,
-        [data-theme="light"] .deploy-flip-hint,
-        [data-theme="light"] .lc-info-step,
-        [data-theme="light"] .hero-stat-label {
-            color: rgba(26, 19, 65, 0.7) !important;
-        }
-        /* Light theme: canvas draws its own light palette (see THEMES in the canvas script) */
-        [data-theme="light"] .svc-spath-canvas {
-            opacity: 0.75;
-        }
-
-        /* ── PURPLE THEME (primary default) ── */
-        [data-theme="purple"] {
-            color-scheme: dark;
-            --fg-rgb: 255, 255, 255;
-            --bg-0: #1a1341;
-            --bg-1: #0d0a2e;
-            --bg-2: #110e35;
-            --page-text: #ffffff;
-            --page-text-soft: rgba(255, 255, 255, 0.6);
-            --nav-bg: rgba(15, 10, 45, 0.28);
-            --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
-            --loader-bg: #0a0820;
-        }
-        [data-theme="purple"] body {
-            background: var(--bg-0);
-        }
-        [data-theme="purple"] nav {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        /* Purple theme section bg pattern: ready-to-deploy=dark, testimonials=light, clients=dark */
-        [data-theme="purple"] #ready-to-deploy {
-            background: var(--bg-1) !important;
-        }
-        [data-theme="purple"] #testimonials {
-            background: #1d1548;
-        }
-        [data-theme="purple"] #clients {
-            background: var(--bg-0);
-        }
-        [data-theme="purple"] .svc-glass-card {
-            background: rgba(26, 19, 65, 0.55);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(139, 92, 246, 0.1);
-        }
-        [data-theme="purple"] .svc-glass-card:hover {
-            background: rgba(26, 19, 65, 0.70);
-            border-color: rgba(67, 238, 147, 0.22);
-        }
-        [data-theme="purple"] .deploy-card-front,
-        [data-theme="purple"] .deploy-card-back {
-            background: rgba(20, 14, 55, 0.7);
-        }
+        /* ── LIGHT THEME REMOVED ── */
 
         /* ── MIDNIGHT (enhanced dark) ── */
         [data-theme="midnight"] {
@@ -438,17 +251,6 @@
         [data-theme="midnight"] .deploy-card-back {
             border-color: rgba(255, 255, 255, 0.09) !important;
         }
-        /* Midnight svc-glass-card: neutral dark, keep original 0.42 opacity so canvas path shows through */
-        [data-theme="midnight"] .svc-glass-card {
-            background: rgba(12, 10, 22, 0.42) !important;
-            box-shadow:
-                0 2px 20px rgba(0, 0, 0, 0.5),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-        }
-        [data-theme="midnight"] .svc-glass-card:hover {
-            background: rgba(16, 13, 28, 0.6) !important;
-            border-color: rgba(67, 238, 147, 0.22) !important;
-        }
         [data-theme="midnight"] .cloud-outline {
             filter: drop-shadow(0 0 7px rgba(67, 238, 147, 0.75));
         }
@@ -472,10 +274,6 @@
         [data-theme="dark"] .stars-layer {
             opacity: 1;
         }
-        [data-theme="purple"] .stars-layer,
-        [data-theme="light"] .stars-layer {
-            display: none;
-        }
         .star {
             position: absolute;
             top: var(--sy);
@@ -487,6 +285,7 @@
             opacity: var(--so);
             animation: starTwinkle var(--sd) ease-in-out infinite;
             animation-delay: var(--sdel);
+            will-change: opacity, transform;
         }
         .star.star-accent {
             background: var(--cyan);
@@ -521,8 +320,8 @@
             align-items: center;
             justify-content: center;
             background: var(--loader-bg);
-            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.5s ease;
-            will-change: opacity;
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.8s ease;
+            will-change: opacity, visibility;
             opacity: 1;
             visibility: visible;
         }
@@ -745,10 +544,9 @@
             height: 3px;
             background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
             z-index: 999;
-            width: 100%;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.1s linear;
+            width: 0%;
+            transition: width 0.1s;
+            will-change: width;
             box-shadow: 0 0 20px rgba(67, 238, 147, 0.3);
         }
 
@@ -766,8 +564,8 @@
             padding: 0 28px;
             border-radius: 999px;
             background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px) saturate(1.5);
+            -webkit-backdrop-filter: blur(14px) saturate(1.5);
             border: 1px solid rgba(var(--fg-rgb), 0.08);
             box-shadow:
                 0 10px 32px rgba(0, 0, 0, 0.18),
@@ -776,10 +574,11 @@
             transition:
                 transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
                 background 0.4s ease,
+                backdrop-filter 0.4s ease,
                 box-shadow 0.4s ease,
                 border-color 0.4s ease,
                 top 0.4s ease;
-            will-change: transform;
+            will-change: transform, background, backdrop-filter;
             transform: translateY(0);
         }
         nav.nav-hidden {
@@ -787,6 +586,8 @@
         }
         nav.scrolled {
             background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(18px) saturate(1.6);
+            -webkit-backdrop-filter: blur(18px) saturate(1.6);
             border-color: rgba(var(--fg-rgb), 0.11);
             box-shadow:
                 0 12px 40px rgba(0, 0, 0, 0.28),
@@ -884,6 +685,7 @@
             border-radius: 2px;
             box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
             transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: width;
         }
         .nav-links a:hover::after {
             width: 100%;
@@ -915,6 +717,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform, box-shadow, border-color, color;
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -1019,12 +822,12 @@
             transform: scale(0.6) rotate(-40deg);
             transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .theme-toggle[data-mode="purple"] .theme-icon-purple,
-        .theme-toggle[data-mode="light"] .theme-icon-light,
+        .theme-toggle[data-mode="system"] .theme-icon-system,
         .theme-toggle[data-mode="dark"] .theme-icon-dark {
             opacity: 1;
             transform: scale(1) rotate(0deg);
         }
+        /* 'light' icon removed; only system and dark remain */
 
         .mobile-theme-row {
             display: flex;
@@ -1255,6 +1058,7 @@
             border-radius: 2px;
             box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
             transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: width;
         }
         .btn-ghost:hover .ghost-line {
             width: 100%;
@@ -1293,7 +1097,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
             cursor: pointer;
-            will-change: transform;
+            will-change: transform, box-shadow;
         }
         .float-cta::before,
         .float-cta::after {
@@ -1315,11 +1119,17 @@
             animation: floatRing 2.5s ease-in-out infinite 0.5s;
         }
         @keyframes floatPulse {
-            0%, 100% {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 238, 147, 0.4);
                 transform: scale(1);
             }
             70% {
+                box-shadow: 0 0 0 18px rgba(67, 238, 147, 0);
                 transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 238, 147, 0);
+                transform: scale(1);
             }
         }
         @keyframes floatRing {
@@ -1551,8 +1361,6 @@
         }
         spline-viewer {
             --spline-watermark-opacity: 0 !important;
-            opacity: 0;
-            transition: opacity 1s ease;
         }
         .spline-container canvas {
             width: 100% !important;
@@ -1668,6 +1476,7 @@
             background: var(--accent);
             box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
             transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: width;
         }
         .about-link:hover::after {
             width: 100%;
@@ -1703,7 +1512,7 @@
             background: rgba(var(--fg-rgb), 0.04);
             border: 1px solid rgba(var(--fg-rgb), 0.08);
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-            will-change: transform;
+            will-change: transform, box-shadow;
         }
         .about-card::before {
             content: '';
@@ -1876,7 +1685,8 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(var(--fg-rgb), 0.1);
-            background: linear-gradient(145deg, rgba(7, 120, 182, 0.38) 0%, rgba(26, 246, 221, 0.14) 100%);
+            backdrop-filter: blur(12px);
+            background: linear-gradient(145deg, rgba(7, 120, 182, 0.2) 0%, rgba(26, 246, 221, 0.06) 100%);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
         .svc-slide-card::before {
@@ -1964,7 +1774,6 @@
 
         .services-right {
             position: relative;
-            align-self: stretch; /* fill the row so the flow canvas ends at the section bottom */
             padding: 60px 0 60px 60px;
             display: flex;
             flex-direction: column;
@@ -2004,7 +1813,9 @@
             position: relative;
             padding: 22px 20px 18px;
             border-radius: 14px;
-            background: rgba(17, 14, 53, 0.52);
+            background: rgba(17, 14, 53, 0.42);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(var(--fg-rgb), 0.12);
             box-shadow:
                 0 2px 20px rgba(0, 0, 0, 0.35),
@@ -2012,7 +1823,7 @@
                 0 0 0 1px rgba(26, 246, 221, 0.04);
             overflow: hidden;
             cursor: default;
-            will-change: transform;
+            will-change: transform, box-shadow;
             transition:
                 transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
                 box-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1),
@@ -2036,21 +1847,6 @@
         }
         .svc-col-right .svc-glass-card:nth-child(3) {
             animation-delay: 3.0s;
-        }
-        /* pause the float on hover so the JS tilt (inline transform) can take effect */
-        .svc-glass-card:hover {
-            animation: none;
-        }
-        /* sections scrolled out of view get .anim-hold from JS — stops all their CSS animation work */
-        .anim-hold .star,
-        .anim-hold .typewriter-text::after,
-        .anim-hold .svc-slider,
-        .anim-hold .svc-glass-card,
-        .anim-hold .clients-track,
-        .anim-hold .marquee-line,
-        .anim-hold .btn-arrow,
-        .anim-hold .badge .dot {
-            animation-play-state: paused !important;
         }
         @keyframes svcCardFloat {
             0%,
@@ -2627,10 +2423,8 @@
             height: 100%;
             background: linear-gradient(90deg, var(--blue), var(--accent));
             border-radius: 4px;
-            width: 100%;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 3.2s linear;
+            width: 0%;
+            transition: width 3.2s linear;
         }
         .lc-info-cta {
             display: inline-flex;
@@ -2929,7 +2723,8 @@
             padding: 24px 14px;
             border-radius: 12px;
             text-align: center;
-            background: rgba(var(--fg-rgb), 0.04);
+            background: rgba(var(--fg-rgb), 0.02);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(var(--fg-rgb), 0.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -2937,6 +2732,7 @@
             isolation: isolate;
             cursor: default;
             clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+            will-change: transform, box-shadow, border-color;
         }
         .metric-box::before {
             content: '';
@@ -3001,43 +2797,17 @@
             line-height: 1.5;
         }
 
-        /* ── TESTIMONIALS (vertical marquee wall) ── */
+        /* ── TESTIMONIALS ── */
         #testimonials {
-            position: relative;
-            padding: 72px 48px 78px;
+            padding: 60px 48px;
             background: var(--bg-1);
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
-            overflow: hidden;
             content-visibility: auto;
-            contain-intrinsic-size: 860px;
-        }
-        /* ambient accent glows behind the wall (matches the glass/glow language of the site) */
-        #testimonials::before,
-        #testimonials::after {
-            content: '';
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        #testimonials::before {
-            top: -140px;
-            right: -120px;
-            background: rgba(67, 238, 147, 0.10);
-        }
-        #testimonials::after {
-            bottom: -160px;
-            left: -140px;
-            background: rgba(26, 246, 221, 0.08);
+            contain-intrinsic-size: 500px;
         }
         .testimonials-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 1240px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         .testimonials-head {
@@ -3053,70 +2823,30 @@
             font-style: normal;
             color: var(--accent);
         }
-        .testimonials-sub {
-            max-width: 620px;
-            margin: 14px auto 0;
-            font-size: 0.86rem;
-            line-height: 1.7;
-            font-weight: 300;
-            color: rgba(var(--fg-rgb), 0.55);
-        }
-
-        /* the wall: columns that scroll in alternating directions, faded at both ends */
         .testimonials-grid {
-            --tst-gap: 20px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--tst-gap);
-            height: 620px;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%);
-        }
-        .tst-col {
-            display: flex;
-            flex-direction: column;
-            gap: var(--tst-gap);
-            will-change: transform;
-        }
-        /* the track holds the cards twice, so -50% (plus half a gap) is a seamless loop */
-        .tst-col.up {
-            animation: tstScrollUp 46s linear infinite;
-        }
-        .tst-col.down {
-            animation: tstScrollDown 52s linear infinite;
-        }
-        .tst-col:nth-child(3).up {
-            animation-duration: 58s;
-        }
-        @keyframes tstScrollUp {
-            from { transform: translateY(0); }
-            to { transform: translateY(calc(-50% - (var(--tst-gap) / 2))); }
-        }
-        @keyframes tstScrollDown {
-            from { transform: translateY(calc(-50% - (var(--tst-gap) / 2))); }
-            to { transform: translateY(0); }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         .testimonial-card {
-            flex: 0 0 auto;
-            padding: 26px 24px;
-            border-radius: 24px;
+            padding: 28px 24px;
+            border-radius: var(--radius);
             background: rgba(var(--fg-rgb), 0.045);
             border: 1px solid rgba(var(--fg-rgb), 0.1);
-            transition: transform 0.45s var(--transition-smooth), background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .testimonial-card:hover {
-            transform: translateY(-3px) scale(1.02);
-            background: rgba(67, 238, 147, 0.05);
-            border-color: rgba(67, 238, 147, 0.35);
-            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28), 0 0 34px rgba(67, 238, 147, 0.14);
+            transform: translateY(-4px);
+            background: rgba(7, 120, 182, 0.05);
+            border-color: rgba(67, 238, 147, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
         .testimonial-card .quote-mark {
             font-size: 1.8rem;
             line-height: 1;
-            color: rgba(67, 238, 147, 0.22);
+            color: rgba(67, 238, 147, 0.12);
             margin-bottom: 8px;
             font-family: Georgia, serif;
         }
@@ -3126,7 +2856,7 @@
             color: rgba(var(--fg-rgb), 0.65);
             font-weight: 300;
             font-style: italic;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         .testimonial-card .testimonial-author {
             display: flex;
@@ -3134,12 +2864,11 @@
             gap: 10px;
         }
         .testimonial-card .author-avatar {
-            flex: 0 0 auto;
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(67, 238, 147, 0.18), rgba(7, 120, 182, 0.18));
-            border: 1px solid rgba(67, 238, 147, 0.18);
+            background: linear-gradient(135deg, rgba(67, 238, 147, 0.12), rgba(7, 120, 182, 0.12));
+            border: 1px solid rgba(67, 238, 147, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -3153,150 +2882,33 @@
             color: var(--page-text);
         }
         .testimonial-card .author-info p {
-            font-size: 0.62rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.42);
-        }
-
-        /* ── testimonials · LIGHT ── */
-        [data-theme="light"] #testimonials::before {
-            background: rgba(7, 120, 182, 0.12);
-        }
-        [data-theme="light"] #testimonials::after {
-            background: rgba(67, 238, 147, 0.14);
-        }
-        [data-theme="light"] .testimonial-card {
-            background: rgba(255, 255, 255, 0.78);
-            border-color: rgba(26, 19, 65, 0.1);
-            box-shadow: 0 6px 22px rgba(26, 19, 65, 0.07);
-        }
-        [data-theme="light"] .testimonial-card:hover {
-            background: #ffffff;
-            border-color: rgba(7, 120, 182, 0.35);
-            box-shadow: 0 18px 40px rgba(26, 19, 65, 0.12), 0 0 26px rgba(67, 238, 147, 0.18);
-        }
-        [data-theme="light"] .testimonial-card blockquote {
-            color: rgba(26, 19, 65, 0.72);
-        }
-        [data-theme="light"] .testimonial-card .quote-mark {
-            color: rgba(7, 120, 182, 0.28);
-        }
-        [data-theme="light"] .testimonial-card .author-avatar {
-            background: linear-gradient(135deg, rgba(7, 120, 182, 0.16), rgba(67, 238, 147, 0.2));
-            border-color: rgba(7, 120, 182, 0.2);
-            color: var(--blue);
-        }
-
-        /* ── testimonials · PURPLE ── */
-        [data-theme="purple"] #testimonials::before {
-            background: rgba(200, 192, 248, 0.12);
-        }
-        [data-theme="purple"] .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(200, 192, 248, 0.14);
-            box-shadow: 0 6px 24px rgba(10, 6, 35, 0.35);
-        }
-        [data-theme="purple"] .testimonial-card:hover {
-            background: rgba(200, 192, 248, 0.09);
-            border-color: rgba(67, 238, 147, 0.38);
-            box-shadow: 0 18px 44px rgba(8, 4, 30, 0.5), 0 0 34px rgba(67, 238, 147, 0.16);
-        }
-        [data-theme="purple"] .testimonial-card .quote-mark {
-            color: rgba(200, 192, 248, 0.3);
-        }
-        [data-theme="purple"] .testimonial-card .author-avatar {
-            background: linear-gradient(135deg, rgba(200, 192, 248, 0.2), rgba(67, 238, 147, 0.16));
-            border-color: rgba(200, 192, 248, 0.22);
-        }
-
-        /* ── testimonials · MIDNIGHT ── */
-        [data-theme="midnight"] #testimonials {
-            background: var(--bg-1);
-        }
-        [data-theme="midnight"] #testimonials::after {
-            background: rgba(26, 246, 221, 0.1);
-        }
-        [data-theme="midnight"] .testimonial-card {
-            background: rgba(255, 255, 255, 0.035);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 6px 26px rgba(0, 0, 0, 0.5);
-        }
-        [data-theme="midnight"] .testimonial-card:hover {
-            background: rgba(67, 238, 147, 0.05);
-            border-color: rgba(67, 238, 147, 0.4);
-            box-shadow: 0 0 0 1px rgba(67, 238, 147, 0.12), 0 20px 46px rgba(0, 0, 0, 0.6), 0 0 40px rgba(26, 246, 221, 0.12);
-        }
-        [data-theme="midnight"] .testimonial-card .quote-mark {
-            color: rgba(26, 246, 221, 0.28);
-        }
-        [data-theme="midnight"] .testimonial-card .author-avatar {
-            background: linear-gradient(135deg, rgba(67, 238, 147, 0.18), rgba(26, 246, 221, 0.16));
-            border-color: rgba(67, 238, 147, 0.2);
-        }
-
-        /* static, single-set wall when motion is unwelcome */
-        @media (prefers-reduced-motion: reduce) {
-            .testimonials-grid {
-                height: auto;
-                -webkit-mask-image: none;
-                mask-image: none;
-            }
-            .tst-col {
-                animation: none !important;
-                will-change: auto;
-            }
-            .tst-col [data-clone] {
-                display: none;
-            }
+            font-size: 0.65rem;
+            color: rgba(var(--fg-rgb), 0.3);
         }
 
         /* ── CLIENTS ── */
         #clients {
-            position: relative;
-            padding: 88px 48px;
+            padding: 48px 48px;
             background: var(--bg-0);
-            overflow: hidden;
             content-visibility: auto;
-            contain-intrinsic-size: 640px;
+            contain-intrinsic-size: 260px;
         }
         .clients-inner {
-            max-width: 1440px;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
         .clients-head {
             text-align: center;
-            max-width: 760px;
-            margin: 0 auto 56px;
-        }
-        .clients-head h2 {
-            font-size: clamp(1.6rem, 2.8vw, 2.5rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            color: var(--page-text);
-            margin-bottom: 14px;
-        }
-        .clients-head h2 em {
-            font-style: normal;
+            margin-bottom: 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             color: var(--accent);
-        }
-        .clients-sub {
-            font-size: clamp(0.88rem, 1.1vw, 1.05rem);
-            line-height: 1.6;
-            color: var(--page-text-soft);
-        }
-        .clients-rows {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            opacity: 0.6;
         }
         .clients-track-wrap {
             overflow: hidden;
             position: relative;
-            padding: 12px 0;
         }
         .clients-track-wrap::before,
         .clients-track-wrap::after {
@@ -3304,8 +2916,7 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 14%;
-            max-width: 180px;
+            width: 60px;
             z-index: 2;
             pointer-events: none;
         }
@@ -3319,67 +2930,83 @@
         }
         .clients-track {
             display: flex;
+            gap: 24px;
             align-items: center;
-            width: max-content;
+            animation: ticker 32s linear infinite;
             will-change: transform;
+            width: max-content;
+            padding: 10px 0;
         }
-        .clients-track.marquee-rtl {
-            animation: clientsMarqueeRTL 42s linear infinite;
-        }
-        .clients-track.marquee-ltr {
-            animation: clientsMarqueeLTR 42s linear infinite;
-        }
-        .clients-track-wrap:hover .clients-track {
+        .clients-track:hover {
             animation-play-state: paused;
         }
-        @keyframes clientsMarqueeRTL {
-            from { transform: translate3d(0, 0, 0); }
-            to   { transform: translate3d(-50%, 0, 0); }
-        }
-        @keyframes clientsMarqueeLTR {
-            from { transform: translate3d(-50%, 0, 0); }
-            to   { transform: translate3d(0, 0, 0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .clients-track.marquee-rtl,
-            .clients-track.marquee-ltr {
-                animation: none;
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
             }
         }
 
         .client-logo-item {
-            flex: 0 0 auto;
-            width: 176px;
-            height: 88px;
-            /* margin-right (not flex gap) so each duplicated half is exactly 50% of the
-               track width — keeps the -50% marquee loop seamless */
-            margin-right: 64px;
+            width: 150px;
+            height: 76px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 18px;
-            /* logo PNGs ship with opaque white backgrounds, so they sit on a plate */
-            background: #ffffff;
-            border: 1px solid rgba(var(--fg-rgb), 0.10);
+            flex-shrink: 0;
+            padding: 12px 16px;
+            background: transparent;
+            border: 1px solid transparent;
             border-radius: 14px;
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+            transition: transform 0.35s ease,
+                border-color 0.35s ease,
+                background 0.35s ease,
+                box-shadow 0.35s ease;
         }
         .client-logo-item:hover {
-            transform: translateY(-4px) scale(1.08);
-            border-color: rgba(67, 238, 147, 0.35);
-            box-shadow: 0 14px 34px rgba(67, 238, 147, 0.18);
-            z-index: 3;
+            transform: translateY(-4px);
+            background: rgba(var(--fg-rgb), 0.025);
+            border-color: rgba(67, 238, 147, 0.2);
+            box-shadow: 0 10px 28px rgba(67, 238, 147, 0.08);
         }
         .client-logo-item img {
             max-width: 100%;
-            max-height: 56px;
+            max-height: 46px;
             width: auto;
             height: auto;
             display: block;
             object-fit: contain;
+            mix-blend-mode: screen;
+            filter: brightness(0.95) saturate(0.85) contrast(1.05);
+            opacity: 0.85;
+            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+        }
+        .client-logo-item:hover img {
+            filter: brightness(1.2) saturate(1.05) contrast(1.1);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .client-logo-item .fallback-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: rgba(var(--fg-rgb), 0.4);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .client-logo-item:hover .fallback-text {
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
+        }
+        .client-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(var(--fg-rgb), 0.06);
+            flex-shrink: 0;
         }
 
         /* ===== TEAM SECTION ===== */
@@ -3560,6 +3187,116 @@
             gap: 12px;
         }
 
+        /* ── FAQ ── */
+        #faq {
+            padding: 60px 48px;
+            background: var(--bg-0);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            content-visibility: auto;
+            contain-intrinsic-size: 500px;
+        }
+        .faq-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .faq-head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .faq-head h2 {
+            font-size: clamp(1.6rem, 2.8vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        .faq-head h2 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .faq-item {
+            border-radius: 14px;
+            background: rgba(17, 14, 53, 0.42);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(var(--fg-rgb), 0.12);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .faq-item:hover,
+        .faq-item[open] {
+            border-color: rgba(67, 238, 147, 0.35);
+        }
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 24px;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-q {
+            flex: 1;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--page-text);
+            transition: color 0.3s ease;
+        }
+        .faq-item:hover .faq-q {
+            color: var(--accent);
+        }
+        .faq-icon {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .faq-icon::before {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .faq-icon::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            transition: transform 0.3s ease;
+        }
+        .faq-item[open] .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+        }
+        .faq-a {
+            padding: 0 24px 22px;
+            max-width: 640px;
+        }
+        .faq-a p {
+            margin: 0;
+            color: var(--page-text-soft);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
         /* ── CTA ── */
         #cta {
             padding: 60px 48px;
@@ -3711,6 +3448,7 @@
             padding: 3px 0;
             position: relative;
             transition: color 0.3s ease, transform 0.3s ease;
+            will-change: transform, color;
         }
         .footer-col a::before {
             content: '▸';
@@ -3753,6 +3491,7 @@
             font-weight: 600;
             transition: color 0.3s ease, transform 0.3s ease;
             display: inline-block;
+            will-change: transform, color;
             padding: 2px 6px;
             border-radius: 4px;
         }
@@ -3768,23 +3507,21 @@
             opacity: 0;
             transform: translateY(28px);
             transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
         .reveal.visible {
             opacity: 1;
             transform: none;
         }
 
-        /* ── CONTENT CREATION ── */
+        /* ── CONTENT CREATION (replaced with workflow timeline) ── */
         #content-creation {
-            padding: 80px 48px 70px;
+            padding: 40px 48px;
             background: var(--bg-1);
             border-top: 1px solid rgba(var(--fg-rgb), 0.04);
             border-bottom: 1px solid rgba(var(--fg-rgb), 0.04);
             overflow: hidden;
             position: relative;
-            /* skip rendering the coverflow (5 cards + blur layers) until scrolled near */
-            content-visibility: auto;
-            contain-intrinsic-size: auto 1044px;
         }
         #content-creation::before {
             content: '';
@@ -3842,13 +3579,12 @@
             margin-top: 14px;
             font-size: 1rem;
             font-weight: 300;
-            max-width: 740px;
+            max-width: 620px;
             margin-left: auto;
             margin-right: auto;
             font-family: 'Manrope', sans-serif;
             letter-spacing: 0.02em;
             line-height: 1.7;
-            text-wrap: balance;
         }
         .creation-head .badge-row {
             display: flex;
@@ -3885,214 +3621,331 @@
             background: var(--accent);
             animation: dotPulse 1.6s ease-in-out infinite;
         }
-        @keyframes dotPulse {
-            0%, 100% {
+
+        .workflow-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 8px 0;
+            min-height: 300px;
+        }
+        .workflow-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    rgba(67, 238, 147, 0.15) 5%,
+                    rgba(67, 238, 147, 0.4) 20%,
+                    var(--accent) 50%,
+                    rgba(67, 238, 147, 0.4) 80%,
+                    rgba(67, 238, 147, 0.15) 95%,
+                    transparent 100%);
+            transform: translateX(-50%);
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.08);
+            z-index: 0;
+        }
+        .moving-dot {
+            position: absolute;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.5), 0 0 60px rgba(67, 238, 147, 0.15);
+            z-index: 2;
+            transform: translateX(-50%);
+            pointer-events: none;
+            transition: top 0.1s linear;
+            will-change: top;
+        }
+        .moving-dot::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 1px solid rgba(67, 238, 147, 0.2);
+            animation: dotRingPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes dotRingPulse {
+            0%,
+            100% {
                 transform: scale(1);
-                opacity: 1;
+                opacity: 0.6;
             }
             50% {
-                transform: scale(1.35);
-                opacity: 0.55;
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .moving-dot::before {
+            content: '';
+            position: absolute;
+            inset: -16px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(67, 238, 147, 0.15), transparent 70%);
+            animation: dotGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes dotGlow {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0.7;
             }
         }
 
-        /* ── CONTENT CREATION: 3D coverflow carousel ── */
-        .cf-viewport {
-            position: relative;
-            max-width: 1340px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 540px;
-            perspective: 1600px;
+        .workflow-item {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            margin-bottom: -35px;
+            position: relative;
+            z-index: 1;
+            min-height: 0;
+            opacity: 0;
+            transform: translateX(0);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .cf-glow {
+        .workflow-item:last-child {
+            margin-bottom: 0;
+        }
+        .workflow-item.left {
+            padding-right: calc(50% + 36px);
+            text-align: right;
+            justify-content: flex-end;
+            transform: translateX(-50px);
+        }
+        .workflow-item.right {
+            padding-left: calc(50% + 36px);
+            text-align: left;
+            justify-content: flex-start;
+            transform: translateX(50px);
+        }
+        .workflow-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .workflow-item .connector {
+            position: absolute;
+            top: 50%;
+            width: 28px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(67, 238, 147, 0.15), rgba(67, 238, 147, 0.4));
+            transform: translateY(-50%);
+            transition: all 0.5s ease;
+            z-index: 0;
+        }
+        .workflow-item.left .connector {
+            right: calc(50% - 14px);
+            transform: translateY(-50%) scaleX(1);
+            transform-origin: right;
+        }
+        .workflow-item.right .connector {
+            left: calc(50% - 14px);
+            transform: translateY(-50%) scaleX(1);
+            transform-origin: left;
+        }
+        .workflow-item.visible .connector {
+            background: linear-gradient(90deg, rgba(67, 238, 147, 0.3), var(--accent));
+        }
+        .workflow-item .step-number {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 720px;
-            height: 340px;
             transform: translate(-50%, -50%);
-            /* soft radial gradient alone — no blur() filter (that was a heavy, redundant full-layer blur) */
-            background: radial-gradient(ellipse at center, rgba(67, 238, 147, 0.09), transparent 72%);
-            pointer-events: none;
-        }
-        .cf-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-0);
+            border: 2px solid rgba(67, 238, 147, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            z-index: 2;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.05);
         }
-        .cf-card {
+        .workflow-item.visible .step-number {
+            border-color: var(--accent);
+            background: rgba(67, 238, 147, 0.08);
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.12);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+        .workflow-item .step-number .inner-ring {
             position: absolute;
-            width: 380px;
-            height: 476px;
-            padding: 30px 30px 28px;
-            box-sizing: border-box;
-            border-radius: 20px;
-            background: rgba(17, 15, 48, 0.72);
-            border: 1px solid rgba(var(--fg-rgb), 0.12);
-            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.06);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
-                        opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
-                        border-color 0.7s ease,
-                        filter 0.3s ease 0.4s;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid rgba(67, 238, 147, 0.1);
+            animation: ringPulse 3s ease-in-out infinite;
         }
-        .cf-card.is-active {
-            background: rgba(23, 21, 47, 0.9);
-            border-color: rgba(67, 238, 147, 0.3);
-            box-shadow: 0 0 48px rgba(67, 238, 147, 0.16),
-                        0 24px 60px rgba(0, 0, 0, 0.4),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.12);
-            cursor: default;
-            filter: blur(0);
+        @keyframes ringPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
         }
-        /* soften the flanking cards so the focused one reads clearly */
-        .cf-card:not(.is-active) {
-            filter: blur(2px);
-        }
-        .cf-card .tool-step {
-            font-size: 0.55rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
-            font-family: 'Manrope', sans-serif;
-        }
-        .cf-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--page-text);
-            margin-bottom: 10px;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            font-family: 'Hanken Grotesk', sans-serif;
-        }
-        .cf-card h3 .highlight {
-            color: var(--accent);
-            font-weight: 700;
-        }
-        .cf-card .tool-desc {
-            font-size: 0.9rem;
-            color: rgba(var(--fg-rgb), 0.45);
-            line-height: 1.6;
-            font-weight: 300;
-            font-family: 'Manrope', sans-serif;
-        }
-        .cf-visual {
-            position: relative;
+
+        .workflow-card {
             width: 100%;
-            height: 150px;
-            margin: 20px 0;
-            border-radius: 14px;
+            max-width: 440px;
+            border-radius: 22px;
+            padding: 16px 20px;
+            background: rgba(var(--fg-rgb), 0.02);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(var(--fg-rgb), 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(7, 120, 182, 0.22), rgba(26, 246, 221, 0.10) 55%, rgba(67, 238, 147, 0.18));
-            border: 1px solid rgba(var(--fg-rgb), 0.06);
-            box-shadow: 0 6px 18px rgba(67, 238, 147, 0.12);
-            flex-shrink: 0;
+            cursor: default;
         }
-        .cf-visual::after {
+        .workflow-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.12), transparent 60%);
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            opacity: 0.3;
+            transition: opacity 0.4s ease, height 0.4s ease;
         }
-        .cf-visual svg {
-            width: 60px;
-            height: 60px;
+        .workflow-card:hover {
+            background: rgba(var(--fg-rgb), 0.04);
+            border-color: rgba(67, 238, 147, 0.15);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(7, 120, 182, 0.06);
+        }
+        .workflow-card:hover::before {
+            opacity: 1;
+            height: 4px;
+        }
+        .workflow-card .card-label {
+            font-size: 0.45rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-weight: 500;
+            margin-bottom: 2px;
+            transition: opacity 0.4s ease, color 0.4s ease;
+        }
+        .workflow-card:hover .card-label {
+            opacity: 0.9;
             color: var(--accent);
-            position: relative;
-            z-index: 1;
         }
-        .cf-card .tool-link {
+        .workflow-card .card-title {
+            font-size: clamp(0.95rem, 1.4vw, 1.3rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+        }
+        .workflow-card:hover .card-title {
+            color: var(--accent);
+        }
+        .workflow-card .card-title .highlight {
+            color: var(--accent);
+        }
+        .workflow-card .card-desc {
+            font-size: 0.76rem;
+            color: rgba(var(--fg-rgb), 0.45);
+            line-height: 1.45;
+            font-weight: 300;
+        }
+        .workflow-card .card-desc span {
+            color: var(--accent);
+            font-weight: 400;
+        }
+        .workflow-card .card-tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .workflow-card .card-tags .tag {
+            font-size: 0.45rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            color: rgba(var(--fg-rgb), 0.3);
+            background: rgba(67, 238, 147, 0.04);
+            transition: all 0.3s ease;
+        }
+        .workflow-card:hover .card-tags .tag {
+            border-color: rgba(67, 238, 147, 0.15);
+            color: var(--accent);
+            background: rgba(67, 238, 147, 0.06);
+        }
+        .workflow-card .card-icon-wrap {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: auto;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--page-text);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: 'Manrope', sans-serif;
-            width: fit-content;
-            transition: gap 0.35s ease, color 0.35s ease;
-        }
-        .cf-card .tool-link .link-arrow {
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1rem;
-        }
-        .cf-card .tool-link:hover {
-            color: var(--accent);
-            gap: 12px;
-        }
-        .cf-card .tool-link:hover .link-arrow {
-            transform: translateX(5px);
-        }
-        .cf-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(var(--fg-rgb), 0.08);
-            border: 1px solid rgba(var(--fg-rgb), 0.12);
-            color: rgba(var(--fg-rgb), 0.5);
-            font-size: 1.6rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
-            z-index: 100;
-        }
-        .cf-btn:hover {
-            background: rgba(67, 238, 147, 0.1);
-            border-color: rgba(67, 238, 147, 0.28);
-            color: var(--accent);
-        }
-        .cf-prev { left: 8px; }
-        .cf-next { right: 8px; }
-        .cf-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 40px;
-        }
-        .cf-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(var(--fg-rgb), 0.12);
-            border: none;
-            padding: 0;
-            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(7, 120, 182, 0.12);
+            border: 1px solid rgba(var(--fg-rgb), 0.04);
+            margin-bottom: 6px;
             transition: all 0.4s ease;
+            overflow: hidden;
         }
-        .cf-dot.active {
-            background: var(--accent);
-            width: 30px;
-            border-radius: 4px;
-            box-shadow: 0 0 16px rgba(67, 238, 147, 0.3);
+        .workflow-card .card-icon-wrap lord-icon {
+            width: 100%;
+            height: 100%;
         }
-        .cf-dot:hover {
-            background: rgba(67, 238, 147, 0.4);
+        .workflow-card:hover .card-icon-wrap {
+            background: rgba(7, 120, 182, 0.2);
+            border-color: rgba(67, 238, 147, 0.1);
+            box-shadow: 0 0 20px rgba(7, 120, 182, 0.1);
+        }
+        .workflow-card .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(var(--fg-rgb), 0.3);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 2px 0;
+        }
+        .workflow-card .card-btn .arrow {
+            display: inline-block;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform;
+        }
+        .workflow-card .card-btn:hover {
+            color: var(--accent);
+        }
+        .workflow-card .card-btn:hover .arrow {
+            transform: translateX(6px) scale(1.1);
         }
 
         /* ── RESPONSIVE ── */
@@ -4157,14 +4010,6 @@
         }
 
         @media (max-width: 1024px) {
-            /* collapse desktop nav earlier: 8 links + CTA crowd the bar below ~1080px */
-            .nav-links,
-            .nav-cta {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
             #hero {
                 padding: 0 32px 50px;
             }
@@ -4277,14 +4122,63 @@
                 white-space: normal;
             }
 
-            .cf-viewport {
-                height: 500px;
+            .workflow-item.left,
+            .workflow-item.right {
+                padding: 0 0 0 60px;
+                text-align: left;
+                justify-content: flex-start;
+                transform: translateX(-30px);
             }
-            .cf-card {
-                width: 340px;
-                height: 448px;
+            .workflow-item .connector {
+                left: 44px !important;
+                right: auto !important;
+                width: 18px;
             }
-
+            .workflow-item .step-number {
+                left: 20px;
+                transform: translate(0, -50%);
+                width: 36px;
+                height: 36px;
+                font-size: 0.65rem;
+            }
+            .workflow-item.visible .step-number {
+                transform: translate(0, -50%) scale(1.05);
+            }
+            .workflow-container::before {
+                left: 20px;
+            }
+            .moving-dot {
+                left: 20px;
+                transform: translateX(0);
+                width: 12px;
+                height: 12px;
+            }
+            .workflow-item {
+                margin-bottom: 40px;
+                min-height: 160px;
+            }
+            .workflow-card {
+                max-width: 100%;
+                padding: 20px 22px;
+            }
+            .workflow-item.left .connector,
+            .workflow-item.right .connector {
+                transform: translateY(-50%) scaleX(1);
+            }
+            .workflow-item.left {
+                padding-right: 0;
+            }
+            .workflow-item.right {
+                padding-left: 60px;
+            }
+            .workflow-item.left .connector {
+                left: 44px;
+                right: auto;
+            }
+            .workflow-item.right .connector {
+                left: 44px;
+                right: auto;
+            }
         }
 
         @media (max-width: 820px) {
@@ -4306,29 +4200,6 @@
             }
             .spline-container {
                 display: none !important;
-            }
-            /* stack the team headline above the member list instead of jamming them side-by-side */
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-            .team-left {
-                position: static;
-                text-align: center;
-            }
-            .team-left .team-eyebrow {
-                justify-content: center;
-            }
-            .team-left p {
-                max-width: 100%;
-                margin: 0 auto;
-            }
-            .team-left .team-divider {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            /* redundant with the menu + hero CTAs here, and it overlaps tap targets */
-            .float-cta {
-                display: none;
             }
             #hero {
                 padding: 0 20px 40px;
@@ -4490,10 +4361,6 @@
             }
             .testimonials-grid {
                 grid-template-columns: 1fr 1fr;
-                height: 540px;
-            }
-            .tst-col:nth-child(3) {
-                display: none;
             }
             .testimonial-card {
                 padding: 20px 18px;
@@ -4514,24 +4381,18 @@
                 display: none;
             }
             .client-logo-item {
-                width: 132px;
-                height: 68px;
-                padding: 8px 12px;
-                margin-right: 32px;
-                border-radius: 12px;
+                min-width: 80px;
+                height: 44px;
+                padding: 4px 8px;
             }
             .client-logo-item img {
-                max-height: 42px;
+                max-height: 32px;
             }
-            #clients {
-                padding-top: 56px;
-                padding-bottom: 56px;
-            }
-            .clients-head {
-                margin-bottom: 36px;
-            }
-            .clients-rows {
+            .clients-track {
                 gap: 24px;
+            }
+            .client-dot {
+                display: none;
             }
             .hero-static-headline {
                 white-space: nowrap;
@@ -4559,21 +4420,60 @@
                 height: 44px;
             }
 
-            #content-creation {
-                padding: 48px 16px !important;
+            .workflow-item.left,
+            .workflow-item.right {
+                padding: 0 0 0 50px;
+                transform: translateX(-20px);
             }
-            .cf-viewport {
-                height: 470px;
+            .workflow-item .connector {
+                left: 36px !important;
+                width: 14px;
             }
-            .cf-card {
-                width: 300px;
-                height: 424px;
+            .workflow-item .step-number {
+                left: 16px;
+                width: 32px;
+                height: 32px;
+                font-size: 0.55rem;
             }
-            .creation-head h2 {
-                font-size: clamp(1.4rem, 6vw, 2rem);
+            .workflow-container::before {
+                left: 16px;
             }
-            .creation-head .sub-head {
-                font-size: 0.85rem;
+            .moving-dot {
+                left: 16px;
+                transform: translateX(0);
+                width: 10px;
+                height: 10px;
+            }
+            .workflow-item {
+                margin-bottom: 34px;
+                min-height: 140px;
+            }
+            .workflow-card {
+                padding: 18px 20px;
+            }
+            .workflow-card .card-title {
+                font-size: 0.95rem;
+            }
+            .workflow-card .card-desc {
+                font-size: 0.72rem;
+            }
+            .workflow-item.right {
+                padding-left: 50px;
+            }
+            .workflow-item.left .connector,
+            .workflow-item.right .connector {
+                left: 36px !important;
+                right: auto !important;
+            }
+            .workflow-item.visible {
+                transform: translateX(0);
+            }
+            .creation-head .badge-row {
+                gap: 6px;
+            }
+            .creation-head .badge {
+                font-size: 0.45rem;
+                padding: 4px 10px;
             }
         }
 
@@ -4897,24 +4797,9 @@
                 margin-top: 4px;
             }
 
-            /* phones: one static column, no vertical marquee */
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
-                height: auto;
-                -webkit-mask-image: none;
-                mask-image: none;
-            }
-            .tst-col {
-                gap: 14px;
-                animation: none !important;
-                will-change: auto;
-            }
-            .tst-col:nth-child(n+2) {
-                display: none;
-            }
-            .tst-col [data-clone] {
-                display: none;
             }
             .testimonials-head h2 {
                 font-size: clamp(1.2rem, 5vw, 1.8rem);
@@ -4989,25 +4874,26 @@
             }
 
             .clients-head {
-                margin-bottom: 28px;
-            }
-            .clients-rows {
-                gap: 18px;
+                font-size: 0.8rem;
+                margin-bottom: 24px;
             }
             .client-logo-item {
-                width: 104px;
-                height: 54px;
-                padding: 6px 10px;
-                margin-right: 22px;
-                border-radius: 10px;
+                min-width: 60px;
+                height: 36px;
+                padding: 2px 6px;
             }
             .client-logo-item img {
-                max-height: 32px;
+                max-height: 24px;
+            }
+            .clients-track {
+                gap: 16px;
             }
             .clients-track-wrap::before,
             .clients-track-wrap::after {
-                width: 10%;
-                max-width: 48px;
+                width: 24px;
+            }
+            .client-dot {
+                display: none;
             }
 
             .btn-primary {
@@ -5025,40 +4911,89 @@
                 align-items: flex-start;
             }
 
-            #content-creation {
-                padding: 40px 16px !important;
+            .workflow-item.left,
+            .workflow-item.right {
+                padding: 0 0 0 44px;
+                transform: translateX(-10px);
             }
-            .cf-viewport {
-                height: 430px;
-                padding: 0 6px;
+            .workflow-item .connector {
+                left: 28px !important;
+                width: 10px;
             }
-            .cf-card {
-                width: 244px;
-                height: 388px;
-                padding: 22px 20px 20px;
+            .workflow-item .step-number {
+                left: 12px;
+                width: 24px;
+                height: 24px;
+                font-size: 0.45rem;
+                border-width: 1.5px;
+            }
+            .workflow-container::before {
+                left: 12px;
+                width: 2px;
+            }
+            .moving-dot {
+                left: 12px;
+                transform: translateX(0);
+                width: 8px;
+                height: 8px;
+            }
+            .moving-dot::after {
+                inset: -3px;
+            }
+            .moving-dot::before {
+                inset: -10px;
+            }
+            .workflow-item {
+                margin-bottom: 28px;
+                min-height: 120px;
+            }
+            .workflow-card {
+                padding: 14px 16px;
                 border-radius: 16px;
             }
-            .cf-card h3 {
-                font-size: 1.1rem;
+            .workflow-card .card-title {
+                font-size: 0.85rem;
             }
-            .cf-card .tool-desc {
-                font-size: 0.78rem;
+            .workflow-card .card-desc {
+                font-size: 0.65rem;
             }
-            .cf-visual {
-                height: 100px;
-                margin: 14px 0;
+            .workflow-card .card-icon-wrap {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 4px;
             }
-            .cf-visual svg {
-                width: 44px;
-                height: 44px;
+            .workflow-card .card-tags .tag {
+                font-size: 0.35rem;
+                padding: 1px 6px;
             }
-            .cf-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 1.2rem;
+            .workflow-card .card-btn {
+                font-size: 0.45rem;
+                margin-top: 8px;
             }
-            .cf-dots {
-                margin-top: 28px;
+            .workflow-item.right {
+                padding-left: 44px;
+            }
+            .workflow-item.left .connector,
+            .workflow-item.right .connector {
+                left: 28px !important;
+                right: auto !important;
+            }
+            .workflow-item.visible {
+                transform: translateX(0);
+            }
+            .workflow-item .step-number .inner-ring {
+                display: none;
+            }
+            .creation-head .badge-row {
+                gap: 4px;
+            }
+            .creation-head .badge {
+                font-size: 0.35rem;
+                padding: 2px 8px;
+            }
+            .creation-head .badge .dot {
+                width: 3px;
+                height: 3px;
             }
 
             .team-module .kinetic-panel[data-active="true"] {
@@ -5124,6 +5059,69 @@
         }
     </style>
     <!-- Favicon -->
+    <link rel="icon" href="https://seesec.io/wp-content/uploads/2025/03/logo.png" sizes="32x32" />
+    <link rel="icon" href="https://seesec.io/wp-content/uploads/2025/03/logo.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://seesec.io/wp-content/uploads/2025/03/logo.png" />
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) — Organization ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://seesec.io/#organization",
+            "name": "SEESEC Infotech",
+            "alternateName": "SEESEC",
+            "url": "https://seesec.io/",
+            "logo": "https://seesec.io/wp-content/uploads/2025/03/logo.png",
+            "description": "SEESEC is an AWS Advanced Tier Services Partner helping organizations simplify, optimize and secure their technology ecosystems through cloud management, cloud migration, cost optimization, cloud security, data & AI, and generative AI services.",
+            "knowsAbout": ["AWS Cloud Migration", "Cloud Cost Optimization", "Cloud Security", "Generative AI", "Data Analytics", "Communication Automation"],
+            "sameAs": []
+        }
+    </script>
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) — WebSite ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://seesec.io/#website",
+            "url": "https://seesec.io/",
+            "name": "SEESEC",
+            "publisher": { "@id": "https://seesec.io/#organization" },
+            "inLanguage": "en"
+        }
+    </script>
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) — WebPage ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://seesec.io/#webpage",
+            "url": "https://seesec.io/",
+            "name": "SEESEC | AWS Cloud Migration, Cloud Security & Generative AI Services",
+            "description": "SEESEC is an AWS Advanced Tier Partner helping enterprises cut cloud costs by up to 70%, secure infrastructure, and deploy Generative AI, data analytics & communication automation solutions.",
+            "isPartOf": { "@id": "https://seesec.io/#website" },
+            "about": { "@id": "https://seesec.io/#organization" },
+            "inLanguage": "en"
+        }
+    </script>
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) — Services offered ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                { "@type": "Service", "position": 1, "name": "AWS Managed Services", "description": "End-to-end AWS management with security-first architecture.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "Cloud Operations", "url": "https://seesec.io/cloud-operations.html" },
+                { "@type": "Service", "position": 2, "name": "Cloud Migration", "description": "Structured, zero-downtime migration to AWS.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "Cloud Transformation", "url": "https://seesec.io/cloud-migration.html" },
+                { "@type": "Service", "position": 3, "name": "Cloud Cost Optimization", "description": "Up to 70% cloud savings through intelligent FinOps and rightsizing.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "FinOps & Optimization", "url": "https://seesec.io/cloud-optimization.html" },
+                { "@type": "Service", "position": 4, "name": "Cloud Security", "description": "Continuous security monitoring, zero-trust governance, DPDP and SOC2 compliance.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "Security & Compliance", "url": "https://seesec.io/cloud-security.html" },
+                { "@type": "Service", "position": 5, "name": "Data & AI", "description": "Data pipelines, analytics, dashboards and business intelligence.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "Data Intelligence", "url": "https://seesec.io/data-analytics.html" },
+                { "@type": "Service", "position": 6, "name": "Generative AI", "description": "Custom LLMs, RAG systems, copilots and AI workflow automation.", "provider": { "@id": "https://seesec.io/#organization" }, "areaServed": "Global", "serviceType": "Enterprise AI", "url": "https://seesec.io/gen-ai.html" }
+            ]
+        }
+    </script>
 </head>
 <body>
 
@@ -5172,7 +5170,7 @@
     <!-- ===== NAVBAR ===== -->
     <nav id="nav">
         <a href="#hero" class="nav-logo">
-            <img src="logo.png" alt="SEESEC Logo" width="350" height="332" />
+            <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" />
             <span class="logo-text">SEE<span>SEC</span></span>
         </a>
 
@@ -5180,9 +5178,9 @@
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#communication-automation">Solutions</a></li>
-            <li><a href="aws.html">AWS T&amp;C</a></li>
             <li><a href="#content-creation">Content AI</a></li>
             <li><a href="#about">About Us</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#cta">Contact</a></li>
             <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
         </ul>
@@ -5193,9 +5191,8 @@
             Get a Quote →
         </a>
 
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: Purple" data-mode="purple">
-            <svg class="theme-icon theme-icon-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" fill="currentColor" fill-opacity="0.15"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke-dasharray="4 2"/></svg>
-            <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="4.2" y1="4.2" x2="6" y2="6"></line><line x1="18" y1="18" x2="19.8" y2="19.8"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="4.2" y1="19.8" x2="6" y2="18"></line><line x1="18" y1="6" x2="19.8" y2="4.2"></line></svg>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: System">
+            <svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
             <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
         </button>
 
@@ -5213,18 +5210,15 @@
         <a href="#communication-automation" class="mobile-link">Solutions</a>
         <a href="#content-creation" class="mobile-link">Content AI</a>
         <a href="#about" class="mobile-link">About Us</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
         <a href="#cta" class="mobile-link">Contact</a>
         <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
         <a href="#cta" class="mobile-cta">Get a Quote →</a>
 
         <div class="mobile-theme-row" role="group" aria-label="Color theme">
-            <button class="mobile-theme-option" data-mode="purple" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" fill="currentColor" fill-opacity="0.15"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke-dasharray="4 2"/></svg>
-                <span>Purple</span>
-            </button>
-            <button class="mobile-theme-option" data-mode="light" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="4.2" y1="4.2" x2="6" y2="6"></line><line x1="18" y1="18" x2="19.8" y2="19.8"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="4.2" y1="19.8" x2="6" y2="18"></line><line x1="18" y1="6" x2="19.8" y2="4.2"></line></svg>
-                <span>Light</span>
+            <button class="mobile-theme-option" data-mode="system" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>System</span>
             </button>
             <button class="mobile-theme-option" data-mode="dark" type="button">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
@@ -5247,12 +5241,13 @@
 
         <div class="hero-content">
             <p class="hero-eyebrow">Cloud Excellence · AI & Data · Communication Automation</p>
-            <div class="hero-title-group">
+            <h1 class="hero-title-group">
                 <span class="hero-static-headline">Unleash the <em>Power</em> of</span>
                 <div class="typewriter-wrapper">
-                    <span class="typewriter-text" id="typewriterSpan"></span>
+                    <span class="typewriter-text" id="typewriterSpan" aria-hidden="true"></span>
+                    <noscript>Cloud &amp; AI</noscript>
                 </div>
-            </div>
+            </h1>
             <p class="hero-sub">SEESEC helps organizations reduce cloud waste, secure their infrastructure, and deploy AI-powered tools that improve operational efficiency — at scale.</p>
             <div class="hero-actions">
                 <a href="#services" class="btn btn-primary">
@@ -5408,126 +5403,23 @@
                         var canvas = document.getElementById('svcSpathCanvas');
                         if (!canvas) return;
                         var ctx = canvas.getContext('2d');
-                        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                         var particles = [];
-                        var W, H, endY, ribbon;
-
-                        /* light bg needs deeper, low-alpha colors drawn normally —
-                           mix-blend-mode:multiply turned the glow sprites into dark smudges */
-                        var THEMES = {
-                            dark: {
-                                wide: [[0, 'rgba(7,120,182,0)'], [0.06, 'rgba(7,120,182,0.14)'], [0.88, 'rgba(7,120,182,0.14)'], [0.985, 'rgba(7,120,182,0)']],
-                                mid: [[0, 'rgba(26,246,221,0)'], [0.06, 'rgba(26,246,221,0.08)'], [0.5, 'rgba(7,120,182,0.12)'], [0.99, 'rgba(67,238,147,0)']],
-                                line: [[0, 'rgba(26,246,221,0)'], [0.04, 'rgba(26,246,221,0.32)'], [0.96, 'rgba(26,246,221,0.32)'], [1, 'rgba(26,246,221,0)']],
-                                node: '#43ee93',
-                                halo: '67,238,147',
-                                colors: ['26,246,221', '67,238,147']
-                            },
-                            light: {
-                                wide: [[0, 'rgba(7,120,182,0)'], [0.06, 'rgba(7,120,182,0.08)'], [0.88, 'rgba(7,120,182,0.08)'], [0.985, 'rgba(7,120,182,0)']],
-                                mid: [[0, 'rgba(13,148,136,0)'], [0.06, 'rgba(13,148,136,0.07)'], [0.5, 'rgba(7,120,182,0.09)'], [0.99, 'rgba(18,183,106,0)']],
-                                line: [[0, 'rgba(7,120,182,0)'], [0.04, 'rgba(7,120,182,0.35)'], [0.96, 'rgba(7,120,182,0.35)'], [1, 'rgba(7,120,182,0)']],
-                                node: '#12b76a',
-                                halo: '18,183,106',
-                                colors: ['7,120,182', '18,183,106']
-                            }
-                        };
-                        function pal() {
-                            return THEMES[document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'];
-                        }
-
-                        function pathPoint(t) {
-                            /* endY = canvas bottom minus room for the node glow, so the path spans the full height */
-                            return { x: W * 0.5 + (W * 0.26) * Math.sin(t * Math.PI * 2.6), y: t * endY };
-                        }
-
-                        /* glow sprites rendered once — replaces per-frame shadowBlur (the main frame cost) */
-                        var sprites = {};
-                        function sprite(color) {
-                            if (sprites[color]) return sprites[color];
-                            var s = document.createElement('canvas');
-                            s.width = s.height = 32;
-                            var sc = s.getContext('2d');
-                            var g = sc.createRadialGradient(16, 16, 0, 16, 16, 16);
-                            g.addColorStop(0, 'rgba(' + color + ',1)');
-                            g.addColorStop(0.3, 'rgba(' + color + ',0.7)');
-                            g.addColorStop(1, 'rgba(' + color + ',0)');
-                            sc.fillStyle = g;
-                            sc.fillRect(0, 0, 32, 32);
-                            sprites[color] = s;
-                            return s;
-                        }
-
-                        function strokePath(c, style, width) {
-                            c.beginPath();
-                            for (var s = 0; s <= 120; s++) {
-                                var p = pathPoint(s / 120);
-                                s === 0 ? c.moveTo(p.x, p.y) : c.lineTo(p.x, p.y);
-                            }
-                            c.strokeStyle = style;
-                            c.lineWidth = width;
-                            c.lineCap = 'round';
-                            c.stroke();
-                        }
-
-                        /* static ribbon pre-rendered once per resize (was 3×120 segments every frame),
-                           with the tail fading out into the end node instead of hard-clipping at the canvas edge */
-                        function renderRibbon() {
-                            ribbon = document.createElement('canvas');
-                            ribbon.width = W;
-                            ribbon.height = H;
-                            var rc = ribbon.getContext('2d');
-                            function fade(stops) {
-                                var g = rc.createLinearGradient(0, 0, 0, endY);
-                                for (var i = 0; i < stops.length; i++) g.addColorStop(stops[i][0], stops[i][1]);
-                                return g;
-                            }
-                            var w = W * 0.13;
-                            var p = pal();
-                            strokePath(rc, fade(p.wide), w);
-                            strokePath(rc, fade(p.mid), w * 0.55);
-                            strokePath(rc, fade(p.line), 1.6);
-                        }
-
-                        /* terminal node: the flowing line now ends in a glowing dot instead of being cut off */
-                        function drawNode(c, pulse) {
-                            var p = pathPoint(1);
-                            var r = 4.5 + pulse * 1.5;
-                            var th = pal();
-                            c.drawImage(sprite(th.halo), p.x - r * 3, p.y - r * 3, r * 6, r * 6);
-                            c.beginPath();
-                            c.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
-                            c.fillStyle = th.node;
-                            c.fill();
-                        }
+                        var W, H;
 
                         function resize() {
                             W = canvas.offsetWidth;
                             H = canvas.offsetHeight;
                             canvas.width = W;
                             canvas.height = H;
-                            endY = H - 6; /* node core sits on the section's bottom line; only the soft halo clips */
-                            renderRibbon();
-                            if (reduceMotion) {
-                                ctx.drawImage(ribbon, 0, 0);
-                                drawNode(ctx, 0.5);
-                            }
                         }
                         resize();
-                        var _rzT = null;
-                        window.addEventListener('resize', function() {
-                            clearTimeout(_rzT);
-                            _rzT = setTimeout(resize, 100);
-                        });
-                        new MutationObserver(function() {
-                            resize();
-                            if (!reduceMotion && particles.length) {
-                                particles.length = 0;
-                                for (var i = 0; i < 22; i++) spawnParticle();
-                            }
-                        }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                        window.addEventListener('resize', resize);
 
-                        if (reduceMotion) return; /* static frame only */
+                        function pathPoint(t) {
+                            var y = t * H;
+                            var x = W * 0.5 + (W * 0.26) * Math.sin(t * Math.PI * 2.6);
+                            return { x: x, y: y };
+                        }
 
                         function spawnParticle() {
                             var t = Math.random();
@@ -5541,90 +5433,95 @@
                                 alpha: 0,
                                 life: 0,
                                 maxLife: 0.6 + Math.random() * 0.4,
-                                color: pal().colors[Math.random() > 0.55 ? 0 : 1]
+                                color: Math.random() > 0.55 ? '26,246,221' : '67,238,147'
                             });
                         }
                         for (var i = 0; i < 22; i++) spawnParticle();
-
-                        var running = false,
-                            inView = false,
-                            rafId = 0,
-                            lastTime = 0;
+                        var lastTime = 0;
 
                         function draw(now) {
-                            if (!running) return;
                             var dt = Math.min((now - lastTime) / 1000, 0.05);
                             lastTime = now;
                             ctx.clearRect(0, 0, W, H);
-                            ctx.drawImage(ribbon, 0, 0);
-                            drawNode(ctx, 0.5 + 0.5 * Math.sin(now / 600));
+                            ctx.save();
+                            var ribbonW = W * 0.13;
+                            var steps = 120;
+                            ctx.beginPath();
+                            for (var s = 0; s <= steps; s++) {
+                                var p = pathPoint(s / steps);
+                                s === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+                            }
+                            ctx.strokeStyle = 'rgba(7,120,182,0.14)';
+                            ctx.lineWidth = ribbonW;
+                            ctx.lineCap = 'round';
+                            ctx.stroke();
+                            ctx.beginPath();
+                            for (var s = 0; s <= steps; s++) {
+                                var p = pathPoint(s / steps);
+                                s === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+                            }
+                            var grad = ctx.createLinearGradient(0, 0, 0, H);
+                            grad.addColorStop(0, 'rgba(26,246,221,0.08)');
+                            grad.addColorStop(0.5, 'rgba(7,120,182,0.12)');
+                            grad.addColorStop(1, 'rgba(67,238,147,0.08)');
+                            ctx.strokeStyle = grad;
+                            ctx.lineWidth = ribbonW * 0.55;
+                            ctx.stroke();
+                            ctx.beginPath();
+                            for (var s = 0; s <= steps; s++) {
+                                var p = pathPoint(s / steps);
+                                s === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+                            }
+                            ctx.strokeStyle = 'rgba(26,246,221,0.32)';
+                            ctx.lineWidth = 1.6;
+                            ctx.stroke();
+                            ctx.restore();
+                            var alive = [];
                             for (var i = 0; i < particles.length; i++) {
                                 var pk = particles[i];
                                 pk.t += pk.speed * (dt * 60);
                                 pk.life += pk.speed * (dt * 60);
                                 if (pk.t > 1) pk.t -= 1;
                                 var lifeNorm = pk.life / pk.maxLife;
-                                pk.alpha = lifeNorm < 0.2 ? lifeNorm / 0.2 : lifeNorm > 0.8 ? 1 - (lifeNorm - 0.8) / 0.2 : 1;
+                                pk.alpha = lifeNorm < 0.2 ? lifeNorm / 0.2 : lifeNorm > 0.8 ? 1 - (lifeNorm - 0.8) / 0.2 :
+                                    1;
                                 if (pk.life >= pk.maxLife) {
-                                    particles[i] = null;
-                                    continue;
+                                    spawnParticle();
+                                } else {
+                                    var pt = pathPoint(pk.t);
+                                    pk.x = pt.x + (Math.random() - 0.5) * 6;
+                                    pk.y = pt.y;
+                                    ctx.save();
+                                    ctx.globalAlpha = pk.alpha * 0.95;
+                                    ctx.beginPath();
+                                    ctx.arc(pk.x, pk.y, pk.size, 0, Math.PI * 2);
+                                    ctx.fillStyle = 'rgba(' + pk.color + ',1)';
+                                    ctx.shadowColor = 'rgba(' + pk.color + ',0.9)';
+                                    ctx.shadowBlur = 8;
+                                    ctx.fill();
+                                    ctx.restore();
+                                    alive.push(pk);
                                 }
-                                var pt = pathPoint(pk.t);
-                                pk.x = pt.x + (Math.random() - 0.5) * 6;
-                                pk.y = pt.y;
-                                /* dissolve into the end node instead of popping at the tail */
-                                var tail = pk.t > 0.85 ? (1 - pk.t) / 0.15 : 1;
-                                var sz = pk.size * 5;
-                                ctx.globalAlpha = pk.alpha * tail * 0.95;
-                                ctx.drawImage(sprite(pk.color), pk.x - sz / 2, pk.y - sz / 2, sz, sz);
                             }
-                            ctx.globalAlpha = 1;
-                            var dead = particles.length;
-                            particles = particles.filter(Boolean);
-                            dead -= particles.length;
-                            while (dead-- > 0) spawnParticle();
-                            rafId = requestAnimationFrame(draw);
+                            particles = alive;
+                            requestAnimationFrame(draw);
                         }
-
-                        function syncRunning() {
-                            var should = inView && !document.hidden;
-                            if (should && !running) {
-                                if (canvas.offsetHeight !== H || canvas.offsetWidth !== W) resize();
-                                running = true;
-                                lastTime = performance.now();
-                                rafId = requestAnimationFrame(draw);
-                            } else if (!should && running) {
-                                running = false;
-                                cancelAnimationFrame(rafId);
-                            }
-                        }
-
-                        /* only animate while the section is actually on screen */
-                        new IntersectionObserver(function(entries) {
-                            inView = entries[0].isIntersecting;
-                            syncRunning();
-                        }).observe(canvas);
-                        document.addEventListener('visibilitychange', syncRunning);
+                        requestAnimationFrame(draw);
                     })();
 
                     document.querySelectorAll('.svc-glass-card').forEach(card => {
-                        let rect = null, raf = 0;
-                        card.addEventListener('mouseenter', () => {
-                            rect = card.getBoundingClientRect();
-                        });
                         card.addEventListener('mousemove', e => {
-                            if (!rect || raf) return;
-                            raf = requestAnimationFrame(() => {
-                                raf = 0;
-                                const rotateX = (e.clientY - rect.top - rect.height / 2) / 10;
-                                const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 10;
-                                card.style.transform =
-                                    `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
-                            });
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const centerX = rect.width / 2;
+                            const centerY = rect.height / 2;
+                            const rotateX = (y - centerY) / 10;
+                            const rotateY = (centerX - x) / 10;
+                            card.style.transform =
+                                `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
                         });
                         card.addEventListener('mouseleave', () => {
-                            rect = null;
-                            if (raf) { cancelAnimationFrame(raf); raf = 0; }
                             card.style.transform = '';
                         });
                     });
@@ -5801,73 +5698,83 @@
         </div>
     </section>
 
-    <!-- ===== CONTENT CREATION ===== -->
+    <!-- ===== CONTENT CREATION (replaced with workflow timeline) ===== -->
     <section id="content-creation">
         <div class="creation-head reveal">
             <span class="brand-tag">SEESEC Content Automation Suite</span>
             <h2>Turn Existing Content into <em>Engaging Videos</em></h2>
-            <p class="sub-head">Five AI-powered tools that denoise, animate, repurpose, and package your content — from articles and images to long-form video and click-ready thumbnails.</p>
+            <p class="sub-head">Four AI-powered tools that help you denoise, repurpose, and transform content — from articles and images to long-form videos — into high-quality visual assets for marketing, training, and digital engagement.</p>
             <div class="badge-row">
                 <span class="badge"><span class="dot"></span> AI-Powered</span>
                 <span class="badge"><span class="dot"></span> No Coding</span>
                 <span class="badge"><span class="dot"></span> Enterprise Ready</span>
-                <span class="badge"><span class="dot"></span> 5-in-1 Suite</span>
+                <span class="badge"><span class="dot"></span> 4-in-1 Suite</span>
             </div>
         </div>
 
-        <div class="cf-viewport" id="cfViewport" tabindex="0" role="region" aria-label="Content automation tools carousel">
-            <div class="cf-glow"></div>
-            <div class="cf-track">
-                <div class="cf-card">
-                    <div class="cf-card-top">
-                        <span class="tool-step">Tool 01</span>
-                        <h3>Video <span class="highlight">Denoising</span></h3>
-                        <p class="tool-desc">Professional noise reduction for cinematic clarity — clean up low-light, noisy footage instantly with deep-learning models.</p>
+        <div class="workflow-container" id="workflowContainer">
+            <div class="moving-dot" id="movingDot"></div>
+
+            <div class="workflow-item left" data-delay="0">
+                <div class="connector"></div>
+                <div class="step-number">01<span class="inner-ring"></span></div>
+                <div class="workflow-card">
+                    <div class="card-icon-wrap">
+                        <lord-icon src="https://cdn.lordicon.com/ckooqaow.json" trigger="loop" colors="primary:#109121,secondary:#110a5c,tertiary:#fae6d1,quaternary:#ffffff,quinary:#ffffff" style="width:100%;height:100%"></lord-icon>
                     </div>
-                    <div class="cf-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2.5-6 3 13 3-16 3 15 2.5-6H23"/></svg></div>
-                    <a class="tool-link" href="#">Learn More <span class="link-arrow">→</span></a>
-                </div>
-                <div class="cf-card">
-                    <div class="cf-card-top">
-                        <span class="tool-step">Tool 02</span>
-                        <h3>Image → <span class="highlight">Video</span></h3>
-                        <p class="tool-desc">Breathe life into static images with AI motion. Turn portraits or landscapes into immersive, high-res animations.</p>
-                    </div>
-                    <div class="cf-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10.5 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/></svg></div>
-                    <a class="tool-link" href="#">Learn More <span class="link-arrow">→</span></a>
-                </div>
-                <div class="cf-card">
-                    <div class="cf-card-top">
-                        <span class="tool-step">Tool 03</span>
-                        <h3>Article → <span class="highlight">Video</span></h3>
-                        <p class="tool-desc">Convert articles and blog posts into social-ready video scripts, with auto voiceovers and matched footage.</p>
-                    </div>
-                    <div class="cf-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M10 9h4M10 13h6M10 17h4"/></svg></div>
-                    <a class="tool-link" href="#">Learn More <span class="link-arrow">→</span></a>
-                </div>
-                <div class="cf-card">
-                    <div class="cf-card-top">
-                        <span class="tool-step">Tool 04</span>
-                        <h3>Long → <span class="highlight">Shorts</span></h3>
-                        <p class="tool-desc">Extract the viral moments from long-form content — AI finds high-engagement segments for Reels and Shorts.</p>
-                    </div>
-                    <div class="cf-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.6"/><circle cx="6" cy="17" r="2.6"/><path d="M8.2 8.5L20 17M8.2 15.5L20 7"/></svg></div>
-                    <a class="tool-link" href="#">Learn More <span class="link-arrow">→</span></a>
-                </div>
-                <div class="cf-card">
-                    <div class="cf-card-top">
-                        <span class="tool-step">Tool 05</span>
-                        <h3><span class="highlight">Thumbnail</span> Generator</h3>
-                        <p class="tool-desc">Click-worthy thumbnails on autopilot: vibrant, high-contrast covers tuned to your audience.</p>
-                    </div>
-                    <div class="cf-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-4.5L8 18"/></svg></div>
-                    <a class="tool-link" href="#">Learn More <span class="link-arrow">→</span></a>
+                    <div class="card-label">AI Audio Enhancement</div>
+                    <div class="card-title">Video <span class="highlight">Denoising</span></div>
+                    <div class="card-desc">Remove unwanted background noise — traffic, crowds, fans, or hum — and make <span>speakers sound clearer and sharper</span>. Perfect for interviews, webinars, training videos, podcasts, and customer testimonials.</div>
+                    <div class="card-tags"><span class="tag">Audio Cleanup</span><span class="tag">AI Enhancement</span></div>
+                    <button class="card-btn">Explore <span class="arrow">→</span></button>
                 </div>
             </div>
-            <button class="cf-btn cf-prev" id="cfPrev" aria-label="Previous tool">‹</button>
-            <button class="cf-btn cf-next" id="cfNext" aria-label="Next tool">›</button>
+
+            <div class="workflow-item right" data-delay="150">
+                <div class="connector"></div>
+                <div class="step-number">02<span class="inner-ring"></span></div>
+                <div class="workflow-card">
+                    <div class="card-icon-wrap">
+                        <lord-icon src="https://cdn.lordicon.com/cbtlerlm.json" trigger="loop" colors="primary:#121331,secondary:#109121,tertiary:#1b1091,quaternary:#e83a30" style="width:100%;height:100%"></lord-icon>
+                    </div>
+                    <div class="card-label">AI Video Repurposing</div>
+                    <div class="card-title">Long → <span class="highlight">Short</span> Video</div>
+                    <div class="card-desc">Turn webinars, interviews, podcasts, and event recordings into <span>short, engaging clips</span> for Instagram Reels, YouTube Shorts, LinkedIn, and WhatsApp — without manual editing.</div>
+                    <div class="card-tags"><span class="tag">Repurposing</span><span class="tag">Social Media</span></div>
+                    <button class="card-btn">Explore <span class="arrow">→</span></button>
+                </div>
+            </div>
+
+            <div class="workflow-item left" data-delay="300">
+                <div class="connector"></div>
+                <div class="step-number">03<span class="inner-ring"></span></div>
+                <div class="workflow-card">
+                    <div class="card-icon-wrap">
+                        <lord-icon src="https://cdn.lordicon.com/ulgefjgj.json" trigger="loop" stroke="bold" colors="primary:#121331,secondary:#109121,tertiary:#104891,quaternary:#ffffff" style="width:100%;height:100%"></lord-icon>
+                    </div>
+                    <div class="card-label">AI Content Transformation</div>
+                    <div class="card-title">Article → <span class="highlight">Video</span></div>
+                    <div class="card-desc">Transform articles, blogs, reports, and product information into <span>easy-to-understand videos</span>. Improve content reach, simplify complex topics, and make knowledge more visual and engaging.</div>
+                    <div class="card-tags"><span class="tag">Text-to-Video</span><span class="tag">Knowledge Base</span></div>
+                    <button class="card-btn">Explore <span class="arrow">→</span></button>
+                </div>
+            </div>
+
+            <div class="workflow-item right" data-delay="450">
+                <div class="connector"></div>
+                <div class="step-number">04<span class="inner-ring"></span></div>
+                <div class="workflow-card">
+                    <div class="card-icon-wrap">
+                        <lord-icon src="https://cdn.lordicon.com/acokvssj.json" trigger="loop" stroke="bold" colors="primary:#121331,secondary:#e3c0ac,tertiary:#109121" style="width:100%;height:100%"></lord-icon>
+                    </div>
+                    <div class="card-label">AI Motion Generation</div>
+                    <div class="card-title">Image → <span class="highlight">Video</span></div>
+                    <div class="card-desc">Add motion and visual engagement to static images — product visuals, event photos, campaign creatives — to create <span>dynamic video content</span> for social media, ads, and short visual stories without a full video shoot.</div>
+                    <div class="card-tags"><span class="tag">Motion Graphics</span><span class="tag">Visual Story</span></div>
+                    <button class="card-btn">Explore <span class="arrow">→</span></button>
+                </div>
+            </div>
         </div>
-        <div class="cf-dots" id="cfDots" role="tablist" aria-label="Choose a tool"></div>
     </section>
 
     <!-- ===== METRICS ===== -->
@@ -5893,161 +5800,31 @@
             <div class="testimonials-head reveal">
                 <p class="section-label centered">What Our Clients Say</p>
                 <h2>Trusted by <em>Industry Leaders</em></h2>
-                <p class="testimonials-sub">Real outcomes from teams that trusted SEESEC with their cloud, AI and security stack.</p>
             </div>
-            <div class="testimonials-grid reveal">
-                <div class="tst-col up">
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
-                    <!-- duplicate set: makes the vertical loop seamless -->
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">“</div>
+                    <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
+                    </div>
                 </div>
-                <div class="tst-col down">
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
-                    <!-- duplicate set: makes the vertical loop seamless -->
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">“</div>
+                    <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PM</div>
+                        <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
+                    </div>
                 </div>
-                <div class="tst-col up">
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
-                    <!-- duplicate set: makes the vertical loop seamless -->
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">AS</div>
-                            <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>SEESEC helped us reduce our cloud spend by 68% in the first quarter while improving system reliability. Their AI-driven optimization recommendations were spot on.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RK</div>
-                            <div class="author-info"><h4>Rajesh Kumar</h4><p>CTO, Digitoppers</p></div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card" data-clone aria-hidden="true">
-                        <div class="quote-mark">“</div>
-                        <blockquote>The generative AI chatbot they built for us handles 80% of customer queries autonomously. Our support team now focuses on high-value interactions.</blockquote>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">PM</div>
-                            <div class="author-info"><h4>Priya Mehta</h4><p>VP Operations, Kredmint</p></div>
-                        </div>
-                    </article>
+                <div class="testimonial-card reveal">
+                    <div class="quote-mark">“</div>
+                    <blockquote>From migration to ongoing management, SEESEC has been a true partner. Their security-first approach gave us 99.9% compliance readiness in record time.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info"><h4>Amit Singh</h4><p>Director, Umrao Hotels</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -6056,58 +5833,18 @@
     <!-- ===== CLIENTS ===== -->
     <section id="clients">
         <div class="clients-inner">
-            <div class="clients-head reveal">
-                <h2>Trusted by <em>Forward-Thinking</em> Companies</h2>
-                <p class="clients-sub">Powering businesses across industries with secure cloud, AI, cybersecurity, and digital transformation.</p>
-            </div>
-            <div class="clients-rows">
-                <!-- Row 1: right to left -->
-                <div class="clients-track-wrap reveal">
-                    <div class="clients-track marquee-rtl">
-                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="Advit" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="MOBMISTRI" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="True Tomato" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="UMRAO" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="Prayas Finance" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="Dpanda" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="Kredmint" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="Digitoppers" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="Value Services" loading="lazy" /></div>
-                        <!-- duplicate set for the seamless loop -->
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
-                    </div>
-                </div>
-                <!-- Row 2: left to right -->
-                <div class="clients-track-wrap reveal">
-                    <div class="clients-track marquee-ltr" aria-hidden="true">
-                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
-                        <!-- duplicate set for the seamless loop -->
-                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
-                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
-                    </div>
+            <div class="clients-head reveal">Trusted by forward-thinking companies</div>
+            <div class="clients-track-wrap">
+                <div class="clients-track" id="clientsTrack">
+                    <div class="client-logo-item"><img src="company/comp (1).png" alt="Advit" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (5).png" alt="MOBMISTRI" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (6).png" alt="True Tomato" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (7).png" alt="UMRAO" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (9).png" alt="Prayas Finance" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (3).png" alt="Dpanda" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (4).png" alt="Kredmint" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (2).png" alt="Digitoppers" loading="lazy" /></div><span class="client-dot"></span>
+                    <div class="client-logo-item"><img src="company/comp (10).png" alt="Value Services" loading="lazy" /></div>
                 </div>
             </div>
         </div>
@@ -6133,7 +5870,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">01</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Dinesh Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Dinesh Singh.png" width="1338" height="1600" loading="lazy" />
+                                        <img alt="Dinesh Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Dinesh Singh.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6161,7 +5898,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">02</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Eshita Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Eshita Singh.png" width="800" height="800" loading="lazy" />
+                                        <img alt="Eshita Singh" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Eshita Singh.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6189,7 +5926,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">03</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Shrey Agarwal" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shrey Agarwal.png" width="502" height="637" loading="lazy" />
+                                        <img alt="Shrey Agarwal" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shrey Agarwal.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6217,7 +5954,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">04</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shubh Sharma.png" width="859" height="654" loading="lazy" />
+                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shubh Sharma.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6245,7 +5982,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">05</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Karan Chhabra" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Karan Chhabra.png" width="640" height="360" loading="lazy" />
+                                        <img alt="Karan Chhabra" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/karan chhabra.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6276,6 +6013,112 @@
         </div>
     </section>
 
+    <!-- ===== FAQ ===== -->
+    <section id="faq">
+        <div class="faq-inner">
+            <div class="faq-head reveal">
+                <p class="section-label centered">Frequently Asked Questions</p>
+                <h2>Common Questions <em>About SEESEC</em></h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item reveal" open>
+                    <summary>
+                        <span class="faq-q">What cloud services does SEESEC provide?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>SEESEC provides end-to-end AWS cloud services, including AWS managed services, cloud migration, cloud cost optimization (FinOps), and cloud security — covering every layer of the cloud journey from first migration to continuous optimization.</p>
+                    </div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q">Is SEESEC an AWS Advanced Tier Partner?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>Yes. SEESEC is an AWS Advanced Tier Services Partner, delivering cloud solutions that bring efficiency, intelligence, and reliability to modern technology environments.</p>
+                    </div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q">How much can I save with SEESEC's cloud cost optimization?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>SEESEC's FinOps and rightsizing approach to cloud cost optimization has helped organizations reduce cloud spend by up to 70%, while maintaining performance and reliability.</p>
+                    </div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q">What generative AI services does SEESEC offer?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>SEESEC offers full-lifecycle generative AI services, including custom LLMs, retrieval-augmented generation (RAG) systems, AI copilots, GenAI consulting, and AI-driven workflow automation for enterprise use cases.</p>
+                    </div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q">Does SEESEC help with cloud security and compliance?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>Yes. SEESEC delivers continuous cloud security monitoring with zero-trust architecture, and supports compliance frameworks such as DPDP and SOC2, achieving up to 99.9% compliance adherence for clients.</p>
+                    </div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q">What communication automation solutions does SEESEC provide?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="faq-a">
+                        <p>SEESEC's communication automation suite includes AI-powered chatbots (Chat-A-Lot), call center analytics (Talk Track), SMS analytics (SMS Sense), interactive email, and automated email archival for compliance.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) — FAQPage, mirrors visible FAQ section above ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What cloud services does SEESEC provide?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "SEESEC provides end-to-end AWS cloud services, including AWS managed services, cloud migration, cloud cost optimization (FinOps), and cloud security — covering every layer of the cloud journey from first migration to continuous optimization." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is SEESEC an AWS Advanced Tier Partner?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. SEESEC is an AWS Advanced Tier Services Partner, delivering cloud solutions that bring efficiency, intelligence, and reliability to modern technology environments." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How much can I save with SEESEC's cloud cost optimization?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "SEESEC's FinOps and rightsizing approach to cloud cost optimization has helped organizations reduce cloud spend by up to 70%, while maintaining performance and reliability." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What generative AI services does SEESEC offer?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "SEESEC offers full-lifecycle generative AI services, including custom LLMs, retrieval-augmented generation (RAG) systems, AI copilots, GenAI consulting, and AI-driven workflow automation for enterprise use cases." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does SEESEC help with cloud security and compliance?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. SEESEC delivers continuous cloud security monitoring with zero-trust architecture, and supports compliance frameworks such as DPDP and SOC2, achieving up to 99.9% compliance adherence for clients." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What communication automation solutions does SEESEC provide?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "SEESEC's communication automation suite includes AI-powered chatbots (Chat-A-Lot), call center analytics (Talk Track), SMS analytics (SMS Sense), interactive email, and automated email archival for compliance." }
+                }
+            ]
+        }
+    </script>
+
     <!-- ===== CTA ===== -->
     <section id="cta">
         <div class="cta-inner">
@@ -6303,6 +6146,11 @@
                     <span class="logo-text">SEE<span>SEC</span></span>
                 </a>
                 <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                <p style="margin-top:12px; font-size:0.7rem; color:rgba(var(--fg-rgb),0.25);">
+                    <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed rgba(var(--fg-rgb),0.1);">
+                        <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                    </a>
+                </p>
             </div>
             <div class="footer-col">
                 <h5>Services</h5>
@@ -6314,7 +6162,7 @@
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
-                <ul><li><a href="aboutus.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
+                <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">
@@ -6324,114 +6172,117 @@
     </footer>
 
     <script>
-        // ── LOADER (stays up until BOTH the page is ready AND the 3D hero robot has actually loaded) ──
+        // ── LOADER ──
         (function() {
             const loader = document.getElementById('pageLoader');
-            if (!loader) return;
             const progressBar = document.getElementById('loaderProgressBar');
             const percentText = document.getElementById('loaderPercent');
-            document.body.style.overflow = 'hidden'; // no scrolling behind the loader while the hero streams in
-            let progress = 0, tick = null, done = false;
-            // the bar creeps toward a ceiling that only lifts as real milestones land,
-            // so the number tracks the robot instead of running ahead of it
-            let ceiling = 45;
-            const HARD_CAP = 20000; // absolute worst case: never trap the visitor
+            const viewer = document.querySelector('spline-viewer');
 
-            function set(v) {
-                progress = Math.min(v, 100);
-                if (progressBar) progressBar.style.width = progress + '%';
-                if (percentText) percentText.textContent = Math.round(progress) + '%';
+            if (!loader || !viewer) {
+                if (loader) loader.classList.add('hidden');
+                return;
             }
-            tick = setInterval(function() {
-                if (!done) set(Math.min(progress + Math.max(0.25, (ceiling - progress) * 0.05), ceiling));
-            }, 60);
 
-            let pageReady = false, heroReady = false;
-            function markPageReady() { pageReady = true; ceiling = Math.max(ceiling, 65); maybeReveal(); }
-            function markHeroReady() { heroReady = true; ceiling = 97; maybeReveal(); }
-            function maybeReveal() { if (pageReady && heroReady) reveal(); }
+            let progress = 0;
+            let progressInterval = null;
+            let isLoaded = false;
+            let loadTimeout = null;
 
-            let splineStarted = false;
-            function loadSpline() {
-                if (splineStarted) return;
-                splineStarted = true;
-                const viewer = document.querySelector('spline-viewer');
-                const container = document.querySelector('.spline-container');
-
-                // the 3D hero is hidden on small screens and impossible without WebGL —
-                // in those cases there is no robot to wait for
-                let canRender = !!viewer;
-                if (canRender && container && getComputedStyle(container).display === 'none') canRender = false;
-                if (canRender) {
-                    try {
-                        const c = document.createElement('canvas');
-                        if (!(c.getContext('webgl') || c.getContext('experimental-webgl'))) canRender = false;
-                    } catch (e) { canRender = false; }
+            function updateProgress(value) {
+                progress = Math.min(value, 100);
+                progressBar.style.width = progress + '%';
+                if (percentText) {
+                    percentText.textContent = Math.round(progress) + '%';
                 }
-                // the fade-in always runs (the hero may become visible on resize);
-                // only the *waiting* is skipped when there is no robot to wait for
-                const show = function() { if (viewer) viewer.style.opacity = '1'; };
-                const heroLoaded = function() { show(); markHeroReady(); };
-                if (viewer) {
-                    viewer.addEventListener('load', heroLoaded, { once: true });
-                    viewer.addEventListener('error', heroLoaded, { once: true });
-                    setTimeout(show, 6000); // fallback if the viewer never fires 'load'
-                }
-                if (!canRender) markHeroReady();
+            }
 
-                const s = document.createElement('script');
-                s.type = 'module';
-                s.src = 'https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js';
-                // viewer code is in: the scene itself is the only thing left to stream
-                s.addEventListener('load', function() { ceiling = Math.max(ceiling, 85); });
-                s.addEventListener('error', heroLoaded); // CDN blocked → don't hold the page hostage
-                document.head.appendChild(s);
-
-                // safety net: if the viewer never fires 'load', fall back to watching for its
-                // canvas — once the robot is painting, give it a beat and let the page through
-                const canvasWatch = setInterval(function() {
-                    if (heroReady || !viewer) { clearInterval(canvasWatch); return; }
-                    const c = viewer.querySelector('canvas') ||
-                        (viewer.shadowRoot && viewer.shadowRoot.querySelector('canvas'));
-                    if (c && c.width > 0) {
-                        clearInterval(canvasWatch);
-                        ceiling = Math.max(ceiling, 90);
-                        setTimeout(heroLoaded, 6000);
+            function startProgressSimulation() {
+                progress = 0;
+                updateProgress(0);
+                if (progressInterval) clearInterval(progressInterval);
+                progressInterval = setInterval(() => {
+                    if (isLoaded) {
+                        updateProgress(100);
+                        if (progress >= 100) {
+                            clearInterval(progressInterval);
+                            progressInterval = null;
+                            hideLoader();
+                        }
+                        return;
                     }
-                }, 200);
-
-                setTimeout(heroLoaded, 12000); // slow connection: never wait longer than this
+                    const increment = Math.max(0.5, (100 - progress) * 0.035);
+                    const next = Math.min(progress + increment, 92);
+                    updateProgress(next);
+                }, 80);
             }
 
             function hideLoader() {
-                loader.classList.add('hidden');
-                document.body.style.overflow = '';
-                document.dispatchEvent(new Event('scroll'));
-                setTimeout(function() { loader.style.display = 'none'; }, 700);
+                if (isLoaded) return;
+                isLoaded = true;
+                if (progressInterval) {
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+                }
+                updateProgress(100);
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    document.dispatchEvent(new Event('scroll'));
+                }, 350);
             }
 
-            function reveal() {
-                if (done) return;
-                done = true;
-                clearInterval(tick);
-                // smoothly finish the bar + number to 100% (ease-out) instead of snapping, then fade out
-                if (progressBar) progressBar.style.transition = 'none'; // interval drives width in sync with the number
-                var from = progress, t = 0, dur = 300, step = 16;
-                var ramp = setInterval(function() {
-                    t += step;
-                    var p = Math.min(t / dur, 1);
-                    set(from + (100 - from) * (1 - Math.pow(1 - p, 3)));
-                    if (p >= 1) { clearInterval(ramp); setTimeout(hideLoader, 160); }
-                }, step);
+            function onSplineLoad() {
+                hideLoader();
             }
 
-            // start the 3D hero as soon as the DOM is ready (assets are already preloading in <head>)
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadSpline);
-            else loadSpline();
+            function onSplineError() {
+                setTimeout(hideLoader, 500);
+            }
 
-            if (document.readyState === 'complete') markPageReady();
-            else window.addEventListener('load', markPageReady);
-            setTimeout(reveal, HARD_CAP);
+            startProgressSimulation();
+
+            viewer.addEventListener('load', onSplineLoad);
+            viewer.addEventListener('error', onSplineError);
+
+            loadTimeout = setTimeout(() => {
+                if (!isLoaded) {
+                    const canvas = viewer.querySelector('canvas');
+                    if (canvas && canvas.width > 0 && canvas.height > 0) {
+                        hideLoader();
+                    } else {
+                        setTimeout(() => {
+                            if (!isLoaded) hideLoader();
+                        }, 1500);
+                    }
+                }
+            }, 4000);
+
+            const attrObserver = new MutationObserver(() => {
+                if (!viewer.hasAttribute('loading') && !isLoaded) {
+                    hideLoader();
+                }
+            });
+            attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
+
+            const cleanup = () => {
+                if (progressInterval) clearInterval(progressInterval);
+                if (loadTimeout) clearTimeout(loadTimeout);
+                attrObserver.disconnect();
+                viewer.removeEventListener('load', onSplineLoad);
+                viewer.removeEventListener('error', onSplineError);
+            };
+            window.addEventListener('beforeunload', cleanup);
+
+            if (window.MutationObserver) {
+                const removalObserver = new MutationObserver(() => {
+                    if (!document.contains(viewer)) {
+                        cleanup();
+                        removalObserver.disconnect();
+                    }
+                });
+                removalObserver.observe(document.body, { childList: true, subtree: true });
+            }
         })();
 
         // ── Nav scroll hide/show ──
@@ -6444,7 +6295,6 @@
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                    const total = document.body.scrollHeight - window.innerHeight;
 
                     if (currentScroll > lastScroll && currentScroll > 100) {
                         navEl.classList.add('nav-hidden');
@@ -6453,7 +6303,8 @@
                     }
                     lastScroll = currentScroll;
 
-                    pb.style.transform = 'scaleX(' + Math.min(currentScroll / total, 1) + ')';
+                    const total = document.body.scrollHeight - window.innerHeight;
+                    pb.style.width = (currentScroll / total * 100) + '%';
 
                     if (currentScroll > 40) navEl.classList.add('scrolled');
                     else navEl.classList.remove('scrolled');
@@ -6485,18 +6336,25 @@
             link.addEventListener('click', toggleMenu);
         });
 
-        // ── Theme toggle ──
+        // ── Theme toggle (light mode removed) ──
         (function() {
             const root = document.documentElement;
             const btn = document.getElementById('themeToggle');
             const mobileOptions = document.querySelectorAll('.mobile-theme-option');
-            const order = ['purple', 'light', 'dark'];
-            const labels = { purple: 'Purple', light: 'Light', dark: 'Dark' };
+            const order = ['system', 'dark'];
+            const labels = { system: 'System', dark: 'Dark' };
+            const media = window.matchMedia('(prefers-color-scheme: light)');
 
             function effectiveTheme(pref) {
-                if (pref === 'purple') return 'purple';
-                if (pref === 'dark') return 'midnight';
-                return pref;
+                if (pref === 'system') {
+                    // Always use dark theme, even if OS is light
+                    return 'dark';
+                }
+                if (pref === 'dark') {
+                    return 'midnight';
+                }
+                // Fallback: if 'light' is somehow passed, use dark
+                return 'dark';
             }
 
             function applyTheme(pref, persist) {
@@ -6516,7 +6374,9 @@
                 }
             }
 
-            let currentPref = root.getAttribute('data-theme-pref') || 'purple';
+            let currentPref = root.getAttribute('data-theme-pref') || 'system';
+            // Migrate 'light' to 'dark'
+            if (currentPref === 'light') currentPref = 'dark';
             applyTheme(currentPref, false);
 
             if (btn) {
@@ -6532,6 +6392,14 @@
                     currentPref = opt.dataset.mode;
                     applyTheme(currentPref, true);
                 });
+            });
+
+            // Still listen for system changes, but always use dark
+            media.addEventListener('change', () => {
+                if (currentPref === 'system') {
+                    // When system pref and OS changes, still use dark
+                    applyTheme('system', false);
+                }
             });
         })();
 
@@ -6562,15 +6430,6 @@
             layer.appendChild(frag);
         })();
 
-        // ── Pause CSS animations in offscreen sections ──
-        (function() {
-            if (!('IntersectionObserver' in window)) return;
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => e.target.classList.toggle('anim-hold', !e.isIntersecting));
-            }, { rootMargin: '120px' });
-            document.querySelectorAll('section, footer').forEach(s => io.observe(s));
-        })();
-
         // ── Reveal ──
         const revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
@@ -6595,10 +6454,6 @@
         const typewriterSpan = document.getElementById("typewriterSpan");
 
         function typeEffect() {
-            if (document.hidden) {
-                document.addEventListener('visibilitychange', typeEffect, { once: true });
-                return;
-            }
             const fullWord = words[wordIndex];
             let displayText;
             if (isDeleting) {
@@ -6764,10 +6619,10 @@
 
             function startProgress() {
                 fill.style.transition = 'none';
-                fill.style.transform = 'scaleX(0)';
+                fill.style.width = '0%';
                 requestAnimationFrame(() => {
-                    fill.style.transition = 'transform 3.2s linear';
-                    fill.style.transform = 'scaleX(1)';
+                    fill.style.transition = 'width 3.2s linear';
+                    fill.style.width = '100%';
                 });
             }
 
@@ -6797,7 +6652,7 @@
             }
 
             function nextStep() {
-                if (isHovering || document.hidden) return;
+                if (isHovering) return;
                 const next = (current + 1) % data.length;
                 goTo(next);
             }
@@ -6861,14 +6716,6 @@
 
             goTo(0);
             startAutoRotate();
-
-            /* no autoplay while the wheel is offscreen */
-            if (stage && 'IntersectionObserver' in window) {
-                new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) { if (!isHovering) startAutoRotate(); }
-                    else stopAutoRotate();
-                }).observe(stage);
-            }
         })();
 
         // ── Deploy cards flip ──
@@ -7003,120 +6850,73 @@
 
             collapseAll();
 
-            let resizeT = null;
             window.addEventListener('resize', () => {
-                clearTimeout(resizeT);
-                resizeT = setTimeout(() => {
-                    if (currentActive >= 0) setActive(currentActive);
-                }, 100);
+                if (currentActive >= 0) setActive(currentActive);
             });
         })();
 
-        // ── CONTENT CREATION: 3D COVERFLOW ──
+        // ── WORKFLOW: MOVING DOT & SCROLL REVEAL ──
         (function() {
-            const viewport = document.getElementById('cfViewport');
-            if (!viewport) return;
-            const cards = Array.from(viewport.querySelectorAll('.cf-card'));
-            const dotsWrap = document.getElementById('cfDots');
-            const prevBtn = document.getElementById('cfPrev');
-            const nextBtn = document.getElementById('cfNext');
-            const total = cards.length;
-            if (!total) return;
+            const container = document.getElementById('workflowContainer');
+            const dot = document.getElementById('movingDot');
+            const items = document.querySelectorAll('.workflow-item');
 
-            let current = Math.floor(total / 2);
-            let timer = null, resumeT = null, wcTimer = null;
-            const INTERVAL = 4000, RESUME = 2500;
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!container || !dot || !items.length) return;
 
-            let O = { near: 205, far: 357 };
-            function measure() {
-                const cw = cards[0].offsetWidth || 380;
-                O = { near: cw * 0.54, far: cw * 0.94 };
+            let dotProgress = 0;
+            const dotSpeed = 0.12;
+
+            function moveDot() {
+                const height = container.scrollHeight - 40;
+                const topOffset = 20;
+
+                dotProgress += dotSpeed;
+                if (dotProgress > 100) {
+                    dotProgress = 0;
+                }
+
+                const eased = dotProgress / 100;
+                const topPos = topOffset + eased * (height - 30);
+                dot.style.top = topPos + 'px';
+
+                requestAnimationFrame(moveDot);
             }
 
-            const dots = cards.map((_, i) => {
-                const d = document.createElement('button');
-                d.className = 'cf-dot';
-                d.setAttribute('role', 'tab');
-                d.setAttribute('aria-label', 'Tool ' + (i + 1));
-                d.addEventListener('click', () => { go(i); interact(); });
-                dotsWrap.appendChild(d);
-                return d;
-            });
+            moveDot();
 
-            function render() {
-                cards.forEach(c => c.style.willChange = 'transform, opacity');
-                const half = Math.floor(total / 2);
-                cards.forEach((card, i) => {
-                    let diff = i - current;
-                    if (diff < -half) diff += total;
-                    if (diff > half) diff -= total;
-                    const ad = Math.abs(diff);
-                    let x = 0, s = 1, ry = 0, op = 1, z = 50, active = false;
-                    if (ad === 0) { active = true; }
-                    else if (ad === 1) { x = diff > 0 ? O.near : -O.near; s = 0.84; ry = diff > 0 ? -22 : 22; op = 0.5; z = 40; }
-                    else if (ad === 2) { x = diff > 0 ? O.far : -O.far; s = 0.72; ry = diff > 0 ? -35 : 35; op = 0.26; z = 30; }
-                    else { op = 0; z = 0; }
-                    card.style.transform = 'translate3d(' + x + 'px,0,0) rotateY(' + ry + 'deg) scale(' + s + ')';
-                    card.style.opacity = op;
-                    card.style.zIndex = z;
-                    card.style.visibility = op === 0 ? 'hidden' : 'visible';
-                    card.style.pointerEvents = op === 0 ? 'none' : 'auto';
-                    card.classList.toggle('is-active', active);
-                    card.setAttribute('aria-hidden', active ? 'false' : 'true');
-                });
-                dots.forEach((d, i) => d.classList.toggle('active', i === current));
-                clearTimeout(wcTimer);
-                wcTimer = setTimeout(() => cards.forEach(c => c.style.willChange = 'auto'), 800);
-            }
-
-            function go(i) { current = (i % total + total) % total; render(); }
-            function next() { go(current + 1); }
-            function prev() { go(current - 1); }
-
-            function start() {
-                if (reduceMotion) return;
-                stop();
-                timer = setInterval(() => { if (!document.hidden) next(); }, INTERVAL);
-            }
-            function stop() { clearInterval(timer); clearTimeout(resumeT); }
-            function interact() { stop(); resumeT = setTimeout(start, RESUME); }
-
-            nextBtn.addEventListener('click', () => { next(); interact(); });
-            prevBtn.addEventListener('click', () => { prev(); interact(); });
-            cards.forEach((card, i) => card.addEventListener('click', () => { if (i !== current) { go(i); interact(); } }));
-
-            viewport.addEventListener('mouseenter', stop);
-            viewport.addEventListener('mouseleave', () => { resumeT = setTimeout(start, RESUME); });
-
-            let sx = 0, drag = false;
-            viewport.addEventListener('pointerdown', e => { sx = e.clientX; drag = true; stop(); });
-            window.addEventListener('pointerup', e => {
-                if (!drag) return;
-                drag = false;
-                const dx = sx - e.clientX;
-                if (Math.abs(dx) > 45) { dx > 0 ? next() : prev(); }
-                interact();
-            });
-
-            viewport.addEventListener('keydown', e => {
-                if (e.key === 'ArrowRight') { next(); interact(); }
-                else if (e.key === 'ArrowLeft') { prev(); interact(); }
-            });
-
-            let rt = null;
-            window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { measure(); render(); }, 100); });
-
-            measure();
-            render();
             if ('IntersectionObserver' in window) {
-                new IntersectionObserver(es => {
-                    // 300px head start so measure()+render() run before the section is visible
-                    if (es[0].isIntersecting) { measure(); render(); start(); } else { stop(); }
-                }, { rootMargin: '300px' }).observe(viewport);
-            } else {
-                start();
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            if (!el.classList.contains('visible')) {
+                                const delay = parseInt(el.getAttribute('data-delay')) || 0;
+                                setTimeout(() => {
+                                    el.classList.add('visible');
+                                }, delay);
+                            }
+                            observer.unobserve(el);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                items.forEach(item => observer.observe(item));
             }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const height = container.scrollHeight - 40;
+                    const topOffset = 20;
+                    const eased = dotProgress / 100;
+                    const topPos = topOffset + eased * (height - 30);
+                    dot.style.top = topPos + 'px';
+                }, 200);
+            });
         })();
     </script>
 </body>
