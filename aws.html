@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>AWS Training & Certification Partner | SEESEC Infotech</title>
+    <meta name="description" content="Accelerate cloud adoption with AWS Training & Certification programs from SEESEC. Empower teams with role-based learning, hands-on labs and cloud expertise." />
+    <link rel="canonical" href="/aws-training-certification" />
+
+    <!-- ===== THEME INIT (runs before paint to avoid flash) — shared with landing_page.html ===== -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('seesec-theme') || 'purple';
+                var effective;
+                if (stored === 'purple') {
+                    effective = 'purple';
+                } else if (stored === 'dark') {
+                    effective = 'midnight';
+                } else {
+                    effective = stored;
+                }
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', stored);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'purple');
+                document.documentElement.setAttribute('data-theme-pref', 'purple');
+            }
+        })();
+    </script>
+
+    <link rel="icon" href="logo.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&family=Geist:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #1a1341;
+            --paper: #f5f4ef;
+            --sky: #e8f0ff;
+            --blue: #0778b6;
+            --blue-mid: #0778b6;
+            --blue-pale: #dde8ff;
+            --cyan: #1af6dd;
+            --accent: #43ee93;
+            --mid: #8a9ab5;
+            --line: rgba(var(--fg-rgb), 0.08);
+            --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            --nav-height: 56px;
+            --radius: 16px;
+            --glass-bg: rgba(var(--fg-rgb), 0.04);
+            --glass-border: rgba(var(--fg-rgb), 0.08);
+            --seesec-green: #43ee93;
+            --seesec-cyan: #1af6dd;
+            --seesec-dark: #051424;
+            --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+            --transition-fast: 0.25s ease;
+            --transition-med: 0.4s ease;
+
+            /* ── THEME TOKENS (dark = default) ── */
+            color-scheme: dark;
+            --fg-rgb: 255, 255, 255;
+            --bg-0: #1a1341;
+            --bg-1: #0d0a2e;
+            --bg-2: #110e35;
+            --page-text: #ffffff;
+            --page-text-soft: rgba(var(--fg-rgb), 0.6);
+            --nav-bg: rgba(15, 10, 45, 0.28);
+            --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
+            --loader-bg: #0a0820;
+        }
+        /* aws-page aliases layered on top of the shared tokens */
+        :root {
+            --seesec-teal: #1af6dd;
+            --text-light: var(--page-text);
+            --text-muted: rgba(var(--fg-rgb), 0.62);
+            --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        [data-theme="light"] {
+            color-scheme: light;
+            --fg-rgb: 26, 19, 65;
+            --bg-0: var(--paper);
+            --bg-1: var(--sky);
+            --bg-2: #eef1fb;
+            --page-text: var(--ink);
+            --page-text-soft: rgba(26, 19, 65, 0.62);
+            --nav-bg: rgba(245, 244, 239, 0.82);
+            --nav-bg-scrolled: rgba(245, 244, 239, 0.95);
+            --loader-bg: #f5f4ef;
+            --mid: #5b6478;
+        }
+        [data-theme="light"] body { background-color: var(--bg-0); }
+        [data-theme="light"] .bg-orb { opacity: 0.5; }
+
+        [data-theme="purple"] {
+            color-scheme: dark;
+            --fg-rgb: 255, 255, 255;
+            --bg-0: #1a1341;
+            --bg-1: #0d0a2e;
+            --bg-2: #110e35;
+            --page-text: #ffffff;
+            --page-text-soft: rgba(255, 255, 255, 0.6);
+            --nav-bg: rgba(15, 10, 45, 0.28);
+            --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
+            --loader-bg: #0a0820;
+        }
+
+        [data-theme="midnight"] {
+            color-scheme: dark;
+            --fg-rgb: 255, 255, 255;
+            --bg-0: #06070c;
+            --bg-1: #0a0c14;
+            --bg-2: #0d0f1a;
+            --page-text: #f4f6fb;
+            --page-text-soft: rgba(244, 246, 251, 0.62);
+            --nav-bg: rgba(4, 5, 10, 0.55);
+            --nav-bg-scrolled: rgba(4, 5, 10, 0.85);
+            --loader-bg: #06070c;
+            --mid: #98a2b8;
+            --line: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 8px;
+            left: 48px;
+            right: 48px;
+            z-index: 800;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            border-radius: 999px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(var(--fg-rgb), 0.08);
+            box-shadow:
+                0 10px 32px rgba(0, 0, 0, 0.18),
+                0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
+                0 0 0 1px rgba(67, 238, 147, 0.04) inset;
+            transition:
+                transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease,
+                top 0.4s ease;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        nav.nav-hidden {
+            transform: translateY(-140%);
+        }
+        nav.scrolled {
+            background: var(--nav-bg-scrolled);
+            border-color: rgba(var(--fg-rgb), 0.11);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.28),
+                0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
+                0 0 0 1px rgba(67, 238, 147, 0.06) inset;
+        }
+        nav.scrolled .nav-logo {
+            text-shadow: 0 0 30px rgba(67, 238, 147, 0.12);
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            color: var(--page-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            transition: transform 0.3s ease;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+            flex-shrink: 0;
+        }
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+        .nav-logo .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .nav-logo .logo-see,
+        .nav-logo .logo-sec {
+            display: inline-block;
+            opacity: 0;
+            animation: logoSlideIn 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s forwards;
+        }
+        .nav-logo .logo-sec {
+            color: var(--accent);
+            position: relative;
+            animation-name: logoSlideInAccent;
+        }
+        .nav-logo .logo-sec::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 16px rgba(67, 238, 147, 0.3);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        .nav-logo:hover .logo-sec::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        @keyframes logoSlideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes logoSlideInAccent {
+            from { opacity: 0; transform: translateX(10px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .nav-logo .logo-see, .nav-logo .logo-sec { animation: none; opacity: 1; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(var(--fg-rgb), 0.5);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
+            transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--page-text);
+        }
+        .nav-links a.active {
+            color: var(--page-text);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1.5px solid rgba(67, 238, 147, 0.25);
+            color: var(--page-text);
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-cta .nav-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(67, 238, 147, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .nav-cta:hover .nav-shine {
+            left: 100%;
+        }
+        .nav-cta .nav-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+            will-change: transform;
+        }
+        .nav-cta:hover .nav-bg {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-cta:hover {
+            border-color: var(--accent);
+            color: var(--ink);
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px 4px;
+            z-index: 850;
+            background: none;
+            border: none;
+            outline: none;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .hamburger:hover {
+            transform: scale(1.05);
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            border-radius: 4px;
+            background: var(--page-text);
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(var(--fg-rgb), 0.12);
+            background: rgba(var(--fg-rgb), 0.04);
+            color: var(--page-text);
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle:hover {
+            border-color: rgba(67, 238, 147, 0.4);
+            transform: translateY(-1px);
+        }
+        .theme-toggle:active {
+            transform: scale(0.92);
+        }
+        .theme-icon {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.6) rotate(-40deg);
+            transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .theme-toggle[data-mode="purple"] .theme-icon-purple,
+        .theme-toggle[data-mode="light"] .theme-icon-light,
+        .theme-toggle[data-mode="dark"] .theme-icon-dark {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .mobile-theme-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            padding: 5px;
+            border-radius: 999px;
+            background: rgba(var(--fg-rgb), 0.04);
+            border: 1px solid rgba(var(--fg-rgb), 0.1);
+        }
+        .mobile-theme-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: rgba(var(--fg-rgb), 0.45);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .mobile-theme-option svg {
+            width: 17px;
+            height: 17px;
+        }
+        .mobile-theme-option.active {
+            background: rgba(67, 238, 147, 0.14);
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 750;
+            background: rgba(10, 8, 30, 0.97);
+            backdrop-filter: blur(32px) saturate(1.4);
+            -webkit-backdrop-filter: blur(32px) saturate(1.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 40px 24px;
+        }
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-menu a {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: rgba(var(--fg-rgb), 0.5);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.4s ease, left 0.4s ease;
+        }
+        .mobile-menu a:hover {
+            color: #fff;
+            transform: scale(1.04);
+        }
+        .mobile-menu a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px;
+            padding: 14px 44px;
+            border-radius: 50px;
+            background: var(--accent);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.15);
+        }
+        .mobile-menu .mobile-cta:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 60px rgba(67, 238, 147, 0.3);
+        }
+        .mobile-menu .close-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.65rem;
+            color: rgba(var(--fg-rgb), 0.15);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        /* nav per theme (mirrors landing_page.html) */
+        [data-theme="light"] nav,
+        [data-theme="light"] nav.scrolled {
+            background: rgba(245, 244, 239, 0.82);
+            border-color: rgba(26, 19, 65, 0.1);
+            box-shadow:
+                0 10px 32px rgba(26, 19, 65, 0.10),
+                0 1px 0 rgba(26, 19, 65, 0.05) inset,
+                0 0 0 1px rgba(67, 238, 147, 0.08) inset;
+        }
+        [data-theme="light"] .nav-links a { color: rgba(26, 19, 65, 0.65); }
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active { color: var(--ink); }
+        [data-theme="light"] .nav-logo { color: var(--ink); }
+        [data-theme="light"] .nav-cta { color: var(--ink); }
+        [data-theme="light"] .hamburger span { background: var(--ink); }
+        [data-theme="purple"] nav { border: 1px solid rgba(255, 255, 255, 0.08); }
+        [data-theme="midnight"] nav {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow:
+                0 10px 36px rgba(0, 0, 0, 0.55),
+                0 0 0 1px rgba(67, 238, 147, 0.10) inset;
+        }
+        [data-theme="midnight"] .theme-toggle { box-shadow: 0 0 0 rgba(67, 238, 147, 0.28); }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-0);
+            color: var(--page-text);
+            scroll-behavior: smooth;
+            line-height: 1.5;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(67, 238, 147, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(26, 241, 221, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(7, 120, 182, 0.03) 0%, transparent 70%);
+            background-size: 100% 100%;
+        }
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .orb-1 { width: 50vw; height: 50vw; background: rgba(7, 120, 182, 0.20); top: -20vh; right: -10vw; animation: floatOrb 20s ease-in-out infinite, morphOrb 26s ease-in-out infinite; }
+        .orb-2 { width: 60vh; height: 60vh; background: rgba(67, 238, 147, 0.12); bottom: 0; left: -10vw; animation: floatOrb 25s ease-in-out infinite reverse, morphOrb 32s ease-in-out infinite reverse; }
+        .orb-3 { width: 40vw; height: 40vw; background: rgba(26, 241, 221, 0.08); top: 40%; left: 20%; animation: floatOrb 18s ease-in-out infinite 2s, morphOrb 22s ease-in-out infinite 1s; }
+        .orb-4 { width: 34vw; height: 34vw; background: rgba(67, 238, 147, 0.07); top: 62%; right: 4vw; animation: floatOrb 28s ease-in-out infinite 3s, morphOrb 30s ease-in-out infinite 4s; }
+        .orb-5 { width: 26vw; height: 26vw; background: rgba(7, 120, 182, 0.14); top: 12%; left: 42%; animation: floatOrb 22s ease-in-out infinite reverse, morphOrb 19s ease-in-out infinite reverse; }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(30px, -30px) scale(1.1) rotate(8deg); }
+            66% { transform: translate(-20px, 20px) scale(0.9) rotate(-6deg); }
+        }
+        @keyframes morphOrb {
+            0%, 100% { border-radius: 50%; }
+            25%      { border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%; }
+            50%      { border-radius: 65% 35% 45% 55% / 35% 55% 45% 65%; }
+            75%      { border-radius: 35% 65% 55% 45% / 60% 40% 60% 40%; }
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+        .btn-outline {
+            border: 1px solid var(--seesec-green);
+            padding: 10px 28px; border-radius: 40px;
+            background: transparent; font-weight: 600; color: var(--seesec-green);
+            transition: var(--transition); cursor: pointer;
+            display: inline-block; text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: rgba(67, 238, 147, 0.15);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(67, 238, 147, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--seesec-green), var(--seesec-teal));
+            color: var(--ink); font-weight: 800;
+            padding: 14px 32px; border-radius: 40px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(67, 238, 147, 0.3);
+            font-family: 'Poppins', sans-serif; cursor: pointer; border: none;
+        }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 28px rgba(67, 238, 147, 0.5); }
+        .btn-primary, .btn-secondary, .btn-outline { position: relative; overflow: hidden; }
+        .btn-ripple { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.5); transform: scale(0); animation: rippleOut 0.6s ease-out forwards; pointer-events: none; }
+        @keyframes rippleOut { to { transform: scale(3); opacity: 0; } }
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 8px 20px rgba(67, 238, 147, 0.3); }
+            50%      { box-shadow: 0 8px 32px rgba(67, 238, 147, 0.55); }
+        }
+        #ctaConsult, #ctaCatalogue { animation: ctaPulse 3.2s ease-in-out infinite; }
+        #ctaCatalogue { animation: none; }
+        .btn-secondary {
+            background: transparent; border: 1px solid var(--seesec-blue);
+            padding: 14px 32px; border-radius: 40px; font-weight: 600;
+            color: var(--seesec-teal); text-decoration: none; transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-secondary:hover { background: rgba(7, 120, 182, 0.15); border-color: var(--seesec-green); transform: translateY(-2px) scale(1.03); }
+
+        /* section titles */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--page-text), var(--seesec-teal));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .section-sub {
+            color: var(--text-muted); max-width: 700px;
+            font-size: 1.1rem; margin: 0 auto 40px auto;
+            text-align: center;
+        }
+        .section { padding: 80px 0; }
+
+        /* Flowing curved dividers between sections — breaks the stacked-rectangle rhythm */
+        .wave-divider { width: 100%; overflow: hidden; line-height: 0; margin: 0; pointer-events: none; }
+        .wave-divider svg { width: 100%; height: clamp(40px, 8vw, 90px); display: block; }
+        .wave-divider path { animation: waveDrift 12s ease-in-out infinite; transform-origin: center; }
+        @keyframes waveDrift {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50%      { transform: translateY(-6px) scaleY(1.08); }
+        }
+
+        /* Staggered reveal so grids feel like they arrive one after another, not all at once */
+        .cards-grid .info-card.reveal.visible:nth-child(1) { transition-delay: 0.05s; }
+        .cards-grid .info-card.reveal.visible:nth-child(2) { transition-delay: 0.18s; }
+        .cards-grid .info-card.reveal.visible:nth-child(3) { transition-delay: 0.31s; }
+        .faq-grid .faq-item.reveal.visible:nth-child(1) { transition-delay: 0.04s; }
+        .faq-grid .faq-item.reveal.visible:nth-child(2) { transition-delay: 0.12s; }
+        .faq-grid .faq-item.reveal.visible:nth-child(3) { transition-delay: 0.20s; }
+        .faq-grid .faq-item.reveal.visible:nth-child(4) { transition-delay: 0.28s; }
+        .faq-grid .faq-item.reveal.visible:nth-child(5) { transition-delay: 0.36s; }
+
+        /* Cards – attractive with glow */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        @keyframes cardBreathe {
+            0%, 100% { border-radius: 38px 54px 42px 60px / 48px 38px 58px 42px; }
+            33%      { border-radius: 58px 36px 60px 40px / 40px 56px 38px 60px; }
+            66%      { border-radius: 44px 60px 36px 56px / 58px 42px 50px 38px; }
+        }
+        .info-card {
+            background: rgba(var(--fg-rgb),0.035); padding: 32px 28px;
+            transition: border-radius 0.6s var(--transition-smooth), transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(67, 238, 147, 0.10);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+            animation: cardBreathe 14s ease-in-out infinite;
+        }
+        .cards-grid .info-card:nth-child(2) { animation-delay: -4.5s; }
+        .cards-grid .info-card:nth-child(3) { animation-delay: -9s; }
+        .info-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, rgba(67,238,147,0.03) 0%, transparent 70%);
+            opacity: 0; transition: var(--transition);
+        }
+        .info-card:hover::before { opacity: 1; }
+        .info-card:hover { transform: translateY(-10px) scale(1.02) rotate(-0.6deg); border-color: var(--seesec-green); border-radius: 62px 30px 56px 34px / 34px 58px 30px 62px !important; animation-play-state: paused; box-shadow: 0 20px 60px rgba(67,238,147,0.10), inset 0 0 80px rgba(67,238,147,0.03); }
+        .card-icon { font-size: 2.6rem; color: var(--seesec-green); margin-bottom: 20px; display: inline-block; transition: var(--transition); }
+        .info-card:hover .card-icon { transform: rotate(10deg) scale(1.1); }
+
+        .deep-section {
+            background: rgba(var(--fg-rgb),0.028); border-radius: 64px 40px 70px 36px / 44px 68px 38px 62px;
+            padding: 60px 48px; margin: 40px auto;
+            border: 1px solid rgba(26, 241, 221, 0.08);
+            max-width: 1100px;
+            backdrop-filter: blur(5px);
+            transition: border-radius 0.6s var(--transition-smooth);
+        }
+        .deep-section:hover { border-radius: 40px 66px 36px 72px / 66px 40px 64px 38px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .pillar {
+            background: rgba(var(--fg-rgb),0.035); border-radius: 46px 22px 46px 22px / 22px 46px 22px 46px; padding: 28px;
+            transition: var(--transition), border-radius 0.5s var(--transition-smooth); border: 1px solid rgba(67, 238, 147, 0.06);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pillar::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--seesec-green), transparent);
+            transform: scaleX(0); transition: var(--transition);
+        }
+        .pillar:hover::after { transform: scaleX(1); }
+        .pillar:hover { background: rgba(var(--fg-rgb), 0.06); border-radius: 22px 46px 22px 46px / 46px 22px 46px 22px; transform: translateX(6px) scale(1.02); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+
+        .stats-showcase {
+            background: rgba(var(--fg-rgb),0.028); border-radius: 70px 34px 64px 40px / 40px 64px 34px 70px;
+            padding: 60px 40px; margin: 40px auto;
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            max-width: 1100px;
+            backdrop-filter: blur(5px);
+        }
+        .stats-flex {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 40px; text-align: center;
+        }
+        .stat-item h4 { font-size: 3rem; font-weight: 800; font-family: 'Poppins', sans-serif; }
+        .stat-number {
+            background: linear-gradient(135deg, var(--seesec-green), var(--seesec-teal));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .stat-item { transition: var(--transition), border-radius 0.5s var(--transition-smooth); padding: 16px 24px; border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%; }
+        .stat-item:hover { transform: scale(1.08) translateY(-4px); border-radius: 20% 50% 20% 50% / 50% 20% 50% 20%; background: rgba(67,238,147,0.06); box-shadow: 0 0 40px rgba(67,238,147,0.05); }
+
+        .table-scroll {
+            width: 100%; max-width: 900px; margin: 0 auto;
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+        }
+        .table-scroll .compare-table { margin: 0; min-width: 560px; }
+        .compare-table {
+            width: 100%; max-width: 900px; margin: 0 auto;
+            border-collapse: separate; border-spacing: 0;
+            background: rgba(var(--fg-rgb),0.035); border-radius: 42px 20px 42px 20px; overflow: hidden;
+            border: 1px solid rgba(67, 238, 147, 0.10);
+            backdrop-filter: blur(5px);
+        }
+        .compare-table th, .compare-table td {
+            padding: 18px 24px; text-align: left;
+            border-bottom: 1px solid rgba(67, 238, 147, 0.08);
+            color: var(--page-text);
+        }
+        .compare-table th { background: rgba(67, 238, 147, 0.06); color: var(--seesec-green); font-weight: 700; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table i.fa-check { color: var(--seesec-green); }
+        .compare-table tr { transition: var(--transition); }
+        .compare-table tr:hover td { background: rgba(67,238,147,0.04); }
+
+        .cta-section {
+            background: rgba(var(--fg-rgb),0.028); border-radius: 90px 40px 90px 40px / 40px 90px 40px 90px;
+            padding: 64px; text-align: center;
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            margin: 60px auto;
+            max-width: 1100px;
+            backdrop-filter: blur(5px);
+            animation: cardBreathe 18s ease-in-out infinite;
+        }
+
+        /* FAQ with expand/collapse */
+        .faq-grid { display: flex; flex-direction: column; gap: 14px; max-width: 900px; margin: 30px auto 0; }
+        .faq-item {
+            background: rgba(var(--fg-rgb),0.035); border-radius: 28px 14px 28px 14px;
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            transition: var(--transition), border-radius 0.45s var(--transition-smooth);
+            overflow: hidden;
+        }
+        .faq-item:hover { border-color: rgba(67, 238, 147, 0.2); border-radius: 14px 28px 14px 28px; transform: translateX(4px); }
+        .faq-question {
+            padding: 18px 24px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            font-weight: 600; color: var(--page-text);
+            transition: var(--transition);
+            gap: 16px;
+        }
+        .faq-question:hover { color: var(--seesec-green); }
+        .faq-question:hover .fa-question-circle { transform: scale(1.2) rotate(-8deg); }
+        .faq-question .fa-question-circle { display: inline-block; transition: transform 0.35s var(--transition-smooth); }
+        .faq-question i { color: var(--seesec-green); transition: var(--transition); }
+        .faq-item.active .faq-question i.fa-chevron-down { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2), padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 20px 24px;
+        }
+
+        .ai-assistant {
+            position: fixed; bottom: 28px; right: 28px;
+            background: var(--nav-bg-scrolled); border: 1px solid var(--seesec-green);
+            border-radius: 60px; padding: 12px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; z-index: 100; font-weight: 600;
+            color: var(--seesec-green); font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        .ai-assistant:hover { transform: scale(1.08); border-color: var(--seesec-teal); box-shadow: 0 0 40px rgba(67,238,147,0.15); }
+
+        footer {
+            position: relative;
+            background: rgba(var(--fg-rgb), 0.025);
+            border-top: 1px solid rgba(67, 238, 147, 0.10);
+            border-radius: 64px 64px 0 0;
+            padding: 64px 0 32px;
+            margin-top: 60px;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        .footer-glow {
+            position: absolute;
+            top: -60%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 220px;
+            background: radial-gradient(ellipse at center, rgba(67, 238, 147, 0.10) 0%, transparent 72%);
+            pointer-events: none;
+        }
+        .footer-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 26px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: -0.02em;
+            color: var(--page-text);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .footer-logo:hover { transform: scale(1.03); }
+        .footer-logo span { color: var(--seesec-green); }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 32px;
+            justify-content: center;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--seesec-green); }
+        .footer-rule {
+            width: 100%;
+            max-width: 240px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(67, 238, 147, 0.35), transparent);
+        }
+        .footer-copy {
+            color: rgba(var(--fg-rgb), 0.5);
+            font-size: 0.82rem;
+            max-width: 480px;
+        }
+        .footer-copy strong { color: var(--seesec-green); }
+        [data-theme="light"] footer { background: rgba(26, 19, 65, 0.02); }
+        @media (max-width: 600px) {
+            footer { border-radius: 40px 40px 0 0; padding: 48px 0 28px; }
+            .footer-links { gap: 12px 22px; }
+        }
+
+        /* role carousel */
+        .role-carousel {
+            display: flex; flex-wrap: wrap; gap: 14px;
+            justify-content: center; margin: 30px auto; max-width: 900px;
+        }
+        .role-pill {
+            background: rgba(67, 238, 147, 0.06); border: 1px solid rgba(67, 238, 147, 0.12);
+            padding: 12px 28px; border-radius: 40px; font-weight: 600; cursor: pointer;
+            transition: var(--transition); color: var(--page-text);
+        }
+        .role-pill.active, .role-pill:hover { background: rgba(67, 238, 147, 0.18); border-color: var(--seesec-green); color: #fff; transform: scale(1.04); box-shadow: 0 0 30px rgba(67,238,147,0.05); }
+        .role-detail {
+            background: rgba(var(--fg-rgb),0.035); border: 1px solid rgba(67, 238, 147, 0.08);
+            border-radius: 28px; padding: 28px; margin: 20px auto;
+            display: none; grid-template-columns: 1fr 1fr; gap: 24px;
+            max-width: 900px;
+            backdrop-filter: blur(5px);
+        }
+        .role-detail.open { display: grid; }
+        .role-detail .detail-item { color: rgba(var(--fg-rgb), 0.72); }
+
+        .counter-highlight { font-size: 3.5rem; font-weight: 800; font-family: 'Poppins', sans-serif; color: var(--seesec-green); }
+
+        /* ── Role-based pathways (redesigned) ── */
+        .path-wrap {
+            display: grid; grid-template-columns: 300px 1fr; gap: 28px;
+            max-width: 1080px; margin: 40px auto 0; align-items: start;
+        }
+        /* role rail */
+        .role-rail { display: flex; flex-direction: column; gap: 10px; }
+        .role-pill {
+            display: flex; align-items: center; gap: 14px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(67,238,147,0.10);
+            padding: 14px 18px; border-radius: 30px 12px 30px 12px; font-weight: 600; cursor: pointer;
+            transition: var(--transition), border-radius 0.45s var(--transition-smooth); color: #cbd5ff; text-align: left;
+        }
+        .role-pill i { font-size: 1.05rem; color: var(--seesec-teal); width: 22px; text-align: center; transition: var(--transition); }
+        .role-pill:hover { border-color: rgba(67,238,147,0.35); border-radius: 12px 30px 12px 30px; transform: translateX(4px); color: #fff; }
+        .role-pill.active {
+            background: linear-gradient(135deg, rgba(67,238,147,0.14), rgba(26,241,221,0.06));
+            border-color: var(--seesec-green); color: #fff;
+            box-shadow: 0 10px 30px rgba(67,238,147,0.08);
+        }
+        .role-pill.active i { color: var(--seesec-green); transform: scale(1.15); }
+
+        /* detail card */
+        .path-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+            border: 1px solid rgba(26,241,221,0.14); border-radius: 54px 24px 54px 24px / 24px 54px 24px 54px;
+            padding: 34px; backdrop-filter: blur(6px);
+            position: relative; overflow: hidden;
+            animation: pathFade 0.5s ease;
+        }
+        @keyframes pathFade { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .path-head { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+        .path-head-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+        .path-head-icon {
+            width: 60px; height: 60px; border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; flex-shrink: 0;
+            display: grid; place-items: center; font-size: 1.6rem; color: #0a0725;
+            background: linear-gradient(135deg, var(--seesec-green), var(--seesec-teal));
+            box-shadow: 0 8px 24px rgba(67,238,147,0.25);
+            animation: cardBreathe 10s ease-in-out infinite;
+        }
+        .path-head h3 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .path-level {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--seesec-teal);
+        }
+        .path-level .dots { display: inline-flex; align-items: center; gap: 4px; }
+        .path-level .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+        .path-level .dot.on { background: var(--seesec-green); box-shadow: 0 0 8px rgba(67,238,147,0.6); }
+
+        .path-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 26px; }
+        .path-tile {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(67,238,147,0.08);
+            border-radius: 26px 12px 26px 12px; padding: 16px 18px; transition: var(--transition), border-radius 0.4s var(--transition-smooth);
+        }
+        .path-tile:hover { border-color: rgba(67,238,147,0.3); border-radius: 12px 26px 12px 26px; transform: translateY(-3px); }
+        .path-tile .t-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+        .path-tile .t-label i { color: var(--seesec-teal); }
+        .path-tile .t-value { font-family: 'Poppins', sans-serif; font-weight: 600; color: #fff; font-size: 0.95rem; }
+
+        .path-modules-label, .path-outcome-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 7px; }
+        .path-modules-label i, .path-outcome-label i { color: var(--seesec-green); }
+        .path-steps { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+        .path-step {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: rgba(67,238,147,0.06); border: 1px solid rgba(67,238,147,0.14);
+            padding: 9px 16px 9px 10px; border-radius: 40px; color: #e0e5ff; font-size: 0.88rem; font-weight: 500;
+            transition: var(--transition);
+        }
+        .path-step:hover { background: rgba(67,238,147,0.14); border-color: var(--seesec-green); }
+        .path-step .num {
+            width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+            display: grid; place-items: center; font-size: 0.72rem; font-weight: 800; font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--seesec-green), var(--seesec-teal)); color: #0a0725;
+        }
+
+        .path-outcome {
+            background: linear-gradient(135deg, rgba(67,238,147,0.10), rgba(26,241,221,0.04));
+            border: 1px solid rgba(67,238,147,0.20); border-radius: 18px; padding: 18px 22px;
+        }
+        .path-outcome p { color: #fff; font-weight: 500; font-size: 0.98rem; }
+
+        @media (max-width: 900px) {
+            .path-wrap { grid-template-columns: 1fr; }
+            .role-rail { flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+            .role-pill { flex-shrink: 0; }
+            .path-tiles { grid-template-columns: 1fr; }
+            .path-card { padding: 26px 22px; }
+        }
+
+        /* ── Skills ecosystem (glass grid + connectors) ── */
+        /* sized so the whole block — heading through badge — fits one viewport */
+        #skills-matter { padding: 48px 0; }
+        #skills-matter .section-sub { margin-bottom: 24px; }
+        .eco-divider { position: relative; display: flex; justify-content: center; align-items: center; margin: 0 auto 32px; }
+        .eco-divider-line { height: 1px; width: 100%; max-width: 420px; background: linear-gradient(90deg, transparent, rgba(26,241,221,0.5), transparent); }
+        .eco-divider-dot {
+            position: absolute; width: 12px; height: 12px; border-radius: 50%;
+            background: var(--seesec-teal); border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(26,241,221,0.8);
+        }
+
+        .eco-grid {
+            position: relative;
+            max-width: 1080px; height: 470px; margin: 0 auto;
+        }
+        .eco-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .eco-path { stroke-dasharray: 10, 30; animation: ecoDash 10s linear infinite; }
+        @keyframes ecoDash { to { stroke-dashoffset: -400; } }
+
+        /* corner satellites + an overlapping centre focal card (33% + 39% + 33% = 105%,
+           so the centre tucks over each satellite by ~2.5% at any container width) */
+        .eco-node { position: absolute; width: 33%; z-index: 1; will-change: transform; animation: ecoFloat 6s ease-in-out infinite; }
+        .eco-node.eco-tl { top: 0; left: 0; }
+        .eco-node.eco-tr { top: 0; right: 0; }
+        .eco-node.eco-bl { bottom: 0; left: 0; }
+        .eco-node.eco-br { bottom: 0; right: 0; }
+        .eco-node.eco-center {
+            top: 50%; left: 50%; width: 39%; z-index: 2;
+            animation: ecoFloatCenter 6s ease-in-out infinite;
+        }
+        @keyframes ecoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes ecoFloatCenter {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, calc(-50% - 10px)); }
+        }
+
+        /* no backdrop-filter here on purpose: these cards sit over the three animated
+           blur(80px) orbs, so a blurred backdrop would re-rasterise every frame. A flat
+           tinted fill reads the same on this background and costs nothing. */
+        .eco-card {
+            background: linear-gradient(160deg, rgba(var(--fg-rgb),0.055), rgba(var(--fg-rgb),0.02));
+            border: 1px solid rgba(26,241,221,0.12);
+            border-radius: 44px 20px 44px 20px / 20px 44px 20px 44px; padding: 24px 22px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(26,241,221,0.05);
+            transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, border-radius 0.5s var(--transition-smooth);
+        }
+        .eco-card:hover {
+            border-color: var(--seesec-green);
+            transform: translateY(-5px) rotate(0.8deg);
+            border-radius: 20px 44px 20px 44px / 44px 20px 44px 20px;
+            box-shadow: 0 18px 40px rgba(67,238,147,0.10);
+        }
+        .eco-card-center { animation: cardBreathe 16s ease-in-out infinite; }
+        .eco-card .counter-highlight { display: block; font-size: 2.4rem; line-height: 1.05; margin-bottom: 10px; }
+        .eco-card h4 { font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .eco-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; }
+
+        .eco-card-center {
+            position: relative;
+            padding: 26px 24px;
+            /* mostly opaque: it overlaps the satellites, so their edges must not bleed through */
+            background:
+                linear-gradient(160deg, rgba(var(--fg-rgb),0.07), rgba(var(--fg-rgb),0.02)),
+                var(--bg-0);
+            border-color: rgba(26,241,221,0.30);
+        }
+        /* glow pulses via opacity on a static shadow — animating box-shadow itself repaints */
+        .eco-card-center::before {
+            content: ''; position: absolute; inset: -1px; border-radius: inherit;
+            box-shadow: 0 0 30px rgba(26,241,221,0.18);
+            pointer-events: none;
+            animation: ecoPulse 4s ease-in-out infinite;
+        }
+        @keyframes ecoPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .eco-center-icon { font-size: 1.9rem; color: var(--seesec-teal); margin-bottom: 12px; display: inline-block; }
+        .eco-card-center h3 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .eco-card-center p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+        .eco-badge-wrap { text-align: center; margin-top: 36px; }
+        .eco-badge {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 12px 32px; border-radius: 40px;
+            border: 1px solid rgba(26,241,221,0.35);
+            background: rgba(26,241,221,0.05);
+            box-shadow: 0 0 20px rgba(26,241,221,0.15);
+            color: var(--seesec-teal);
+            font-family: 'Poppins', sans-serif; font-weight: 600;
+            font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+            animation: ecoBadgePulse 4s ease-in-out infinite;
+        }
+        @keyframes ecoBadgePulse { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
+
+        /* ── Enablement orbit (hub + 4 satellite stages) ── */
+        /* the section is built to sit inside a single viewport */
+        #enablement { padding: 40px 0 48px; }
+        #enablement .section-title { font-size: clamp(1.6rem, 3.4vh, 2.6rem); margin-bottom: 10px; }
+        #enablement .section-sub { font-size: 0.98rem; margin-bottom: clamp(8px, 1.6vh, 20px); }
+        .orbit-wrap {
+            position: relative;
+            max-width: 1000px;
+            height: clamp(540px, calc(100vh - 260px), 700px);
+            margin: 0 auto;
+        }
+        .orbit-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .orbit-line { stroke: rgba(26, 241, 221, 0.22); stroke-width: 2; transition: stroke 0.35s ease, filter 0.35s ease; }
+        .orbit-wrap:hover .orbit-line {
+            stroke: rgba(26, 241, 221, 0.5);
+            filter: drop-shadow(0 0 4px rgba(26, 241, 221, 0.45));
+        }
+
+        /* the glowing centre */
+        .orbit-hub {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(180px, 26vh, 240px);
+            height: clamp(180px, 26vh, 240px);
+            border-radius: 50%;
+            z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: clamp(16px, 2.4vh, 26px);
+            background: linear-gradient(160deg, rgba(var(--fg-rgb),0.06), rgba(var(--fg-rgb),0.015)), var(--bg-0);
+            border: 1px solid rgba(26, 241, 221, 0.35);
+            box-shadow: 0 0 60px rgba(26, 241, 221, 0.18), inset 0 0 22px rgba(26, 241, 221, 0.10);
+            animation: orbitHubPulse 6s ease-in-out infinite;
+        }
+        @keyframes orbitHubPulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(26, 241, 221, 0.18), inset 0 0 22px rgba(26, 241, 221, 0.10); }
+            50%      { box-shadow: 0 0 90px rgba(26, 241, 221, 0.32), inset 0 0 32px rgba(26, 241, 221, 0.18); }
+        }
+        .orbit-hub-icon { font-size: clamp(1.5rem, 2.6vh, 2.2rem); color: var(--seesec-teal); margin-bottom: clamp(4px, 1vh, 10px); }
+        .orbit-hub h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem; font-weight: 700; color: #fff;
+            line-height: 1.25;
+        }
+        .orbit-hub-rule { width: 48px; height: 1px; background: rgba(26, 241, 221, 0.35); margin: clamp(5px, 1vh, 10px) 0; }
+        .orbit-hub p {
+            font-size: 0.6rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--text-muted); line-height: 1.5;
+        }
+
+        /* satellites */
+        .orbit-node {
+            position: absolute; z-index: 1;
+            width: clamp(240px, 31%, 320px);
+            /* --px / --py are driven by the pointer-parallax script */
+            --px: 0px; --py: 0px;
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .orbit-node.orbit-top    { top: 0; left: 50%; transform: translate(calc(-50% + var(--px)), var(--py)); }
+        .orbit-node.orbit-bottom { bottom: 0; left: 50%; transform: translate(calc(-50% + var(--px)), var(--py)); }
+        .orbit-node.orbit-left   { left: 0; top: 50%; transform: translate(var(--px), calc(-50% + var(--py))); }
+        .orbit-node.orbit-right  { right: 0; top: 50%; transform: translate(var(--px), calc(-50% + var(--py))); }
+        .orbit-node.orbit-top,
+        .orbit-node.orbit-bottom { width: clamp(260px, 34%, 340px); }
+
+        .orbit-card {
+            background: linear-gradient(160deg, rgba(var(--fg-rgb),0.055), rgba(var(--fg-rgb),0.02));
+            border: 1px solid rgba(26, 241, 221, 0.16);
+            border-radius: 40px 18px 40px 18px / 18px 40px 18px 40px;
+            padding: clamp(14px, 2.2vh, 24px) 20px;
+            text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.3vh, 14px);
+            box-shadow: inset 0 0 15px rgba(26, 241, 221, 0.04);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease, border-radius 0.5s var(--transition-smooth);
+        }
+        .orbit-card:hover {
+            border-color: rgba(26, 241, 221, 0.6);
+            border-radius: 18px 40px 18px 40px / 40px 18px 40px 18px;
+            box-shadow: 0 0 30px rgba(26, 241, 221, 0.16), inset 0 0 15px rgba(26, 241, 221, 0.08);
+            transform: translateY(-4px);
+        }
+        .orbit-icon {
+            width: clamp(38px, 5vh, 48px); height: clamp(38px, 5vh, 48px); border-radius: 42% 58% 60% 40% / 45% 40% 60% 55%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem;
+            color: var(--seesec-teal);
+            background: rgba(26, 241, 221, 0.10);
+            border: 1px solid rgba(26, 241, 221, 0.22);
+            transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+        }
+        .orbit-card:hover .orbit-icon {
+            background: var(--seesec-teal);
+            color: var(--ink);
+            transform: scale(1.06);
+        }
+        .orbit-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem; font-weight: 700; color: #fff;
+            margin-bottom: 6px;
+        }
+        .orbit-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; }
+        .orbit-bar {
+            width: 33%; height: 4px; border-radius: 40px;
+            background: rgba(26, 241, 221, 0.18);
+            overflow: hidden;
+        }
+        .orbit-bar span {
+            display: block; height: 100%; width: 0;
+            background: linear-gradient(90deg, var(--seesec-teal), var(--seesec-green));
+            transition: width 0.5s ease;
+        }
+        .orbit-card:hover .orbit-bar span { width: 100%; }
+
+        .orbit-hint { color: var(--text-muted); text-align: center; margin-top: 28px; font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            /* stack the orbit: hub first, then each stage */
+            .orbit-wrap { height: auto; display: flex; flex-direction: column; gap: 18px; }
+            .orbit-lines { display: none; }
+            .orbit-hub {
+                position: static; transform: none;
+                width: 100%; height: auto; border-radius: 24px;
+                padding: 28px 24px; order: -1;
+            }
+            .orbit-node,
+            .orbit-node.orbit-top, .orbit-node.orbit-bottom,
+            .orbit-node.orbit-left, .orbit-node.orbit-right {
+                position: static; width: 100%; inset: auto; transform: none;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .orbit-hub { animation: none; }
+            .orbit-node { transition: none; }
+        }
+
+        /* ── RESPONSIVE NAV: collapse to hamburger below the width the
+           8-item link list actually needs ── (previously missing entirely,
+           so the full link list rendered inside the fixed pill and spilled
+           over the hero / page content on phones, and got crushed against
+           the CTA button on tablets/small laptops) */
+        @media (max-width: 1150px) {
+            nav {
+                left: 14px;
+                right: 14px;
+                top: 12px;
+                padding: 0 10px 0 18px;
+            }
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        @media (max-width: 360px) {
+            .nav-logo { font-size: 1.15rem; }
+            .theme-toggle { width: 30px; height: 30px; }
+        }
+
+        /* ── LIGHT THEME: aws page components ── */
+        [data-theme="light"] .section-title {
+            background: linear-gradient(135deg, var(--ink), var(--blue));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        [data-theme="light"] .info-card,
+        [data-theme="light"] .pillar,
+        [data-theme="light"] .deep-section,
+        [data-theme="light"] .stats-showcase,
+        [data-theme="light"] .cta-section,
+        [data-theme="light"] .compare-table,
+        [data-theme="light"] .faq-item,
+        [data-theme="light"] .role-detail,
+        [data-theme="light"] .eco-card,
+        [data-theme="light"] .orbit-card {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(26, 19, 65, 0.10);
+            box-shadow: 0 6px 22px rgba(26, 19, 65, 0.07);
+        }
+        [data-theme="light"] .eco-card-center,
+        [data-theme="light"] .orbit-hub {
+            background: #ffffff;
+            border-color: rgba(7, 120, 182, 0.30);
+        }
+        [data-theme="light"] .eco-center-icon,
+        [data-theme="light"] .orbit-hub-icon,
+        [data-theme="light"] .orbit-icon,
+        [data-theme="light"] .counter-highlight,
+        [data-theme="light"] .eco-badge {
+            color: var(--blue);
+        }
+        [data-theme="light"] .orbit-icon { background: rgba(7, 120, 182, 0.10); border-color: rgba(7, 120, 182, 0.22); }
+        [data-theme="light"] .orbit-card:hover .orbit-icon { background: var(--blue); color: #ffffff; }
+        [data-theme="light"] .eco-card h4,
+        [data-theme="light"] .eco-card-center h3,
+        [data-theme="light"] .orbit-card h4,
+        [data-theme="light"] .orbit-hub h3,
+        [data-theme="light"] .info-card h3,
+        [data-theme="light"] .pillar h4 { color: var(--ink); }
+        [data-theme="light"] .orbit-line { stroke: rgba(7, 120, 182, 0.28); }
+        [data-theme="light"] .role-pill { color: var(--ink); }
+        [data-theme="light"] .compare-table th { background: rgba(67, 238, 147, 0.12); color: #0b6a3f; }
+        [data-theme="light"] .stat-item:hover { background: rgba(67, 238, 147, 0.10); }
+        [data-theme="light"] footer { border-top-color: rgba(26, 19, 65, 0.08); }
+
+
+        .hud-label-green { color: var(--seesec-green); }
+        .hud-label-cyan  { color: var(--seesec-teal); }
+        /* light theme: thin accent-coloured text needs ink/blue to stay readable on paper */
+        [data-theme="light"] .hud-label-green,
+        [data-theme="light"] .hud-label-cyan,
+        [data-theme="light"] .hero-btn-secondary,
+        [data-theme="light"] .btn-outline,
+        [data-theme="light"] .btn-secondary { color: var(--blue); }
+        [data-theme="light"] .hero-btn-secondary,
+        [data-theme="light"] .btn-outline { border-color: var(--blue); }
+        [data-theme="light"] .ai-assistant { color: var(--ink); }
+        [data-theme="light"] .stat-number {
+            background: linear-gradient(135deg, var(--blue), #0b8f52);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        [data-theme="light"] .hud-dot-green { box-shadow: 0 0 8px rgba(67, 238, 147, 0.9); }
+
+        /* shader (legacy sections) */
+        .shader-wrap { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.15; border-radius: 40px; overflow: hidden; }
+        .shader-wrap canvas { display: block; width: 100%; height: 100%; }
+        .deep-section, .stats-showcase, .cta-section { position: relative; overflow: hidden; }
+        .shader-overlay { position: relative; z-index: 1; }
+
+        /* ── Cinematic Hero ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        /* Background shader canvas */
+        #hero-shader-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.85;
+        }
+        /* AWS service-mesh animation: a slowly orbiting "cloud" hub
+           connected to core AWS service nodes (EC2, S3, Lambda, RDS,
+           VPC, IAM), echoing the same hub-and-satellite language used
+           later in the page (#enablement), but alive and continuous. */
+        #hero-aws-mesh {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.9;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        @media (max-width: 720px) {
+            #hero-aws-mesh { display: none; }
+        }
+        /* Cinematic vignette */
+        .hero-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-0) 140%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 40px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-h1-top {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-size: clamp(1.9rem, 4.5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--page-text);
+            margin-bottom: 0;
+            text-shadow: 0 4px 30px rgba(5, 4, 20, 0.75), 0 1px 0 rgba(5, 4, 20, 0.4);
+        }
+        .hero-h1-accent {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-size: clamp(2.4rem, 5.5vw, 5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--seesec-green);
+            margin-bottom: 32px;
+            text-shadow: 0 0 44px rgba(67, 238, 147, 0.35), 0 4px 30px rgba(5, 4, 20, 0.75);
+        }
+        .hero-subtext {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: rgba(var(--fg-rgb), 0.7);
+            max-width: 680px;
+            line-height: 1.75;
+            margin-bottom: 44px;
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+        }
+        .hero-btn-primary {
+            padding: 16px 36px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, var(--seesec-green), var(--seesec-teal));
+            color: var(--ink);
+            font-weight: 800;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 8px 28px rgba(67,238,147,0.35);
+        }
+        .hero-btn-primary:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 16px 40px rgba(67,238,147,0.55);
+        }
+        .hero-btn-secondary {
+            padding: 16px 36px;
+            border-radius: 40px;
+            border: 1.5px solid var(--seesec-green);
+            background: transparent;
+            color: var(--seesec-green);
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .hero-btn-secondary:hover {
+            background: rgba(67,238,147,0.10);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(67,238,147,0.15);
+        }
+        /* Bottom HUD indicators */
+        .hero-hud {
+            position: absolute;
+            bottom: 52px;
+            left: 80px;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: heroFadeUp 1.2s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .hud-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+        .hud-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            animation: hudPulse 2s ease-in-out infinite;
+        }
+        .hud-dot-green { background: var(--seesec-green); color: var(--seesec-green); box-shadow: 0 0 8px var(--seesec-green); }
+        .hud-dot-cyan  { background: var(--seesec-teal);  color: var(--seesec-teal);  box-shadow: 0 0 8px var(--seesec-teal); animation-delay: 0.4s; }
+        @keyframes hudPulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+        /* Scroll arrow */
+        .hero-scroll-arrow {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: rgba(176,181,212,0.5);
+            animation: arrowBounce 2s ease-in-out infinite;
+            text-decoration: none;
+        }
+        @keyframes arrowBounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+        .hero-scroll-arrow svg { width: 24px; height: 24px; }
+        @media (max-width: 900px) {
+            .hero-hud { display: none; }
+            .hero-h1-top  { font-size: 2rem; }
+            .hero-h1-accent { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 900px) {
+            .two-column { grid-template-columns: 1fr; }
+            .container { padding: 0 24px; }
+            .navbar { flex-direction: column; align-items: flex-start; padding-left: 20px; padding-right: 20px; margin: 0 -20px; }
+            .nav-links { gap: 24px; flex-wrap: wrap; }
+            .section-title { font-size: 2.2rem; }
+            .deep-section { padding: 32px 24px; }
+            .role-detail { grid-template-columns: 1fr; }
+            .hero-grid { flex-direction: column; }
+
+            .eco-grid { height: auto; display: flex; flex-direction: column; gap: 20px; }
+            .eco-node,
+            .eco-node.eco-center,
+            .eco-node.eco-tl, .eco-node.eco-tr,
+            .eco-node.eco-bl, .eco-node.eco-br {
+                position: static; width: 100%; inset: auto;
+                animation: none; transform: none;
+            }
+            .eco-lines { display: none; }
+            .eco-divider { margin-bottom: 40px; }
+            .eco-card { padding: 26px 20px; }
+            .eco-card-center { padding: 30px 24px; }
+            .eco-badge-wrap { margin-top: 40px; }
+            .eco-badge { font-size: 0.66rem; letter-spacing: 0.1em; padding: 10px 20px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eco-node, .eco-card-center, .eco-badge, .eco-path { animation: none; }
+        }
+        .hero-grid {
+            display: flex; flex-wrap: wrap; align-items: center;
+            gap: 40px; padding: 60px 0;
+        }
+        .hero-text { flex: 1.3; }
+
+        /* scroll reveal */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s var(--transition-smooth); }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s var(--transition-smooth); }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.85); transition: opacity 0.7s ease, transform 0.7s var(--transition-smooth); }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        /* custom animation for boxes */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(67,238,147,0.02); }
+            50% { box-shadow: 0 0 40px rgba(67,238,147,0.06); }
+        }
+        .info-card, .pillar, .stat-item { animation: pulseGlow 4s ease-in-out infinite; }
+        .info-card:hover, .pillar:hover, .stat-item:hover { animation: none; }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-orb orb-4"></div>
+    <div class="bg-orb orb-5"></div>
+
+    <!-- ===== SHARED NAVBAR (identical to landing_page.html) ===== -->
+    <nav id="nav">
+        <a href="landing_page.html#hero" class="nav-logo">
+            <span class="logo-text"><span class="logo-see">SEE</span><span class="logo-sec">SEC</span></span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="landing_page.html#hero">Home</a></li>
+            <li><a href="landing_page.html#services">Services</a></li>
+            <li><a href="landing_page.html#communication-automation">Solutions</a></li>
+            <li><a href="aws.html" class="active">AWS T&amp;C</a></li>
+            <li><a href="landing_page.html#content-creation">Content AI</a></li>
+            <li><a href="landing_page.html#about">About Us</a></li>
+            <li><a href="landing_page.html#cta">Contact</a></li>
+            <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+        </ul>
+
+        <a href="landing_page.html#cta" class="nav-cta">
+            <span class="nav-shine"></span>
+            <span class="nav-bg"></span>
+            Get a Quote →
+        </a>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: Purple" data-mode="purple">
+            <svg class="theme-icon theme-icon-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" fill="currentColor" fill-opacity="0.15"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke-dasharray="4 2"/></svg>
+            <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="4.2" y1="4.2" x2="6" y2="6"></line><line x1="18" y1="18" x2="19.8" y2="19.8"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="4.2" y1="19.8" x2="6" y2="18"></line><line x1="18" y1="6" x2="19.8" y2="4.2"></line></svg>
+            <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="landing_page.html#hero" class="mobile-link">Home</a>
+        <a href="landing_page.html#services" class="mobile-link">Services</a>
+        <a href="landing_page.html#communication-automation" class="mobile-link">Solutions</a>
+        <a href="aws.html" class="mobile-link">AWS T&amp;C</a>
+        <a href="landing_page.html#content-creation" class="mobile-link">Content AI</a>
+        <a href="landing_page.html#about" class="mobile-link">About Us</a>
+        <a href="landing_page.html#cta" class="mobile-link">Contact</a>
+        <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
+        <a href="landing_page.html#cta" class="mobile-cta">Get a Quote →</a>
+
+        <div class="mobile-theme-row" role="group" aria-label="Color theme">
+            <button class="mobile-theme-option" data-mode="purple" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" fill="currentColor" fill-opacity="0.15"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke-dasharray="4 2"/></svg>
+                <span>Purple</span>
+            </button>
+            <button class="mobile-theme-option" data-mode="light" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="4.2" y1="4.2" x2="6" y2="6"></line><line x1="18" y1="18" x2="19.8" y2="19.8"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="4.2" y1="19.8" x2="6" y2="18"></line><line x1="18" y1="6" x2="19.8" y2="4.2"></line></svg>
+                <span>Light</span>
+            </button>
+            <button class="mobile-theme-option" data-mode="dark" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+                <span>Dark</span>
+            </button>
+        </div>
+
+        <span class="close-hint">Tap to close</span>
+    </div>
+
+    <!-- HERO – Cinematic Full-Screen -->
+    <section class="hero">
+        <!-- Layer 0: WebGL Atmospheric Shader -->
+        <canvas id="hero-shader-bg"></canvas>
+
+        <!-- Layer 1: AWS service-mesh animation -->
+        <canvas id="hero-aws-mesh" aria-hidden="true"></canvas>
+
+        <!-- Layer 2: Cinematic Vignette -->
+        <div class="hero-vignette"></div>
+
+        <!-- Layer 3: Foreground Content -->
+        <div class="hero-content">
+            <h1 class="hero-h1-top">Build Cloud-Ready Teams.</h1>
+            <h1 class="hero-h1-accent">Accelerate Innovation.</h1>
+            <p class="hero-subtext">Unlock the full potential of AWS with world-class training programs designed for the modern enterprise. Transform your workforce into cloud architects of the future.</p>
+            <div class="hero-cta-row">
+                <a href="#pathways" class="hero-btn-primary">Explore Learning Programs</a>
+                <a href="#" class="hero-btn-secondary" id="talkExpert">Talk to AWS Experts</a>
+            </div>
+        </div>
+
+        <!-- Layer 4: Bottom HUD Indicators -->
+        <div class="hero-hud">
+            <div class="hud-item">
+                <div class="hud-dot hud-dot-green"></div>
+                <span class="hud-label hud-label-green">Live Systems Active</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot hud-dot-cyan"></div>
+                <span class="hud-label hud-label-cyan">Global Certification Hub</span>
+            </div>
+        </div>
+
+        <!-- Layer 5: Scroll Indicator -->
+        <a href="#skills-matter" class="hero-scroll-arrow" aria-label="Scroll down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
+    </section>
+
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path d="M0,40 C200,90 350,-10 600,40 C850,90 1000,-10 1200,40 L1200,80 L0,80 Z" fill="rgba(67,238,147,0.05)"></path>
+        </svg>
+    </div>
+
+    <!-- VIEWPORT 2 -->
+    <div class="container section" id="skills-matter">
+        <h2 class="section-title reveal">Technology Evolves. Skills Must Evolve Faster.</h2>
+        <div class="section-sub reveal">Global trends driving the future of Cloud, AI, Security, and Data Engineering.</div>
+
+        <div class="eco-divider reveal">
+            <div class="eco-divider-line"></div>
+            <div class="eco-divider-dot"></div>
+        </div>
+
+        <div class="eco-grid reveal">
+            <svg class="eco-lines" viewBox="0 0 1000 800" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="eco-path" d="M 340 120 Q 500 120 500 225" fill="none" stroke="rgba(26,241,221,0.32)" stroke-width="2"></path>
+                <path class="eco-path" d="M 660 120 Q 500 120 500 225" fill="none" stroke="rgba(26,241,221,0.32)" stroke-width="2"></path>
+                <path class="eco-path" d="M 340 680 Q 500 680 500 575" fill="none" stroke="rgba(26,241,221,0.32)" stroke-width="2"></path>
+                <path class="eco-path" d="M 660 680 Q 500 680 500 575" fill="none" stroke="rgba(26,241,221,0.32)" stroke-width="2"></path>
+                <circle r="4" fill="#43ee93"><animateMotion dur="4s" repeatCount="indefinite" path="M 340 120 Q 500 120 500 225"></animateMotion></circle>
+                <circle r="4" fill="#43ee93"><animateMotion begin="1s" dur="5s" repeatCount="indefinite" path="M 660 120 Q 500 120 500 225"></animateMotion></circle>
+                <circle r="4" fill="#43ee93"><animateMotion begin="0.5s" dur="3.5s" repeatCount="indefinite" path="M 340 680 Q 500 680 500 575"></animateMotion></circle>
+                <circle r="4" fill="#43ee93"><animateMotion dur="6s" repeatCount="indefinite" path="M 660 680 Q 500 680 500 575"></animateMotion></circle>
+            </svg>
+
+            <div class="eco-node eco-center">
+                <div class="eco-card eco-card-center">
+                    <i class="fas fa-layer-group eco-center-icon"></i>
+                    <h3>One Connected Skill Stack</h3>
+                    <p>Demand for cloud, AI, DevOps, security, and data engineering skills is rising together — the teams that build across all five move fastest.</p>
+                </div>
+            </div>
+
+            <div class="eco-node eco-tl" style="animation-delay:0.5s;">
+                <div class="eco-card">
+                    <span class="counter-highlight" id="cloudDemand">0%</span>
+                    <h4>Cloud Demand Growth</h4>
+                    <p>Enterprise cloud adoption continues to accelerate across global regions.</p>
+                </div>
+            </div>
+
+            <div class="eco-node eco-tr" style="animation-delay:1.2s;">
+                <div class="eco-card">
+                    <span class="counter-highlight" id="aiAdoption">0%</span>
+                    <h4>AI / ML Skill Adoption</h4>
+                    <p>Organizations increasingly prioritize AI‑ready talent for deployment.</p>
+                </div>
+            </div>
+
+            <div class="eco-node eco-bl" style="animation-delay:0.8s;">
+                <div class="eco-card">
+                    <span class="counter-highlight" id="certValue">0%</span>
+                    <h4>Certification Salary Uplift</h4>
+                    <p>Certified professionals command significantly higher market value today.</p>
+                </div>
+            </div>
+
+            <div class="eco-node eco-br" style="animation-delay:1.5s;">
+                <div class="eco-card">
+                    <span class="counter-highlight" id="businessImpact">0x</span>
+                    <h4>Business Impact</h4>
+                    <p>Skilled technology teams accelerate digital transformation by 250%.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="eco-badge-wrap reveal">
+            <span class="eco-badge">Cloud • AI • DevOps • Security • Data Engineering</span>
+        </div>
+    </div>
+
+    <!-- VIEWPORT 3: Pathways -->
+    <div class="container section" id="pathways">
+        <h2 class="section-title reveal">Role‑Based Learning Pathways</h2>
+        <div class="section-sub reveal">Select a role to explore the recommended learning path, duration, certifications, and hands‑on labs.</div>
+        <div class="path-wrap">
+            <div class="role-rail reveal-left">
+                <span class="role-pill active" data-role="practitioner"><i class="fas fa-cloud"></i> Cloud Practitioner</span>
+                <span class="role-pill" data-role="architect"><i class="fas fa-drafting-compass"></i> Solutions Architect</span>
+                <span class="role-pill" data-role="developer"><i class="fas fa-code"></i> Developer</span>
+                <span class="role-pill" data-role="devops"><i class="fas fa-infinity"></i> DevOps Engineer</span>
+                <span class="role-pill" data-role="security"><i class="fas fa-shield-halved"></i> Security Engineer</span>
+                <span class="role-pill" data-role="data"><i class="fas fa-database"></i> Data Engineer</span>
+                <span class="role-pill" data-role="ai"><i class="fas fa-brain"></i> AI / ML Engineer</span>
+                <span class="role-pill" data-role="exec"><i class="fas fa-chess-king"></i> Leadership &amp; Executive</span>
+            </div>
+            <div id="roleDetailContainer" class="path-card reveal-right"></div>
+        </div>
+    </div>
+
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path d="M0,40 C250,-10 450,90 700,40 C950,-10 1050,90 1200,40 L1200,80 L0,80 Z" fill="rgba(26,241,221,0.05)"></path>
+        </svg>
+    </div>
+
+    <!-- VIEWPORT 4: Enablement -->
+    <div class="container section" id="enablement">
+        <h2 class="section-title" style="text-align:center;">Beyond Training. We Build Cloud‑Ready Organizations.</h2>
+        <div class="section-sub">Four connected stages, one outcome — teams that run on AWS with confidence.</div>
+
+        <div class="orbit-wrap">
+            <svg class="orbit-lines" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <line class="orbit-line" x1="500" y1="350" x2="500" y2="140"></line>
+                <line class="orbit-line" x1="500" y1="350" x2="500" y2="560"></line>
+                <line class="orbit-line" x1="500" y1="350" x2="150" y2="350"></line>
+                <line class="orbit-line" x1="500" y1="350" x2="850" y2="350"></line>
+                <circle cx="500" cy="189" r="4" fill="#1af6dd"></circle>
+                <circle cx="500" cy="511" r="4" fill="#1af6dd"></circle>
+                <circle cx="325" cy="350" r="4" fill="#1af6dd"></circle>
+                <circle cx="675" cy="350" r="4" fill="#1af6dd"></circle>
+                <circle cx="500" cy="350" r="250" fill="none" stroke="rgba(26,241,221,0.06)" stroke-width="1" stroke-dasharray="4 8"></circle>
+            </svg>
+
+            <!-- the outcome every stage feeds into -->
+            <div class="orbit-hub">
+                <i class="fas fa-cloud orbit-hub-icon"></i>
+                <h3>Cloud‑Ready Organization</h3>
+                <div class="orbit-hub-rule"></div>
+                <p>Stronger teams. Smarter cloud outcomes.</p>
+            </div>
+
+            <div class="orbit-node orbit-top">
+                <div class="orbit-card">
+                    <div class="orbit-icon"><i class="fas fa-road"></i></div>
+                    <div>
+                        <h4>Customized Learning Roadmap</h4>
+                        <p>Tailored paths aligned to business goals and roles.</p>
+                    </div>
+                    <div class="orbit-bar"><span></span></div>
+                </div>
+            </div>
+
+            <div class="orbit-node orbit-left">
+                <div class="orbit-card">
+                    <div class="orbit-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div>
+                        <h4>Skills Assessment</h4>
+                        <p>Identify current capabilities and skill gaps across teams.</p>
+                    </div>
+                    <div class="orbit-bar"><span></span></div>
+                </div>
+            </div>
+
+            <div class="orbit-node orbit-right">
+                <div class="orbit-card">
+                    <div class="orbit-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div>
+                        <h4>Certification &amp; Continuous Learning</h4>
+                        <p>Ongoing support for recertification and advanced tracks.</p>
+                    </div>
+                    <div class="orbit-bar"><span></span></div>
+                </div>
+            </div>
+
+            <div class="orbit-node orbit-bottom">
+                <div class="orbit-card">
+                    <div class="orbit-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div>
+                        <h4>Hands‑on Workshops &amp; Labs</h4>
+                        <p>Real‑world scenarios with AWS Skill Builder and sandboxes.</p>
+                    </div>
+                    <div class="orbit-bar"><span></span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- VIEWPORT 5: Hands-on -->
+    <div class="container section">
+        <h2 class="section-title reveal">Hands‑on Learning Experience</h2>
+        <div class="cards-grid">
+            <div class="info-card reveal"><i class="fas fa-cube card-icon"></i><h3>AWS Skill Builder</h3><p>700+ courses, labs, and assessments</p></div>
+            <div class="info-card reveal"><i class="fas fa-flask card-icon"></i><h3>Sandbox Environments</h3><p>Practice without risk</p></div>
+            <div class="info-card reveal"><i class="fas fa-microscope card-icon"></i><h3>Guided Labs</h3><p>Step‑by‑step cloud scenarios</p></div>
+        </div>
+    </div>
+
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path d="M0,40 C200,90 350,-10 600,40 C850,90 1000,-10 1200,40 L1200,80 L0,80 Z" fill="rgba(7,120,182,0.06)"></path>
+        </svg>
+    </div>
+
+    <!-- VIEWPORT 6: Why SEESEC -->
+    <div class="container section" id="why-seesec">
+        <h2 class="section-title reveal">Why SEESEC</h2>
+        <div class="table-scroll reveal-scale">
+            <table class="compare-table">
+                <thead><tr><th>Capability</th><th>SEESEC</th><th>Standard Training</th></tr></thead>
+                <tbody>
+                    <tr><td>AWS Partnership</td><td><i class="fas fa-check"></i> Advanced Partner</td><td><i class="fas fa-times"></i> Varies</td></tr>
+                    <tr><td>Implementation Expertise</td><td><i class="fas fa-check"></i> In‑house architects</td><td><i class="fas fa-times"></i> Limited</td></tr>
+                    <tr><td>Real‑world Projects</td><td><i class="fas fa-check"></i> Included</td><td><i class="fas fa-times"></i> Theory only</td></tr>
+                    <tr><td>Enterprise Transformation</td><td><i class="fas fa-check"></i> End‑to‑end</td><td><i class="fas fa-times"></i> Siloed</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- VIEWPORT 7: Success Outcomes -->
+    <div class="container stats-showcase reveal">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:24px; text-align:center;">
+            <div class="stat-item"><span class="stat-number" style="font-size:3rem; font-weight:800;" id="outcome1">0%</span><p>Faster cloud adoption</p></div>
+            <div class="stat-item"><span class="stat-number" style="font-size:3rem; font-weight:800;" id="outcome2">0%</span><p>Certification readiness</p></div>
+            <div class="stat-item"><span class="stat-number" style="font-size:3rem; font-weight:800;" id="outcome3">0%</span><p>Reduced implementation risks</p></div>
+            <div class="stat-item"><span class="stat-number" style="font-size:3rem; font-weight:800;" id="outcome4">0%</span><p>Stronger internal capabilities</p></div>
+        </div>
+    </div>
+
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path d="M0,40 C250,-10 450,90 700,40 C950,-10 1050,90 1200,40 L1200,80 L0,80 Z" fill="rgba(67,238,147,0.05)"></path>
+        </svg>
+    </div>
+
+    <!-- VIEWPORT 8: CTA & FAQ -->
+    <div class="container">
+        <div class="cta-section reveal">
+            <h2 style="font-family:'Poppins',sans-serif; font-size:2.4rem;">Empower Your Teams for the Cloud &amp; AI Era.</h2>
+            <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin:30px 0;">
+                <a href="#" class="btn-primary" id="ctaConsult">Request a Training Consultation</a>
+                <a href="#" class="btn-secondary" id="ctaCatalogue">Download Training Catalogue</a>
+            </div>
+        </div>
+        <div id="faq" style="margin:60px 0;">
+            <h2 class="section-title reveal">FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span><i class="fas fa-question-circle" style="color:var(--seesec-green); margin-right:12px;"></i> Which AWS certifications does SEESEC support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">We support all major AWS certifications including Cloud Practitioner, Solutions Architect (Associate & Professional), Developer, DevOps Engineer, Security Specialty, Data Analytics, and Machine Learning.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span><i class="fas fa-question-circle" style="color:var(--seesec-green); margin-right:12px;"></i> Can training be customized for our organization?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Absolutely. We design custom learning paths based on your team's roles, existing skills, and business objectives. We can also incorporate your internal use cases into workshops.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span><i class="fas fa-question-circle" style="color:var(--seesec-green); margin-right:12px;"></i> Are hands‑on labs included in the programs?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Yes, all programs include extensive hands-on labs using AWS Skill Builder, sandbox environments, and real-world case studies to ensure practical application of knowledge.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span><i class="fas fa-question-circle" style="color:var(--seesec-green); margin-right:12px;"></i> Do you provide executive and leadership workshops?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Yes, we offer executive briefings and leadership workshops focused on cloud strategy, governance, FinOps, and digital transformation to align leadership with technical teams.</div>
+                </div>
+                <div class="faq-item reveal" style="grid-column:1/-1;">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span><i class="fas fa-question-circle" style="color:var(--seesec-green); margin-right:12px;"></i> Can training be delivered onsite, virtual, or hybrid?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">All delivery modes are available. We can conduct onsite training at your premises, virtual instructor-led sessions, or hybrid models combining both for maximum flexibility.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-logo">
+                    <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                    <span class="logo-text">SEE<span>SEC</span></span>
+                </a>
+                <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                <p style="margin-top:12px; font-size:0.7rem; color:rgba(var(--fg-rgb),0.25);">
+                    <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed rgba(var(--fg-rgb),0.1);">
+                        <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                    </a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul><li><a href="aws-managed.html">AWS Managed</a></li><li><a href="cloud-optimization.html">Cloud Optimization</a></li><li><a href="cloud-security.html">Cloud Security</a></li><li><a href="gen-ai.html">Gen AI</a></li><li><a href="data-analytics.html">Data Analytics</a></li><li><a href="cloud-compliance.html">Cloud Compliance</a></li></ul>
+            </div>
+            <div class="footer-col">
+                <h5>Solutions</h5>
+                <ul><li><a href="chat-a-lot.html">Chat-A-Lot</a></li><li><a href="talk-track.html">Talk Track</a></li><li><a href="sms-sense.html">SMS Sense</a></li><li><a href="interactive-email.html">Interactive Email</a></li><li><a href="email-archival.html">Email Archival</a></li></ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SEESEC Infotech. All rights reserved.</p>
+            <div class="footer-socials"><a href="#">in</a><a href="#">IG</a><a href="#">YT</a></div>
+        </div>
+    </footer>
+
+    <div class="ai-assistant" id="aiChatBtn"><i class="fas fa-message"></i> SeesecAI Assistant <i class="fas fa-circle" style="font-size:0.55rem; color:#43ee93;"></i></div>
+
+    <script>
+        // ===== Nav scroll behaviour (shared with landing_page.html) =====
+        (function() {
+            const nav = document.getElementById('nav');
+            if (!nav) return;
+            let lastY = 0;
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY;
+                nav.classList.toggle('scrolled', y > 40);
+                nav.classList.toggle('nav-hidden', y > lastY && y > 120);
+                lastY = y;
+            }, { passive: true });
+        })();
+
+        // ===== Hamburger / mobile menu =====
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!hamburger || !mobileMenu) return;
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                const isOpen = mobileMenu.classList.contains('open');
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+                hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+            hamburger.addEventListener('click', toggleMenu);
+            mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) toggleMenu(); });
+            document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMenu));
+        })();
+
+        // ===== Theme toggle — purple / light / dark, persisted across the whole site =====
+        (function() {
+            const root = document.documentElement;
+            const btn = document.getElementById('themeToggle');
+            const mobileOptions = document.querySelectorAll('.mobile-theme-option');
+            const order = ['purple', 'light', 'dark'];
+            const labels = { purple: 'Purple', light: 'Light', dark: 'Dark' };
+
+            function effectiveTheme(pref) {
+                if (pref === 'purple') return 'purple';
+                if (pref === 'dark') return 'midnight';
+                return pref;
+            }
+
+            function applyTheme(pref, persist) {
+                const effective = effectiveTheme(pref);
+                root.setAttribute('data-theme', effective);
+                root.setAttribute('data-theme-pref', pref);
+                if (btn) {
+                    btn.setAttribute('data-mode', pref);
+                    btn.setAttribute('title', 'Theme: ' + labels[pref]);
+                    btn.setAttribute('aria-label', 'Color theme, currently ' + labels[pref] + '. Click to change.');
+                }
+                mobileOptions.forEach(opt => opt.classList.toggle('active', opt.dataset.mode === pref));
+                if (persist) {
+                    try { localStorage.setItem('seesec-theme', pref); } catch (e) {}
+                }
+            }
+
+            let currentPref = root.getAttribute('data-theme-pref') || 'purple';
+            applyTheme(currentPref, false);
+
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const idx = order.indexOf(currentPref);
+                    currentPref = order[(idx + 1) % order.length];
+                    applyTheme(currentPref, true);
+                });
+            }
+            mobileOptions.forEach(opt => {
+                opt.addEventListener('click', () => { currentPref = opt.dataset.mode; applyTheme(currentPref, true); });
+            });
+        })();
+
+        // ===== FAQ Toggle =====
+        function toggleFAQ(el) {
+            const item = el.closest('.faq-item');
+            if (!item) return;
+            const isActive = item.classList.contains('active');
+            // Close all others
+            document.querySelectorAll('.faq-item.active').forEach(f => f.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+                // Smooth scroll to show answer
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+
+        // ===== Role-based pathway =====
+        const rolePills = document.querySelectorAll('.role-pill');
+        const detailContainer = document.getElementById('roleDetailContainer');
+        const roleData = {
+            practitioner: { name: 'Cloud Practitioner', icon: 'fa-cloud', level: 'Foundational', lvl: 1, path: ['Cloud Essentials', 'AWS Core Services', 'Security & Compliance'], duration: '4–6 weeks', cert: 'AWS Cloud Practitioner', labs: '12+ guided labs, sandbox', outcome: 'Foundational cloud fluency, cost awareness, and security basics.' },
+            architect: { name: 'Solutions Architect', icon: 'fa-drafting-compass', level: 'Associate', lvl: 3, path: ['Designing Resilient Architectures', 'AWS Well-Architected', 'Cost & Performance'], duration: '8–10 weeks', cert: 'Solutions Architect – Associate', labs: 'Architecture challenges, case studies', outcome: 'Scalable, secure, cost-optimized cloud designs.' },
+            developer: { name: 'Developer', icon: 'fa-code', level: 'Associate', lvl: 3, path: ['Developing on AWS', 'CI/CD Pipelines', 'Serverless'], duration: '6–8 weeks', cert: 'Developer – Associate', labs: 'Code deployments, debugging', outcome: 'Faster, reliable development cycles on AWS.' },
+            devops: { name: 'DevOps Engineer', icon: 'fa-infinity', level: 'Professional', lvl: 4, path: ['DevOps Engineering', 'Monitoring & Observability', 'Automation'], duration: '8–10 weeks', cert: 'DevOps Engineer – Professional', labs: 'Pipeline building, incident response', outcome: 'Operational excellence and reliable delivery.' },
+            security: { name: 'Security Engineer', icon: 'fa-shield-halved', level: 'Specialty', lvl: 4, path: ['Security Fundamentals', 'IAM & Access', 'Compliance'], duration: '6–8 weeks', cert: 'Security – Specialty', labs: 'Threat detection, encryption', outcome: 'Robust, compliant cloud security posture.' },
+            data: { name: 'Data Engineer', icon: 'fa-database', level: 'Specialty', lvl: 4, path: ['Data Analytics', 'ETL Pipelines', 'Databases'], duration: '6–8 weeks', cert: 'Data Analytics – Specialty', labs: 'Data pipelines, visualization', outcome: 'Data-driven decisions at scale.' },
+            ai: { name: 'AI / ML Engineer', icon: 'fa-brain', level: 'Specialty', lvl: 5, path: ['AI/ML on AWS', 'SageMaker', 'Generative AI'], duration: '8–12 weeks', cert: 'Machine Learning – Specialty', labs: 'Model training, deployment', outcome: 'AI-powered innovation and deployment.' },
+            exec: { name: 'Leadership & Executive', icon: 'fa-chess-king', level: 'Strategic', lvl: 2, path: ['Cloud Strategy', 'Governance', 'FinOps'], duration: '2–4 weeks', cert: 'Executive Briefing', labs: 'Workshops, case studies', outcome: 'Strategic cloud alignment across the org.' }
+        };
+        function showRole(role) {
+            const data = roleData[role] || roleData.practitioner;
+            const dots = Array.from({length: 5}, (_, i) => `<span class="dot${i < data.lvl ? ' on' : ''}"></span>`).join('');
+            const steps = data.path.map((s, i) => `<span class="path-step"><span class="num">${i + 1}</span>${s}</span>`).join('');
+            detailContainer.innerHTML = `
+                <div class="path-head">
+                    <div class="path-head-icon"><i class="fas ${data.icon}"></i></div>
+                    <div class="path-head-text">
+                        <h3>${data.name}</h3>
+                        <span class="path-level">${data.level} <span class="dots">${dots}</span></span>
+                    </div>
+                </div>
+                <div class="path-tiles">
+                    <div class="path-tile"><div class="t-label"><i class="fas fa-clock"></i> Duration</div><div class="t-value">${data.duration}</div></div>
+                    <div class="path-tile"><div class="t-label"><i class="fas fa-certificate"></i> Certification</div><div class="t-value">${data.cert}</div></div>
+                    <div class="path-tile"><div class="t-label"><i class="fas fa-flask"></i> Hands-on Labs</div><div class="t-value">${data.labs}</div></div>
+                </div>
+                <div class="path-modules-label"><i class="fas fa-route"></i> Recommended Learning Path</div>
+                <div class="path-steps">${steps}</div>
+                <div class="path-outcome-label"><i class="fas fa-bullseye"></i> Business Outcome</div>
+                <div class="path-outcome"><p>${data.outcome}</p></div>
+            `;
+            rolePills.forEach(p => p.classList.remove('active'));
+            document.querySelector(`.role-pill[data-role="${role}"]`)?.classList.add('active');
+        }
+        rolePills.forEach(pill => {
+            pill.addEventListener('click', function() { showRole(this.dataset.role); });
+        });
+        showRole('practitioner');
+
+        // ===== Buttons =====
+        document.querySelectorAll('#talkExpert, #ctaConsult, #ctaCatalogue').forEach(btn => {
+            btn?.addEventListener('click', (e) => { e.preventDefault(); alert('📧 Thank you for your interest! Our training team will contact you shortly. (Demo)'); });
+        });
+
+        // ===== Click ripple micro-interaction on all buttons =====
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-outline').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.className = 'btn-ripple';
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 650);
+            });
+        });
+
+        // ===== Ambient scroll parallax on background orbs =====
+        (function() {
+            const orbs = document.querySelectorAll('.bg-orb');
+            if (!orbs.length) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let ticking = false;
+            function onScroll() {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    orbs.forEach((orb, i) => {
+                        const speed = 0.04 + i * 0.015;
+                        orb.style.marginTop = (y * speed * -1) + 'px';
+                    });
+                    ticking = false;
+                });
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+        })();
+        document.getElementById('aiChatBtn')?.addEventListener('click', () => {
+            alert('🎓 SEESEC AI assistant — ready to help you with AWS Training & Certification programs, Skill Builder access, and custom learning paths. How can I assist?');
+        });
+
+        // ===== Animated counters =====
+        function animateCounter(id, target, suffix = '', isFloat = false) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let curr = 0;
+            const step = target / 50;
+            const fn = () => {
+                if (curr < target) {
+                    curr += step;
+                    el.textContent = (isFloat ? curr.toFixed(1) : Math.floor(curr)) + suffix;
+                    setTimeout(fn, 25);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            };
+            fn();
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    if (target.id === 'cloudDemand') animateCounter('cloudDemand', 85, '%');
+                    else if (target.id === 'aiAdoption') animateCounter('aiAdoption', 72, '%');
+                    else if (target.id === 'certValue') animateCounter('certValue', 35, '%');
+                    else if (target.id === 'businessImpact') animateCounter('businessImpact', 2.5, 'x', true);
+                    else if (target.id === 'outcome1') animateCounter('outcome1', 40, '%');
+                    else if (target.id === 'outcome2') animateCounter('outcome2', 92, '%');
+                    else if (target.id === 'outcome3') animateCounter('outcome3', 30, '%');
+                    else if (target.id === 'outcome4') animateCounter('outcome4', 85, '%');
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.counter-highlight, .stat-number').forEach(el => {
+            if (el.id) counterObserver.observe(el);
+        });
+        document.querySelectorAll('#outcome1, #outcome2, #outcome3, #outcome4').forEach(el => counterObserver.observe(el));
+
+        // ===== Scroll Reveal =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+        // ===== Shader =====
+        function initShader(id) {
+            const canvas = document.getElementById(id);
+            if (!canvas) return;
+            const parent = canvas.parentElement;
+            if (!parent) return;
+            const w = parent.clientWidth || 1280, h = parent.clientHeight || 720;
+            canvas.width = w; canvas.height = h;
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (!gl) return;
+            const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+            const fs = `precision highp float; uniform float u_time; uniform vec2 u_resolution; varying vec2 v_texCoord;
+                float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
+                float noise(vec2 p){ vec2 i=floor(p); vec2 f=fract(p); float a=hash(i), b=hash(i+vec2(1,0)), c=hash(i+vec2(0,1)), d=hash(i+vec2(1,1)); vec2 u=f*f*(3.-2.*f); return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y; }
+                void main(){ vec2 uv=v_texCoord; vec3 bg=vec3(0.02,0.078,0.141); vec3 accent=vec3(0.027,0.471,0.714); float n=noise(uv*3.+u_time*0.05); vec3 col=mix(bg, accent*0.3, n*0.2); gl_FragColor=vec4(col,1.0); }`;
+            const prog = gl.createProgram();
+            const cs = (t,s)=>{ const sh=gl.createShader(t); gl.shaderSource(sh,s); gl.compileShader(sh); return sh; };
+            gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+            gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+            gl.linkProgram(prog); gl.useProgram(prog);
+            const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+            const pos = gl.getAttribLocation(prog, 'a_position');
+            gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);
+            const uTime = gl.getUniformLocation(prog,'u_time');
+            const uRes = gl.getUniformLocation(prog,'u_resolution');
+            function render(t){ gl.viewport(0,0,canvas.width,canvas.height); gl.uniform1f(uTime,t*0.001); gl.uniform2f(uRes,canvas.width,canvas.height); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); requestAnimationFrame(render); }
+            render(0);
+        }
+        document.addEventListener('DOMContentLoaded',()=>{ /* legacy shader removed – hero uses new shader below */ });
+
+        // ===== Hero AWS service-mesh animation =====
+        // A living hub-and-satellite constellation: a central "cloud" hub
+        // orbited by the core AWS service categories (Compute, Storage,
+        // Serverless, Database, Network, Security), each pulsing data back
+        // to the hub along curved connectors. Pure canvas 2D — no external
+        // dependency — so it degrades gracefully everywhere.
+        (function () {
+            const canvas = document.getElementById('hero-aws-mesh');
+            if (!canvas) return;
+            const hero = canvas.parentElement;
+            const ctx = canvas.getContext('2d');
+            if (!ctx || !hero) return;
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const services = [
+                { code: 'EC2', label: 'Compute', angle: -90, speed: 0.10, color: '#43ee93' },
+                { code: 'S3',  label: 'Storage', angle: -30, speed: 0.085, color: '#1af6dd' },
+                { code: 'λ',   label: 'Serverless', angle: 30, speed: 0.12, color: '#43ee93' },
+                { code: 'RDS', label: 'Database', angle: 90, speed: 0.09, color: '#1af6dd' },
+                { code: 'VPC', label: 'Network', angle: 150, speed: 0.11, color: '#43ee93' },
+                { code: 'IAM', label: 'Security', angle: 210, speed: 0.095, color: '#1af6dd' },
+            ];
+
+            let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            let cx = 0, cy = 0, orbitR = 0;
+
+            function resize() {
+                w = hero.clientWidth; h = hero.clientHeight;
+                canvas.width = w * dpr; canvas.height = h * dpr;
+                canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                cx = w / 2; cy = h * 0.5;
+                orbitR = Math.max(170, Math.min(w, h) * 0.36);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            function hexPath(x, y, r) {
+                ctx.beginPath();
+                for (let i = 0; i < 6; i++) {
+                    const a = (Math.PI / 3) * i - Math.PI / 2;
+                    const px = x + r * Math.cos(a), py = y + r * Math.sin(a);
+                    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                }
+                ctx.closePath();
+            }
+
+            function draw(t) {
+                const time = t * 0.001;
+                ctx.clearRect(0, 0, w, h);
+
+                // faint dashed orbit ring
+                ctx.save();
+                ctx.strokeStyle = 'rgba(67, 238, 147, 0.10)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([3, 9]);
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, orbitR, orbitR * 0.82, 0, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+
+                // hub glow (pulsing "AWS cloud" core) — abstract, no text,
+                // so it never competes with the headline sitting on top of it
+                const pulse = 1 + Math.sin(time * 1.4) * 0.06;
+                const hubR = 20 * pulse;
+                const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, hubR * 5);
+                glow.addColorStop(0, 'rgba(67, 238, 147, 0.22)');
+                glow.addColorStop(1, 'rgba(67, 238, 147, 0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(cx, cy, hubR * 5, 0, Math.PI * 2);
+                ctx.fill();
+
+                services.forEach((svc, i) => {
+                    const angle = (svc.angle * Math.PI / 180) + (reduceMotion ? 0 : time * svc.speed);
+                    const r = orbitR + Math.sin(time * 0.6 + i) * 8;
+                    const sx = cx + Math.cos(angle) * r;
+                    const sy = cy + Math.sin(angle) * r * 0.82;
+
+                    // connector: fades from invisible at the hub (where the
+                    // headline sits) to visible near the satellite (which
+                    // orbits out past the text block, near the hero edges)
+                    const midx = (cx + sx) / 2 + Math.cos(angle + Math.PI / 2) * 18;
+                    const midy = (cy + sy) / 2 + Math.sin(angle + Math.PI / 2) * 18;
+                    const lineGrad = ctx.createLinearGradient(cx, cy, sx, sy);
+                    lineGrad.addColorStop(0, 'rgba(26, 241, 221, 0)');
+                    lineGrad.addColorStop(0.65, 'rgba(26, 241, 221, 0.05)');
+                    lineGrad.addColorStop(1, 'rgba(26, 241, 221, 0.30)');
+                    ctx.strokeStyle = lineGrad;
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.quadraticCurveTo(midx, midy, sx, sy);
+                    ctx.stroke();
+
+                    // traveling data packet
+                    if (!reduceMotion) {
+                        const tp = (time * 0.35 + i / services.length) % 1;
+                        const it = 1 - tp;
+                        const px = it * it * cx + 2 * it * tp * midx + tp * tp * sx;
+                        const py = it * it * cy + 2 * it * tp * midy + tp * tp * sy;
+                        ctx.globalAlpha = Math.min(1, tp * 2.2);
+                        ctx.fillStyle = svc.color;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 2.2, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+                    }
+
+                    // service node: a plain glowing hex outline, no label —
+                    // the service names live in the strip beneath the hero
+                    // text instead, so nothing here fights with real copy
+                    ctx.save();
+                    ctx.shadowColor = svc.color;
+                    ctx.shadowBlur = 12;
+                    ctx.globalAlpha = 0.8;
+                    hexPath(sx, sy, 13);
+                    ctx.lineWidth = 1.4;
+                    ctx.strokeStyle = svc.color;
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                if (!reduceMotion) requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+            if (reduceMotion) draw(0); // paint one static frame, no loop
+        })();
+
+        // ===== Enablement orbit: pointer parallax (satellites drift, hub stays put) =====
+        (function() {
+            const wrap = document.querySelector('.orbit-wrap');
+            if (!wrap) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (window.matchMedia('(hover: none)').matches) return; // touch: nothing to follow
+
+            const nodes = Array.from(wrap.querySelectorAll('.orbit-node'));
+            let queued = false, mx = 0, my = 0;
+
+            function apply() {
+                queued = false;
+                nodes.forEach((node, i) => {
+                    const depth = (i + 1) * 5; // each ring drifts a little further
+                    node.style.setProperty('--px', (mx * depth).toFixed(2) + 'px');
+                    node.style.setProperty('--py', (my * depth).toFixed(2) + 'px');
+                });
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                mx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+                my = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+                if (!queued) { queued = true; requestAnimationFrame(apply); }
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>
