@@ -1,631 +1,1460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>SEESEC — Corporate Infrastructure Network Map</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght=0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#02060d;
-  --surface:#060d1a;
-  --surface2:#0a1528;
-  --border:rgba(0, 229, 192, 0.1);
-  --accent:#00e5c0;
-  --accent2:#0099ff;
-  --text:#e2eaf8;
-  --muted:#6b7fa0;
-  --muted2:#4a5a78;
-}
-html,body{
-  min-height:100%;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SEESEC — Corporate Infrastructure Network Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & ROOT ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg: #02060d;
+            --surface: #060d1a;
+            --surface2: #0a1528;
+            --border: rgba(0, 229, 192, 0.1);
+            --accent: #00e5c0;
+            --accent2: #0099ff;
+            --text: #e2eaf8;
+            --muted: #6b7fa0;
+            --muted2: #4a5a78;
+            --font-sans: 'DM Sans', sans-serif;
+            --font-display: 'Syne', sans-serif;
+        }
+        html,
+        body {
+            min-height: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+        }
 
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:0 24px 80px;
-  position:relative;
-}
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 24px 80px;
+            position: relative;
+        }
 
-.page::before{
-  content:'';position:fixed;inset:0;
-  background-image: 
-    linear-gradient(rgba(0, 229, 192, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 192, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
-  pointer-events:none;z-index:0;
-}
+        .page::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 229, 192, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 192, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-nav{
-  width:100%;max-width:1200px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:28px 0 0;
-  position:relative;z-index:10;
-}
-.logo{
-  font-family:'Syne',sans-serif;
-  font-weight:800;font-size:1.3rem;letter-spacing:.04em;
-  color:var(--text);text-decoration:none;
-  display:flex;align-items:center;gap:10px;
-}
-.logo-mark{
-  width:32px;height:32px;border-radius:8px;
-  background:linear-gradient(135deg,var(--accent2),var(--accent));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.75rem;font-weight:800;color:#03080f;letter-spacing:.02em;
-}
-.nav-links{display:flex;gap:32px;}
-.nav-links a{
-  color:var(--muted);text-decoration:none;font-size:.85rem;
-  letter-spacing:.02em;transition:color .2s;
-}
-.nav-links a:hover{color:var(--text);}
-.nav-links a.active{color:var(--accent);}
+        /* ===== NAV ===== */
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 0 0;
+            position: relative;
+            z-index: 10;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: .04em;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 800;
+            color: #03080f;
+            letter-spacing: .02em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .85rem;
+            letter-spacing: .02em;
+            transition: color .2s;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .nav-links a.active {
+            color: var(--accent);
+        }
 
-.hero{
-  text-align:center;
-  margin:72px 0 48px;
-  position:relative;z-index:2;
-  max-width:680px;
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(0,229,192,.25);
-  border-radius:100px;padding:5px 14px 5px 10px;
-  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:24px;
-  background:rgba(0,229,192,.05);
-}
-.hero-tag::before{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--accent);animation:tagPulse 2s infinite;
-}
-@keyframes tagPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.hero h1{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.2rem,5vw,3.2rem);
-  font-weight:700;line-height:1.1;
-  letter-spacing:-.03em;
-  margin-bottom:20px;
-}
-.hero h1 em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--accent2) 0%,var(--accent) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero p{
-  font-size:1.05rem;color:var(--muted);
-  line-height:1.75;font-weight:300;
-}
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            margin: 72px 0 48px;
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(0, 229, 192, .25);
+            border-radius: 100px;
+            padding: 5px 14px 5px 10px;
+            font-size: .72rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+            background: rgba(0, 229, 192, .05);
+        }
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: tagPulse 2s infinite;
+        }
+        @keyframes tagPulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: .4;
+                transform: scale(.7);
+            }
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -.03em;
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(90deg, var(--accent2) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.75;
+            font-weight: 300;
+        }
 
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:28px;
-  width:100%;max-width:1200px;
-  position:relative;z-index:2;
-}
+        /* ===== MAIN GRID ===== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
 
-/* INDIA MAP PANEL */
-.map-panel{
-  position:relative;
-  border-radius:24px;
-  border:1px solid rgba(255, 255, 255, 0.05);
-  background: #040a14;
-  overflow:hidden;
-  min-height:620px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
-}
-.map-panel:hover {
-  border-color: rgba(0, 229, 192, 0.2);
-  box-shadow: 0 30px 60px -10px rgba(0, 229, 192, 0.05), inset 0 1px 0 rgba(255,255,255,0.08);
-}
+        /* ===== MAP PANEL ===== */
+        .map-panel {
+            position: relative;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #040a14;
+            overflow: hidden;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transform: scale(1);
+            transform-origin: center center;
+        }
+        .map-panel:hover {
+            border-color: rgba(0, 229, 192, 0.2);
+            box-shadow: 0 30px 60px -10px rgba(0, 229, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
 
-.map-container{
-  width:100%;
-  height:100%;
-  position:relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 620px;
-}
+        /* Zoom animation states */
+        .map-panel.zooming {
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: scale(1.12);
+            border-color: rgba(0, 229, 192, 0.35);
+            box-shadow: 0 40px 80px -10px rgba(0, 229, 192, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .map-panel.zoomed {
+            transform: scale(1.12);
+            border-color: rgba(0, 229, 192, 0.4);
+            box-shadow: 0 40px 80px -5px rgba(0, 229, 192, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .map-panel.zooming .map-container canvas {
+            transition: filter 0.7s ease;
+            filter: brightness(1.1) contrast(1.05);
+        }
 
-#indiaMapCanvas{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio: 1000 / 780;
-  background: transparent;
-  cursor: crosshair;
-}
+        .map-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 620px;
+        }
 
-.map-overlay{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background: radial-gradient(circle at 50% 30%, rgba(0, 153, 255, 0.05) 0%, transparent 70%);
-}
-.map-badge{
-  position:absolute;
-  bottom:24px;
-  left:24px;
-  background:rgba(4, 10, 20, 0.9);
-  border:1px solid rgba(255,255,255,0.08);
-  border-left:3px solid var(--accent);
-  border-radius:14px;
-  padding:16px 20px;
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  z-index:12;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  min-width: 280px;
-  cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.map-badge:hover {
-  border-color: rgba(0, 229, 192, 0.4);
-  transform: translateY(-2px);
-}
-.map-badge .gb-label{font-size:.68rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
-.map-badge .gb-val{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);}
-.map-badge .gb-sub{font-size:.72rem;color:var(--muted);margin-top:4px;}
+        #indiaMapCanvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1000 / 780;
+            background: transparent;
+            cursor: crosshair;
+            transition: filter 0.3s ease;
+        }
 
-.map-hint{
-  position:absolute;
-  bottom:24px;
-  right:24px;
-  background:rgba(4, 10, 20, 0.6);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  padding:6px 14px;
-  border-radius:40px;
-  font-size:.68rem;
-  color:var(--muted);
-  letter-spacing:.04em;
-  pointer-events:none;
-  z-index:12;
-  font-family: monospace;
-  border: 1px solid rgba(255,255,255,0.05);
-}
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 153, 255, 0.05) 0%, transparent 70%);
+        }
 
-/* CONTACT PANEL */
-.contact-panel{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-.info-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:20px;padding:22px;
-  display:flex;gap:16px;align-items:flex-start;
-  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-.info-card:hover, .info-card.active-card{
-  border-color:rgba(0,229,192,.35);
-  background:rgba(0,229,192,.02);
-}
-.ic-icon{
-  width:42px;height:42px;border-radius:12px;flex-shrink:0;
-  background:rgba(0,229,192,.04);
-  border:1px solid rgba(0,229,192,.15);
-  display:flex;align-items:center;justify-content:center;
-}
-.ic-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;}
-.ic-label{font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
-.ic-val{font-size:.95rem;color:var(--text);font-weight:600;line-height:1.4;}
-.ic-meta{font-size:.75rem;color:var(--muted);margin-top:3px;}
+        /* ===== MAP BADGE ===== */
+        .map-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(4, 10, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 3px solid var(--accent);
+            border-radius: 14px;
+            padding: 16px 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 12;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            min-width: 280px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s, background 0.3s;
+        }
+        .map-badge:hover {
+            border-color: rgba(0, 229, 192, 0.4);
+            transform: translateY(-2px);
+            background: rgba(4, 10, 20, 0.95);
+        }
+        .map-badge .gb-label {
+            font-size: .68rem;
+            color: var(--accent);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .map-badge .gb-val {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .map-badge .gb-sub {
+            font-size: .72rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
 
-.hours-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;padding:24px;
-}
-.hc-title{
-  font-size:.7rem;color:var(--accent2);letter-spacing:.1em;
-  text-transform:uppercase;margin-bottom:16px;
-}
-.hc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.hc-day{font-size:.88rem;color:var(--text);}
-.hc-time{font-size:.88rem;color:var(--accent);font-weight:600;}
-.hc-closed{font-size:.88rem;color:var(--muted2);}
+        .map-hint {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(4, 10, 20, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: .68rem;
+            color: var(--muted);
+            letter-spacing: .04em;
+            pointer-events: none;
+            z-index: 12;
+            font-family: monospace;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-.bottom-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(255,255,255,0.05);
-  width:100%;max-width:1200px;
-  border:1px solid rgba(255,255,255,0.05);border-radius:20px;
-  overflow:hidden;margin-top:32px;
-  position:relative;z-index:2;
-}
-.bs-item{
-  background:var(--surface);padding:28px 24px;
-  text-align:center;
-}
-.bs-val{
-  font-family:'Syne',sans-serif;font-size:2rem;
-  font-weight:800;letter-spacing:-.04em;margin-bottom:4px;
-  background:linear-gradient(90deg,var(--accent2),var(--accent));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.bs-label{font-size:.75rem;color:var(--muted);letter-spacing:.04em;}
+        /* ===== CONTACT PANEL ===== */
+        .contact-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 229, 192, 0), rgba(0, 229, 192, 0.02));
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0;
+        }
+        .info-card:hover::after,
+        .info-card.active-card::after {
+            opacity: 1;
+        }
+        .info-card:hover,
+        .info-card.active-card {
+            border-color: rgba(0, 229, 192, .35);
+            background: rgba(0, 229, 192, .02);
+            transform: translateX(4px);
+        }
+        .info-card.active-card {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 229, 192, 0.05);
+        }
+        .ic-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            background: rgba(0, 229, 192, .04);
+            border: 1px solid rgba(0, 229, 192, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .info-card.active-card .ic-icon {
+            background: rgba(0, 229, 192, .12);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 229, 192, 0.1);
+        }
+        .ic-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.8;
+            transition: stroke 0.3s;
+        }
+        .info-card.active-card .ic-icon svg {
+            stroke: #fff;
+        }
+        .ic-label {
+            font-size: .68rem;
+            color: var(--accent);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .ic-val {
+            font-size: .95rem;
+            color: var(--text);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .ic-meta {
+            font-size: .75rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
 
-@media(max-width:900px){
-  .main-grid{grid-template-columns:1fr;}
-  .map-panel{min-height:450px;order:-1;}
-  .map-container{min-height:450px;}
-  .bottom-strip{grid-template-columns:1fr 1fr;}
-  .nav-links{display:none;}
-}
-@media(max-width:520px){
-  .hero h1{font-size:2rem;}
-  .bottom-strip{grid-template-columns:1fr;}
-}
-</style>
+        /* ===== HOURS CARD ===== */
+        .hours-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+        }
+        .hc-title {
+            font-size: .7rem;
+            color: var(--accent2);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .hc-day {
+            font-size: .88rem;
+            color: var(--text);
+        }
+        .hc-time {
+            font-size: .88rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .hc-closed {
+            font-size: .88rem;
+            color: var(--muted2);
+        }
+
+        /* ===== BOTTOM STRIP ===== */
+        .bottom-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            width: 100%;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 32px;
+            position: relative;
+            z-index: 2;
+        }
+        .bs-item {
+            background: var(--surface);
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .bs-val {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -.04em;
+            margin-bottom: 4px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bs-label {
+            font-size: .75rem;
+            color: var(--muted);
+            letter-spacing: .04em;
+        }
+
+        /* ============================================================
+                   GOOGLE MAPS MODAL
+                ============================================================ */
+        .gm-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 24px;
+        }
+        .gm-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .gm-modal {
+            background: var(--surface);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 820px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 60px 120px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 229, 192, 0.05);
+            transform: scale(0.92) translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+        .gm-modal-overlay.active .gm-modal {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .gm-modal-header {
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .gm-modal-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .gm-modal-title .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+            animation: tagPulse 1.8s infinite;
+        }
+        .gm-modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
+            color: var(--muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gm-modal-close:hover {
+            border-color: var(--accent);
+            color: var(--text);
+            background: rgba(0, 229, 192, 0.05);
+            transform: rotate(90deg);
+        }
+
+        .gm-modal-body {
+            padding: 0;
+            position: relative;
+            background: #0a0f1a;
+            min-height: 420px;
+        }
+        .gm-modal-body iframe {
+            display: block;
+            width: 100%;
+            height: 460px;
+            border: none;
+            background: #0a0f1a;
+        }
+        .gm-modal-body .loading-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted2);
+            font-size: .9rem;
+            letter-spacing: .04em;
+            pointer-events: none;
+            background: #0a0f1a;
+        }
+        .gm-modal-body .loading-placeholder .spinner {
+            width: 28px;
+            height: 28px;
+            border: 2px solid rgba(0, 229, 192, 0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 14px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gm-modal-footer {
+            padding: 16px 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.15);
+        }
+        .gm-modal-footer .loc {
+            font-size: .82rem;
+            color: var(--muted);
+        }
+        .gm-modal-footer .loc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+        .gm-modal-footer .open-btn {
+            padding: 8px 22px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            border: none;
+            color: #03080f;
+            font-weight: 600;
+            font-size: .78rem;
+            letter-spacing: .04em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .gm-modal-footer .open-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 30px rgba(0, 229, 192, 0.2);
+        }
+
+        /* ============================================================
+                   FOOTER (copied from original)
+                ============================================================ */
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 60px;
+            padding: 48px 0 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            z-index: 2;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .footer-brand .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-brand .nav-logo img {
+            height: 28px;
+            vertical-align: middle;
+        }
+        .footer-brand .nav-logo .logo-text span {
+            color: var(--accent);
+        }
+        .footer-brand p {
+            color: var(--muted);
+            font-size: .88rem;
+            line-height: 1.6;
+            margin-top: 16px;
+        }
+        .footer-col h5 {
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+            letter-spacing: .04em;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col a {
+            font-size: .88rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .3s, transform .3s;
+            display: block;
+            padding: 4px 0;
+        }
+        .footer-col a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+        .footer-bottom {
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p {
+            font-size: .8rem;
+            color: var(--muted2);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-socials a {
+            color: var(--muted2);
+            text-decoration: none;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color .3s, transform .3s, border-color .3s;
+        }
+        .footer-socials a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                ============================================================ */
+        @media(max-width:900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-panel {
+                min-height: 420px;
+                order: -1;
+            }
+            .map-container {
+                min-height: 420px;
+            }
+            .bottom-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            .gm-modal {
+                max-width: 96%;
+            }
+            .gm-modal-body iframe {
+                height: 340px;
+            }
+            .map-badge {
+                min-width: 200px;
+                padding: 12px 16px;
+                bottom: 16px;
+                left: 16px;
+            }
+            .map-badge .gb-val {
+                font-size: .95rem;
+            }
+        }
+        @media(max-width:520px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .bottom-strip {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+            .map-panel {
+                min-height: 320px;
+            }
+            .map-container {
+                min-height: 320px;
+            }
+            .map-badge {
+                min-width: 160px;
+                padding: 10px 14px;
+                bottom: 12px;
+                left: 12px;
+            }
+            .map-badge .gb-val {
+                font-size: .85rem;
+            }
+            .map-hint {
+                display: none;
+            }
+            .gm-modal-body iframe {
+                height: 260px;
+            }
+            .gm-modal-footer {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="page">
+    <div class="page">
 
-  <nav>
-    <a class="logo" href="#">
-      <div class="logo-mark">SE</div>
-      SEESEC
-    </a>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">About</a>
-      <a href="#" class="active">Infrastructure</a>
+        <!-- ===== NAV ===== -->
+        <nav>
+            <a class="logo" href="#">
+                <div class="logo-mark">SE</div>
+                SEESEC
+            </a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">About</a>
+                <a href="#" class="active">Infrastructure</a>
+            </div>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <div class="hero">
+            <div class="hero-tag">System Architecture Topology</div>
+            <h1>Regional Operations &amp;<br><em>Infrastructure</em> Nodes</h1>
+            <p>Real-time node cluster sync between our Signature Tower Head Office and core Regional Operation structures across North-Western territories.</p>
+        </div>
+
+        <!-- ===== MAIN GRID ===== -->
+        <div class="main-grid">
+
+            <!-- MAP PANEL -->
+            <div class="map-panel" id="mapPanel">
+                <div class="map-container">
+                    <canvas id="indiaMapCanvas" width="1000" height="780"></canvas>
+                    <div class="map-overlay"></div>
+
+                    <div class="map-badge" id="mapBadgeBox">
+                        <div class="gb-label" id="badgeLabel">📍 Location Map View</div>
+                        <div class="gb-val" id="badgeTitle">Gurugram (HO)</div>
+                        <div class="gb-sub" id="badgeSub">Signature Tower 3, Sec-15<br>28.461° N, 77.052° E</div>
+                    </div>
+                    <div class="map-hint">⚡ Click pins or cards to zoom &amp; view Google Maps</div>
+                </div>
+            </div>
+
+            <!-- CONTACT PANEL -->
+            <div class="contact-panel">
+                <div class="info-card active-card" id="card-ho" data-node="ho">
+                    <div class="ic-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                    </div>
+                    <div class="ic-body">
+                        <div class="ic-label">Head Office</div>
+                        <div class="ic-val">Signature Tower 3</div>
+                        <div class="ic-meta">Sec-15, Gurugram · Click to view Google Maps</div>
+                    </div>
+                </div>
+
+                <div class="info-card" id="card-ro1" data-node="ro1">
+                    <div class="ic-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                    </div>
+                    <div class="ic-body">
+                        <div class="ic-label">Regional Office 1</div>
+                        <div class="ic-val">Shivbari Road</div>
+                        <div class="ic-meta">Bikaner, Rajasthan · Click to view Google Maps</div>
+                    </div>
+                </div>
+
+                <div class="info-card" id="card-ro2" data-node="ro2">
+                    <div class="ic-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                    </div>
+                    <div class="ic-body">
+                        <div class="ic-label">Regional Office 2</div>
+                        <div class="ic-val">Sanskar Chand Road</div>
+                        <div class="ic-meta">Jaipur, Rajasthan · Click to view Google Maps</div>
+                    </div>
+                </div>
+
+                <div class="hours-card">
+                    <div class="hc-title">⏱️ SYNCHRONIZATION RUNTIME</div>
+                    <div class="hc-row">
+                        <span class="hc-day">Mainframe Pipeline</span>
+                        <span class="hc-time">24 / 7 Live Monitoring</span>
+                    </div>
+                    <div class="hc-row" style="margin-bottom:0">
+                        <span class="hc-day">Regional Gateways</span>
+                        <span class="hc-time" style="color:var(--accent2)">Active Sync</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BOTTOM STRIP ===== -->
+        <div class="bottom-strip">
+            <div class="bs-item">
+                <div class="bs-val">3 ms</div>
+                <div class="bs-label">HO to Jaipur Core Edge Latency</div>
+            </div>
+            <div class="bs-item">
+                <div class="bs-val">4.8 ms</div>
+                <div class="bs-label">HO to Bikaner Node Latency</div>
+            </div>
+            <div class="bs-item">
+                <div class="bs-val">99.99%</div>
+                <div class="bs-label">Infrastructure Backbone Uptime</div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                        <span class="logo-text">SEE<span>SEC</span></span>
+                    </a>
+                    <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul><li><a href="aws-managed.html">AWS Managed</a></li><li><a href="cloud-optimization.html">Cloud Optimization</a></li><li><a href="cloud-security.html">Cloud Security</a></li><li><a href="gen-ai.html">Gen AI</a></li><li><a href="data-analytics.html">Data Analytics</a></li><li><a href="cloud-compliance.html">Cloud Compliance</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul><li><a href="chat-a-lot.html">Chat-A-Lot</a></li><li><a href="talk-track.html">Talk Track</a></li><li><a href="sms-sense.html">SMS Sense</a></li><li><a href="interactive-email.html">Interactive Email</a></li><li><a href="email-archival.html">Email Archival</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SEESEC Infotech. All rights reserved.</p>
+                <div class="footer-socials"><a href="#">in</a><a href="#">IG</a><a href="#">YT</a></div>
+            </div>
+        </footer>
+
     </div>
-  </nav>
 
-  <div class="hero">
-    <div class="hero-tag">System Architecture Topology</div>
-    <h1>Regional Operations &<br><em>Infrastructure</em> Nodes</h1>
-    <p>Real-time node cluster sync between our Signature Tower Head Office and core Regional Operation structures across North-Western territories.</p>
-  </div>
-
-  <div class="main-grid">
-    <div class="map-panel" id="mapPanel">
-      <div class="map-container">
-        <canvas id="indiaMapCanvas" width="1000" height="780"></canvas>
-        <div class="map-overlay"></div>
-        <div class="map-badge" id="mapBadgeBox" onclick="openGoogleMaps(activeNodeId)">
-          <div class="gb-label" id="badgeLabel">📍 Location Map View</div>
-          <div class="gb-val" id="badgeTitle">Gurugram (HO)</div>
-          <div class="gb-sub" id="badgeSub">Signature Tower 3, Sec-15<br>28.461° N, 77.052° E</div>
+    <!-- ============================================================
+    GOOGLE MAPS MODAL
+    ============================================================ -->
+    <div class="gm-modal-overlay" id="gmModal">
+        <div class="gm-modal">
+            <div class="gm-modal-header">
+                <div class="gm-modal-title">
+                    <span class="dot"></span>
+                    <span id="modalTitle">📍 Location</span>
+                </div>
+                <button class="gm-modal-close" id="gmModalClose">✕</button>
+            </div>
+            <div class="gm-modal-body">
+                <div class="loading-placeholder" id="gmLoading">
+                    <div class="spinner"></div>
+                    <span>Loading map …</span>
+                </div>
+                <iframe id="gmIframe" src="" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="gm-modal-footer">
+                <span class="loc" id="modalLoc"><strong>📍</strong> <span id="modalAddress">Signature Tower 3, Sec-15, Gurugram</span></span>
+                <a class="open-btn" id="gmOpenBtn" href="#" target="_blank">Open in Google Maps →</a>
+            </div>
         </div>
-        <div class="map-hint">
-          ⚡ Click focused nodes or info badge to launch Google Maps
-        </div>
-      </div>
     </div>
 
-    <div class="contact-panel">
-      <div class="info-card active-card" id="card-ho" onclick="handleCardClick('ho')">
-        <div class="ic-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        </div>
-        <div class="ic-body">
-          <div class="ic-label">Head Office</div>
-          <div class="ic-val">Signature Tower 3</div>
-          <div class="ic-meta">Sec-15, Gurugram · Click to view Google Maps</div>
-        </div>
-      </div>
+    <script>
+        // ================================================================
+        //  1.  NODE DATA
+        // ================================================================
+        const nodes = {
+            ho: {
+                id: 'ho',
+                name: 'Head Office — Gurugram',
+                sub: 'Signature Tower 3, Sec-15, Gurugram',
+                lat: 28.461,
+                lon: 77.052,
+                googleMaps: 'https://www.google.com/maps/search/?api=1&query=Signature+Tower+3+Gurugram',
+                embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.123456!2d77.052!3d28.461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI3JzM5LjYiTiA3N8KwMDMnMDcuMiJF!5e0!3m2!1sen!2sin!4v1700000000000'
+            },
+            ro1: {
+                id: 'ro1',
+                name: 'Regional Office 1 — Bikaner',
+                sub: 'Shivbari Road, Bikaner',
+                lat: 28.002,
+                lon: 73.360,
+                googleMaps: 'https://www.google.com/maps/search/?api=1&query=Shivbari+Road+Bikaner',
+                embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.123456!2d73.360!3d28.002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDAwJzA3LjIiTiA3M8KwMjEnMzYuMCJF!5e0!3m2!1sen!2sin!4v1700000000000'
+            },
+            ro2: {
+                id: 'ro2',
+                name: 'Regional Office 2 — Jaipur',
+                sub: 'Sanskar Chand Road, Jaipur',
+                lat: 26.924,
+                lon: 75.803,
+                googleMaps: 'https://www.google.com/maps/search/?api=1&query=Sanskar+Chand+Road+Jaipur',
+                embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.123456!2d75.803!3d26.924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU1JzI2LjQiTiA3NcKwNDgnMTAuOCJF!5e0!3m2!1sen!2sin!4v1700000000000'
+            }
+        };
 
-      <div class="info-card" id="card-ro1" onclick="handleCardClick('ro1')">
-        <div class="ic-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-        </div>
-        <div class="ic-body">
-          <div class="ic-label">Regional Office 1</div>
-          <div class="ic-val">Shivbari Road</div>
-          <div class="ic-meta">Bikaner, Rajasthan · Click to view Google Maps</div>
-        </div>
-      </div>
+        // ================================================================
+        //  2.  CANVAS MAP ENGINE
+        // ================================================================
+        const canvas = document.getElementById('indiaMapCanvas');
+        const ctx = canvas.getContext('2d');
+        const W = 1000,
+            H = 780;
+        canvas.width = W;
+        canvas.height = H;
 
-      <div class="info-card" id="card-ro2" onclick="handleCardClick('ro2')">
-        <div class="ic-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-        </div>
-        <div class="ic-body">
-          <div class="ic-label">Regional Office 2</div>
-          <div class="ic-val">Sanskar Chand Road</div>
-          <div class="ic-meta">Jaipur, Rajasthan · Click to view Google Maps</div>
-        </div>
-      </div>
+        const MIN_LAT = 6.5,
+            MAX_LAT = 36.5;
+        const MIN_LON = 67.5,
+            MAX_LON = 98.0;
 
-      <div class="hours-card">
-        <div class="hc-title">⏱️ SYNCHRONIZATION RUNTIME</div>
-        <div class="hc-row">
-          <span class="hc-day">Mainframe Pipeline</span>
-          <span class="hc-time">24 / 7 Live Monitoring</span>
-        </div>
-        <div class="hc-row" style="margin-bottom:0">
-          <span class="hc-day">Regional Gateways</span>
-          <span class="hc-time" style="color:var(--accent2)">Active Sync</span>
-        </div>
-      </div>
-    </div>
-  </div>
+        let activeNodeId = 'ho';
+        let zoomProgress = 0; // 0 = normal, 1 = fully zoomed
+        let isZooming = false;
+        let zoomTargetId = null;
 
-  <div class="bottom-strip">
-    <div class="bs-item">
-      <div class="bs-val">3 ms</div>
-      <div class="bs-label">HO to Jaipur Core Edge Latency</div>
-    </div>
-    <div class="bs-item">
-      <div class="bs-val">4.8 ms</div>
-      <div class="bs-label">HO to Bikaner Node Latency</div>
-    </div>
-    <div class="bs-item">
-      <div class="bs-val">99.99%</div>
-      <div class="bs-label">Infrastructure Backbone Uptime</div>
-    </div>
-  </div>
+        function latLonToPixel(lat, lon, w = W, h = H) {
+            const x = ((lon - MIN_LON) / (MAX_LON - MIN_LON)) * w;
+            const y = ((MAX_LAT - lat) / (MAX_LAT - MIN_LAT)) * h;
+            return { x, y };
+        }
 
-</div>
+        // Fine India outline
+        const indiaOutline = [
+            { lat: 34.7, lon: 73.8 }, { lat: 35.6, lon: 74.0 }, { lat: 36.3, lon: 74.6 },
+            { lat: 35.8, lon: 76.2 }, { lat: 35.1, lon: 77.3 }, { lat: 34.6, lon: 78.8 },
+            { lat: 33.5, lon: 79.1 }, { lat: 32.5, lon: 78.4 }, { lat: 31.8, lon: 78.9 },
+            { lat: 31.0, lon: 78.1 }, { lat: 30.1, lon: 79.6 }, { lat: 29.6, lon: 80.3 },
+            { lat: 28.5, lon: 80.4 }, { lat: 28.2, lon: 81.5 }, { lat: 27.4, lon: 83.2 },
+            { lat: 27.2, lon: 84.9 }, { lat: 26.4, lon: 86.0 }, { lat: 26.3, lon: 87.3 },
+            { lat: 26.9, lon: 88.1 }, { lat: 28.1, lon: 88.6 }, { lat: 27.1, lon: 88.9 },
+            { lat: 26.7, lon: 89.9 }, { lat: 27.4, lon: 91.6 }, { lat: 27.9, lon: 91.9 },
+            { lat: 28.6, lon: 94.1 }, { lat: 28.1, lon: 96.3 }, { lat: 28.2, lon: 97.4 },
+            { lat: 27.0, lon: 97.1 }, { lat: 25.8, lon: 95.3 }, { lat: 24.3, lon: 94.6 },
+            { lat: 22.3, lon: 93.3 }, { lat: 21.8, lon: 92.7 }, { lat: 23.1, lon: 91.4 },
+            { lat: 24.4, lon: 92.3 }, { lat: 25.3, lon: 92.4 }, { lat: 25.1, lon: 89.9 },
+            { lat: 26.1, lon: 89.7 }, { lat: 24.9, lon: 88.9 }, { lat: 22.3, lon: 88.9 },
+            { lat: 21.5, lon: 88.1 }, { lat: 21.4, lon: 86.9 }, { lat: 20.1, lon: 86.4 },
+            { lat: 19.2, lon: 84.8 }, { lat: 17.4, lon: 83.3 }, { lat: 15.9, lon: 81.1 },
+            { lat: 13.9, lon: 80.3 }, { lat: 13.0, lon: 80.4 }, { lat: 11.4, lon: 79.7 },
+            { lat: 10.2, lon: 79.9 }, { lat: 9.1, lon: 79.1 }, { lat: 8.0, lon: 77.4 },
+            { lat: 9.4, lon: 76.2 }, { lat: 11.1, lon: 75.7 }, { lat: 12.6, lon: 74.7 },
+            { lat: 14.4, lon: 74.2 }, { lat: 15.6, lon: 73.6 }, { lat: 17.1, lon: 73.2 },
+            { lat: 19.1, lon: 72.7 }, { lat: 20.2, lon: 72.7 }, { lat: 21.1, lon: 72.4 },
+            { lat: 20.7, lon: 70.9 }, { lat: 21.6, lon: 69.1 }, { lat: 22.9, lon: 69.9 },
+            { lat: 23.1, lon: 68.4 }, { lat: 23.9, lon: 68.1 }, { lat: 24.3, lon: 70.4 },
+            { lat: 24.6, lon: 71.4 }, { lat: 25.6, lon: 70.1 }, { lat: 27.1, lon: 69.4 },
+            { lat: 28.6, lon: 70.2 }, { lat: 30.1, lon: 71.9 }, { lat: 31.1, lon: 74.1 },
+            { lat: 32.6, lon: 74.7 }, { lat: 33.6, lon: 73.9 }
+        ];
 
-<script>
-// ===================================================================
-// HIGH-FIDELITY REGIONAL PROJECTOR MAP ENGINE
-// ===================================================================
+        // ================================================================
+        //  3.  DRAW MAP (with zoom interpolation)
+        // ================================================================
+        function drawMap(progress) {
+            // progress: 0 = normal, 1 = zoomed
+            const p = Math.min(1, Math.max(0, progress));
+            const ease = 1 - Math.pow(1 - p, 3); // cubic ease-out
 
-const canvas = document.getElementById('indiaMapCanvas');
-const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, W, H);
 
-canvas.width = 1000;
-canvas.height = 780;
+            // Background
+            ctx.fillStyle = '#030914';
+            ctx.fillRect(0, 0, W, H);
 
-const MIN_LAT = 6.5;   
-const MAX_LAT = 36.5;   
-const MIN_LON = 67.5;   
-const MAX_LON = 98.0;   
+            // Grid
+            ctx.strokeStyle = 'rgba(0, 229, 192, 0.015)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < W; i += 35) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, H);
+                ctx.stroke();
+            }
+            for (let j = 0; j < H; j += 35) {
+                ctx.beginPath();
+                ctx.moveTo(0, j);
+                ctx.lineTo(W, j);
+                ctx.stroke();
+            }
 
-let activeNodeId = 'ho';
+            // Determine zoom viewport
+            let zoomCenterLat = 22.0,
+                zoomCenterLon = 82.0;
+            let zoomScale = 1.0;
+            if (zoomTargetId && nodes[zoomTargetId]) {
+                const n = nodes[zoomTargetId];
+                zoomCenterLat = n.lat;
+                zoomCenterLon = n.lon;
+                zoomScale = 1 + 2.2 * ease;
+            }
 
-function latLonToPixel(lat, lon, w = 1000, h = 780) {
-  const x = ((lon - MIN_LON) / (MAX_LON - MIN_LON)) * w;
-  const y = ((MAX_LAT - lat) / (MAX_LAT - MIN_LAT)) * h;
-  return { x, y };
-}
+            // Draw outline with zoom
+            ctx.beginPath();
+            indiaOutline.forEach((pt, idx) => {
+                let lat = pt.lat,
+                    lon = pt.lon;
+                if (zoomScale > 1) {
+                    const dLat = lat - zoomCenterLat;
+                    const dLon = lon - zoomCenterLon;
+                    lat = zoomCenterLat + dLat / zoomScale;
+                    lon = zoomCenterLon + dLon / zoomScale;
+                }
+                const { x, y } = latLonToPixel(lat, lon);
+                if (idx === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.closePath();
 
-const fineIndiaOutline = [
-  {lat: 34.7, lon: 73.8}, {lat: 35.6, lon: 74.0}, {lat: 36.3, lon: 74.6}, 
-  {lat: 35.8, lon: 76.2}, {lat: 35.1, lon: 77.3}, {lat: 34.6, lon: 78.8}, 
-  {lat: 33.5, lon: 79.1}, {lat: 32.5, lon: 78.4}, {lat: 31.8, lon: 78.9},
-  {lat: 31.0, lon: 78.1}, {lat: 30.1, lon: 79.6}, {lat: 29.6, lon: 80.3}, 
-  {lat: 28.5, lon: 80.4}, {lat: 28.2, lon: 81.5}, {lat: 27.4, lon: 83.2}, 
-  {lat: 27.2, lon: 84.9}, {lat: 26.4, lon: 86.0}, {lat: 26.3, lon: 87.3}, 
-  {lat: 26.9, lon: 88.1}, {lat: 28.1, lon: 88.6}, {lat: 27.1, lon: 88.9}, 
-  {lat: 26.7, lon: 89.9}, {lat: 27.4, lon: 91.6}, {lat: 27.9, lon: 91.9}, 
-  {lat: 28.6, lon: 94.1}, {lat: 28.1, lon: 96.3}, {lat: 28.2, lon: 97.4}, 
-  {lat: 27.0, lon: 97.1}, {lat: 25.8, lon: 95.3}, {lat: 24.3, lon: 94.6}, 
-  {lat: 22.3, lon: 93.3}, {lat: 21.8, lon: 92.7}, {lat: 23.1, lon: 91.4}, 
-  {lat: 24.4, lon: 92.3}, {lat: 25.3, lon: 92.4}, {lat: 25.1, lon: 89.9}, 
-  {lat: 26.1, lon: 89.7}, {lat: 24.9, lon: 88.9}, {lat: 22.3, lon: 88.9}, 
-  {lat: 21.5, lon: 88.1}, {lat: 21.4, lon: 86.9}, {lat: 20.1, lon: 86.4}, 
-  {lat: 19.2, lon: 84.8}, {lat: 17.4, lon: 83.3}, {lat: 15.9, lon: 81.1}, 
-  {lat: 13.9, lon: 80.3}, {lat: 13.0, lon: 80.4}, {lat: 11.4, lon: 79.7}, 
-  {lat: 10.2, lon: 79.9}, {lat: 9.1, lon: 79.1}, {lat: 8.0, lon: 77.4}, 
-  {lat: 9.4, lon: 76.2}, {lat: 11.1, lon: 75.7}, {lat: 12.6, lon: 74.7}, 
-  {lat: 14.4, lon: 74.2}, {lat: 15.6, lon: 73.6}, {lat: 17.1, lon: 73.2}, 
-  {lat: 19.1, lon: 72.7}, {lat: 20.2, lon: 72.7}, {lat: 21.1, lon: 72.4}, 
-  {lat: 20.7, lon: 70.9}, {lat: 21.6, lon: 69.1}, {lat: 22.9, lon: 69.9}, 
-  {lat: 23.1, lon: 68.4}, {lat: 23.9, lon: 68.1}, {lat: 24.3, lon: 70.4}, 
-  {lat: 24.6, lon: 71.4}, {lat: 25.6, lon: 70.1}, {lat: 27.1, lon: 69.4}, 
-  {lat: 28.6, lon: 70.2}, {lat: 30.1, lon: 71.9}, {lat: 31.1, lon: 74.1}, 
-  {lat: 32.6, lon: 74.7}, {lat: 33.6, lon: 73.9}
-];
+            const landGrad = ctx.createLinearGradient(0, 0, W, H);
+            landGrad.addColorStop(0, '#061429');
+            landGrad.addColorStop(0.4, '#0a1f38');
+            landGrad.addColorStop(0.7, '#0a213f');
+            landGrad.addColorStop(1, '#040d1a');
+            ctx.fillStyle = landGrad;
+            ctx.fill();
 
-const nodes = {
-  ho: {
-    id: "ho",
-    name: "Head Office — Gurugram",
-    sub: "Signature Tower 3, Sec-15, Gurugram",
-    lat: 28.461, lon: 77.052,
-    googleMaps: "https://www.google.com/maps/search/?api=1&query=Signature+Tower+3+Gurugram"
-  },
-  ro1: {
-    id: "ro1",
-    name: "Regional Office 1 — Bikaner",
-    sub: "Shivbari Road, Bikaner",
-    lat: 28.002, lon: 73.360,
-    googleMaps: "https://www.google.com/maps/search/?api=1&query=Shivbari+Road+Bikaner"
-  },
-  ro2: {
-    id: "ro2",
-    name: "Regional Office 2 — Jaipur",
-    sub: "Sanskar Chand Road, Jaipur",
-    lat: 26.924, lon: 75.803,
-    googleMaps: "https://www.google.com/maps/search/?api=1&query=Sanskar+Chand+Road+Jaipur"
-  }
-};
+            ctx.strokeStyle = 'rgba(0, 229, 192, 0.45)';
+            ctx.lineWidth = 3.5;
+            ctx.stroke();
 
-function drawBackgroundGrid(w, h) {
-  ctx.strokeStyle = 'rgba(0, 229, 192, 0.015)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < w; i += 35) {
-    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
-  }
-  for (let j = 0; j < h; j += 35) {
-    ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke();
-  }
-}
+            ctx.strokeStyle = 'rgba(0, 153, 255, 0.2)';
+            ctx.lineWidth = 8;
+            ctx.stroke();
 
-function drawSystemMap() {
-  const w = canvas.width, h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-  
-  ctx.fillStyle = '#030914';
-  ctx.fillRect(0, 0, w, h);
+            // Draw nodes with zoom
+            const nodeKeys = Object.keys(nodes);
+            nodeKeys.forEach(key => {
+                const node = nodes[key];
+                let lat = node.lat,
+                    lon = node.lon;
+                if (zoomScale > 1) {
+                    const dLat = lat - zoomCenterLat;
+                    const dLon = lon - zoomCenterLon;
+                    lat = zoomCenterLat + dLat / zoomScale;
+                    lon = zoomCenterLon + dLon / zoomScale;
+                }
+                const pos = latLonToPixel(lat, lon);
+                const isActive = activeNodeId === key;
+                const isTarget = zoomTargetId === key;
+                const radius = node.id === 'ho' ? 11 : 9;
+                const finalRadius = isTarget ? radius + (12 * ease) : radius;
 
-  drawBackgroundGrid(w, h);
+                // Glow for active
+                if (isActive) {
+                    ctx.save();
+                    ctx.shadowBlur = 35 + 20 * ease;
+                    ctx.shadowColor = node.id === 'ho' ? '#00e5c0' : '#0099ff';
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, finalRadius + 8 + (6 * ease), 0, Math.PI * 2);
+                    ctx.strokeStyle = node.id === 'ho' ?
+                        `rgba(0, 229, 192, ${0.6 + 0.3 * ease})` :
+                        `rgba(0, 153, 255, ${0.5 + 0.3 * ease})`;
+                    ctx.lineWidth = 3 + 2 * ease;
+                    ctx.stroke();
+                    ctx.restore();
+                }
 
-  ctx.beginPath();
-  fineIndiaOutline.forEach((pt, idx) => {
-    const { x, y } = latLonToPixel(pt.lat, pt.lon, w, h);
-    if(idx === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  });
-  ctx.closePath();
-  
-  const landGrad = ctx.createLinearGradient(0, 0, w, h);
-  landGrad.addColorStop(0, '#061429');
-  landGrad.addColorStop(0.4, '#0a1f38');
-  landGrad.addColorStop(0.7, '#0a213f');
-  landGrad.addColorStop(1, '#040d1a');
-  ctx.fillStyle = landGrad;
-  ctx.fill();
+                // Pin body
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, finalRadius, 0, Math.PI * 2);
+                ctx.fillStyle = node.id === 'ho' ? '#00e5c0' : '#0099ff';
+                ctx.fill();
 
-  ctx.strokeStyle = 'rgba(0, 229, 192, 0.45)';
-  ctx.lineWidth = 3.5;
-  ctx.stroke();
+                // Inner dot
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 4.5 + 1.5 * ease, 0, Math.PI * 2);
+                ctx.fillStyle = '#02060d';
+                ctx.fill();
 
-  ctx.strokeStyle = 'rgba(0, 153, 255, 0.2)';
-  ctx.lineWidth = 8;
-  ctx.stroke();
+                // Label
+                ctx.font = `bold ${13 + 2 * ease}px 'Syne', sans-serif`;
+                ctx.fillStyle = isActive ? '#ffffff' : '#a0b0d0';
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = 'rgba(0,0,0,0.8)';
+                const label = node.id === 'ho' ? '⚡ HEAD OFFICE' : `NODE ${node.id.toUpperCase()}`;
+                ctx.fillText(label, pos.x + 18 + (4 * ease), pos.y - 6 - (2 * ease));
 
-  const hoPos = latLonToPixel(nodes.ho.lat, nodes.ho.lon, w, h);
-  const ro1Pos = latLonToPixel(nodes.ro1.lat, nodes.ro1.lon, w, h);
-  const ro2Pos = latLonToPixel(nodes.ro2.lat, nodes.ro2.lon, w, h);
+                ctx.font = `500 ${10.5 + 1.5 * ease}px 'DM Sans', sans-serif`;
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = isActive ? '#00e5c0' : '#536685';
+                const subLabel = node.id === 'ho' ? 'Gurugram HQ' : (node.id === 'ro1' ? 'Bikaner' : 'Jaipur');
+                ctx.fillText(subLabel, pos.x + 18 + (4 * ease), pos.y + 10 + (2 * ease));
 
-  ctx.lineWidth = 2;
-  ctx.setLineDash([6, 4]);
+                // Draw connection lines from HO
+                if (key !== 'ho') {
+                    const hoNode = nodes.ho;
+                    let hoLat = hoNode.lat,
+                        hoLon = hoNode.lon;
+                    if (zoomScale > 1) {
+                        const dLatH = hoLat - zoomCenterLat;
+                        const dLonH = hoLon - zoomCenterLon;
+                        hoLat = zoomCenterLat + dLatH / zoomScale;
+                        hoLon = zoomCenterLon + dLonH / zoomScale;
+                    }
+                    const hoPos = latLonToPixel(hoLat, hoLon);
+                    ctx.beginPath();
+                    ctx.moveTo(hoPos.x, hoPos.y);
+                    ctx.lineTo(pos.x, pos.y);
+                    ctx.setLineDash([6, 4]);
+                    ctx.strokeStyle = isActive ? 'rgba(0,229,192,0.5)' : 'rgba(0,153,255,0.25)';
+                    ctx.lineWidth = 1.5 + 0.5 * ease;
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+            });
+        }
 
-  ctx.beginPath(); ctx.moveTo(hoPos.x, hoPos.y); ctx.lineTo(ro1Pos.x, ro1Pos.y);
-  ctx.strokeStyle = activeNodeId === 'ro1' ? '#00e5c0' : 'rgba(0, 153, 255, 0.35)';
-  ctx.stroke();
+        // ================================================================
+        //  4.  ANIMATION LOOP
+        // ================================================================
+        let animFrameId = null;
+        let lastTime = 0;
 
-  ctx.beginPath(); ctx.moveTo(hoPos.x, hoPos.y); ctx.lineTo(ro2Pos.x, ro2Pos.y);
-  ctx.strokeStyle = activeNodeId === 'ro2' ? '#00e5c0' : 'rgba(0, 153, 255, 0.35)';
-  ctx.stroke();
+        function animateMap(time) {
+            if (!lastTime) lastTime = time;
+            const delta = (time - lastTime) / 1000;
+            lastTime = time;
 
-  ctx.setLineDash([]);
+            if (isZooming) {
+                zoomProgress = Math.min(1, zoomProgress + delta * 1.8);
+                if (zoomProgress >= 1) {
+                    zoomProgress = 1;
+                    isZooming = false;
+                    // Show Google Maps modal
+                    if (zoomTargetId) {
+                        showGoogleMaps(zoomTargetId);
+                    }
+                }
+                drawMap(zoomProgress);
+                animFrameId = requestAnimationFrame(animateMap);
+            } else {
+                // Normal idle animation — gentle pulse on active pin
+                drawMap(zoomProgress);
+                // Pulse overlay
+                if (activeNodeId) {
+                    const node = nodes[activeNodeId];
+                    const pos = latLonToPixel(node.lat, node.lon);
+                    const pulseRadius = 14 + (Date.now() % 1200) / 45;
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, pulseRadius, 0, Math.PI * 2);
+                    ctx.strokeStyle = node.id === 'ho' ?
+                        `rgba(0, 229, 192, ${0.5 - (pulseRadius / 50)})` :
+                        `rgba(0, 153, 255, ${0.4 - (pulseRadius / 50)})`;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+                animFrameId = requestAnimationFrame(animateMap);
+            }
+        }
 
-  Object.keys(nodes).forEach(key => {
-    const node = nodes[key];
-    const pos = latLonToPixel(node.lat, node.lon, w, h);
-    const isActive = activeNodeId === key;
-    const radius = node.id === 'ho' ? 11 : 9;
+        // ================================================================
+        //  5.  ZOOM TRIGGER
+        // ================================================================
+        function zoomToNode(nodeId) {
+            if (isZooming) return;
+            if (!nodes[nodeId]) return;
 
-    if (isActive) {
-      ctx.save();
-      ctx.shadowBlur = 35;
-      ctx.shadowColor = node.id === 'ho' ? '#00e5c0' : '#0099ff';
-      ctx.beginPath();
-      ctx.arc(pos.x, pos.y, radius + 8, 0, Math.PI * 2);
-      ctx.strokeStyle = node.id === 'ho' ? 'rgba(0, 229, 192, 0.6)' : 'rgba(0, 153, 255, 0.5)';
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.restore();
-    }
+            zoomTargetId = nodeId;
+            activeNodeId = nodeId;
 
-    ctx.beginPath();
-    ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-    ctx.fillStyle = node.id === 'ho' ? '#00e5c0' : '#0099ff';
-    ctx.fill();
+            // Update UI
+            document.querySelectorAll('.info-card').forEach(c => c.classList.remove('active-card'));
+            const card = document.getElementById(`card-${nodeId}`);
+            if (card) card.classList.add('active-card');
 
-    ctx.beginPath();
-    ctx.arc(pos.x, pos.y, 4.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#02060d';
-    ctx.fill();
+            const node = nodes[nodeId];
+            document.getElementById('badgeTitle').innerText = node.name.split(' — ')[1] + (node.id === 'ho' ? ' (HO)' : '');
+            document.getElementById('badgeSub').innerHTML = `${node.sub}<br>${node.lat.toFixed(3)}° N, ${node.lon.toFixed(3)}° E`;
 
-    ctx.font = "bold 13px 'Syne', sans-serif";
-    ctx.fillStyle = isActive ? '#ffffff' : '#a0b0d0';
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = 'rgba(0,0,0,0.8)';
-    ctx.fillText(node.id === 'ho' ? "⚡ HEAD OFFICE" : `NODE ${node.id.toUpperCase()}`, pos.x + 18, pos.y - 6);
+            // Animate map panel
+            const panel = document.getElementById('mapPanel');
+            panel.classList.add('zooming');
 
-    ctx.font = "500 10.5px 'DM Sans', sans-serif";
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = isActive ? '#00e5c0' : '#536685';
-    ctx.fillText(node.id === 'ho' ? "Gurugram HQ" : (node.id === 'ro1' ? "Bikaner" : "Jaipur"), pos.x + 18, pos.y + 10);
-  });
-}
+            // Start zoom
+            if (zoomProgress < 0.99) {
+                isZooming = true;
+                zoomProgress = 0;
+                lastTime = 0;
+                if (animFrameId) cancelAnimationFrame(animFrameId);
+                animFrameId = requestAnimationFrame(animateMap);
+            } else {
+                // Already zoomed — just show modal
+                showGoogleMaps(nodeId);
+            }
+        }
 
-function animateSystemLoop() {
-  drawSystemMap();
-  
-  const activeNode = nodes[activeNodeId];
-  const pos = latLonToPixel(activeNode.lat, activeNode.lon);
-  
-  const pulse = 14 + (Date.now() % 1200) / 45;
-  ctx.beginPath();
-  ctx.arc(pos.x, pos.y, pulse, 0, Math.PI * 2);
-  ctx.strokeStyle = activeNode.id === 'ho' 
-    ? `rgba(0, 229, 192, ${0.6 - (pulse/50)})` 
-    : `rgba(0, 153, 255, ${0.5 - (pulse/50)})`;
-  ctx.lineWidth = 2;
-  ctx.stroke();
+        function resetZoom() {
+            isZooming = false;
+            zoomProgress = 0;
+            zoomTargetId = null;
+            const panel = document.getElementById('mapPanel');
+            panel.classList.remove('zooming', 'zoomed');
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+            animFrameId = requestAnimationFrame(animateMap);
+        }
 
-  requestAnimationFrame(animateSystemLoop);
-}
+        // ================================================================
+        //  6.  GOOGLE MAPS MODAL
+        // ================================================================
+        const modal = document.getElementById('gmModal');
+        const iframe = document.getElementById('gmIframe');
+        const loading = document.getElementById('gmLoading');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalAddress = document.getElementById('modalAddress');
+        const openBtn = document.getElementById('gmOpenBtn');
+        const closeBtn = document.getElementById('gmModalClose');
 
-// Open Google Maps feature function
-function openGoogleMaps(id) {
-  const node = nodes[id];
-  if (node && node.googleMaps) {
-    window.open(node.googleMaps, '_blank');
-  }
-}
+        function showGoogleMaps(nodeId) {
+            const node = nodes[nodeId];
+            if (!node) return;
 
-// Click detection on canvas
-canvas.addEventListener('click', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const clickY = e.clientY - rect.top;
+            modalTitle.textContent = `📍 ${node.name}`;
+            modalAddress.textContent = node.sub;
+            openBtn.href = node.googleMaps;
 
-  // Check distance to each node
-  for (const key in nodes) {
-    const node = nodes[key];
-    const pos = latLonToPixel(node.lat, node.lon);
-    const dist = Math.hypot(clickX - pos.x, clickY - pos.y);
-    
-    if (dist < 25) {  // Click radius
-      focusNode(key);
-      openGoogleMaps(key);
-      return;
-    }
-  }
-});
+            // Show loading, then load iframe
+            loading.style.display = 'flex';
+            iframe.style.opacity = '0';
+            iframe.src = '';
 
-function handleCardClick(id) {
-  focusNode(id);
-  openGoogleMaps(id);
-}
+            // Use a small delay to ensure the modal is visible before loading
+            setTimeout(() => {
+                iframe.src = node.embed;
+                iframe.onload = function() {
+                    loading.style.display = 'none';
+                    iframe.style.opacity = '1';
+                };
+                // Fallback: hide loading after 3s even if iframe doesn't fire onload
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    iframe.style.opacity = '1';
+                }, 3000);
+            }, 300);
 
-function focusNode(id) {
-  activeNodeId = id;
-  
-  document.querySelectorAll('.info-card').forEach(card => card.classList.remove('active-card'));
-  document.getElementById(`card-${id}`).classList.add('active-card');
+            // Mark panel as zoomed
+            document.getElementById('mapPanel').classList.add('zoomed');
 
-  const node = nodes[id];
-  document.getElementById('badgeTitle').innerText = node.name.split(' — ')[1] + (node.id === 'ho' ? ' (HO)' : '');
-  document.getElementById('badgeSub').innerHTML = `${node.sub}<br>${node.lat.toFixed(3)}° N, ${node.lon.toFixed(3)}° E`;
-}
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-// Initialize
-focusNode('ho');
-animateSystemLoop();
-</script>
+        function closeGoogleMaps() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            iframe.src = '';
+            iframe.style.opacity = '0';
+            loading.style.display = 'flex';
+
+            // Reset zoom after a moment
+            setTimeout(() => {
+                resetZoom();
+            }, 400);
+        }
+
+        // Close modal handlers
+        closeBtn.addEventListener('click', closeGoogleMaps);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeGoogleMaps();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGoogleMaps();
+        });
+
+        // ================================================================
+        //  7.  CLICK HANDLERS
+        // ================================================================
+
+        // Canvas click detection
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const clickX = (e.clientX - rect.left) * scaleX;
+            const clickY = (e.clientY - rect.top) * scaleY;
+
+            for (const key in nodes) {
+                const node = nodes[key];
+                const pos = latLonToPixel(node.lat, node.lon);
+                const dist = Math.hypot(clickX - pos.x, clickY - pos.y);
+                if (dist < 30) {
+                    if (key === activeNodeId && zoomProgress > 0.5) {
+                        // Already zoomed — just show modal
+                        showGoogleMaps(key);
+                    } else {
+                        zoomToNode(key);
+                    }
+                    return;
+                }
+            }
+        });
+
+        // Card clicks
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const nodeId = this.dataset.node;
+                if (nodeId) {
+                    if (nodeId === activeNodeId && zoomProgress > 0.5) {
+                        showGoogleMaps(nodeId);
+                    } else {
+                        zoomToNode(nodeId);
+                    }
+                }
+            });
+        });
+
+        // Map badge click
+        document.getElementById('mapBadgeBox').addEventListener('click', function() {
+            if (activeNodeId) {
+                if (zoomProgress > 0.5) {
+                    showGoogleMaps(activeNodeId);
+                } else {
+                    zoomToNode(activeNodeId);
+                }
+            }
+        });
+
+        // ================================================================
+        //  8.  INIT
+        // ================================================================
+        // Start with HO active
+        activeNodeId = 'ho';
+        zoomTargetId = 'ho';
+        zoomProgress = 0;
+        isZooming = false;
+
+        // Set initial badge
+        const initNode = nodes.ho;
+        document.getElementById('badgeTitle').innerText = initNode.name.split(' — ')[1] + ' (HO)';
+        document.getElementById('badgeSub').innerHTML = `${initNode.sub}<br>${initNode.lat.toFixed(3)}° N, ${initNode.lon.toFixed(3)}° E`;
+
+        // Start animation
+        animFrameId = requestAnimationFrame(animateMap);
+
+        console.log('🗺️ SEESEC Infrastructure Map — click any pin or card to zoom & view Google Maps');
+    </script>
 </body>
 </html>
