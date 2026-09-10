@@ -1,497 +1,2500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>SEESEC | About — Trusted Partner in Digital Transformation</title>
-  
-  <!-- Fonts: Poppins as used in index page -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* SEESEC Index Page Color Scheme */
-    :root {
-      --ink: #1a1341;
-      --paper: #f5f4ef;
-      --sky: #e8f0ff;
-      --blue: #0778b6;
-      --blue-mid: #0778b6;
-      --blue-pale: #dde8ff;
-      --cyan: #1af6dd;
-      --accent: #43ee93;
-      --mid: #8a9ab5;
-      --line: rgba(255,255,255,0.08);
-      --glass-bg: rgba(255,255,255,0.03);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>SEESEC | About — Trusted Partner in Digital Transformation</title>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--ink);
-      color: #fff;
-      overflow-x: hidden;
-      line-height: 1.5;
-      cursor: auto;
-    }
+    <!-- ===== THEME INIT (early, prevents FOUC) ===== -->
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('seesec-theme') || 'system';
+                var effective;
+                if (stored === 'dark') {
+                    effective = 'midnight';
+                } else {
+                    effective = 'purple';
+                }
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', stored);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'purple');
+                document.documentElement.setAttribute('data-theme-pref', 'system');
+            }
+        })();
+    </script>
 
-    /* Animation keyframes */
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 18px rgba(67, 238, 147, 0.15); }
-      50% { box-shadow: 0 0 35px rgba(67, 238, 147, 0.3); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes orbFloat1 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(-40px,60px) scale(1.08); }
-    }
-    @keyframes orbFloat2 {
-      0%,100% { transform: translate(0,0); }
-      50% { transform: translate(30px,-40px); }
-    }
+    <style>
+        :root {
+            --ink: #1a1341;
+            --paper: #f5f4ef;
+            --blue: #0778b6;
+            --blue-mid: #0668a0;
+            --accent: #43ee93;
+            --cyan: #1af6dd;
+            --font-sans: 'Manrope','Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+            --font-display: 'Hanken Grotesk','Poppins',-apple-system,sans-serif;
+            --font-label: 'Geist','Poppins',-apple-system,sans-serif;
+            --font-body: 'Manrope','Poppins',-apple-system,sans-serif;
+            --bg-primary: #1a1341;
+            --bg-secondary: #110e35;
+            --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);
+            --bg-nav-scrolled: rgba(8,5,28,.6);
+            --text-primary: #fff;
+            --text-secondary: rgba(255,255,255,.62);
+            --text-muted: rgba(255,255,255,.4);
+            --text-faint: rgba(255,255,255,.22);
+            --surface-card: rgba(26,19,65,.55);
+            --surface-card-strong: rgba(26,19,65,.7);
+            --border-soft: rgba(255,255,255,.06);
+            --border-card: rgba(139,92,246,.18);
+            --line: rgba(255,255,255,.08);
+            --shadow-card: 0 2px 20px rgba(0,0,0,.4),inset 0 0 0 1px rgba(139,92,246,.1);
+            --shadow-card-hover: 0 16px 56px rgba(0,0,0,.5),inset 0 0 0 1px rgba(139,92,246,.15);
+            --radius: 16px;
+            --vignette-rgb: 13,10,46;
 
-    .animate-blink { animation: blink 0.8s step-end infinite; }
-    .animate-pulse-slow { animation: pulse 2.5s ease-in-out infinite; }
-    .animate-float { animation: float 5s ease-in-out infinite; }
-    .animate-glow { animation: glow 3.5s ease-in-out infinite; }
-    .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0d0a2e; border-radius: 8px; }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
-
-    /* Spline viewer */
-    spline-viewer {
-      width: 100%;
-      height: 100%;
-      display: block;
-      cursor: grab;
-      background: transparent;
-    }
-    spline-viewer:active { cursor: grabbing; }
-
-    /* Card hover */
-    .card-hover {
-      transition: all 0.3s ease;
-      background: var(--glass-bg);
-      border: 1px solid var(--line);
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      border-color: rgba(67,238,147,0.3);
-      background: rgba(67,238,147,.03);
-    }
-
-    /* Navigation (matching index) */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 800;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 48px;
-      transition: background .4s, backdrop-filter .4s, padding .3s;
-    }
-    nav.scrolled {
-      background: rgba(5,6,13,.88);
-      backdrop-filter: blur(18px);
-      padding: 14px 48px;
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800; font-size: 1.35rem;
-      letter-spacing: -.02em; color: #fff;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,255,255,.65); text-decoration: none;
-      transition: color .2s;
-      font-weight: 500;
-    }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: transparent; border: 1px solid rgba(255,255,255,.25);
-      color: #fff; padding: 9px 22px; border-radius: 50px;
-      font-size: .82rem; font-weight: 500; letter-spacing: .05em;
-      text-decoration: none; text-transform: uppercase;
-      transition: background .2s, border-color .2s;
-    }
-    .nav-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
-
-    .section-label {
-      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--accent); font-weight: 600; margin-bottom: 14px;
-      display: inline-flex; align-items: center; gap: 10px;
-    }
-    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
-
-    /* Hero background orbs */
-    .hero-bg-orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(80px); pointer-events: none;
-    }
-    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(7,120,182,.22) 0%, transparent 70%); top: -100px; right: 5%; animation: orbFloat1 12s ease-in-out infinite; }
-    .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(26,246,221,.15) 0%, transparent 70%); bottom: 10%; left: 10%; animation: orbFloat2 16s ease-in-out infinite; }
-    .orb-3 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(67,238,147,.1) 0%, transparent 70%); top: 40%; left: 40%; animation: orbFloat2 10s ease-in-out infinite reverse; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--blue); color: #fff;
-      padding: 14px 30px; border-radius: 50px;
-      font-size: .88rem; font-weight: 500; letter-spacing: .04em;
-      text-decoration: none; text-transform: uppercase;
-      transition: background .2s, transform .2s;
-    }
-    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid rgba(255,255,255,.25);
-      color: rgba(255,255,255,.6); padding: 14px 30px; border-radius: 50px;
-      font-size: .88rem; font-weight: 500; text-decoration: none;
-      transition: all .2s;
-    }
-    .btn-outline:hover { border-color: var(--accent); color: #fff; background: rgba(67,238,147,.05); }
-
-    /* Progress bar */
-    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent)); z-index: 900; width: 0%; transition: width .1s; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      section { padding-left: 24px !important; padding-right: 24px !important; }
-    }
-  </style>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'poppins': ['Poppins', 'sans-serif'],
-          },
-          colors: {
-            'seesec-green': '#43ee93',
-            'seesec-dark': '#1a1341',
-            'seesec-teal': '#1af6dd',
-            'seesec-blue': '#0778b6',
-          }
+            /* ── NAV TOKENS (ported from index) ── */
+            --fg-rgb: 255, 255, 255;
+            --nav-height: 56px;
+            --nav-bg: rgba(15, 10, 45, 0.28);
+            --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
+            --page-text: #ffffff;
+            --page-text-soft: rgba(255, 255, 255, 0.6);
         }
-      }
-    }
-  </script>
 
-  <!-- Spline Viewer -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        [data-theme="purple"] {
+            color-scheme: dark;
+            --bg-primary: #1a1341;
+            --bg-secondary: #110e35;
+            --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);
+            --bg-nav-scrolled: rgba(8,5,28,.6);
+            --text-primary: #fff;
+            --text-secondary: rgba(255,255,255,.62);
+            --text-muted: rgba(255,255,255,.4);
+            --text-faint: rgba(255,255,255,.22);
+            --surface-card: rgba(26,19,65,.55);
+            --surface-card-strong: rgba(26,19,65,.7);
+            --border-soft: rgba(255,255,255,.06);
+            --border-card: rgba(139,92,246,.18);
+            --line: rgba(255,255,255,.08);
+            --shadow-card: 0 2px 20px rgba(0,0,0,.4),inset 0 0 0 1px rgba(139,92,246,.1);
+            --shadow-card-hover: 0 16px 56px rgba(0,0,0,.5),inset 0 0 0 1px rgba(139,92,246,.15);
+            --vignette-rgb: 13,10,46;
+        }
+
+        [data-theme="midnight"] {
+            color-scheme: dark;
+            --bg-primary: #000000;
+            --bg-secondary: #050505;
+            --bg-hero-radial: radial-gradient(ellipse 80% 60% at 60% 40%,#080808 0%,#000000 70%);
+            --bg-nav-scrolled: rgba(0,0,0,.95);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255,255,255,.7);
+            --text-muted: rgba(255,255,255,.45);
+            --text-faint: rgba(255,255,255,.25);
+            --surface-card: #0a0a0a;
+            --surface-card-strong: #121212;
+            --border-soft: rgba(255,255,255,.08);
+            --border-card: rgba(255,255,255,.14);
+            --line: rgba(255,255,255,.1);
+            --shadow-card: 0 8px 32px rgba(0,0,0,.9);
+            --shadow-card-hover: 0 16px 56px rgba(0,0,0,1);
+            --vignette-rgb: 0,0,0;
+
+            /* ── NAV TOKENS (midnight) ── */
+            --nav-bg: rgba(4, 5, 10, 0.55);
+            --nav-bg-scrolled: rgba(4, 5, 10, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* ─────────────────────────────────────────────
+           NAVBAR — ported from index.html
+           ───────────────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 8px;
+            left: 48px;
+            right: 48px;
+            z-index: 800;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            border-radius: 999px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px) saturate(1.5);
+            -webkit-backdrop-filter: blur(14px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), 0.08);
+            box-shadow:
+                0 10px 32px rgba(0, 0, 0, 0.18),
+                0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
+                0 0 0 1px rgba(67, 238, 147, 0.04) inset;
+            transition:
+                transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.4s ease,
+                backdrop-filter 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease,
+                top 0.4s ease;
+            will-change: transform, background, backdrop-filter;
+            transform: translateY(0);
+        }
+        nav.nav-hidden { transform: translateY(-140%); }
+        nav.scrolled {
+            background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(18px) saturate(1.6);
+            -webkit-backdrop-filter: blur(18px) saturate(1.6);
+            border-color: rgba(var(--fg-rgb), 0.11);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.28),
+                0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
+                0 0 0 1px rgba(67, 238, 147, 0.06) inset;
+        }
+        nav.scrolled .nav-logo { text-shadow: 0 0 30px rgba(67, 238, 147, 0.12); }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            color: var(--page-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            transition: transform 0.3s ease;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background: transparent;
+            flex-shrink: 0;
+        }
+        .nav-logo:hover { transform: scale(1.02); }
+        .nav-logo img {
+            height: 30px;
+            width: auto;
+            display: block;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+        .nav-logo .logo-text { display: flex; align-items: center; gap: 2px; }
+        .nav-logo .logo-text span { color: var(--accent); position: relative; }
+        .nav-logo .logo-text span::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 16px rgba(67, 238, 147, 0.3);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        .nav-logo:hover .logo-text span::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(var(--fg-rgb), 0.5);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
+            transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: width;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--page-text); }
+        .nav-links a.active { color: var(--page-text); }
+        .nav-links a.active::after { width: 100%; }
+
+        /* ===== NAV DROPDOWN ===== */
+        .has-dropdown { position: relative; }
+        .dropdown-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: default;
+        }
+        .dropdown-caret {
+            width: 9px; height: 9px;
+            flex-shrink: 0;
+            opacity: 0.55;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+        }
+        .has-dropdown:hover .dropdown-caret,
+        .has-dropdown:focus-within .dropdown-caret {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            min-width: 232px;
+            background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), 0.08);
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(-8px) scale(0.98);
+            transform-origin: top center;
+            transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                        transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                        visibility 0.35s;
+            z-index: 60;
+        }
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: 50%;
+            width: 10px; height: 10px;
+            background: var(--nav-bg-scrolled);
+            border-left: 1px solid rgba(var(--fg-rgb), 0.08);
+            border-top: 1px solid rgba(var(--fg-rgb), 0.08);
+            transform: translateX(-50%) rotate(45deg);
+            border-radius: 2px 0 0 0;
+        }
+        .has-dropdown:hover .nav-dropdown,
+        .has-dropdown:focus-within .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .nav-dropdown a {
+            font-size: 0.74rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            font-weight: 500;
+            color: rgba(var(--fg-rgb), 0.6);
+            padding: 10px 14px;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+        }
+        .nav-dropdown a::after { content: none !important; }
+        .has-dropdown:hover .nav-dropdown a,
+        .has-dropdown:focus-within .nav-dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-dropdown a:nth-child(1) { transition-delay: 0.03s; }
+        .nav-dropdown a:nth-child(2) { transition-delay: 0.06s; }
+        .nav-dropdown a:nth-child(3) { transition-delay: 0.09s; }
+        .nav-dropdown a:nth-child(4) { transition-delay: 0.12s; }
+        .nav-dropdown a:nth-child(5) { transition-delay: 0.15s; }
+        .nav-dropdown a:nth-child(6) { transition-delay: 0.18s; }
+        .nav-dropdown a:hover {
+            background: rgba(67, 238, 147, 0.1);
+            color: var(--page-text);
+            transform: translateX(3px);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1.5px solid rgba(67, 238, 147, 0.25);
+            color: var(--page-text);
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform, box-shadow, border-color, color;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-cta .nav-shine {
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(67, 238, 147, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .nav-cta:hover .nav-shine { left: 100%; }
+        .nav-cta .nav-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+            will-change: transform;
+        }
+        .nav-cta:hover .nav-bg {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-cta:hover {
+            border-color: var(--accent);
+            color: var(--ink);
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px 4px;
+            z-index: 850;
+            background: none;
+            border: none;
+            outline: none;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .hamburger:hover { transform: scale(1.05); }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            border-radius: 4px;
+            background: var(--page-text);
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(var(--fg-rgb), 0.12);
+            background: rgba(var(--fg-rgb), 0.04);
+            color: var(--page-text);
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle:hover {
+            border-color: rgba(67, 238, 147, 0.4);
+            transform: translateY(-1px);
+        }
+        .theme-toggle:active { transform: scale(0.92); }
+        .theme-icon {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.6) rotate(-40deg);
+            transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .theme-toggle[data-mode="system"] .theme-icon-system,
+        .theme-toggle[data-mode="dark"] .theme-icon-dark {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .mobile-theme-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            padding: 5px;
+            border-radius: 999px;
+            background: rgba(var(--fg-rgb), 0.04);
+            border: 1px solid rgba(var(--fg-rgb), 0.1);
+        }
+        .mobile-theme-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: rgba(var(--fg-rgb), 0.45);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .mobile-theme-option svg { width: 17px; height: 17px; }
+        .mobile-theme-option.active {
+            background: rgba(67, 238, 147, 0.14);
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 750;
+            background: rgba(10, 8, 30, 0.97);
+            backdrop-filter: blur(32px) saturate(1.4);
+            -webkit-backdrop-filter: blur(32px) saturate(1.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 40px 24px;
+            overflow-y: auto;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: rgba(var(--fg-rgb), 0.5);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.4s ease, left 0.4s ease;
+        }
+        .mobile-menu a:hover { color: #fff; transform: scale(1.04); }
+        .mobile-menu a:hover::after { width: 100%; left: 0; }
+        .mobile-menu .mobile-cta {
+            margin-top: 16px;
+            padding: 14px 44px;
+            border-radius: 50px;
+            background: var(--accent);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(67, 238, 147, 0.15);
+        }
+        .mobile-menu .mobile-cta:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 60px rgba(67, 238, 147, 0.3);
+        }
+        .mobile-menu .close-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.65rem;
+            color: rgba(var(--fg-rgb), 0.15);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .mobile-accordion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .mobile-accordion-trigger {
+            background: none;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        .mobile-accordion-caret {
+            width: 13px; height: 13px;
+            opacity: 0.5;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .mobile-accordion.open .mobile-accordion-caret { transform: rotate(180deg); }
+        .mobile-submenu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            max-height: 0;
+            overflow: hidden;
+            width: 100%;
+            transition: max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+            opacity: 0;
+        }
+        .mobile-accordion.open .mobile-submenu {
+            max-height: 420px;
+            opacity: 1;
+            margin-top: 6px;
+        }
+        .mobile-sublink {
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            color: rgba(var(--fg-rgb), 0.45) !important;
+            padding: 7px 0 !important;
+        }
+        .mobile-sublink:hover { color: #fff !important; }
+
+        /* ─────────────────────────────────────────────
+           (rest of original CSS — unchanged)
+           ───────────────────────────────────────────── */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.92); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-14px) rotate(1.5deg); } }
+        @keyframes floatSlow { 0%, 100% { transform: translateY(0px) translateX(0px); } 33% { transform: translateY(-10px) translateX(8px); } 66% { transform: translateY(6px) translateX(-6px); } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 40px rgba(67, 238, 147, 0.06); } 50% { box-shadow: 0 0 80px rgba(67, 238, 147, 0.18); } }
+        @keyframes glowPulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.12); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.7) rotate(-2deg); } to { opacity: 1; transform: scale(1) rotate(0deg); } }
+        @keyframes orbFloat1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-60px, 80px) scale(1.12); } }
+        @keyframes orbFloat2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, -60px); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes borderFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes particleFloat { 0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.2; } 50% { opacity: 0.6; } 100% { transform: translateY(-140px) translateX(50px) scale(0); opacity: 0; } }
+        @keyframes cardGlow { 0%, 100% { box-shadow: 0 8px 32px rgba(67, 238, 147, 0.05); } 50% { box-shadow: 0 12px 48px rgba(67, 238, 147, 0.12), 0 0 60px rgba(67, 238, 147, 0.04); } }
+        @keyframes textReveal { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .animate-blink { animation: blink 0.8s step-end infinite; }
+        .animate-pulse-slow { animation: pulse 2.8s ease-in-out infinite; }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
+        .animate-glow { animation: glow 4s ease-in-out infinite; }
+        .animate-glow-pulse { animation: glowPulse 4.5s ease-in-out infinite; }
+        .animate-fade-up { animation: fadeUp 0.7s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-slide-left { animation: slideInLeft 0.7s ease-out forwards; }
+        .animate-slide-right { animation: slideInRight 0.7s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(67, 238, 147, 0.06) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3.5s ease-in-out infinite;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+        /* ─── SPLINE BACKGROUND (full hero, no border, no card) ─── */
+        .spline-bg-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+            overflow: hidden;
+        }
+        .spline-bg-layer spline-viewer {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: grab;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+        }
+        .spline-bg-layer spline-viewer:active { cursor: grabbing; }
+        spline-viewer::part(logo),
+        #spline-logo,
+        a[href*="spline.design"] {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+        spline-viewer canvas {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+        }
+        .spline-bg-layer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 55% 70% at 25% 50%, rgba(var(--vignette-rgb),.72) 0%, rgba(var(--vignette-rgb),.35) 40%, transparent 70%),
+                linear-gradient(180deg, rgba(var(--vignette-rgb),.35) 0%, transparent 25%, transparent 75%, rgba(var(--vignette-rgb),.55) 100%);
+            transition: background 0.5s ease;
+        }
+        .hero-content-layer {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .card-3d {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+            animation: cardGlow 4s ease-in-out infinite;
+            background: var(--surface-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 32px 28px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            will-change: transform;
+            box-shadow: var(--shadow-card);
+        }
+        .card-3d::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(67, 238, 147, 0.06),
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .card-3d:hover::before { opacity: 1; }
+        .card-3d:hover {
+            transform: perspective(1000px) rotateY(2deg) rotateX(-1deg) translateY(-8px);
+            border-color: rgba(67, 238, 147, 0.25);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .card-3d .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 18px;
+            background: rgba(67, 238, 147, 0.08);
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            transition: all 0.4s ease;
+        }
+        .card-3d:hover .card-icon {
+            transform: scale(1.08) rotate(-3deg);
+            background: rgba(67, 238, 147, 0.15);
+            border-color: rgba(67, 238, 147, 0.2);
+        }
+        .card-3d .card-number {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--text-faint);
+            opacity: 0.3;
+            transition: opacity 0.4s ease;
+        }
+        .card-3d:hover .card-number { opacity: 0.7; color: var(--accent); }
+        .card-3d .card-glow-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 0 0 20px 20px;
+        }
+        .card-3d:hover .card-glow-line { opacity: 0.5; }
+        .card-3d .card-content { position: relative; z-index: 2; }
+        .card-3d h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        .card-3d:hover h3 { color: var(--accent); }
+        .card-3d p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            transition: color 0.3s ease;
+        }
+        .card-3d .card-tag {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: rgba(67, 238, 147, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(67, 238, 147, 0.08);
+            transition: all 0.3s ease;
+        }
+        .card-3d:hover .card-tag {
+            background: var(--accent);
+            color: var(--ink);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        .principle-3d {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+            height: 100%;
+            min-height: 260px;
+            cursor: pointer;
+            position: relative;
+        }
+        .principle-3d .principle-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            border-radius: 20px;
+        }
+        .principle-3d.flipped .principle-inner { transform: rotateY(180deg); }
+        .principle-3d .principle-front,
+        .principle-3d .principle-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--border-card);
+            background: var(--surface-card);
+            backdrop-filter: blur(8px);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .principle-3d .principle-front { transform: rotateY(0deg); z-index: 2; }
+        .principle-3d .principle-back { transform: rotateY(180deg); z-index: 1; }
+        .principle-3d:hover .principle-front,
+        .principle-3d:hover .principle-back {
+            border-color: rgba(67, 238, 147, 0.2);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .principle-3d .principle-icon {
+            font-size: 40px;
+            margin-bottom: 14px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .principle-3d:hover .principle-icon { transform: scale(1.1) rotate(-4deg); }
+        .principle-3d .principle-front h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+        .principle-3d .principle-front p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+        .principle-3d .principle-back h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+        .principle-3d .principle-back p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+        .principle-3d .flip-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            font-size: 0.65rem;
+            color: var(--text-faint);
+            opacity: 0.4;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+        .principle-3d:hover .flip-hint { opacity: 0.8; color: var(--accent); }
+
+        .section-label {
+            font-size: .72rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .section-label.centered { justify-content: center; }
+        .section-label.centered::before { display: none; }
+
+        .hero-bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(7,120,182,.22) 0%, transparent 70%);
+            top: -100px; right: 5%;
+            animation: orbFloat1 14s ease-in-out infinite;
+        }
+        .orb-2 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(26,246,221,.15) 0%, transparent 70%);
+            bottom: 10%; left: 10%;
+            animation: orbFloat2 18s ease-in-out infinite;
+        }
+        .orb-3 {
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(67,238,147,.1) 0%, transparent 70%);
+            top: 40%; left: 40%;
+            animation: orbFloat2 12s ease-in-out infinite reverse;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #fff;
+            border: 2px solid rgba(67,238,147,.25);
+            background: transparent;
+            cursor: pointer;
+            overflow: hidden;
+            transition: color .4s, transform .3s, box-shadow .4s;
+            box-shadow: 0 0 30px rgba(7,120,182,.08);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: var(--blue);
+            z-index: -1;
+            transition: transform .6s cubic-bezier(.23,1,.32,1);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        .btn-primary:hover::before { transform: scaleX(1); transform-origin: right; }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: var(--accent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity .5s;
+            box-shadow: 0 0 40px rgba(67,238,147,.15);
+        }
+        .btn-primary:hover::after { opacity: 1; }
+        .btn-primary:hover {
+            color: var(--ink);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(7,120,182,.3);
+            border-color: var(--accent);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border-soft);
+            color: var(--text-secondary);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(6px);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background: rgba(67,238,147,.06);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(67,238,147,.05);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent));
+            z-index: 900;
+            width: 0%;
+            transition: width .1s;
+            box-shadow: 0 0 20px rgba(67,238,147,.3);
+        }
+
+        .kinetic-panel {
+            border: 1px solid var(--border-soft);
+            background-color: var(--surface-card);
+            border-radius: 18px;
+            transition: background-color 0.5s ease, border-color 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateX(0);
+            backdrop-filter: blur(4px);
+        }
+        .kinetic-panel[data-active="true"] {
+            background-color: var(--surface-card-strong);
+            border-color: rgba(67,238,147,.3);
+            box-shadow: var(--shadow-card-hover);
+            opacity: 1;
+            transform: translateX(4px);
+        }
+        .kinetic-panel[data-active="false"] { opacity: 0.65; }
+        .kinetic-panel[data-active="false"]:hover {
+            opacity: 0.9;
+            border-color: rgba(67,238,147,.2);
+            transform: translateX(2px);
+        }
+        .kinetic-panel[data-active="false"] .active-bio { display: none !important; }
+
+        .kinetic-panel .panel-image-wrap {
+            transition: width 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+                height 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+                border-radius 0.55s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.55s ease;
+        }
+        .kinetic-panel[data-active="true"] .panel-image-wrap {
+            width: 200px;
+            height: 200px;
+            border-radius: 26px;
+            box-shadow: 0 12px 40px rgba(67,238,147,.28), 0 0 0 3px rgba(67,238,147,.18);
+        }
+        .kinetic-panel[data-active="false"] .panel-image-wrap {
+            width: 120px;
+            height: 120px;
+            border-radius: 22px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.25);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+
+        .cta-banner {
+            background: var(--surface-card);
+            border: 1px solid var(--border-card);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--accent), var(--cyan), var(--accent));
+            background-size: 300% 300%;
+            animation: borderFlow 8s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.12;
+            filter: blur(12px);
+        }
+
+        .border-theme { border-color: var(--border-soft); }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 56px 48px 28px;
+            background: var(--bg-primary);
+            backdrop-filter: blur(4px);
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 36px;
+        }
+        .footer-brand .nav-logo {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-brand .nav-logo img { height: 38px; }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            max-width: 380px;
+            line-height: 1.7;
+        }
+        .footer-col h5 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .footer-col ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.25s ease;
+            display: inline-block;
+        }
+        .footer-col ul a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .newsletter-block {
+            max-width: 1280px;
+            margin: 0 auto 36px;
+            padding: 28px 32px;
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            background: var(--surface-card);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 28px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+        .newsletter-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            opacity: .7;
+        }
+        .nl-text h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .nl-text p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 10px;
+            max-width: 520px;
+        }
+        .nl-email {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nl-email:hover { color: var(--cyan); }
+        .nl-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .nl-signup-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform .25s, box-shadow .3s;
+            box-shadow: 0 6px 24px rgba(67,238,147,.25);
+        }
+        .nl-signup-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 36px rgba(67,238,147,.4);
+        }
+        .nl-privacy {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: color .3s;
+        }
+        .nl-privacy:hover { color: var(--accent); }
+
+        .footer-follow {
+            max-width: 1280px;
+            margin: 0 auto 28px;
+            padding: 20px 0;
+            border-top: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-follow-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .footer-follow-socials {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .footer-follow-socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+            background: var(--surface-card);
+        }
+        .footer-follow-socials a:hover {
+            color: var(--ink);
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 24px rgba(67,238,147,.3);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-faint);
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .stat-3d {
+            perspective: 600px;
+            transform-style: preserve-3d;
+        }
+        .stat-3d .stat-inner {
+            background: var(--surface-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(4px);
+            transform: rotateX(0deg) rotateY(0deg);
+            will-change: transform;
+            box-shadow: var(--shadow-card);
+        }
+        .stat-3d .stat-inner:hover {
+            transform: rotateX(4deg) rotateY(-4deg) translateY(-6px);
+            border-color: rgba(67,238,147,.25);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .stat-3d .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .stat-3d .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .stat-3d .stat-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        .stat-3d .stat-inner:hover .stat-icon { opacity: 1; }
+
+        @media (max-width: 1024px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .newsletter-block { grid-template-columns: 1fr; gap: 18px; }
+            .nl-actions { align-items: flex-start; }
+        }
+        @media (max-width: 900px) {
+            nav {
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 0 20px;
+                border-radius: 0 0 18px 18px;
+            }
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+            footer { padding: 36px 20px 20px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            .card-3d { padding: 24px 20px; }
+            .principle-3d .principle-front,
+            .principle-3d .principle-back { padding: 24px 20px; min-height: 220px; }
+            .principle-3d { min-height: 220px; }
+            .principle-3d .principle-inner { min-height: 220px; }
+            .newsletter-block { padding: 22px 20px; }
+            .kinetic-panel[data-active="true"] .panel-image-wrap { width: 160px; height: 160px; }
+            .kinetic-panel[data-active="false"] .panel-image-wrap { width: 100px; height: 100px; }
+            .spline-bg-layer::after {
+                background:
+                    radial-gradient(ellipse 90% 60% at 50% 40%, rgba(var(--vignette-rgb),.82) 0%, rgba(var(--vignette-rgb),.5) 45%, transparent 75%),
+                    linear-gradient(180deg, rgba(var(--vignette-rgb),.4) 0%, transparent 25%, transparent 75%, rgba(var(--vignette-rgb),.6) 100%);
+            }
+        }
+        @media (max-width: 640px) {
+            .kinetic-panel[data-active="true"] .panel-image-wrap { width: 130px; height: 130px; border-radius: 20px; }
+            .kinetic-panel[data-active="false"] .panel-image-wrap { width: 84px; height: 84px; border-radius: 18px; }
+            .stat-3d .stat-number { font-size: 2rem; }
+            .card-3d h3 { font-size: 1.05rem; }
+            .footer-follow { flex-direction: column; align-items: flex-start; gap: 14px; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        .particle-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            opacity: 0;
+            animation: particleFloat 7s ease-in-out infinite;
+        }
+
+        .mouse-glow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            width: 350px; height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(67,238,147,.04), transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.4s ease;
+            opacity: 0;
+            will-change: transform;
+        }
+        .mouse-glow.active { opacity: 1; }
+
+        .service-chip {
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            border: 1px solid var(--border-soft);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background: var(--surface-card);
+            backdrop-filter: blur(4px);
+            color: var(--text-secondary);
+        }
+        .service-chip:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        .service-chip.active {
+            background: var(--accent);
+            color: var(--ink);
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(67,238,147,.25);
+            transform: scale(1.04);
+        }
+        .service-chip.active:hover { background: var(--blue); transform: scale(1.06); }
+
+        .assistant-btn {
+            background: var(--accent);
+            color: var(--ink);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 24px rgba(67,238,147,.25);
+        }
+        .assistant-btn:hover {
+            transform: scale(1.06) translateY(-4px);
+            box-shadow: 0 8px 40px rgba(67,238,147,.35);
+            background: var(--blue);
+        }
+        .assistant-btn .pulse-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(26,19,65,.4);
+            display: inline-block;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        .stars-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            animation: twinkle var(--d,4s) var(--delay,0s) ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(.5); }
+            50% { opacity: var(--op,.6); transform: scale(1); }
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 'poppins': ['Poppins', 'sans-serif'] },
+                    colors: {
+                        'seesec-green': '#43ee93',
+                        'seesec-cyan': '#1af6dd',
+                        'seesec-blue': '#0778b6',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body>
+<body x-data="seesecApp()">
 
-  <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="mouse-glow" id="mouseGlow"></div>
+    <div class="particle-container" id="particleContainer"></div>
 
-  <!-- Navigation (matching index) -->
-  <nav id="nav">
-    <a href="#" class="nav-logo">SEE<span>SEC</span></a>
-    <ul class="nav-links"><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Solutions</a></li><li><a href="#">Insights</a></li></ul>
-    <a href="#contact" class="nav-cta">Get in touch →</a>
-  </nav>
+    <!-- ===== NAVBAR (exactly like index.html) ===== -->
+    <nav id="nav">
+        <a href="#hero" class="nav-logo">
+            <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" />
+            <span class="logo-text">SEE<span>SEC</span></span>
+        </a>
 
-  <div x-data="seesecApp()" class="relative overflow-x-hidden">
-    
-    <!-- ==================== HERO SECTION with Index Color Scheme ==================== -->
-    <section class="relative min-h-screen pt-36 lg:pt-40 pb-20 overflow-hidden">
-      <!-- Background orbs -->
-      <div class="hero-bg-orb orb-1"></div>
-      <div class="hero-bg-orb orb-2"></div>
-      <div class="hero-bg-orb orb-3"></div>
-      
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div class="flex flex-col lg:flex-row lg:items-center gap-14 lg:gap-12">
-          
-          <!-- Left Column -->
-          <div class="flex-1 lg:max-w-xl animate-fade-up">
-            <div class="section-label">AWS Advanced Partner</div>
-            
-            <!-- Typewriter Heading -->
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.15] mb-6" style="color: #fff;">
-              <span x-text="displayedText"></span>
-              <span x-show="!typewriterDone" class="inline-block w-[3px] h-[1.1em] bg-[#43ee93] align-middle ml-1 animate-blink"></span>
-            </h1>
-            
-            <p class="text-lg leading-relaxed mb-8 max-w-lg" style="color: rgba(255,255,255,.55); font-weight: 300;">
-              We help organizations unlock sustainable growth through cloud excellence, AI-driven insights, and cutting-edge communication tools — making technology simple, smart, and secure.
-            </p>
-            
-            <div class="flex flex-wrap gap-4 mb-10">
-              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">70% cloud cost reduction</span></div>
-              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">99.9% enterprise compliance</span></div>
-              <div class="flex items-center gap-2"><span class="text-[#43ee93] text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: rgba(255,255,255,.7);">24/7 intelligent support</span></div>
-            </div>
-            
-            <div class="flex flex-wrap gap-4">
-              <a href="#services-core" class="btn-primary">Explore Solutions</a>
-              <a href="#contact" class="btn-outline">Talk to Experts</a>
-            </div>
-          </div>
-          
-          <!-- Right Column: 3D Model with glass effect matching index -->
-          <div class="flex-1 relative">
-            <div class="absolute -top-4 -right-2 z-10 bg-black/40 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-md border border-[#43ee93]/40 text-xs font-semibold text-white flex items-center gap-2 animate-float">
-              <svg class="w-3.5 h-3.5 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-              </svg>
-              <span>Interactive 3D — Drag to rotate</span>
-            </div>
-            
-            <div class="relative w-full h-[380px] sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden bg-black/20 backdrop-blur-sm shadow-xl border border-white/10 animate-glow">
-              <div class="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#43ee93]/50 rounded-tl-lg z-10 pointer-events-none"></div>
-              <div class="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#43ee93]/50 rounded-br-lg z-10 pointer-events-none"></div>
-              <spline-viewer 
-                url="https://prod.spline.design/CYYWjR739gNgcAK9/scene.splinecode"
-                class="w-full h-full"
-                style="background: transparent;"
-              ></spline-viewer>
-            </div>
-            
-            <p class="text-center text-xs mt-4 flex items-center justify-center gap-2" style="color: rgba(255,255,255,.4);">
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
-              Click, drag, and rotate to explore
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== STATS SECTION ==================== -->
-    <section class="py-14 border-t border-b border-white/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">70%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Cloud cost reduction</div></div>
-          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">80%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Faster response</div></div>
-          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">99.9%</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Compliance rate</div></div>
-          <div><div class="text-3xl md:text-4xl font-bold text-[#43ee93]">24/7</div><div class="text-sm uppercase tracking-wide" style="color: rgba(255,255,255,.5);">Expert support</div></div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== TRUSTED PARTNER SECTION ==================== -->
-    <section class="py-20">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <span class="section-label" style="justify-content: center;">Why clients trust us</span>
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-5" style="color: #fff;">We become your <span class="text-[#43ee93]">strategic partner</span>, not just a vendor</h2>
-          <p class="text-lg" style="color: rgba(255,255,255,.5);">Long-term relationships built on transparency, measurable outcomes, and shared success.</p>
-        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
+                    Services
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="aws-managed.html">AWS Managed Services</a>
+                    <a href="cloud-optimization.html">Cloud Optimization</a>
+                    <a href="cloud-security.html">Cloud Security</a>
+                    <a href="gen-ai.html">Gen AI</a>
+                    <a href="data-analytics.html">Data Analytics</a>
+                    <a href="cloud-compliance.html">Cloud Compliance</a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
+                    Solutions
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="chat-a-lot.html">Chat-A-Lot</a>
+                    <a href="talk-track.html">Talk Track</a>
+                    <a href="sms-sense.html">SMS Sense</a>
+                    <a href="interactive-email.html">Interactive Email</a>
+                    <a href="email-archival.html">Email Archival</a>
+                </div>
+            </li>
+            <li><a href="content-automation.html">Content AI</a></li>
+            <li><a href="aboutus.html" class="active">About Us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+        </ul>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="card-hover rounded-2xl p-7 text-center">
-            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Enterprise-grade security</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">Zero-trust architecture, SOC2 alignment, and end-to-end encryption baked into every solution.</p>
-          </div>
-          <div class="card-hover rounded-2xl p-7 text-center">
-            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Dedicated success teams</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">Solution architects and customer success managers committed to your outcomes from day one.</p>
-          </div>
-          <div class="card-hover rounded-2xl p-7 text-center">
-            <div class="w-14 h-14 bg-[#43ee93]/10 rounded-full flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-[#43ee93]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Outcome-based roadmaps</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">Technology investments aligned directly with your business KPIs and growth targets.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== CORE PRINCIPLES ==================== -->
-    <section class="py-20 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-14">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our core principles</h2>
-          <p class="text-lg" style="color: rgba(255,255,255,.5);">Guided by values that put your success first — simplicity, security, and intelligent innovation.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="card-hover rounded-xl p-8">
-            <div class="text-4xl mb-4">🎯</div>
-            <h3 class="text-xl font-bold mb-2 text-white">Simplicity</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">Technology should simplify operations, not introduce complexity. We reduce friction relentlessly.</p>
-          </div>
-          <div class="card-hover rounded-xl p-8">
-            <div class="text-4xl mb-4">🌍</div>
-            <h3 class="text-xl font-bold mb-2 text-white">Social Good & Ethics</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">Commitment to ethical AI, sustainable infrastructure, and empowering communities globally.</p>
-          </div>
-          <div class="card-hover rounded-xl p-8">
-            <div class="text-4xl mb-4">🤝</div>
-            <h3 class="text-xl font-bold mb-2 text-white">Trusted Partner</h3>
-            <p class="text-sm" style="color: rgba(255,255,255,.5);">We become integral partners in your success, driving sustained growth with transparency.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== TEAM SECTION ==================== -->
-    <section class="py-20 bg-black/20 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-14">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Meet the experts</h2>
-          <p class="text-lg" style="color: rgba(255,255,255,.5);">Seasoned professionals from Microsoft, Amazon, and Google — now united at SEESEC.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105 duration-200">👩‍💼</div><h4 class="font-bold text-lg text-white">Eshita Singh</h4><p class="text-[#43ee93] text-sm">Director & CPO</p></div>
-          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👨‍💼</div><h4 class="font-bold text-lg text-white">Dinesh Singh</h4><p class="text-[#43ee93] text-sm">Founder & CEO</p></div>
-          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👨‍🔧</div><h4 class="font-bold text-lg text-white">Shrey Agarwal</h4><p class="text-[#43ee93] text-sm">Co-Founder & CTO</p></div>
-          <div class="text-center"><div class="w-28 h-28 mx-auto bg-gradient-to-br from-[#43ee93]/20 to-[#0778b6]/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform hover:scale-105">👩‍🎨</div><h4 class="font-bold text-lg text-white">Shubh Sharma</h4><p class="text-[#43ee93] text-sm">Chief Marketing Officer</p></div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== SERVICE SELECTOR ==================== -->
-    <section class="py-16 border-t border-white/5" id="services-core">
-      <div class="max-w-2xl mx-auto px-6 text-center">
-        <h3 class="text-2xl font-bold text-white mb-2">What sort of service?</h3>
-        <p class="mb-8 text-sm" style="color: rgba(255,255,255,.5);">Select all that apply — our experts will tailor a response</p>
-        
-        <div class="flex flex-wrap justify-center gap-3 mb-8">
-          <template x-for="service in servicesList" :key="service">
-            <button @click="toggleService(service)" class="px-5 py-3 rounded-full text-base font-medium flex items-center gap-2 transition-all duration-150 cursor-pointer font-poppins" :class="selectedServices.includes(service) ? 'bg-[#43ee93] text-[#1a1341] shadow-md' : 'bg-white/5 text-white border border-white/20 hover:border-[#43ee93]/40'">
-              <span x-text="service"></span>
-              <span x-show="selectedServices.includes(service)" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100">
-                <svg class="w-4 h-4 stroke-[3px] text-[#1a1341]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-              </span>
+        <a href="#contact" class="nav-cta">
+            <span class="nav-shine"></span>
+            <span class="nav-bg"></span>
+            Get a Quote →
+        </a>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: System">
+            <svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ===== MOBILE MENU (exactly like index.html) ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+                Services
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-          </template>
+            <div class="mobile-submenu">
+                <a href="aws-managed.html" class="mobile-sublink">AWS Managed Services</a>
+                <a href="cloud-optimization.html" class="mobile-sublink">Cloud Optimization</a>
+                <a href="cloud-security.html" class="mobile-sublink">Cloud Security</a>
+                <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
+                <a href="data-analytics.html" class="mobile-sublink">Data Analytics</a>
+                <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
+            </div>
         </div>
-        
-        <div class="min-h-[80px]">
-          <div x-show="selectedServices.length === 0" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-50" class="italic text-sm" style="color: rgba(255,255,255,.4);">
-            Please click to select services above.
-          </div>
-          <div x-show="selectedServices.length > 0" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95 -translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" class="bg-[#43ee93]/10 backdrop-blur-sm rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 border border-[#43ee93]/30">
-            <span class="text-sm font-medium text-white">Ready to inquire about: <span class="text-[#43ee93] font-semibold" x-text="selectedServices.join(', ')"></span></span>
-            <a href="#contact" class="flex items-center gap-1.5 text-[#43ee93] font-bold uppercase text-xs tracking-wider group hover:text-white transition">
-              Let's Go
-              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== CTA BANNER ==================== -->
-    <section class="py-20" id="contact">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="bg-gradient-to-br from-[#0d0a2e] to-[#1a1341] rounded-2xl p-10 md:p-14 text-center border border-white/10">
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Ready to transform your business?</h3>
-          <p class="mb-7 max-w-lg mx-auto" style="color: rgba(255,255,255,.5);">Let's discuss how SEESEC can help you achieve cloud excellence, AI-driven growth, and intelligent automation.</p>
-          <a href="#" class="inline-block bg-[#0778b6] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[#43ee93] hover:text-[#1a1341] transition shadow-lg">
-            Talk to an expert →
-          </a>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="border-t border-white/10 py-12 text-center">
-      <p class="text-sm" style="color: rgba(255,255,255,.6);">
-        <span class="font-bold text-[#43ee93]">SEESEC</span> — Cloud · AI · Data · Communication Automation
-      </p>
-      <p class="text-xs mt-2" style="color: rgba(255,255,255,.4);">© 2025 SEESEC. Make Tech Simple, Smart & Secure.</p>
-      <div class="flex justify-center gap-6 mt-5 text-xs text-[#43ee93]">
-        <a href="#" class="hover:text-white transition">Privacy</a>
-        <a href="#" class="hover:text-white transition">Imprint</a>
-        <a href="#" class="hover:text-white transition">AWS Advanced Partner</a>
-      </div>
-    </footer>
-    
-    <!-- ==================== FLOATING ASSISTANT ==================== -->
-    <div class="fixed bottom-6 right-6 z-30">
-      <button @click="alert('💬 SEESEC AI assistant — ready to help with cloud excellence, GenAI, data analytics, and communication automation.')" class="bg-[#0778b6] text-white px-5 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105 hover:bg-[#43ee93] hover:text-[#1a1341] cursor-pointer">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-        SeesecAI Assistant
-        <span class="w-2 h-2 bg-[#43ee93] rounded-full animate-pulse-slow"></span>
-      </button>
-    </div>
-  </div>
 
-  <script>
-    // Nav scroll & progress bar
-    const navEl = document.getElementById('nav'); 
-    const pb = document.getElementById('progressBar');
-    window.addEventListener('scroll', () => { 
-      const scrolled = window.scrollY; 
-      if (scrolled > 60) navEl.classList.add('scrolled'); 
-      else navEl.classList.remove('scrolled'); 
-      const total = document.body.scrollHeight - window.innerHeight; 
-      pb.style.width = (scrolled / total * 100) + '%'; 
-    });
-    
-    // Alpine.js App
-    function seesecApp() {
-      return {
-        isMobileMenuOpen: false,
-        servicesList: ["Cloud Excellence", "Data Analytics", "GenAI Services", "Communication Suite"],
-        selectedServices: [],
-        fullText: "Trusted partner in\ndigital transformation.",
-        displayedText: "",
-        typewriterDone: false,
-        typewriterSpeed: 40,
-        
-        init() {
-          setTimeout(() => {
-            let i = 0;
-            const interval = setInterval(() => {
-              if (i < this.fullText.length) {
-                i++;
-                this.displayedText = this.fullText.slice(0, i);
-              } else {
-                this.typewriterDone = true;
-                clearInterval(interval);
-              }
-            }, this.typewriterSpeed);
-          }, 200);
-        },
-        
-        toggleService(service) {
-          if (this.selectedServices.includes(service)) {
-            this.selectedServices = this.selectedServices.filter(s => s !== service);
-          } else {
-            this.selectedServices.push(service);
-          }
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+                Solutions
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-submenu">
+                <a href="chat-a-lot.html" class="mobile-sublink">Chat-A-Lot</a>
+                <a href="talk-track.html" class="mobile-sublink">Talk Track</a>
+                <a href="sms-sense.html" class="mobile-sublink">SMS Sense</a>
+                <a href="interactive-email.html" class="mobile-sublink">Interactive Email</a>
+                <a href="email-archival.html" class="mobile-sublink">Email Archival</a>
+            </div>
+        </div>
+
+        <a href="content-automation.html" class="mobile-link">Content AI</a>
+        <a href="aboutus.html" class="mobile-link">About Us</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
+        <a href="contact.html" class="mobile-link">Contact</a>
+        <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
+        <a href="contact.html" class="mobile-cta">Get a Quote →</a>
+
+        <div class="mobile-theme-row" role="group" aria-label="Color theme">
+            <button class="mobile-theme-option" data-mode="system" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>System</span>
+            </button>
+            <button class="mobile-theme-option" data-mode="dark" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+                <span>Dark</span>
+            </button>
+        </div>
+
+        <span class="close-hint">Tap to close</span>
+    </div>
+
+    <div class="relative overflow-x-hidden">
+
+        <!-- HERO — 3D robot as full background -->
+        <section class="relative min-h-screen pt-36 lg:pt-40 pb-20 overflow-hidden">
+            <div class="stars-layer" id="starsLayer"></div>
+            <div class="hero-bg-orb orb-1"></div>
+            <div class="hero-bg-orb orb-2"></div>
+            <div class="hero-bg-orb orb-3"></div>
+
+            <!-- FULL-BLEED 3D MODEL — as background, no border -->
+            <div class="spline-bg-layer">
+                <spline-viewer
+                    id="main-spline"
+                    url="https://prod.spline.design/ggmNClZuXHEW7T6I/scene.splinecode"
+                    environment="none">
+                </spline-viewer>
+            </div>
+
+            <!-- Hero text content on top -->
+            <div class="hero-content-layer">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-14 lg:gap-12">
+                    <div class="flex-1 lg:max-w-xl animate-fade-up">
+                        <div class="section-label">AWS Advanced Partner</div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.12] mb-6">
+                            <span x-text="displayedText"></span>
+                            <span x-show="!typewriterDone" class="inline-block w-[3px] h-[1.1em] bg-seesec-green align-middle ml-1 animate-blink"></span>
+                        </h1>
+
+                        <p class="text-lg leading-relaxed mb-8 max-w-lg" style="color: var(--text-secondary); font-weight: 300;">
+                            We help organizations unlock sustainable growth through cloud excellence, AI-driven insights, and cutting-edge communication tools — making technology simple, smart, and secure.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 mb-10">
+                            <div class="flex items-center gap-2"><span class="text-seesec-green text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: var(--text-secondary);">70% cloud cost reduction</span></div>
+                            <div class="flex items-center gap-2"><span class="text-seesec-green text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: var(--text-secondary);">99.9% enterprise compliance</span></div>
+                            <div class="flex items-center gap-2"><span class="text-seesec-green text-xl font-bold">✓</span><span class="text-sm font-medium" style="color: var(--text-secondary);">24/7 intelligent support</span></div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#services-core" class="btn-primary">Explore Solutions</a>
+                            <a href="#contact" class="btn-outline">Talk to Experts</a>
+                        </div>
+                    </div>
+                    <!-- right column intentionally empty — model is now the background -->
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="py-14 border-t border-b border-theme reveal">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stat-3d reveal reveal-delay-1">
+                        <div class="stat-inner">
+                            <span class="stat-icon">⚡</span>
+                            <div class="stat-number stat-number" data-target="70">0%</div>
+                            <div class="stat-label">Cloud cost reduction</div>
+                        </div>
+                    </div>
+                    <div class="stat-3d reveal reveal-delay-2">
+                        <div class="stat-inner">
+                            <span class="stat-icon">🚀</span>
+                            <div class="stat-number stat-number" data-target="80">0%</div>
+                            <div class="stat-label">Faster response</div>
+                        </div>
+                    </div>
+                    <div class="stat-3d reveal reveal-delay-3">
+                        <div class="stat-inner">
+                            <span class="stat-icon">🔒</span>
+                            <div class="stat-number stat-number" data-target="99.9">0%</div>
+                            <div class="stat-label">Compliance rate</div>
+                        </div>
+                    </div>
+                    <div class="stat-3d reveal reveal-delay-4">
+                        <div class="stat-inner">
+                            <span class="stat-icon">🕐</span>
+                            <div class="stat-number stat-number" data-target="24">0</div>
+                            <div class="stat-label">Expert support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUSTED PARTNER -->
+        <section class="py-20 reveal">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="section-label centered">Why clients trust us</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-5">We become your <span style="color: var(--accent);">strategic partner</span>, not just a vendor</h2>
+                    <p class="text-lg" style="color: var(--text-secondary);">Long-term relationships built on transparency, measurable outcomes, and shared success.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-3d reveal reveal-delay-1" data-tilt>
+                        <span class="card-number">01</span>
+                        <div class="card-content">
+                            <div class="card-icon">🛡️</div>
+                            <h3>Enterprise-grade security</h3>
+                            <p>Zero-trust architecture, SOC2 alignment, and end-to-end encryption baked into every solution.</p>
+                            <span class="card-tag">🔐 Zero Trust</span>
+                        </div>
+                        <div class="card-glow-line"></div>
+                    </div>
+                    <div class="card-3d reveal reveal-delay-2" data-tilt>
+                        <span class="card-number">02</span>
+                        <div class="card-content">
+                            <div class="card-icon">👥</div>
+                            <h3>Dedicated success teams</h3>
+                            <p>Solution architects and customer success managers committed to your outcomes from day one.</p>
+                            <span class="card-tag">🤝 24/7 Support</span>
+                        </div>
+                        <div class="card-glow-line"></div>
+                    </div>
+                    <div class="card-3d reveal reveal-delay-3" data-tilt>
+                        <span class="card-number">03</span>
+                        <div class="card-content">
+                            <div class="card-icon">📊</div>
+                            <h3>Outcome-based roadmaps</h3>
+                            <p>Technology investments aligned directly with your business KPIs and growth targets.</p>
+                            <span class="card-tag">🎯 KPI Driven</span>
+                        </div>
+                        <div class="card-glow-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE PRINCIPLES -->
+        <section class="py-20 border-t border-theme reveal">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our core principles</h2>
+                    <p class="text-lg" style="color: var(--text-secondary);">Guided by values that put your success first — simplicity, security, and intelligent innovation.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="principle-3d reveal reveal-delay-1" onclick="this.classList.toggle('flipped')">
+                        <div class="principle-inner">
+                            <div class="principle-front">
+                                <span class="principle-icon">🎯</span>
+                                <h3>Simplicity</h3>
+                                <p>Technology should simplify operations, not introduce complexity.</p>
+                                <span class="flip-hint">↻ Click to flip</span>
+                            </div>
+                            <div class="principle-back">
+                                <h3>✨ Simplicity First</h3>
+                                <p>We reduce friction relentlessly, making every interaction intuitive and every system elegant. Complexity is the enemy — we eliminate it.</p>
+                                <span class="flip-hint" style="position:relative; bottom:0; right:0; margin-top:14px;">↻ Click to flip back</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="principle-3d reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
+                        <div class="principle-inner">
+                            <div class="principle-front">
+                                <span class="principle-icon">🌍</span>
+                                <h3>Social Good &amp; Ethics</h3>
+                                <p>Commitment to ethical AI, sustainable infrastructure, and empowering communities.</p>
+                                <span class="flip-hint">↻ Click to flip</span>
+                            </div>
+                            <div class="principle-back">
+                                <h3>🌱 Ethical Innovation</h3>
+                                <p>We build technology that serves humanity — transparent AI, green cloud infrastructure, and inclusive design that empowers communities globally.</p>
+                                <span class="flip-hint" style="position:relative; bottom:0; right:0; margin-top:14px;">↻ Click to flip back</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="principle-3d reveal reveal-delay-3" onclick="this.classList.toggle('flipped')">
+                        <div class="principle-inner">
+                            <div class="principle-front">
+                                <span class="principle-icon">🤝</span>
+                                <h3>Trusted Partner</h3>
+                                <p>We become integral partners in your success, driving sustained growth with transparency.</p>
+                                <span class="flip-hint">↻ Click to flip</span>
+                            </div>
+                            <div class="principle-back">
+                                <h3>🤝 Partnership First</h3>
+                                <p>We don't just deliver projects — we build lasting relationships. Your success is our success, measured by outcomes, not hours.</p>
+                                <span class="flip-hint" style="position:relative; bottom:0; right:0; margin-top:14px;">↻ Click to flip back</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM -->
+        <section id="team" class="py-20 border-t border-theme relative overflow-hidden reveal">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+                    <div class="lg:col-span-5 lg:sticky lg:top-28">
+                        <div class="section-label">Our People</div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-5">
+                            The Minds Moving <br /><span style="color: var(--accent);">SEESEC</span> Forward
+                        </h2>
+                        <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--text-secondary); font-weight: 300;">
+                            Expertise isn't a destination; it's a constant evolution. Our leadership bridges the gap between emerging AI potential and enterprise-grade reliability, crafting cloud-native futures.
+                        </p>
+                        <div class="w-16 h-1 rounded-full bg-gradient-to-r from-seesec-green to-seesec-cyan"></div>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <div class="p-2 sm:p-4 rounded-2xl border border-theme bg-black/5 dark:bg-white/5 backdrop-blur-md relative">
+                            <div class="flex gap-4 relative">
+
+                                <div class="hidden sm:block w-0.5 bg-white/10 relative rounded-full overflow-hidden">
+                                    <div class="vertical-rail-indicator absolute w-full bg-seesec-green rounded-full shadow-[0_0_20px_rgba(67,238,147,0.4)] transition-all duration-500 ease-out" id="rail-indicator" style="height: 80px; top: 0;"></div>
+                                </div>
+
+                                <div class="flex-1 flex flex-col gap-3" id="kinetic-stack">
+
+                                    <div class="kinetic-panel group border border-theme hover:border-seesec-green/40 p-4 sm:p-5 flex items-center cursor-pointer rounded-xl relative transition-all duration-500 ease-out" data-active="true" data-id="0" role="button" tabindex="0">
+                                        <div class="panel-inner flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 sm:gap-6">
+                                            <span class="text-sm font-semibold text-white/40 group-hover:text-seesec-green transition-colors hidden sm:block">01</span>
+                                            <div class="panel-image-wrap overflow-hidden shrink-0">
+                                                <img alt="Dinesh Singh" class="w-full h-full object-cover object-top" src="team/Dinesh Singh.png" loading="lazy" />
+                                            </div>
+                                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between overflow-hidden w-full">
+                                                <div class="flex flex-col gap-1 pr-2">
+                                                    <h3 class="text-lg sm:text-xl font-bold transition-all">Dinesh Singh</h3>
+                                                    <span class="text-xs font-semibold tracking-wider text-seesec-green">FOUNDER &amp; CEO</span>
+                                                    <div class="active-bio flex flex-col mt-3 gap-3">
+                                                        <p class="text-xs sm:text-sm leading-relaxed max-w-lg" style="color: var(--text-secondary);">
+                                                            Leading SEESEC's vision to redefine digital infrastructure through human-centric AI and cloud engineering. 20+ years of pioneering tech strategy.
+                                                        </p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Strategic Vision</span>
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Global Scale</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-2 mt-3 sm:mt-0 shrink-0">
+                                                    <span class="material-symbols-outlined text-seesec-green text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="kinetic-panel group border border-theme hover:border-seesec-green/40 p-4 sm:p-5 flex items-center cursor-pointer rounded-xl relative transition-all duration-500 ease-out" data-active="false" data-id="1" role="button" tabindex="0">
+                                        <div class="panel-inner flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 sm:gap-6">
+                                            <span class="text-sm font-semibold text-white/40 group-hover:text-seesec-green transition-colors hidden sm:block">02</span>
+                                            <div class="panel-image-wrap overflow-hidden shrink-0">
+                                                <img alt="Eshita Singh" class="w-full h-full object-cover object-top" src="team/Eshita Singh.png" loading="lazy" />
+                                            </div>
+                                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between overflow-hidden w-full">
+                                                <div class="flex flex-col gap-1 pr-2">
+                                                    <h3 class="text-lg sm:text-xl font-bold transition-all">Eshita Singh</h3>
+                                                    <span class="text-xs font-semibold tracking-wider text-seesec-green">DIRECTOR &amp; CPO</span>
+                                                    <div class="active-bio flex flex-col mt-3 gap-3">
+                                                        <p class="text-xs sm:text-sm leading-relaxed max-w-lg" style="color: var(--text-secondary);">
+                                                            Orchestrating product ecosystems that balance technical complexity with intuitive user experiences. Focused on sustainable digital growth.
+                                                        </p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Product Strategy</span>
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">UX Design</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-2 mt-3 sm:mt-0 shrink-0">
+                                                    <span class="material-symbols-outlined text-seesec-green text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="kinetic-panel group border border-theme hover:border-seesec-green/40 p-4 sm:p-5 flex items-center cursor-pointer rounded-xl relative transition-all duration-500 ease-out" data-active="false" data-id="2" role="button" tabindex="0">
+                                        <div class="panel-inner flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 sm:gap-6">
+                                            <span class="text-sm font-semibold text-white/40 group-hover:text-seesec-green transition-colors hidden sm:block">03</span>
+                                            <div class="panel-image-wrap overflow-hidden shrink-0">
+                                                <img alt="Shrey Agarwal" class="w-full h-full object-cover object-top" src="team/Shrey Agarwal.png" loading="lazy" />
+                                            </div>
+                                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between overflow-hidden w-full">
+                                                <div class="flex flex-col gap-1 pr-2">
+                                                    <h3 class="text-lg sm:text-xl font-bold transition-all">Shrey Agarwal</h3>
+                                                    <span class="text-xs font-semibold tracking-wider text-seesec-green">CO-FOUNDER &amp; CTO</span>
+                                                    <div class="active-bio flex flex-col mt-3 gap-3">
+                                                        <p class="text-xs sm:text-sm leading-relaxed max-w-lg" style="color: var(--text-secondary);">
+                                                            The architect behind our high-availability cloud solutions. Expert in distributed systems and next-gen cybersecurity frameworks.
+                                                        </p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">System Architecture</span>
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Security</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-2 mt-3 sm:mt-0 shrink-0">
+                                                    <span class="material-symbols-outlined text-seesec-green text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="kinetic-panel group border border-theme hover:border-seesec-green/40 p-4 sm:p-5 flex items-center cursor-pointer rounded-xl relative transition-all duration-500 ease-out" data-active="false" data-id="3" role="button" tabindex="0">
+                                        <div class="panel-inner flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 sm:gap-6">
+                                            <span class="text-sm font-semibold text-white/40 group-hover:text-seesec-green transition-colors hidden sm:block">04</span>
+                                            <div class="panel-image-wrap overflow-hidden shrink-0">
+                                                <img alt="Shubh Sharma" class="w-full h-full object-cover object-top" src="team/Shubh Sharma.png" loading="lazy" />
+                                            </div>
+                                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between overflow-hidden w-full">
+                                                <div class="flex flex-col gap-1 pr-2">
+                                                    <h3 class="text-lg sm:text-xl font-bold transition-all">Shubh Sharma</h3>
+                                                    <span class="text-xs font-semibold tracking-wider text-seesec-green">CHIEF MARKETING OFFICER</span>
+                                                    <div class="active-bio flex flex-col mt-3 gap-3">
+                                                        <p class="text-xs sm:text-sm leading-relaxed max-w-lg" style="color: var(--text-secondary);">
+                                                            Crafting the narrative of the future. Shubh translates complex technical innovations into compelling brand stories that resonate globally.
+                                                        </p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Brand Narrative</span>
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Growth</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-2 mt-3 sm:mt-0 shrink-0">
+                                                    <span class="material-symbols-outlined text-seesec-green text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="kinetic-panel group border border-theme hover:border-seesec-green/40 p-4 sm:p-5 flex items-center cursor-pointer rounded-xl relative transition-all duration-500 ease-out" data-active="false" data-id="4" role="button" tabindex="0">
+                                        <div class="panel-inner flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 sm:gap-6">
+                                            <span class="text-sm font-semibold text-white/40 group-hover:text-seesec-green transition-colors hidden sm:block">05</span>
+                                            <div class="panel-image-wrap overflow-hidden shrink-0">
+                                                <img alt="Karan Chhabra" class="w-full h-full object-cover object-top" src="team/karan chhabra.png" loading="lazy" />
+                                            </div>
+                                            <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between overflow-hidden w-full">
+                                                <div class="flex flex-col gap-1 pr-2">
+                                                    <h3 class="text-lg sm:text-xl font-bold transition-all">Karan Chhabra</h3>
+                                                    <span class="text-xs font-semibold tracking-wider text-seesec-green">HEAD OF AI RESEARCH</span>
+                                                    <div class="active-bio flex flex-col mt-3 gap-3">
+                                                        <p class="text-xs sm:text-sm leading-relaxed max-w-lg" style="color: var(--text-secondary);">
+                                                            Pushing the boundaries of generative AI and machine learning. Karan leads our R&amp;D lab in developing ethical, scalable AI solutions.
+                                                        </p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">AI Research</span>
+                                                            <span class="px-2.5 py-1 bg-seesec-green/10 text-seesec-green text-[11px] rounded-full font-medium">Innovation</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-2 mt-3 sm:mt-0 shrink-0">
+                                                    <span class="material-symbols-outlined text-seesec-green text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE SELECTOR -->
+        <section class="py-16 border-t border-theme" id="services-core">
+            <div class="max-w-2xl mx-auto px-6 text-center">
+                <h3 class="text-2xl font-bold mb-2">What sort of service?</h3>
+                <p class="mb-8 text-sm" style="color: var(--text-secondary);">Select all that apply — our experts will tailor a response</p>
+
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <template x-for="service in servicesList" :key="service">
+                        <button @click="toggleService(service)" class="service-chip" :class="selectedServices.includes(service) ? 'active' : ''">
+                            <span x-text="service"></span>
+                            <span x-show="selectedServices.includes(service)" x-transition class="ml-1">✓</span>
+                        </button>
+                    </template>
+                </div>
+
+                <div class="min-h-[80px]">
+                    <div x-show="selectedServices.length === 0" class="italic text-sm" style="color: var(--text-faint);">
+                        Please click to select services above.
+                    </div>
+                    <div x-show="selectedServices.length > 0" x-transition class="bg-seesec-green/10 backdrop-blur-sm rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 border border-seesec-green/30">
+                        <span class="text-sm font-medium">Ready to inquire about: <span class="text-seesec-green font-semibold" x-text="selectedServices.join(', ')"></span></span>
+                        <a href="#contact" class="flex items-center gap-1.5 text-seesec-green font-bold uppercase text-xs tracking-wider group hover:text-seesec-cyan transition">
+                            Let's Go
+                            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BANNER -->
+        <section class="py-20" id="contact">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="cta-banner rounded-2xl p-10 md:p-14 text-center reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-3">Ready to transform your business?</h3>
+                    <p class="mb-7 max-w-lg mx-auto" style="color: var(--text-secondary);">Let's discuss how SEESEC can help you achieve cloud excellence, AI-driven growth, and intelligent automation.</p>
+                    <a href="#" class="btn-primary">Talk to an expert →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                        <span>SEE<span>SEC</span></span>
+                    </a>
+                    <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
+                    <p style="margin-top:12px; font-size:0.7rem; color:var(--text-faint);">
+                        <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed var(--line);">
+                            <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="aws-managed.html">AWS Managed</a></li>
+                        <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
+                        <li><a href="cloud-security.html">Cloud Security</a></li>
+                        <li><a href="gen-ai.html">Gen AI</a></li>
+                        <li><a href="data-analytics.html">Data Analytics</a></li>
+                        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="chat-a-lot.html">Chat-A-Lot</a></li>
+                        <li><a href="talk-track.html">Talk Track</a></li>
+                        <li><a href="sms-sense.html">SMS Sense</a></li>
+                        <li><a href="interactive-email.html">Interactive Email</a></li>
+                        <li><a href="email-archival.html">Email Archival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="newsletter-block">
+                <div class="nl-text">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for day to day cloud updates!</p>
+                    <a href="mailto:contactus@seesec.io" class="nl-email">
+                        <i class="fas fa-envelope"></i> contactus@seesec.io
+                    </a>
+                </div>
+                <div class="nl-actions">
+                    <a href="mailto:contactus@seesec.io?subject=Newsletter%20Signup" class="nl-signup-btn">
+                        Sign Up →
+                    </a>
+                    <a href="#" class="nl-privacy">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-follow">
+                <span class="footer-follow-label">Follow Us</span>
+                <div class="footer-follow-socials">
+                    <a href="mailto:contactus@seesec.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/company/seesec" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/seesec" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@seesec" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 SEESEC Infotech. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <div class="fixed bottom-6 right-6 z-30">
+            <button @click="alert('💬 SEESEC AI assistant — ready to help with cloud excellence, GenAI, data analytics, and communication automation.')" class="assistant-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                SeesecAI
+                <span class="pulse-dot"></span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function removeSplineWatermark() {
+            const splineViewer = document.getElementById('main-spline');
+            if (splineViewer && splineViewer.shadowRoot) {
+                const logo = splineViewer.shadowRoot.querySelector('#logo') ||
+                    splineViewer.shadowRoot.querySelector('a[href*="spline.design"]');
+                if (logo) {
+                    logo.style.display = 'none';
+                    logo.style.opacity = '0';
+                    logo.style.visibility = 'hidden';
+                    logo.remove();
+                }
+                const canvas = splineViewer.shadowRoot.querySelector('canvas');
+                if (canvas) { canvas.style.background = 'transparent !important'; }
+            }
         }
-      }
-    }
-  </script>
+        const splineInterval = setInterval(removeSplineWatermark, 100);
+        setTimeout(() => clearInterval(splineInterval), 10000);
+
+        /* ─────────────────────────────────────────────
+           THEME TOGGLE — ported from index.html
+           Maps 'system' → purple theme, 'dark' → midnight theme
+           ───────────────────────────────────────────── */
+        (function() {
+            const root = document.documentElement;
+            const btn = document.getElementById('themeToggle');
+            const mobileOptions = document.querySelectorAll('.mobile-theme-option');
+            const order = ['system', 'dark'];
+            const labels = { system: 'System', dark: 'Dark' };
+            const media = window.matchMedia('(prefers-color-scheme: light)');
+
+            function effectiveTheme(pref) {
+                if (pref === 'system') return 'purple';
+                if (pref === 'dark') return 'midnight';
+                return 'purple';
+            }
+
+            function applyTheme(pref, persist) {
+                const effective = effectiveTheme(pref);
+                root.setAttribute('data-theme', effective);
+                root.setAttribute('data-theme-pref', pref);
+                if (btn) {
+                    btn.setAttribute('data-mode', pref);
+                    btn.setAttribute('title', 'Theme: ' + labels[pref]);
+                    btn.setAttribute('aria-label', 'Color theme, currently ' + labels[pref] + '. Click to change.');
+                }
+                mobileOptions.forEach(opt => {
+                    opt.classList.toggle('active', opt.dataset.mode === pref);
+                });
+                if (persist) {
+                    try { localStorage.setItem('seesec-theme', pref); } catch (e) {}
+                }
+            }
+
+            let currentPref = root.getAttribute('data-theme-pref') || 'system';
+            applyTheme(currentPref, false);
+
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const idx = order.indexOf(currentPref);
+                    currentPref = order[(idx + 1) % order.length];
+                    applyTheme(currentPref, true);
+                });
+            }
+
+            mobileOptions.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    currentPref = opt.dataset.mode;
+                    applyTheme(currentPref, true);
+                });
+            });
+
+            media.addEventListener('change', () => {
+                if (currentPref === 'system') {
+                    applyTheme('system', false);
+                }
+            });
+        })();
+
+        /* ─────────────────────────────────────────────
+           HAMBURGER + MOBILE MENU
+           ───────────────────────────────────────────── */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-accordion-trigger), .mobile-sublink');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) toggleMenu();
+        });
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        /* ─────────────────────────────────────────────
+           MOBILE ACCORDION (Services / Solutions)
+           ───────────────────────────────────────────── */
+        document.querySelectorAll('.mobile-accordion').forEach(acc => {
+            const trigger = acc.querySelector('.mobile-accordion-trigger');
+            trigger.addEventListener('click', () => {
+                const isOpen = acc.classList.contains('open');
+                document.querySelectorAll('.mobile-accordion.open').forEach(other => {
+                    if (other !== acc) {
+                        other.classList.remove('open');
+                        other.querySelector('.mobile-accordion-trigger').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                acc.classList.toggle('open', !isOpen);
+                trigger.setAttribute('aria-expanded', String(!isOpen));
+            });
+        });
+
+        /* ─────────────────────────────────────────────
+           NAV SCROLL HIDE/SHOW + PROGRESS BAR
+           ───────────────────────────────────────────── */
+        const navEl = document.getElementById('nav');
+        const pb = document.getElementById('progressBar');
+        let lastScroll = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (currentScroll > lastScroll && currentScroll > 100) {
+                        navEl.classList.add('nav-hidden');
+                    } else {
+                        navEl.classList.remove('nav-hidden');
+                    }
+                    lastScroll = currentScroll;
+
+                    const total = document.body.scrollHeight - window.innerHeight;
+                    if (total > 0) pb.style.width = (currentScroll / total * 100) + '%';
+
+                    if (currentScroll > 40) navEl.classList.add('scrolled');
+                    else navEl.classList.remove('scrolled');
+
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        /* ─────────────────────────────────────────────
+           SMOOTH ANCHOR SCROLL
+           ───────────────────────────────────────────── */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    const navHeight = navEl.offsetHeight;
+                    const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* ─────────────────────────────────────────────
+           KEYBOARD: Escape closes mobile menu
+           ───────────────────────────────────────────── */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+
+        /* ─────────────────────────────────────────────
+           TEAM ACCORDION (auto-rotate)
+           ───────────────────────────────────────────── */
+        let currentIndex = 0;
+        let isPaused = false;
+        const totalPanels = 5;
+        const autoInterval = 5000;
+        const stack = document.getElementById('kinetic-stack');
+        const rail = document.getElementById('rail-indicator');
+
+        function activatePanel(index) {
+            currentIndex = index;
+            const panels = document.querySelectorAll('.kinetic-panel');
+            panels.forEach((panel, i) => { panel.setAttribute('data-active', i === index); });
+            const activePanel = panels[index];
+            if (rail && activePanel && stack) {
+                const offsetTop = activePanel.offsetTop - stack.offsetTop;
+                rail.style.top = offsetTop + 'px';
+                rail.style.height = activePanel.offsetHeight + 'px';
+            }
+        }
+
+        function rotate() {
+            if (!isPaused) {
+                currentIndex = (currentIndex + 1) % totalPanels;
+                activatePanel(currentIndex);
+            }
+        }
+
+        let interval = setInterval(rotate, autoInterval);
+        if (stack) {
+            stack.addEventListener('mouseenter', () => isPaused = true);
+            stack.addEventListener('mouseleave', () => isPaused = false);
+        }
+        document.querySelectorAll('.kinetic-panel').forEach((panel, idx) => {
+            panel.addEventListener('click', () => {
+                activatePanel(idx);
+                clearInterval(interval);
+                interval = setInterval(rotate, autoInterval);
+            });
+        });
+        window.addEventListener('load', () => activatePanel(0));
+        window.addEventListener('resize', () => activatePanel(currentIndex));
+
+        /* ─────────────────────────────────────────────
+           REVEAL ON SCROLL
+           ───────────────────────────────────────────── */
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* ─────────────────────────────────────────────
+           STAT COUNTERS
+           ───────────────────────────────────────────── */
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    if (!el.dataset.counted) {
+                        el.dataset.counted = 'true';
+                        const target = parseFloat(el.dataset.target);
+                        const isPercent = el.textContent.includes('%');
+                        const duration = 1800;
+                        const stepTime = 16;
+                        const steps = duration / stepTime;
+                        const increment = target / steps;
+                        let count = 0;
+                        const timer = setInterval(() => {
+                            count++;
+                            let val = Math.min(count * increment, target);
+                            if (isPercent) el.textContent = Math.round(val) + '%';
+                            else el.textContent = Math.round(val);
+                            if (count >= steps) {
+                                clearInterval(timer);
+                                if (isPercent) el.textContent = target + '%';
+                                else el.textContent = target;
+                            }
+                        }, stepTime);
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        statNumbers.forEach(el => statObserver.observe(el));
+
+        /* ─────────────────────────────────────────────
+           MOUSE GLOW
+           ───────────────────────────────────────────── */
+        const mouseGlow = document.getElementById('mouseGlow');
+        let glowTimeout;
+        document.addEventListener('mousemove', (e) => {
+            mouseGlow.style.left = e.clientX + 'px';
+            mouseGlow.style.top = e.clientY + 'px';
+            mouseGlow.classList.add('active');
+            clearTimeout(glowTimeout);
+            glowTimeout = setTimeout(() => { mouseGlow.classList.remove('active'); }, 120);
+        });
+
+        /* ─────────────────────────────────────────────
+           PARTICLES
+           ───────────────────────────────────────────── */
+        const particleContainer = document.getElementById('particleContainer');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = 2 + Math.random() * 5;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDuration = (5 + Math.random() * 7) + 's';
+            p.style.animationDelay = (Math.random() * 10) + 's';
+            p.style.opacity = 0.1 + Math.random() * 0.25;
+            particleContainer.appendChild(p);
+        }
+
+        /* ─────────────────────────────────────────────
+           3D TILT ON CARDS
+           ───────────────────────────────────────────── */
+        document.querySelectorAll('.card-3d[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                const rotateY = x * 6;
+                const rotateX = -y * 6;
+                card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-6px)`;
+                card.style.setProperty('--mouse-x', (x * 50 + 50) + '%');
+                card.style.setProperty('--mouse-y', (y * 50 + 50) + '%');
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+
+        /* ─────────────────────────────────────────────
+           SPLINE WATERMARK / TRANSPARENCY CLEANUP
+           ───────────────────────────────────────────── */
+        const forceTransparent = setInterval(() => {
+            const viewer = document.getElementById('main-spline');
+            if (viewer && viewer.shadowRoot) {
+                const canvas = viewer.shadowRoot.querySelector('canvas');
+                if (canvas) {
+                    canvas.style.background = 'transparent !important';
+                    canvas.style.backgroundColor = 'transparent !important';
+                    canvas.style.border = 'none !important';
+                    canvas.style.outline = 'none !important';
+                }
+                const bgDivs = viewer.shadowRoot.querySelectorAll('[style*="background"]');
+                bgDivs.forEach(el => {
+                    if (el.tagName !== 'CANVAS') {
+                        el.style.background = 'transparent !important';
+                        el.style.backgroundColor = 'transparent !important';
+                    }
+                });
+            }
+        }, 200);
+        setTimeout(() => clearInterval(forceTransparent), 8000);
+
+        /* ─────────────────────────────────────────────
+           STARS
+           ───────────────────────────────────────────── */
+        (function() {
+            const layer = document.getElementById('starsLayer');
+            if (!layer) return;
+            const frag = document.createDocumentFragment();
+            for (let i = 0; i < 160; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                const size = Math.random() * 2.5 + 0.5;
+                star.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*8}s;--op:${0.4+Math.random()*0.6};`;
+                frag.appendChild(star);
+            }
+            layer.appendChild(frag);
+        })();
+
+        /* ─────────────────────────────────────────────
+           ALPINE.JS APP (services + typewriter only — theme removed)
+           ───────────────────────────────────────────── */
+        function seesecApp() {
+            return {
+                servicesList: ["Cloud Excellence", "Data Analytics", "GenAI Services", "Communication Suite"],
+                selectedServices: [],
+                fullText: "Trusted partner in\ndigital transformation.",
+                displayedText: "",
+                typewriterDone: false,
+                typewriterSpeed: 35,
+
+                init() {
+                    setTimeout(() => {
+                        let i = 0;
+                        const interval = setInterval(() => {
+                            if (i < this.fullText.length) {
+                                i++;
+                                this.displayedText = this.fullText.slice(0, i);
+                            } else {
+                                this.typewriterDone = true;
+                                clearInterval(interval);
+                            }
+                        }, this.typewriterSpeed);
+                    }, 300);
+                },
+
+                toggleService(service) {
+                    if (this.selectedServices.includes(service)) {
+                        this.selectedServices = this.selectedServices.filter(s => s !== service);
+                    } else {
+                        this.selectedServices.push(service);
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
