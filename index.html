@@ -3193,27 +3193,50 @@
 
         /* ── CLIENTS ── */
         #clients {
-            padding: 48px 48px;
+            position: relative;
+            padding: 88px 48px;
             background: var(--bg-0);
+            overflow: hidden;
             content-visibility: auto;
-            contain-intrinsic-size: 260px;
+            contain-intrinsic-size: 640px;
         }
         .clients-inner {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         .clients-head {
             text-align: center;
-            margin-bottom: 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
+            max-width: 760px;
+            margin: 0 auto 56px;
+        }
+        .clients-head h2 {
+            font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: var(--page-text);
+            margin-bottom: 14px;
+        }
+        .clients-head h2 em {
+            font-style: normal;
             color: var(--accent);
-            opacity: 0.6;
+        }
+        .clients-sub {
+            font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+            line-height: 1.6;
+            color: var(--page-text-soft);
+        }
+        .clients-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
         .clients-track-wrap {
             overflow: hidden;
             position: relative;
+            padding: 12px 0;
         }
         .clients-track-wrap::before,
         .clients-track-wrap::after {
@@ -3221,7 +3244,8 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 60px;
+            width: 14%;
+            max-width: 180px;
             z-index: 2;
             pointer-events: none;
         }
@@ -3235,83 +3259,64 @@
         }
         .clients-track {
             display: flex;
-            gap: 24px;
             align-items: center;
-            animation: ticker 32s linear infinite;
-            will-change: transform;
             width: max-content;
-            padding: 10px 0;
+            will-change: transform;
         }
-        .clients-track:hover {
+        .clients-track.marquee-rtl {
+            animation: clientsMarqueeRTL 42s linear infinite;
+        }
+        .clients-track.marquee-ltr {
+            animation: clientsMarqueeLTR 42s linear infinite;
+        }
+        .clients-track-wrap:hover .clients-track {
             animation-play-state: paused;
         }
-        @keyframes ticker {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50%);
+        @keyframes clientsMarqueeRTL {
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(-50%, 0, 0); }
+        }
+        @keyframes clientsMarqueeLTR {
+            from { transform: translate3d(-50%, 0, 0); }
+            to   { transform: translate3d(0, 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .clients-track.marquee-rtl,
+            .clients-track.marquee-ltr {
+                animation: none;
             }
         }
 
         .client-logo-item {
-            width: 150px;
-            height: 76px;
+            flex: 0 0 auto;
+            width: 176px;
+            height: 88px;
+            margin-right: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            padding: 12px 16px;
-            background: transparent;
-            border: 1px solid transparent;
+            padding: 12px 18px;
+            background: #ffffff;
+            border: 1px solid rgba(var(--fg-rgb), 0.10);
             border-radius: 14px;
-            transition: transform 0.35s ease,
-                border-color 0.35s ease,
-                background 0.35s ease,
-                box-shadow 0.35s ease;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
         }
         .client-logo-item:hover {
-            transform: translateY(-4px);
-            background: rgba(var(--fg-rgb), 0.025);
-            border-color: rgba(67, 238, 147, 0.2);
-            box-shadow: 0 10px 28px rgba(67, 238, 147, 0.08);
+            transform: translateY(-4px) scale(1.08);
+            border-color: rgba(67, 238, 147, 0.35);
+            box-shadow: 0 14px 34px rgba(67, 238, 147, 0.18);
+            z-index: 3;
         }
         .client-logo-item img {
             max-width: 100%;
-            max-height: 46px;
+            max-height: 56px;
             width: auto;
             height: auto;
             display: block;
             object-fit: contain;
-            mix-blend-mode: screen;
-            filter: brightness(0.95) saturate(0.85) contrast(1.05);
-            opacity: 0.85;
-            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
-        }
-        .client-logo-item:hover img {
-            filter: brightness(1.2) saturate(1.05) contrast(1.1);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        .client-logo-item .fallback-text {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: rgba(var(--fg-rgb), 0.4);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-        .client-logo-item:hover .fallback-text {
-            color: var(--accent);
-            text-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
-        }
-        .client-dot {
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: rgba(var(--fg-rgb), 0.06);
-            flex-shrink: 0;
         }
 
         /* ===== TEAM SECTION ===== */
@@ -4623,20 +4628,29 @@
             .float-cta::after {
                 display: none;
             }
+
+            /* clients — updated to match loading.html */
             .client-logo-item {
-                min-width: 80px;
-                height: 44px;
-                padding: 4px 8px;
+                width: 132px;
+                height: 68px;
+                padding: 8px 12px;
+                margin-right: 32px;
+                border-radius: 12px;
             }
             .client-logo-item img {
-                max-height: 32px;
+                max-height: 42px;
             }
-            .clients-track {
+            #clients {
+                padding-top: 56px;
+                padding-bottom: 56px;
+            }
+            .clients-head {
+                margin-bottom: 36px;
+            }
+            .clients-rows {
                 gap: 24px;
             }
-            .client-dot {
-                display: none;
-            }
+
             .hero-static-headline {
                 white-space: nowrap;
             }
@@ -5100,27 +5114,27 @@
                 border-radius: 30px;
             }
 
+            /* clients — updated to match loading.html */
             .clients-head {
-                font-size: 0.8rem;
-                margin-bottom: 24px;
+                margin-bottom: 28px;
+            }
+            .clients-rows {
+                gap: 18px;
             }
             .client-logo-item {
-                min-width: 60px;
-                height: 36px;
-                padding: 2px 6px;
+                width: 104px;
+                height: 54px;
+                padding: 6px 10px;
+                margin-right: 22px;
+                border-radius: 10px;
             }
             .client-logo-item img {
-                max-height: 24px;
-            }
-            .clients-track {
-                gap: 16px;
+                max-height: 32px;
             }
             .clients-track-wrap::before,
             .clients-track-wrap::after {
-                width: 24px;
-            }
-            .client-dot {
-                display: none;
+                width: 10%;
+                max-width: 48px;
             }
 
             .btn-primary {
@@ -6176,18 +6190,58 @@
     <!-- ===== CLIENTS ===== -->
     <section id="clients">
         <div class="clients-inner">
-            <div class="clients-head reveal">Trusted by forward-thinking companies</div>
-            <div class="clients-track-wrap">
-                <div class="clients-track" id="clientsTrack">
-                    <div class="client-logo-item"><img src="company/comp (1).png" alt="Advit" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (5).png" alt="MOBMISTRI" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (6).png" alt="True Tomato" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (7).png" alt="UMRAO" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (9).png" alt="Prayas Finance" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (3).png" alt="Dpanda" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (4).png" alt="Kredmint" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (2).png" alt="Digitoppers" loading="lazy" /></div><span class="client-dot"></span>
-                    <div class="client-logo-item"><img src="company/comp (10).png" alt="Value Services" loading="lazy" /></div>
+            <div class="clients-head reveal">
+                <h2>Trusted by <em>Forward-Thinking</em> Companies</h2>
+                <p class="clients-sub">Powering businesses across industries with secure cloud, AI, cybersecurity, and digital transformation.</p>
+            </div>
+            <div class="clients-rows">
+                <!-- Row 1: right to left -->
+                <div class="clients-track-wrap reveal">
+                    <div class="clients-track marquee-rtl">
+                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="Advit" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="MOBMISTRI" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="True Tomato" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="UMRAO" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="Prayas Finance" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="Dpanda" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="Kredmint" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="Digitoppers" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="Value Services" loading="lazy" /></div>
+                        <!-- duplicate set for the seamless loop -->
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item" aria-hidden="true"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
+                    </div>
+                </div>
+                <!-- Row 2: left to right -->
+                <div class="clients-track-wrap reveal">
+                    <div class="clients-track marquee-ltr" aria-hidden="true">
+                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
+                        <!-- duplicate set for the seamless loop -->
+                        <div class="client-logo-item"><img src="company/comp (10).png" width="202" height="182" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (2).png" width="253" height="100" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (4).png" width="214" height="52" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (3).png" width="201" height="65" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (9).png" width="208" height="194" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (7).png" width="209" height="178" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (6).png" width="211" height="83" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (5).png" width="205" height="145" alt="" loading="lazy" /></div>
+                        <div class="client-logo-item"><img src="company/comp (1).png" width="246" height="111" alt="" loading="lazy" /></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -6297,7 +6351,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">04</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shubh Sharma.png" loading="lazy" />
+                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="Shubh Sharma.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6519,7 +6573,7 @@
                 <div class="footer-col">
                     <h5>Company</h5>
                     <ul>
-                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
