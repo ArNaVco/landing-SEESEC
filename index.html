@@ -200,6 +200,16 @@
             --nav-bg: rgba(15, 10, 45, 0.28);
             --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
             --loader-bg: #0a0820;
+
+            /* ── FOOTER TOKENS ── */
+            --bg-primary: var(--bg-0);
+            --text-primary: var(--page-text);
+            --text-secondary: var(--page-text-soft);
+            --text-muted: rgba(var(--fg-rgb), 0.4);
+            --text-faint: rgba(var(--fg-rgb), 0.22);
+            --surface-card: rgba(var(--fg-rgb), 0.04);
+            --border-card: rgba(var(--fg-rgb), 0.1);
+            --border-soft: rgba(var(--fg-rgb), 0.06);
         }
 
         /* ── MIDNIGHT THEME ── */
@@ -752,6 +762,102 @@
             transform: translateY(-2px);
         }
 
+        /* ===== NAV DROPDOWN (Services / Solutions) ===== */
+        .has-dropdown { position: relative; }
+        .dropdown-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: default;
+        }
+        .dropdown-caret {
+            width: 9px;
+            height: 9px;
+            flex-shrink: 0;
+            opacity: 0.55;
+            transition: transform 0.4s var(--transition-smooth), opacity 0.3s ease;
+        }
+        .has-dropdown:hover .dropdown-caret,
+        .has-dropdown:focus-within .dropdown-caret {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            min-width: 232px;
+            background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), 0.08);
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(-8px) scale(0.98);
+            transform-origin: top center;
+            transition: opacity 0.35s var(--transition-smooth),
+                        transform 0.35s var(--transition-smooth),
+                        visibility 0.35s;
+            z-index: 60;
+        }
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--nav-bg-scrolled);
+            border-left: 1px solid rgba(var(--fg-rgb), 0.08);
+            border-top: 1px solid rgba(var(--fg-rgb), 0.08);
+            transform: translateX(-50%) rotate(45deg);
+            border-radius: 2px 0 0 0;
+        }
+        .has-dropdown:hover .nav-dropdown,
+        .has-dropdown:focus-within .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .nav-dropdown a {
+            font-size: 0.74rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            font-weight: 500;
+            color: rgba(var(--fg-rgb), 0.6);
+            padding: 10px 14px;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+        }
+        .nav-dropdown a::after { content: none !important; }
+        .has-dropdown:hover .nav-dropdown a,
+        .has-dropdown:focus-within .nav-dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-dropdown a:nth-child(1) { transition-delay: 0.03s; }
+        .nav-dropdown a:nth-child(2) { transition-delay: 0.06s; }
+        .nav-dropdown a:nth-child(3) { transition-delay: 0.09s; }
+        .nav-dropdown a:nth-child(4) { transition-delay: 0.12s; }
+        .nav-dropdown a:nth-child(5) { transition-delay: 0.15s; }
+        .nav-dropdown a:nth-child(6) { transition-delay: 0.18s; }
+        .nav-dropdown a:hover {
+            background: rgba(67, 238, 147, 0.1);
+            color: var(--page-text);
+            transform: translateX(3px);
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -940,6 +1046,54 @@
             text-transform: uppercase;
             font-weight: 300;
         }
+        .mobile-menu {
+            overflow-y: auto;
+        }
+        .mobile-accordion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .mobile-accordion-trigger {
+            background: none;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mobile-accordion-caret {
+            width: 13px;
+            height: 13px;
+            opacity: 0.5;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        .mobile-accordion.open .mobile-accordion-caret {
+            transform: rotate(180deg);
+        }
+        .mobile-submenu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            max-height: 0;
+            overflow: hidden;
+            width: 100%;
+            transition: max-height 0.45s var(--transition-smooth), opacity 0.35s ease;
+            opacity: 0;
+        }
+        .mobile-accordion.open .mobile-submenu {
+            max-height: 420px;
+            opacity: 1;
+            margin-top: 6px;
+        }
+        .mobile-sublink {
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            color: rgba(var(--fg-rgb), 0.45) !important;
+            padding: 7px 0 !important;
+        }
+        .mobile-sublink:hover { color: #fff !important; }
 
         /* ── BUTTONS ── */
         .btn-filters {
@@ -3537,120 +3691,199 @@
 
         /* ── FOOTER ── */
         footer {
-            padding: 48px 48px 28px;
-            background: var(--bg-0);
             border-top: 1px solid var(--line);
-            content-visibility: auto;
-            contain-intrinsic-size: 340px;
+            padding: 56px 48px 28px;
+            background: var(--bg-primary);
+            backdrop-filter: blur(4px);
         }
         .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 36px;
-            border-bottom: 1px solid var(--line);
+            margin-bottom: 36px;
         }
         .footer-brand .nav-logo {
-            font-size: 1.4rem;
-            display: inline-flex;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: var(--page-text);
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
         }
-        .footer-brand .nav-logo img {
-            height: 30px;
-            width: auto;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-        .footer-brand .nav-logo .logo-text span {
-            color: var(--accent);
-        }
+        .footer-brand .nav-logo img { height: 38px; }
         .footer-brand p {
-            color: rgba(var(--fg-rgb), 0.35);
-            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            max-width: 380px;
             line-height: 1.7;
-            max-width: 300px;
         }
         .footer-col h5 {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--text-primary);
+            margin-bottom: 14px;
             font-weight: 600;
-            color: var(--page-text);
-            margin-bottom: 12px;
-            letter-spacing: 0.04em;
         }
         .footer-col ul {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
-        .footer-col a {
-            font-size: 0.78rem;
-            color: rgba(var(--fg-rgb), 0.35);
+        .footer-col ul a {
+            color: var(--text-secondary);
             text-decoration: none;
-            display: block;
-            padding: 3px 0;
-            position: relative;
-            transition: color 0.3s ease, transform 0.3s ease;
-            will-change: transform, color;
-        }
-        .footer-col a::before {
-            content: '▸';
-            color: var(--accent);
-            opacity: 0;
-            margin-right: 6px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.88rem;
+            transition: all 0.25s ease;
             display: inline-block;
-            transform: translateX(-8px);
         }
-        .footer-col a:hover::before {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .footer-col a:hover {
+        .footer-col ul a:hover {
             color: var(--accent);
             transform: translateX(4px);
         }
 
+        .newsletter-block {
+            max-width: 1280px;
+            margin: 0 auto 36px;
+            padding: 28px 32px;
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            background: var(--surface-card);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 28px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+        .newsletter-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            opacity: .7;
+        }
+        .nl-text h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .nl-text p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 10px;
+            max-width: 520px;
+        }
+        .nl-email {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nl-email:hover { color: var(--cyan); }
+        .nl-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .nl-signup-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform .25s, box-shadow .3s;
+            box-shadow: 0 6px 24px rgba(67,238,147,.25);
+        }
+        .nl-signup-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 36px rgba(67,238,147,.4);
+        }
+        .nl-privacy {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: .04em;
+            transition: color .3s;
+        }
+        .nl-privacy:hover { color: var(--accent); }
+
+        .footer-follow {
+            max-width: 1280px;
+            margin: 0 auto 28px;
+            padding: 20px 0;
+            border-top: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-follow-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .footer-follow-socials {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .footer-follow-socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+            background: var(--surface-card);
+        }
+        .footer-follow-socials a:hover {
+            color: var(--ink);
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 24px rgba(67,238,147,.3);
+        }
+
         .footer-bottom {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .footer-bottom p {
-            font-size: 0.7rem;
-            color: rgba(var(--fg-rgb), 0.2);
-        }
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-        }
-        .footer-socials a {
-            color: rgba(var(--fg-rgb), 0.2);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            will-change: transform, color;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        .footer-socials a:hover {
-            color: var(--accent);
-            transform: translateY(-3px) scale(1.1);
-            text-shadow: 0 0 20px rgba(67, 238, 147, 0.15);
-            background: rgba(67, 238, 147, 0.04);
+            font-size: 0.8rem;
+            color: var(--text-faint);
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         /* ── REVEAL ── */
@@ -4819,8 +5052,8 @@
             }
             .footer-inner {
                 grid-template-columns: 1fr;
-                gap: 20px;
-                padding-bottom: 24px;
+                gap: 24px;
+                margin-bottom: 24px;
             }
             .footer-brand .nav-logo img {
                 height: 24px;
@@ -4832,9 +5065,21 @@
                 font-size: 0.75rem;
                 margin-bottom: 6px;
             }
-            .footer-col a {
+            .footer-col ul a {
                 font-size: 0.7rem;
-                padding: 2px 0;
+            }
+            .newsletter-block {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 22px 20px;
+            }
+            .nl-actions {
+                align-items: flex-start;
+            }
+            .footer-follow {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
             }
             .footer-bottom {
                 flex-direction: column;
@@ -4844,10 +5089,6 @@
             }
             .footer-bottom p {
                 font-size: 0.6rem;
-            }
-            .footer-socials a {
-                font-size: 0.65rem;
-                padding: 2px 4px;
             }
 
             .float-cta {
@@ -5106,13 +5347,38 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#communication-automation">Solutions</a></li>
-            <li><a href="#content-creation">Content AI</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
+                    Services
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="aws-managed.html">AWS Managed Services</a>
+                    <a href="cloud-optimization.html">Cloud Optimization</a>
+                    <a href="cloud-security.html">Cloud Security</a>
+                    <a href="gen-ai.html">Gen AI</a>
+                    <a href="data-analytics.html">Data Analytics</a>
+                    <a href="cloud-compliance.html">Cloud Compliance</a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
+                    Solutions
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="chat-a-lot.html">Chat-A-Lot</a>
+                    <a href="talk-track.html">Talk Track</a>
+                    <a href="sms-sense.html">SMS Sense</a>
+                    <a href="interactive-email.html">Interactive Email</a>
+                    <a href="email-archival.html">Email Archival</a>
+                </div>
+            </li>
+            <li><a href="content-automation.html">Content AI</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#cta">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
         </ul>
 
@@ -5136,15 +5402,43 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#hero" class="mobile-link">Home</a>
-        <a href="#services" class="mobile-link">Services</a>
-        <a href="#communication-automation" class="mobile-link">Solutions</a>
-        <a href="#content-creation" class="mobile-link">Content AI</a>
-        <a href="#about" class="mobile-link">About Us</a>
+        <a href="index.html" class="mobile-link">Home</a>
+
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+                Services
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-submenu">
+                <a href="aws-managed.html" class="mobile-sublink">AWS Managed Services</a>
+                <a href="cloud-optimization.html" class="mobile-sublink">Cloud Optimization</a>
+                <a href="cloud-security.html" class="mobile-sublink">Cloud Security</a>
+                <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
+                <a href="data-analytics.html" class="mobile-sublink">Data Analytics</a>
+                <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
+            </div>
+        </div>
+
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+                Solutions
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-submenu">
+                <a href="chat-a-lot.html" class="mobile-sublink">Chat-A-Lot</a>
+                <a href="talk-track.html" class="mobile-sublink">Talk Track</a>
+                <a href="sms-sense.html" class="mobile-sublink">SMS Sense</a>
+                <a href="interactive-email.html" class="mobile-sublink">Interactive Email</a>
+                <a href="email-archival.html" class="mobile-sublink">Email Archival</a>
+            </div>
+        </div>
+
+        <a href="content-automation.html" class="mobile-link">Content AI</a>
+        <a href="aboutus.html" class="mobile-link">About Us</a>
         <a href="#faq" class="mobile-link">FAQ</a>
-        <a href="#cta" class="mobile-link">Contact</a>
+        <a href="contact.html" class="mobile-link">Contact</a>
         <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
-        <a href="#cta" class="mobile-cta">Get a Quote →</a>
+        <a href="contact.html" class="mobile-cta">Get a Quote →</a>
 
         <div class="mobile-theme-row" role="group" aria-label="Color theme">
             <button class="mobile-theme-option" data-mode="system" type="button">
@@ -5204,7 +5498,7 @@
                 <p class="section-label">About SEESEC</p>
                 <h2>Making Tech <em>Simple, Smart & Secure</em></h2>
                 <p>SEESEC is a technology solutions company focused on helping organizations simplify, optimize, and secure their technology ecosystems. As an AWS Advanced Tier Services Partner, we deliver solutions that bring efficiency, intelligence, and reliability to modern environments.</p>
-                <a href="https://seesec.io/about-us" target="_blank" class="about-link">
+                <a href="aboutus.html" target="_blank" class="about-link">
                     Discover our story <span class="link-arrow">→</span>
                 </a>
             </div>
@@ -5270,7 +5564,7 @@
                             <p>End-to-end AWS management with security-first architecture.</p>
                             <div class="svc-card-footer">
                                 <span class="svc-badge">AWS Advanced Partner</span>
-                                <a href="cloud-operations.html" class="svc-read-more">Read More <span class="rm-arrow">→</span></a>
+                                <a href="aws.html" class="svc-read-more">Read More <span class="rm-arrow">→</span></a>
                             </div>
                         </div>
                         <div class="svc-glass-card reveal">
@@ -6003,7 +6297,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">04</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shubh Sharma.png" loading="lazy" />
+                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="Shubh Sharma.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6187,38 +6481,81 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="#hero" class="nav-logo">
-                    <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
-                    <span class="logo-text">SEE<span>SEC</span></span>
-                </a>
-                <p>Helping organizations simplify, optimize, and secure their technology ecosystems.</p>
-                <p style="margin-top:12px; font-size:0.7rem; color:rgba(var(--fg-rgb),0.25);">
-                    <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed rgba(var(--fg-rgb),0.1);">
-                        <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
+                        <span>SEE<span>SEC</span></span>
                     </a>
-                </p>
+                    <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
+                    <p style="margin-top:12px; font-size:0.7rem; color:var(--text-faint);">
+                        <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed var(--line);">
+                            <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="aws-managed.html">AWS Managed</a></li>
+                        <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
+                        <li><a href="cloud-security.html">Cloud Security</a></li>
+                        <li><a href="gen-ai.html">Gen AI</a></li>
+                        <li><a href="data-analytics.html">Data Analytics</a></li>
+                        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="chat-a-lot.html">Chat-A-Lot</a></li>
+                        <li><a href="talk-track.html">Talk Track</a></li>
+                        <li><a href="sms-sense.html">SMS Sense</a></li>
+                        <li><a href="interactive-email.html">Interactive Email</a></li>
+                        <li><a href="email-archival.html">Email Archival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h5>Services</h5>
-                <ul><li><a href="aws-managed.html">AWS Managed</a></li><li><a href="cloud-optimization.html">Cloud Optimization</a></li><li><a href="cloud-security.html">Cloud Security</a></li><li><a href="gen-ai.html">Gen AI</a></li><li><a href="data-analytics.html">Data Analytics</a></li><li><a href="cloud-compliance.html">Cloud Compliance</a></li></ul>
+
+            <div class="newsletter-block">
+                <div class="nl-text">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for day to day cloud updates!</p>
+                    <a href="mailto:contactus@seesec.io" class="nl-email">
+                        <i class="fas fa-envelope"></i> contactus@seesec.io
+                    </a>
+                </div>
+                <div class="nl-actions">
+                    <a href="mailto:contactus@seesec.io?subject=Newsletter%20Signup" class="nl-signup-btn">
+                        Sign Up →
+                    </a>
+                    <a href="#" class="nl-privacy">Privacy Policy</a>
+                </div>
             </div>
-            <div class="footer-col">
-                <h5>Solutions</h5>
-                <ul><li><a href="chat-a-lot.html">Chat-A-Lot</a></li><li><a href="talk-track.html">Talk Track</a></li><li><a href="sms-sense.html">SMS Sense</a></li><li><a href="interactive-email.html">Interactive Email</a></li><li><a href="email-archival.html">Email Archival</a></li></ul>
+
+            <div class="footer-follow">
+                <span class="footer-follow-label">Follow Us</span>
+                <div class="footer-follow-socials">
+                    <a href="mailto:contactus@seesec.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/company/seesec" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/seesec" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@seesec" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-            <div class="footer-col">
-                <h5>Company</h5>
-                <ul><li><a href="about.html">About Us</a></li><li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul>
+
+            <div class="footer-bottom">
+                <p>© 2025 SEESEC Infotech. All rights reserved.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 SEESEC Infotech. All rights reserved.</p>
-            <div class="footer-socials"><a href="#">in</a><a href="#">IG</a><a href="#">YT</a></div>
-        </div>
-    </footer>
+        </footer>
 
     <script>
         // ── LOADER ──
@@ -6367,7 +6704,7 @@
         // ── Hamburger ──
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-accordion-trigger), .mobile-sublink');
 
         function toggleMenu() {
             hamburger.classList.toggle('active');
@@ -6383,6 +6720,22 @@
         });
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
+        });
+
+        // ── Mobile accordion (Services / Solutions) ──
+        document.querySelectorAll('.mobile-accordion').forEach(acc => {
+            const trigger = acc.querySelector('.mobile-accordion-trigger');
+            trigger.addEventListener('click', () => {
+                const isOpen = acc.classList.contains('open');
+                document.querySelectorAll('.mobile-accordion.open').forEach(other => {
+                    if (other !== acc) {
+                        other.classList.remove('open');
+                        other.querySelector('.mobile-accordion-trigger').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                acc.classList.toggle('open', !isOpen);
+                trigger.setAttribute('aria-expanded', String(!isOpen));
+            });
         });
 
         // ── Theme toggle ──
