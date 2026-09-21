@@ -196,7 +196,7 @@
             --bg-1: #0d0a2e;
             --bg-2: #110e35;
             --page-text: #ffffff;
-            --page-text-soft: rgba(var(--fg-rgb), 0.6);
+            --page-text-soft: rgba(var(--fg-rgb), 0.78);
             --nav-bg: rgba(15, 10, 45, 0.28);
             --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
             --loader-bg: #0a0820;
@@ -204,9 +204,9 @@
             /* ── FOOTER TOKENS ── */
             --bg-primary: var(--bg-0);
             --text-primary: var(--page-text);
-            --text-secondary: var(--page-text-soft);
-            --text-muted: rgba(var(--fg-rgb), 0.4);
-            --text-faint: rgba(var(--fg-rgb), 0.22);
+            --text-secondary: rgba(var(--fg-rgb), 0.78);
+            --text-muted: rgba(var(--fg-rgb), 0.55);
+            --text-faint: rgba(var(--fg-rgb), 0.35);
             --surface-card: rgba(var(--fg-rgb), 0.04);
             --border-card: rgba(var(--fg-rgb), 0.1);
             --border-soft: rgba(var(--fg-rgb), 0.06);
@@ -220,7 +220,7 @@
             --bg-1: #0a0c14;
             --bg-2: #0d0f1a;
             --page-text: #f4f6fb;
-            --page-text-soft: rgba(244, 246, 251, 0.62);
+            --page-text-soft: rgba(244, 246, 251, 0.78);
             --nav-bg: rgba(4, 5, 10, 0.55);
             --nav-bg-scrolled: rgba(4, 5, 10, 0.85);
             --loader-bg: #06070c;
@@ -264,6 +264,119 @@
         [data-theme="midnight"] ::selection {
             background: rgba(67, 238, 147, 0.35);
             color: #06070c;
+        }
+
+        /* ── THEME GATE (before loader) ── */
+        .theme-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0820;
+            transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.6s ease;
+        }
+        .theme-gate.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .theme-gate-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            padding: 48px 56px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7);
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+        }
+        .theme-gate-title {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+        .theme-gate-sub {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+            margin-top: -8px;
+        }
+        .theme-gate-options {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+        }
+        .theme-gate-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 16px;
+            border-radius: 18px;
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .theme-gate-btn svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+        }
+        .theme-gate-btn:hover {
+            border-color: rgba(67, 238, 147, 0.5);
+            background: rgba(67, 238, 147, 0.08);
+            color: #43ee93;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(67, 238, 147, 0.12);
+        }
+        .theme-gate-btn.active {
+            border-color: #43ee93;
+            background: rgba(67, 238, 147, 0.12);
+            color: #43ee93;
+            box-shadow: 0 0 30px rgba(67, 238, 147, 0.15);
+        }
+        .theme-gate-continue {
+            margin-top: 8px;
+            padding: 12px 40px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, #43ee93, #1af6dd);
+            color: #0a0820;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 28px rgba(67, 238, 147, 0.3);
+        }
+        .theme-gate-continue:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(67, 238, 147, 0.45);
+        }
+        .theme-gate-continue:active {
+            transform: scale(0.97);
         }
 
         /* ── STARFIELD ── */
@@ -501,7 +614,7 @@
         .page-loader .loader-text {
             font-size: 0.62rem;
             font-weight: 400;
-            color: rgba(var(--fg-rgb), 0.32);
+            color: rgba(var(--fg-rgb), 0.5);
             letter-spacing: 0.16em;
             text-transform: uppercase;
             position: relative;
@@ -673,7 +786,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.7);
             text-decoration: none;
             font-weight: 500;
             position: relative;
@@ -832,7 +945,7 @@
             letter-spacing: 0.02em;
             text-transform: none;
             font-weight: 500;
-            color: rgba(var(--fg-rgb), 0.6);
+            color: rgba(var(--fg-rgb), 0.7);
             padding: 10px 14px;
             border-radius: 10px;
             white-space: nowrap;
@@ -949,7 +1062,7 @@
             border-radius: 999px;
             border: none;
             background: transparent;
-            color: rgba(var(--fg-rgb), 0.45);
+            color: rgba(var(--fg-rgb), 0.6);
             cursor: pointer;
             font-family: var(--font-sans);
             font-size: 0.6rem;
@@ -993,7 +1106,7 @@
         .mobile-menu a {
             font-size: 1.3rem;
             font-weight: 600;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.7);
             text-decoration: none;
             letter-spacing: 0.04em;
             transition: color 0.3s ease, transform 0.3s ease;
@@ -1041,7 +1154,7 @@
             position: absolute;
             bottom: 40px;
             font-size: 0.65rem;
-            color: rgba(var(--fg-rgb), 0.15);
+            color: rgba(var(--fg-rgb), 0.25);
             letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 300;
@@ -1090,7 +1203,7 @@
         .mobile-sublink {
             font-size: 0.95rem !important;
             font-weight: 500 !important;
-            color: rgba(var(--fg-rgb), 0.45) !important;
+            color: rgba(var(--fg-rgb), 0.6) !important;
             padding: 7px 0 !important;
         }
         .mobile-sublink:hover { color: #fff !important; }
@@ -1191,7 +1304,7 @@
         }
 
         .btn-ghost {
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.7);
             font-size: 0.88rem;
             padding: 8px 4px;
             background: transparent;
@@ -1376,7 +1489,7 @@
             font-weight: 800;
             line-height: 1.08;
             letter-spacing: -0.03em;
-            color: rgba(var(--fg-rgb), 0.9);
+            color: rgba(var(--fg-rgb), 0.95);
             display: block;
             width: 100%;
             white-space: nowrap;
@@ -1426,7 +1539,7 @@
             width: 100%;
             font-size: 1rem;
             line-height: 1.7;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.72);
             font-weight: 300;
             opacity: 0;
             animation: fadeUp 0.9s 0.75s forwards;
@@ -1462,7 +1575,7 @@
         }
         .hero-stat-label {
             font-size: 0.65rem;
-            color: rgba(var(--fg-rgb), 0.35);
+            color: rgba(var(--fg-rgb), 0.6);
             letter-spacing: 0.06em;
             text-transform: uppercase;
             font-weight: 500;
@@ -1596,7 +1709,7 @@
             color: var(--accent);
         }
         .about-text p {
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.72);
             line-height: 1.8;
             font-size: 0.92rem;
             font-weight: 300;
@@ -1743,7 +1856,7 @@
         }
         .about-card-text p {
             font-size: 0.78rem;
-            color: rgba(var(--fg-rgb), 0.4);
+            color: rgba(var(--fg-rgb), 0.62);
             line-height: 1.6;
         }
 
@@ -1882,7 +1995,7 @@
         .sc-desc {
             font-size: 0.54rem;
             font-weight: 300;
-            color: rgba(var(--fg-rgb), 0.55);
+            color: rgba(var(--fg-rgb), 0.7);
             line-height: 1.3;
         }
         .svc-left-text {
@@ -1908,7 +2021,7 @@
             color: var(--accent);
         }
         .svc-left-text p {
-            color: rgba(var(--fg-rgb), 0.4);
+            color: rgba(var(--fg-rgb), 0.65);
             line-height: 1.65;
             font-size: clamp(1.1rem, 1.3vw, 1.35rem);
             font-weight: 300;
@@ -1919,7 +2032,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.15);
+            color: rgba(var(--fg-rgb), 0.25);
         }
 
         .services-right {
@@ -2085,7 +2198,7 @@
         }
         .svc-glass-card p {
             font-size: 0.72rem;
-            color: rgba(var(--fg-rgb), 0.45);
+            color: rgba(var(--fg-rgb), 0.68);
             line-height: 1.6;
             position: relative;
             z-index: 1;
@@ -2278,7 +2391,7 @@
             color: var(--accent);
         }
         .solutions-head p {
-            color: rgba(var(--fg-rgb), 0.35);
+            color: rgba(var(--fg-rgb), 0.62);
             margin-top: 10px;
             font-size: 0.9rem;
             font-weight: 300;
@@ -2326,7 +2439,7 @@
         .lc-center-title {
             font-size: 0.9rem;
             font-weight: 400;
-            color: rgba(var(--fg-rgb), 0.55);
+            color: rgba(var(--fg-rgb), 0.7);
             line-height: 1.4;
         }
         .lc-center-title strong {
@@ -2397,7 +2510,7 @@
         .lc-node-label {
             font-size: 0.6rem;
             font-weight: 700;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.7);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             transition: color 0.4s;
@@ -2493,7 +2606,7 @@
         }
         .lc-tooltip p {
             font-size: 0.68rem;
-            color: rgba(var(--fg-rgb), 0.6);
+            color: rgba(var(--fg-rgb), 0.7);
             line-height: 1.5;
             margin-bottom: 10px;
         }
@@ -2550,7 +2663,7 @@
         }
         .lc-info-desc {
             font-size: 0.92rem;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.7);
             line-height: 1.7;
             font-weight: 300;
             margin-bottom: 24px;
@@ -2731,7 +2844,7 @@
         }
         .deploy-card-front .deploy-sub {
             font-size: 0.75rem;
-            color: rgba(var(--fg-rgb), 0.65);
+            color: rgba(var(--fg-rgb), 0.8);
             font-weight: 300;
             line-height: 1.4;
             margin-bottom: 0;
@@ -2744,7 +2857,7 @@
             font-size: 0.5rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.25);
+            color: rgba(var(--fg-rgb), 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2790,7 +2903,7 @@
         .deploy-card-back ul li {
             font-size: 0.75rem;
             line-height: 1.4;
-            color: rgba(var(--fg-rgb), 0.75);
+            color: rgba(var(--fg-rgb), 0.85);
             padding: 2px 0;
             padding-left: 20px;
             position: relative;
@@ -2858,7 +2971,7 @@
             color: var(--accent);
         }
         .metrics-lead p {
-            color: rgba(var(--fg-rgb), 0.35);
+            color: rgba(var(--fg-rgb), 0.62);
             margin-top: 8px;
             font-weight: 300;
             font-size: 0.85rem;
@@ -2942,7 +3055,7 @@
         .metric-desc {
             margin-top: 8px;
             font-size: 0.72rem;
-            color: rgba(var(--fg-rgb), 0.45);
+            color: rgba(var(--fg-rgb), 0.65);
             letter-spacing: 0.02em;
             line-height: 1.5;
         }
@@ -3004,7 +3117,7 @@
             font-size: 0.86rem;
             line-height: 1.7;
             font-weight: 300;
-            color: rgba(var(--fg-rgb), 0.55);
+            color: rgba(var(--fg-rgb), 0.72);
         }
 
         .testimonials-grid {
@@ -3066,7 +3179,7 @@
         .testimonial-card blockquote {
             font-size: 0.86rem;
             line-height: 1.7;
-            color: rgba(var(--fg-rgb), 0.65);
+            color: rgba(var(--fg-rgb), 0.8);
             font-weight: 300;
             font-style: italic;
             margin-bottom: 16px;
@@ -3099,7 +3212,7 @@
             font-size: 0.62rem;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.42);
+            color: rgba(var(--fg-rgb), 0.6);
         }
 
         /* ── testimonials theme overrides ── */
@@ -3418,10 +3531,10 @@
             background-color: rgba(var(--fg-rgb), 0.05) !important;
         }
         .team-module .tw-text-white\/40 {
-            color: rgba(var(--fg-rgb), 0.4) !important;
+            color: rgba(var(--fg-rgb), 0.5) !important;
         }
         .team-module .tw-text-white\/20 {
-            color: rgba(var(--fg-rgb), 0.2) !important;
+            color: rgba(var(--fg-rgb), 0.3) !important;
         }
         .team-module .tw-text-white {
             color: var(--page-text) !important;
@@ -3479,7 +3592,7 @@
         }
         .team-left p {
             font-size: 1rem;
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.72);
             line-height: 1.7;
             font-weight: 300;
             max-width: 90%;
@@ -3634,7 +3747,7 @@
             color: var(--accent);
         }
         #cta .cta-sub {
-            color: rgba(var(--fg-rgb), 0.45);
+            color: rgba(var(--fg-rgb), 0.72);
             font-size: 0.95rem;
             font-weight: 300;
             line-height: 1.6;
@@ -3935,7 +4048,7 @@
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.25);
+            color: rgba(var(--fg-rgb), 0.4);
             font-weight: 400;
             margin-bottom: 16px;
             font-family: 'Manrope', sans-serif;
@@ -3966,7 +4079,7 @@
             background-clip: text;
         }
         .creation-head .sub-head {
-            color: rgba(var(--fg-rgb), 0.3);
+            color: rgba(var(--fg-rgb), 0.5);
             margin-top: 14px;
             font-size: 1rem;
             font-weight: 300;
@@ -3997,7 +4110,7 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: rgba(var(--fg-rgb), 0.3);
+            color: rgba(var(--fg-rgb), 0.5);
             font-family: 'Manrope', sans-serif;
             transition: all 0.3s ease;
         }
@@ -4108,7 +4221,7 @@
         }
         .cf-card .tool-desc {
             font-size: 0.9rem;
-            color: rgba(var(--fg-rgb), 0.45);
+            color: rgba(var(--fg-rgb), 0.65);
             line-height: 1.6;
             font-weight: 300;
             font-family: 'Manrope', sans-serif;
@@ -4177,7 +4290,7 @@
             border-radius: 50%;
             background: rgba(var(--fg-rgb), 0.08);
             border: 1px solid rgba(var(--fg-rgb), 0.12);
-            color: rgba(var(--fg-rgb), 0.5);
+            color: rgba(var(--fg-rgb), 0.6);
             font-size: 1.6rem;
             line-height: 1;
             display: flex;
@@ -5267,6 +5380,12 @@
             "logo": "https://seesec.io/wp-content/uploads/2025/03/logo.png",
             "description": "SEESEC is an AWS Advanced Tier Services Partner helping organizations simplify, optimize and secure their technology ecosystems through cloud management, cloud migration, cost optimization, cloud security, data & AI, and generative AI services.",
             "knowsAbout": ["AWS Cloud Migration", "Cloud Cost Optimization", "Cloud Security", "Generative AI", "Data Analytics", "Communication Automation"],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Udyog Vihar",
+                "addressLocality": "Gurugram",
+                "addressCountry": "India"
+            },
             "sameAs": []
         }
     </script>
@@ -5310,6 +5429,25 @@
     </script>
 </head>
 <body>
+
+    <!-- ===== THEME SELECTOR GATE (before loader) ===== -->
+    <div class="theme-gate" id="themeGate" role="dialog" aria-label="Choose your theme">
+        <div class="theme-gate-inner">
+            <div class="theme-gate-title">Choose Your Experience</div>
+            <p class="theme-gate-sub">Select a theme to personalize your experience. You can change this later in the navigation bar.</p>
+            <div class="theme-gate-options">
+                <button class="theme-gate-btn" data-theme-choice="dark" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+                    <span>Dark</span>
+                </button>
+                <button class="theme-gate-btn" data-theme-choice="system" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <span>System</span>
+                </button>
+            </div>
+            <button class="theme-gate-continue" id="themeGateContinue" type="button">Continue →</button>
+        </div>
+    </div>
 
     <!-- ===== FULL-PAGE LOADER ===== -->
     <div class="page-loader" id="pageLoader" role="status" aria-label="Loading">
@@ -5491,6 +5629,11 @@
                     <span class="btn-bg"></span>
                     <span class="blobs"><div></div><div></div><div></div></span>
                     Explore Services →
+                </a>
+                <a href="https://wa.me/919220550666" target="_blank" rel="noopener" class="btn btn-primary">
+                    <span class="btn-bg"></span>
+                    <span class="blobs"><div></div><div></div><div></div></span>
+                    WhatsApp Us →
                 </a>
                 <a href="#about" class="btn btn-ghost">
                     Learn More <span class="arrow">↓</span>
@@ -6351,7 +6494,7 @@
                                 <div class="panel-inner tw-flex tw-w-full tw-items-center tw-gap-6 tw-h-full">
                                     <span class="tw-font-label-md tw-text-label-md tw-text-white/40 group-hover:tw-text-[#43ee93] tw-transition-colors tw-hidden md:tw-block">04</span>
                                     <div class="panel-image-wrap tw-overflow-hidden tw-rounded-full tw-shrink-0 tw-my-auto">
-                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="team/Shubh Sharma.png" loading="lazy" />
+                                        <img alt="Shubh Sharma" class="tw-w-full tw-h-full tw-object-cover tw-object-top" src="Shubh Sharma.png" loading="lazy" />
                                     </div>
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
@@ -6384,12 +6527,12 @@
                                     <div class="tw-flex-1 tw-flex tw-flex-col md:tw-flex-row md:tw-items-center tw-justify-between tw-overflow-hidden">
                                         <div class="tw-flex tw-flex-col tw-gap-1">
                                             <h3 class="tw-font-headline-md tw-text-headline-md tw-text-white group-data-[active=true]:tw-text-headline-lg group-data-[active=true]:md:tw-text-headline-lg tw-transition-all">Karan Chhabra</h3>
-                                            <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">HEAD OF AI RESEARCH</span>
+                                            <span class="tw-font-label-md tw-text-label-md tw-text-[#43ee93]">CHIEF BUSINESS OFFICER</span>
                                             <div class="tw-hidden group-data-[active=true]:tw-flex tw-flex-col tw-mt-3 tw-gap-3 tw-animate-in tw-fade-in tw-slide-in-from-bottom-2 tw-duration-500">
-                                                <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">Pushing the boundaries of generative AI and machine learning. Karan leads our R&amp;D lab in developing ethical, scalable AI solutions.</p>
+                                                <p class="tw-text-[#c8c5cf] tw-max-w-lg tw-font-body-md tw-line-clamp-3">Driving business growth and strategic partnerships. Karan leads our commercial strategy and client success initiatives.</p>
                                                 <div class="tw-flex tw-gap-2 tw-flex-wrap">
-                                                    <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">AI Research</span>
-                                                    <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Innovation</span>
+                                                    <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Business Strategy</span>
+                                                    <span class="tw-px-3 tw-py-1 tw-bg-[#43ee93]/10 tw-text-[#43ee93] tw-text-xs tw-rounded-full tw-font-label-sm">Partnerships</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -6543,7 +6686,13 @@
                         <span>SEE<span>SEC</span></span>
                     </a>
                     <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
-                    <p style="margin-top:12px; font-size:0.7rem; color:var(--text-faint);">
+                    <p style="margin-top:12px; font-size:0.78rem; color:var(--text-secondary);">
+                        📍 Udyog Vihar, Gurugram, India
+                    </p>
+                    <p style="margin-top:8px; font-size:0.78rem; color:var(--text-secondary);">
+                        📞 +91-922-055-0666
+                    </p>
+                    <p style="margin-top:8px; font-size:0.7rem; color:var(--text-faint);">
                         <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed var(--line);">
                             <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
                         </a>
@@ -6552,7 +6701,7 @@
                 <div class="footer-col">
                     <h5>Services</h5>
                     <ul>
-                        <li><a href="aws.html">AWS Managed</a></li>
+                        <li><a href="aws-managed.html">AWS Managed</a></li>
                         <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
                         <li><a href="cloud-security.html">Cloud Security</a></li>
                         <li><a href="gen-ai.html">Gen AI</a></li>
@@ -6573,7 +6722,7 @@
                 <div class="footer-col">
                     <h5>Company</h5>
                     <ul>
-                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -6612,6 +6761,61 @@
         </footer>
 
     <script>
+        // ── THEME GATE ──
+        (function() {
+            const gate = document.getElementById('themeGate');
+            const gateBtns = document.querySelectorAll('.theme-gate-btn');
+            const continueBtn = document.getElementById('themeGateContinue');
+            const loader = document.getElementById('pageLoader');
+
+            if (!gate) return;
+
+            let selectedTheme = 'dark';
+
+            // Read existing preference
+            try {
+                const stored = localStorage.getItem('seesec-theme');
+                if (stored) {
+                    selectedTheme = (stored === 'light') ? 'dark' : stored;
+                    if (selectedTheme !== 'system' && selectedTheme !== 'dark') selectedTheme = 'dark';
+                }
+            } catch (e) {}
+
+            // Mark active button
+            gateBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.themeChoice === selectedTheme);
+            });
+
+            gateBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    gateBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedTheme = this.dataset.themeChoice;
+                });
+            });
+
+            continueBtn.addEventListener('click', function() {
+                // Apply theme
+                const effective = selectedTheme === 'dark' ? 'midnight' : 'dark';
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', selectedTheme);
+                try { localStorage.setItem('seesec-theme', selectedTheme); } catch (e) {}
+
+                // Sync the toggle button state
+                const toggleBtn = document.getElementById('themeToggle');
+                if (toggleBtn) {
+                    toggleBtn.setAttribute('data-mode', selectedTheme);
+                    toggleBtn.setAttribute('title', 'Theme: ' + (selectedTheme === 'system' ? 'System' : 'Dark'));
+                }
+
+                // Hide gate, reveal loader
+                gate.classList.add('hidden');
+                if (loader) {
+                    loader.style.display = 'flex';
+                }
+            });
+        })();
+
         // ── LOADER ──
         (function() {
             const loader = document.getElementById('pageLoader');
@@ -6623,6 +6827,9 @@
                 if (loader) loader.classList.add('hidden');
                 return;
             }
+
+            // Hide loader initially – theme gate shows first
+            loader.style.display = 'none';
 
             let progress = 0;
             let progressInterval = null;
@@ -6680,50 +6887,57 @@
                 setTimeout(hideLoader, 500);
             }
 
-            startProgressSimulation();
+            // Start loader logic after theme gate is dismissed
+            window.addEventListener('themeGateDismissed', function() {
+                startProgressSimulation();
+                viewer.addEventListener('load', onSplineLoad);
+                viewer.addEventListener('error', onSplineError);
 
-            viewer.addEventListener('load', onSplineLoad);
-            viewer.addEventListener('error', onSplineError);
-
-            loadTimeout = setTimeout(() => {
-                if (!isLoaded) {
-                    const canvas = viewer.querySelector('canvas');
-                    if (canvas && canvas.width > 0 && canvas.height > 0) {
-                        hideLoader();
-                    } else {
-                        setTimeout(() => {
-                            if (!isLoaded) hideLoader();
-                        }, 1500);
+                loadTimeout = setTimeout(() => {
+                    if (!isLoaded) {
+                        const canvas = viewer.querySelector('canvas');
+                        if (canvas && canvas.width > 0 && canvas.height > 0) {
+                            hideLoader();
+                        } else {
+                            setTimeout(() => {
+                                if (!isLoaded) hideLoader();
+                            }, 1500);
+                        }
                     }
-                }
-            }, 4000);
+                }, 4000);
 
-            const attrObserver = new MutationObserver(() => {
-                if (!viewer.hasAttribute('loading') && !isLoaded) {
-                    hideLoader();
-                }
-            });
-            attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
-
-            const cleanup = () => {
-                if (progressInterval) clearInterval(progressInterval);
-                if (loadTimeout) clearTimeout(loadTimeout);
-                attrObserver.disconnect();
-                viewer.removeEventListener('load', onSplineLoad);
-                viewer.removeEventListener('error', onSplineError);
-            };
-            window.addEventListener('beforeunload', cleanup);
-
-            if (window.MutationObserver) {
-                const removalObserver = new MutationObserver(() => {
-                    if (!document.contains(viewer)) {
-                        cleanup();
-                        removalObserver.disconnect();
+                const attrObserver = new MutationObserver(() => {
+                    if (!viewer.hasAttribute('loading') && !isLoaded) {
+                        hideLoader();
                     }
                 });
-                removalObserver.observe(document.body, { childList: true, subtree: true });
-            }
+                attrObserver.observe(viewer, { attributes: true, attributeFilter: ['loading'] });
+
+                const cleanup = () => {
+                    if (progressInterval) clearInterval(progressInterval);
+                    if (loadTimeout) clearTimeout(loadTimeout);
+                    attrObserver.disconnect();
+                    viewer.removeEventListener('load', onSplineLoad);
+                    viewer.removeEventListener('error', onSplineError);
+                };
+                window.addEventListener('beforeunload', cleanup);
+
+                if (window.MutationObserver) {
+                    const removalObserver = new MutationObserver(() => {
+                        if (!document.contains(viewer)) {
+                            cleanup();
+                            removalObserver.disconnect();
+                        }
+                    });
+                    removalObserver.observe(document.body, { childList: true, subtree: true });
+                }
+            });
         })();
+
+        // Dispatch event when theme gate is dismissed
+        document.getElementById('themeGateContinue').addEventListener('click', function() {
+            window.dispatchEvent(new Event('themeGateDismissed'));
+        });
 
         // ── Nav scroll hide/show ──
         const navEl = document.getElementById('nav');
