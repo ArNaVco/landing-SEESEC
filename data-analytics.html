@@ -648,12 +648,12 @@ nav.scrolled .nav-logo { text-shadow: 0 0 30px rgba(67, 238, 147, 0.12); }
 .btn-ghost:hover{color:var(--text-primary)}.btn-ghost .arrow{transition:transform .2s}.btn-ghost:hover .arrow{transform:translateX(4px)}
 
 .hero-glyph{position:relative;width:100%;min-height:360px;display:flex;align-items:center;justify-content:center}
-.hero-glyph-card{position:relative;width:320px;height:320px;border-radius:28px;background:var(--hero-glyph-bg);border:1px solid var(--hero-glyph-border);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 80px rgba(7,120,182,.15);backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:glyphFloat 6s ease-in-out infinite;overflow:hidden;padding:30px;transition:background .4s,border-color .4s,box-shadow .4s}
+.hero-glyph-card{position:relative;width:320px;height:320px;border-radius:28px;background:var(--hero-glyph-bg);border:1px solid var(--hero-glyph-border);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 80px rgba(7,120,182,.15);backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:glyphFloat 6s ease-in-out infinite;overflow:hidden;padding:26px;transition:background .4s,border-color .4s,box-shadow .4s}
 [data-theme="midnight"] .hero-glyph-card{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(255,255,255,.02)}
 .hero-glyph-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:28px 28px 0 0;background:linear-gradient(90deg,var(--blue),var(--accent),var(--cyan));z-index:2;transition:background .3s}
 [data-theme="midnight"] .hero-glyph-card::before{background:linear-gradient(90deg,#555,var(--accent),#555)}
 @keyframes glyphFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.glyph-caption{margin-top:20px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;text-align:center}
+.glyph-caption{margin-top:16px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;text-align:center;position:relative;z-index:3}
 .glyph-dash{width:100%;max-width:200px;display:flex;flex-direction:column;gap:8px}
 .dash-row{display:flex;gap:6px;align-items:end}
 .dash-bar{flex:1;border-radius:4px 4px 0 0;background:var(--dash-bar-bg);transition:background .4s}
@@ -1145,11 +1145,307 @@ footer {
 [data-theme="midnight"] .float-cta{background:#2a2a2a;box-shadow:0 8px 40px rgba(0,0,0,.6)}
 [data-theme="midnight"] .float-cta:hover{background:#3a3a3a;box-shadow:0 12px 50px rgba(0,0,0,.7)}
 
+/* ============================================================
+   ANIMATED SECTION VISUALS — replace static dashboard mockups
+   ============================================================ */
+@keyframes daBarGrow {
+  0%, 100% { transform: scaleY(.72); filter: brightness(.9); }
+  50%      { transform: scaleY(1);   filter: brightness(1.15); }
+}
+@keyframes daJitter {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(-1.5px, 1px); }
+  50%      { transform: translate(1px, -1.5px); }
+  75%      { transform: translate(1.5px, 1.5px); }
+}
+@keyframes daFlowDown {
+  0%   { transform: translateY(-12px) scaleY(.35); opacity: 0; }
+  30%  { opacity: .9; }
+  70%  { opacity: .9; }
+  100% { transform: translateY(12px) scaleY(1); opacity: 0; }
+}
+@keyframes daPulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(67,238,147,.55); }
+  50%      { opacity: .6; box-shadow: 0 0 0 5px rgba(67,238,147,0); }
+}
+@keyframes daTick {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .4; }
+}
+@keyframes daScan {
+  0%   { transform: translateY(-120%); opacity: 0; }
+  15%  { opacity: .85; }
+  85%  { opacity: .85; }
+  100% { transform: translateY(420%); opacity: 0; }
+}
+@keyframes daSweep {
+  0%   { left: -45%; }
+  100% { left: 100%; }
+}
+@keyframes daDraw {
+  0%   { stroke-dashoffset: 260; opacity: 0; }
+  15%  { opacity: 1; }
+  55%  { stroke-dashoffset: 0; opacity: 1; }
+  80%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -260; opacity: 0; }
+}
+
+/* ---------- HERO — Live dashboard ---------- */
+.live-dash {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.live-head {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-label);
+  font-size: .56rem; letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.live-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.live-pill::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: daPulseDot 1.7s ease-in-out infinite;
+}
+.live-bars {
+  position: relative;
+  display: flex; align-items: flex-end;
+  gap: 6px;
+  height: 82px;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--border-soft);
+  overflow: hidden;
+}
+.live-bars::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 26%;
+  background: linear-gradient(180deg, rgba(67,238,147,.28), transparent);
+  animation: daScan 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+.live-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, var(--accent), var(--blue));
+  transform-origin: bottom;
+  transform: scaleY(.72);
+  animation: daBarGrow 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+.live-bar:nth-child(1) { animation-delay: 0s;    height: 44%; }
+.live-bar:nth-child(2) { animation-delay: .28s;  height: 68%; }
+.live-bar:nth-child(3) { animation-delay: .56s;  height: 52%; }
+.live-bar:nth-child(4) { animation-delay: .84s;  height: 86%; }
+.live-bar:nth-child(5) { animation-delay: 1.12s; height: 70%; }
+.live-bar:nth-child(6) { animation-delay: 1.4s;  height: 96%; }
+.live-spark {
+  width: 100%; height: 20px; display: block;
+}
+.live-spark path {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: daDraw 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(26,246,221,.45));
+}
+.live-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.live-kpi {
+  padding: 7px 4px;
+  border-radius: 8px;
+  background: var(--dash-kpi-bg);
+  border: 1px solid var(--dash-kpi-border);
+  text-align: center;
+  transition: background .4s, border-color .4s;
+}
+.live-kpi-val {
+  font-family: var(--font-display);
+  font-size: .92rem; font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  animation: daTick 2.4s ease-in-out infinite;
+}
+.live-kpi:nth-child(2) .live-kpi-val { animation-delay: .6s; }
+.live-kpi:nth-child(3) .live-kpi-val { animation-delay: 1.2s; }
+.live-kpi-lbl {
+  font-family: var(--font-label);
+  font-size: .46rem; letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ---------- INFO VISUAL — Data pipeline ---------- */
+.dp-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dp-sources {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.dp-src {
+  position: relative;
+  padding: 8px 4px;
+  border-radius: 9px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-soft);
+  font-family: var(--font-label);
+  font-size: .56rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-align: center;
+  font-weight: 600;
+  animation: daJitter 4.6s ease-in-out infinite;
+}
+.dp-src:nth-child(1) { animation-delay: 0s; }
+.dp-src:nth-child(2) { animation-delay: .35s; }
+.dp-src:nth-child(3) { animation-delay: .7s; }
+.dp-src:nth-child(4) { animation-delay: 1.05s; }
+.dp-src::before {
+  content: '';
+  position: absolute;
+  top: -3px; right: -3px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: daTick 1.9s ease-in-out infinite;
+}
+.dp-src:nth-child(2)::before { animation-delay: .3s; }
+.dp-src:nth-child(3)::before { animation-delay: .6s; }
+.dp-src:nth-child(4)::before { animation-delay: .9s; }
+
+.dp-pipe {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  overflow: hidden;
+}
+.dp-pipe i {
+  width: 4px; height: 13px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, transparent, var(--accent));
+  opacity: 0;
+  animation: daFlowDown 1.9s linear infinite;
+}
+.dp-pipe i:nth-child(2) { animation-delay: .38s; }
+.dp-pipe i:nth-child(3) { animation-delay: .76s; }
+.dp-pipe i:nth-child(4) { animation-delay: 1.14s; }
+
+.dp-engine {
+  position: relative;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(7,120,182,.24), rgba(26,246,221,.07));
+  border: 1px solid rgba(67,238,147,.3);
+  box-shadow: 0 0 26px rgba(67,238,147,.1), inset 0 0 18px rgba(7,120,182,.2);
+  overflow: hidden;
+}
+.dp-engine::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(67,238,147,.22), transparent);
+  animation: daSweep 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.dp-engine span {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-label);
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.dp-output {
+  padding: 12px 12px 10px;
+  border-radius: 12px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.dp-out-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 44px;
+}
+.dp-out-bars span {
+  flex: 1;
+  height: var(--h, 50%);
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, var(--accent), var(--cyan));
+  transform-origin: bottom;
+  transform: scaleY(.72);
+  animation: daBarGrow 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+.dp-out-bars span:nth-child(1) { animation-delay: 0s; }
+.dp-out-bars span:nth-child(2) { animation-delay: .28s; }
+.dp-out-bars span:nth-child(3) { animation-delay: .56s; }
+.dp-out-bars span:nth-child(4) { animation-delay: .84s; }
+.dp-out-bars span:nth-child(5) { animation-delay: 1.12s; }
+.dp-out-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.dp-out-kpis span {
+  font-family: var(--font-display);
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  padding: 5px 2px;
+  border-radius: 6px;
+  background: rgba(67,238,147,.06);
+  border: 1px solid rgba(67,238,147,.14);
+}
+
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 @media (prefers-reduced-motion: reduce) {
   .flow-grid > *, .orb, .hero-glyph-card, .dept-panel, .flow-node, .flow-arrow { animation: none !important; }
+  .live-bar, .live-bars::before, .live-pill::before, .live-kpi-val, .live-spark path,
+  .dp-src, .dp-src::before, .dp-pipe i, .dp-engine::before, .dp-out-bars span { animation: none !important; }
+  .live-spark path { stroke-dashoffset: 0; }
 }
 @media (max-width:1024px){
   .dept-wrap{grid-template-columns:1fr;gap:20px}
@@ -1172,13 +1468,19 @@ footer {
 
   #hero{padding:120px 24px 80px;min-height:auto}
   .hero-inner{grid-template-columns:1fr;gap:50px}
-  .hero-glyph-card{width:240px;height:240px}
+  .hero-glyph-card{width:240px;height:240px;padding:20px}
   .info-inner{grid-template-columns:1fr;gap:50px}
   .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
   footer { padding: 56px 24px 32px; }
   section,.info-section,.badge-section,.faq-section,.caps-section,.dept-section,.flow-section{padding-left:24px !important;padding-right:24px !important}
   .hero-title{font-size:clamp(2rem,5vw,3.2rem)}
   .dept-kpis{grid-template-columns:repeat(2,1fr)}
+
+  .live-dash{max-width:180px;gap:8px}
+  .live-bars{height:64px}
+  .live-kpi{padding:6px 3px}
+  .live-kpi-val{font-size:.8rem}
+  .live-kpi-lbl{font-size:.42rem}
 }
 @media (max-width:600px){
   .cta-actions{flex-direction:column;width:100%}
@@ -1186,7 +1488,7 @@ footer {
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
   .float-cta{bottom:20px;right:20px;padding:10px 18px;font-size:.75rem}
   .float-cta span{display:none}
-  .hero-glyph-card{width:180px;height:180px}
+  .hero-glyph-card{width:180px;height:180px;padding:16px}
   .badge-chip{font-size:.78rem;padding:10px 18px}
   .footer-inner{grid-template-columns:1fr;gap:32px}
   .newsletter-block{grid-template-columns:1fr;gap:18px;padding:22px 20px}
@@ -1195,6 +1497,26 @@ footer {
   .dept-panel{padding:24px 20px}
   .dept-kpis{grid-template-columns:1fr 1fr}
   .flow-pipeline{grid-template-columns:1fr}
+
+  .live-dash{max-width:130px;gap:6px}
+  .live-bars{height:48px;gap:4px}
+  .live-head{font-size:.5rem}
+  .live-kpis{gap:4px}
+  .live-kpi{padding:5px 2px}
+  .live-kpi-val{font-size:.68rem}
+  .live-kpi-lbl{font-size:.4rem}
+  .live-spark{height:14px}
+  .glyph-caption{font-size:.6rem;margin-top:10px}
+
+  .info-visual-card{padding:22px}
+  .dp-wrap{gap:8px}
+  .dp-src{font-size:.5rem;padding:6px 2px}
+  .dp-engine span{font-size:.5rem;letter-spacing:.12em}
+  .dp-output{padding:10px 10px 8px}
+  .dp-out-bars{height:34px}
+  .dp-out-kpis span{font-size:.6rem;padding:4px 2px}
+  .dp-pipe{height:16px;gap:12px}
+  .dp-pipe i{height:10px}
 }
 </style>
 </head>
@@ -1335,13 +1657,26 @@ footer {
     </div>
     <div class="hero-glyph">
       <div class="hero-glyph-card">
-        <div class="glyph-dash">
-          <div class="dash-row"><div class="dash-bar b1"></div><div class="dash-bar b2"></div><div class="dash-bar b3"></div><div class="dash-bar b4"></div><div class="dash-bar b5"></div></div>
-          <div class="dash-line"></div>
-          <div class="dash-kpis">
-            <div class="dash-kpi"><div class="dash-kpi-val">98%</div><div class="dash-kpi-lbl">Uptime</div></div>
-            <div class="dash-kpi"><div class="dash-kpi-val">2.4M</div><div class="dash-kpi-lbl">Events</div></div>
-            <div class="dash-kpi"><div class="dash-kpi-val">↑ 41</div><div class="dash-kpi-lbl">Trend</div></div>
+        <div class="live-dash" aria-hidden="true">
+          <div class="live-head">
+            <span>Live Metrics</span>
+            <span class="live-pill">Streaming</span>
+          </div>
+          <div class="live-bars">
+            <span class="live-bar"></span>
+            <span class="live-bar"></span>
+            <span class="live-bar"></span>
+            <span class="live-bar"></span>
+            <span class="live-bar"></span>
+            <span class="live-bar"></span>
+          </div>
+          <svg class="live-spark" viewBox="0 0 200 30" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 22 L20 18 L40 21 L60 12 L80 15 L100 8 L120 11 L140 5 L160 9 L180 4 L200 7"/>
+          </svg>
+          <div class="live-kpis">
+            <div class="live-kpi"><div class="live-kpi-val">98%</div><div class="live-kpi-lbl">Uptime</div></div>
+            <div class="live-kpi"><div class="live-kpi-val">2.4M</div><div class="live-kpi-lbl">Events</div></div>
+            <div class="live-kpi"><div class="live-kpi-val">↑41%</div><div class="live-kpi-lbl">Trend</div></div>
           </div>
         </div>
         <div class="glyph-caption">Real-Time Intelligence</div>
@@ -1362,17 +1697,32 @@ footer {
     </div>
     <div class="info-visual reveal">
       <div class="info-visual-card">
-        <div style="width:100%">
-          <div class="dash-row" style="margin-bottom:12px"><div class="dash-bar b3"></div><div class="dash-bar b4"></div><div class="dash-bar b2"></div><div class="dash-bar b5"></div><div class="dash-bar b1"></div></div>
-          <div class="dash-line"></div>
-          <div class="dash-line" style="margin-top:6px;opacity:.3"></div>
-          <div class="dash-kpis" style="margin-top:14px">
-            <div class="dash-kpi"><div class="dash-kpi-val">32%</div><div class="dash-kpi-lbl">Growth</div></div>
-            <div class="dash-kpi"><div class="dash-kpi-val">1.2s</div><div class="dash-kpi-lbl">Query</div></div>
-            <div class="dash-kpi"><div class="dash-kpi-val">99.9</div><div class="dash-kpi-lbl">SLA</div></div>
+        <div class="dp-wrap" aria-hidden="true">
+          <div class="dp-sources">
+            <span class="dp-src">ERP</span>
+            <span class="dp-src">CRM</span>
+            <span class="dp-src">API</span>
+            <span class="dp-src">SQL</span>
+          </div>
+          <div class="dp-pipe"><i></i><i></i><i></i><i></i></div>
+          <div class="dp-engine"><span>SEESEC Analytics Engine</span></div>
+          <div class="dp-pipe"><i></i><i></i><i></i><i></i></div>
+          <div class="dp-output">
+            <div class="dp-out-bars">
+              <span style="--h:44%"></span>
+              <span style="--h:62%"></span>
+              <span style="--h:52%"></span>
+              <span style="--h:78%"></span>
+              <span style="--h:92%"></span>
+            </div>
+            <div class="dp-out-kpis">
+              <span>+32%</span>
+              <span>1.2s</span>
+              <span>99.9</span>
+            </div>
           </div>
         </div>
-        <p class="vc-caption">Dashboard · Predictions · Alerts</p>
+        <p class="vc-caption">Sources · Engine · Dashboards</p>
       </div>
     </div>
   </div>
