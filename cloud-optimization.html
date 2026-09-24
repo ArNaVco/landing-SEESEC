@@ -878,55 +878,395 @@
         }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
+        /* ============================================================
+           HERO VISUAL — Animated Cloud Cost Optimization Dashboard
+           (replaces the static image)
+           ============================================================ */
         .hero-glyph {
             position: relative;
             width: 100%;
-            min-height: 360px;
+            min-height: 420px;
             display: flex;
             align-items: center;
             justify-content: center;
+            perspective: 1200px;
         }
-        .hero-glyph-card {
+
+        .hero-visual {
             position: relative;
-            width: 320px;
-            height: 320px;
-            border-radius: 28px;
-            background: var(--hero-glyph-bg);
-            border: 1px solid var(--hero-glyph-border);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .4), 0 0 80px rgba(7, 120, 182, .15);
-            backdrop-filter: blur(16px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: glyphFloat 6s ease-in-out infinite;
-            overflow: hidden;
-            transition: background .4s, border-color .4s, box-shadow .4s;
-        }
-        [data-theme="midnight"] .hero-glyph-card {
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 40px rgba(255, 255, 255, .02);
-        }
-        .hero-glyph-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 28px;
+            max-width: 340px;
+            border-radius: 26px;
+            background: linear-gradient(155deg, rgba(7,120,182,0.16) 0%, rgba(26,246,221,0.05) 55%, rgba(67,238,147,0.09) 100%);
+            border: 1px solid rgba(67,238,147,0.22);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45),
+                0 0 80px rgba(7,120,182,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            overflow: hidden;
+            animation: glyphFloat 6s ease-in-out infinite;
+            will-change: transform;
         }
-        @keyframes glyphFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-14px); }
+
+        [data-theme="midnight"] .hero-visual {
+            background: rgba(255,255,255,0.025);
+            border-color: rgba(255,255,255,0.08);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.02);
         }
-        .hero-glyph-card::before {
+
+        .hero-visual::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 3px;
-            border-radius: 28px 28px 0 0;
-            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
-            z-index: 2;
-            transition: background .3s;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--blue) 20%, var(--accent) 50%, var(--cyan) 80%, transparent 100%);
+            opacity: 0.9;
+            z-index: 3;
         }
-        [data-theme="midnight"] .hero-glyph-card::before {
-            background: linear-gradient(90deg, #555, var(--accent), #555);
+
+        /* Header row */
+        .hv-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 2px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .hv-live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-label);
+            font-size: 0.6rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .hv-pulse {
+            position: relative;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+            flex-shrink: 0;
+        }
+        .hv-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            animation: hvPulse 1.8s ease-out infinite;
+        }
+        @keyframes hvPulse {
+            0% { transform: scale(0.7); opacity: 0.9; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+        .hv-env {
+            font-family: var(--font-label);
+            font-size: 0.56rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+            font-weight: 600;
+        }
+        [data-theme="midnight"] .hv-env {
+            color: rgba(255,255,255,0.5);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        /* Cloud stage */
+        .hv-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .hv-cloud-svg {
+            width: 92%;
+            height: 92%;
+            display: block;
+            overflow: visible;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Pulse rings (SVG) */
+        .hv-ring {
+            fill: none;
+            stroke: #43ee93;
+            stroke-width: 1.2;
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: hvRing 3.6s ease-out infinite;
+        }
+        .hv-ring.r2 { animation-delay: 1.2s; }
+        .hv-ring.r3 { animation-delay: 2.4s; }
+        @keyframes hvRing {
+            0% { transform: scale(0.55); opacity: 0.7; stroke-width: 1.8; }
+            100% { transform: scale(1.5); opacity: 0; stroke-width: 0.3; }
+        }
+
+        /* Cloud bob */
+        .hv-cloud-group {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: hvCloudBob 5s ease-in-out infinite;
+        }
+        @keyframes hvCloudBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* Waste dots fading out */
+        .hv-waste {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: hvWaste 3.2s ease-in-out infinite;
+        }
+        .hv-waste-1 { animation-delay: 0s; }
+        .hv-waste-2 { animation-delay: 1.05s; }
+        .hv-waste-3 { animation-delay: 2.1s; }
+        @keyframes hvWaste {
+            0% { opacity: 0.95; transform: scale(1); }
+            35% { opacity: 1; transform: scale(1.45); }
+            100% { opacity: 0; transform: scale(0.3); }
+        }
+
+        /* Orbit rings (CSS) */
+        .hv-orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 72%;
+            aspect-ratio: 1 / 1;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px dashed rgba(67,238,147,0.10);
+            animation: hvSpin 9s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hv-orbit-ring.r2 {
+            width: 88%;
+            border-color: rgba(26,246,221,0.07);
+            animation-duration: 14s;
+            animation-direction: reverse;
+        }
+        .hv-orbit-ring.r3 {
+            width: 54%;
+            border-color: rgba(7,120,182,0.12);
+            animation-duration: 7s;
+        }
+        .hv-orbit-dot {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent), 0 0 4px var(--accent);
+        }
+        .hv-orbit-ring.r2 .hv-orbit-dot {
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan), 0 0 4px var(--cyan);
+        }
+        .hv-orbit-ring.r3 .hv-orbit-dot {
+            width: 6px;
+            height: 6px;
+            background: #0778b6;
+            box-shadow: 0 0 10px #0778b6, 0 0 3px #0778b6;
+        }
+        @keyframes hvSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Counters */
+        .hv-counters {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 6px;
+            background: rgba(0,0,0,0.22);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            z-index: 2;
+        }
+        [data-theme="midnight"] .hv-counters {
+            background: rgba(255,255,255,0.02);
+            border-color: rgba(255,255,255,0.05);
+        }
+        .hv-counter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .hv-counter-divider {
+            width: 1px;
+            height: 44px;
+            background: rgba(255,255,255,0.08);
+        }
+        .hv-counter-label {
+            font-family: var(--font-label);
+            font-size: 0.54rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+        .hv-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .hv-dot.red {
+            background: #ff6b6b;
+            box-shadow: 0 0 6px #ff6b6b;
+        }
+        .hv-dot.green {
+            background: var(--accent);
+            box-shadow: 0 0 6px var(--accent);
+        }
+        .hv-counter-value {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1;
+            display: flex;
+            align-items: baseline;
+            gap: 1px;
+            font-variant-numeric: tabular-nums;
+        }
+        .hv-counter-value.accent { color: var(--accent); }
+        .hv-unit {
+            font-size: 0.82rem;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+        .hv-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-family: var(--font-label);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            margin-top: 1px;
+        }
+        .hv-trend.down {
+            color: #ff9b9b;
+            background: rgba(255,107,107,0.1);
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+        .hv-trend.up {
+            color: var(--accent);
+            background: rgba(67,238,147,0.1);
+            border: 1px solid rgba(67,238,147,0.22);
+        }
+
+        /* Utilization bars */
+        .hv-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 40px;
+            padding: 0 2px;
+            position: relative;
+            z-index: 2;
+        }
+        .hv-bar {
+            flex: 1;
+            height: 100%;
+            background: rgba(255,255,255,0.04);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hv-bar span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--h, 50%);
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--accent), #0778b6);
+            box-shadow: 0 0 8px rgba(67,238,147,0.3);
+            transform-origin: bottom;
+            animation: hvBarPulse 3.2s ease-in-out infinite;
+        }
+        .hv-bar:nth-child(1) span { --h: 45%; animation-delay: 0s; }
+        .hv-bar:nth-child(2) span { --h: 68%; animation-delay: 0.15s; }
+        .hv-bar:nth-child(3) span { --h: 38%; animation-delay: 0.3s; }
+        .hv-bar:nth-child(4) span { --h: 82%; animation-delay: 0.45s; }
+        .hv-bar:nth-child(5) span { --h: 55%; animation-delay: 0.6s; }
+        .hv-bar:nth-child(6) span { --h: 72%; animation-delay: 0.75s; }
+        .hv-bar:nth-child(7) span { --h: 48%; animation-delay: 0.9s; }
+        .hv-bar:nth-child(8) span { --h: 88%; animation-delay: 1.05s; }
+        @keyframes hvBarPulse {
+            0%, 100% { transform: scaleY(0.72); opacity: 0.7; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+
+        /* Bottom chips */
+        .hv-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            position: relative;
+            z-index: 2;
+        }
+        .hv-chip-item {
+            font-family: var(--font-label);
+            font-size: 0.56rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(67,238,147,0.95);
+            background: rgba(67,238,147,0.08);
+            border: 1px solid rgba(67,238,147,0.2);
+            padding: 4px 9px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        @keyframes glyphFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
         }
 
         /* ============================================================
@@ -2047,7 +2387,13 @@
             .optimize-card,
             .outcome-card,
             .pentagon-item { animation: none; }
-            .orb, .hero-glyph-card { animation: none; }
+            .orb, .hero-visual { animation: none; }
+            .hv-orbit-ring,
+            .hv-ring,
+            .hv-waste,
+            .hv-cloud-group,
+            .hv-bar span,
+            .hv-pulse::after { animation: none !important; }
         }
 
         @media (max-width: 1024px) {
@@ -2068,8 +2414,9 @@
 
             #hero { padding: 120px 24px 80px; min-height: auto; }
             .hero-inner { grid-template-columns: 1fr; gap: 50px; }
-            .hero-glyph-card { width: 240px; height: 240px; }
             .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); }
+            .hero-visual { max-width: 320px; }
+
             section,
             .waste-section,
             .savings-section,
@@ -2102,8 +2449,12 @@
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
             .float-cta { bottom: 20px; right: 20px; padding: 10px 18px; font-size: .75rem; }
             .float-cta span { display: none; }
-            .hero-glyph-card { width: 180px; height: 180px; }
             .badge-chip { font-size: .78rem; padding: 10px 18px; }
+
+            .hero-visual { max-width: 300px; padding: 14px 14px 12px; gap: 11px; }
+            .hv-counter-value { font-size: 1.35rem; }
+            .hv-bars { height: 34px; }
+            .hv-counter-divider { height: 40px; }
 
             .waste-grid { grid-template-columns: 1fr; }
             .optimize-grid { grid-template-columns: 1fr 1fr; }
@@ -2119,6 +2470,7 @@
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+            .hero-visual { max-width: 280px; }
             .waste-grid { grid-template-columns: 1fr; }
             .savings-grid { grid-template-columns: 1fr; }
             .optimize-grid { grid-template-columns: 1fr; }
@@ -2266,9 +2618,106 @@
                     <a href="#framework" class="btn-ghost">See How It Works <span class="arrow">→</span></a>
                 </div>
             </div>
+
+            <!-- ✅ ANIMATED HERO VISUAL (replaces the static image) -->
             <div class="hero-glyph">
-                <div class="hero-glyph-card">
-                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Optimization Dashboard" />
+                <div class="hero-visual" aria-hidden="true">
+                    <!-- Top status bar -->
+                    <div class="hv-top">
+                        <div class="hv-live">
+                            <span class="hv-pulse"></span>
+                            <span>Live Optimization</span>
+                        </div>
+                        <span class="hv-env">aws · prod</span>
+                    </div>
+
+                    <!-- Cloud stage -->
+                    <div class="hv-stage">
+                        <!-- Orbiting resource dots (CSS rings) -->
+                        <div class="hv-orbit-ring r1"><span class="hv-orbit-dot"></span></div>
+                        <div class="hv-orbit-ring r2"><span class="hv-orbit-dot"></span></div>
+                        <div class="hv-orbit-ring r3"><span class="hv-orbit-dot"></span></div>
+
+                        <svg class="hv-cloud-svg" viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <radialGradient id="hvCloudFill" cx="50%" cy="55%" r="60%">
+                                    <stop offset="0%" stop-color="#43ee93" stop-opacity="0.28"/>
+                                    <stop offset="55%" stop-color="#0778b6" stop-opacity="0.12"/>
+                                    <stop offset="100%" stop-color="#0778b6" stop-opacity="0"/>
+                                </radialGradient>
+                                <linearGradient id="hvCloudStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0778b6"/>
+                                    <stop offset="50%" stop-color="#43ee93"/>
+                                    <stop offset="100%" stop-color="#1af6dd"/>
+                                </linearGradient>
+                                <filter id="hvGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2.5" result="b"/>
+                                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Pulse rings -->
+                            <circle class="hv-ring r1" cx="100" cy="60" r="50"/>
+                            <circle class="hv-ring r2" cx="100" cy="60" r="50"/>
+                            <circle class="hv-ring r3" cx="100" cy="60" r="50"/>
+
+                            <!-- Cloud -->
+                            <g class="hv-cloud-group">
+                                <path class="hv-cloud-path"
+                                      d="M60 100 C40 100 25 85 25 67 C25 50 38 36 55 34 C60 20 74 10 90 10 C107 10 121 21 127 36 C131 34 136 33 140 33 C160 33 176 48 176 68 C176 88 160 100 140 100 Z"
+                                      fill="url(#hvCloudFill)"
+                                      stroke="url(#hvCloudStroke)"
+                                      stroke-width="1.8"
+                                      stroke-linejoin="round"
+                                      filter="url(#hvGlow)"/>
+                            </g>
+
+                            <!-- Wasted resources being eliminated -->
+                            <circle class="hv-waste hv-waste-1" cx="38" cy="38" r="3.5" fill="#ff6b6b" filter="url(#hvGlow)"/>
+                            <circle class="hv-waste hv-waste-2" cx="172" cy="82" r="3" fill="#ff6b6b" filter="url(#hvGlow)"/>
+                            <circle class="hv-waste hv-waste-3" cx="55" cy="118" r="3.2" fill="#ff6b6b" filter="url(#hvGlow)"/>
+                        </svg>
+                    </div>
+
+                    <!-- Live counters -->
+                    <div class="hv-counters">
+                        <div class="hv-counter">
+                            <div class="hv-counter-label"><span class="hv-dot red"></span> Cloud Spend</div>
+                            <div class="hv-counter-value"><span class="hv-unit">$</span><span class="hv-num" id="hvSpend">120</span><span class="hv-unit">K</span></div>
+                            <div class="hv-trend down">
+                                <svg viewBox="0 0 12 12" width="9" height="9" aria-hidden="true"><path d="M6 2 L6 10 M2 7 L6 10 L10 7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span>60%</span>
+                            </div>
+                        </div>
+                        <div class="hv-counter-divider"></div>
+                        <div class="hv-counter">
+                            <div class="hv-counter-label"><span class="hv-dot green"></span> Savings</div>
+                            <div class="hv-counter-value accent"><span class="hv-unit">$</span><span class="hv-num" id="hvSavings">0</span><span class="hv-unit">K</span></div>
+                            <div class="hv-trend up">
+                                <svg viewBox="0 0 12 12" width="9" height="9" aria-hidden="true"><path d="M6 10 L6 2 M2 5 L6 2 L10 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span>60%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Utilization bars -->
+                    <div class="hv-bars">
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                        <div class="hv-bar"><span></span></div>
+                    </div>
+
+                    <!-- Status chips -->
+                    <div class="hv-chips">
+                        <span class="hv-chip-item">✓ Idle removed</span>
+                        <span class="hv-chip-item">✓ Right-sized</span>
+                        <span class="hv-chip-item">✓ Automated</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2922,6 +3371,65 @@
                 setTimeout(type, speed);
             }
             type();
+        })();
+
+        /* ============================================================
+           HERO VISUAL — Live cost/savings counter animation
+           ============================================================ */
+        (function heroVisualCounters() {
+            const spendEl = document.getElementById('hvSpend');
+            const savingsEl = document.getElementById('hvSavings');
+            if (!spendEl || !savingsEl) return;
+
+            const DURATION = 2400;
+            const SPEND_START = 120, SPEND_END = 48;
+            const SAV_START = 0, SAV_END = 72;
+            let started = false;
+            let fluctInterval = null;
+
+            function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+            function startFluctuation() {
+                if (fluctInterval) clearInterval(fluctInterval);
+                fluctInterval = setInterval(() => {
+                    // Small jitter to feel "live" — keeps values near their targets
+                    const spendNoise = Math.round((Math.random() - 0.5) * 3);
+                    const savNoise = Math.round((Math.random() - 0.5) * 3);
+                    spendEl.textContent = SPEND_END + spendNoise;
+                    savingsEl.textContent = SAV_END + savNoise;
+                }, 2800);
+            }
+
+            function run() {
+                if (started) return;
+                started = true;
+                const t0 = performance.now();
+
+                function tick(now) {
+                    const p = Math.min((now - t0) / DURATION, 1);
+                    const e = easeOutQuart(p);
+                    spendEl.textContent = Math.round(SPEND_START + (SPEND_END - SPEND_START) * e);
+                    savingsEl.textContent = Math.round(SAV_START + (SAV_END - SAV_START) * e);
+                    if (p < 1) requestAnimationFrame(tick);
+                    else startFluctuation();
+                }
+                requestAnimationFrame(tick);
+            }
+
+            // Trigger when the hero visual is visible
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            run();
+                            obs.disconnect();
+                        }
+                    });
+                }, { threshold: 0.25 });
+                obs.observe(spendEl.closest('.hero-visual') || spendEl);
+            } else {
+                run();
+            }
         })();
     </script>
 
