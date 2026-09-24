@@ -132,8 +132,8 @@
         }
 
         /* ============================================================
-           FLOW ANIMATION (shared across all card grids)
-           ============================================================ */
+        FLOW ANIMATION (shared across all card grids)
+        ============================================================ */
         @keyframes boxFlow {
             0%, 100% { transform: translateY(0); }
             50%      { transform: translateY(-8px); }
@@ -169,8 +169,8 @@
         }
 
         /* ============================================================
-           NAVIGATION — ported from index.html
-           ============================================================ */
+        NAVIGATION — ported from index.html
+        ============================================================ */
         nav {
             position: fixed;
             top: 8px;
@@ -1842,8 +1842,8 @@
         #cta .btn-primary:hover { color: var(--ink); }
 
         /* ============================================================
-           FOOTER — matches aboutus.html
-           ============================================================ */
+        FOOTER — matches aboutus.html
+        ============================================================ */
         footer {
             border-top: 1px solid var(--line);
             padding: 56px 48px 28px;
@@ -2072,10 +2072,299 @@
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
+        /* ============================================================
+        ANIMATED SECTION VISUALS — replace static screenshots
+        ============================================================ */
+        @keyframes vsSpin    { to { transform: rotate(360deg); } }
+        @keyframes vsSpinRev { to { transform: rotate(-360deg); } }
+        @keyframes vsHalo {
+            0%   { transform: scale(1);    opacity: .6; }
+            100% { transform: scale(1.45); opacity: 0; }
+        }
+
+        .anim-visual {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* ---------- 1. HERO — layered security core ---------- */
+        .anim-hero {
+            inset: auto;
+            top: 50%; left: 50%;
+            width: 320px; height: 320px;
+            --vs-scale: 1;
+            transform: translate(-50%, -50%) scale(var(--vs-scale));
+        }
+        .ah-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 30px 30px;
+            -webkit-mask: radial-gradient(circle at 50% 50%, #000 18%, transparent 72%);
+            mask: radial-gradient(circle at 50% 50%, #000 18%, transparent 72%);
+        }
+        .ah-sweep {
+            position: absolute; top: 50%; left: 50%;
+            width: 276px; height: 276px;
+            margin: -138px 0 0 -138px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                rgba(67,238,147,.34) 0deg,
+                rgba(67,238,147,.08) 34deg,
+                transparent 68deg,
+                transparent 360deg);
+            -webkit-mask: radial-gradient(circle, transparent 20%, #000 34%, #000 94%, transparent 100%);
+            mask: radial-gradient(circle, transparent 20%, #000 34%, #000 94%, transparent 100%);
+            animation: vsSpin 7s linear infinite;
+            opacity: .85;
+        }
+        .ah-ring {
+            position: absolute; top: 50%; left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .ah-ring-1 { width: 136px; height: 136px; border: 1px dashed rgba(67,238,147,.28); }
+        .ah-ring-2 { width: 216px; height: 216px; border: 1px solid rgba(7,120,182,.35); }
+        .ah-ring-3 { width: 280px; height: 280px; border: 1px solid rgba(255,255,255,.06); }
+
+        .ah-orbit { position: absolute; inset: 0; }
+        .ah-orbit-1 { --r: 68px;  animation: vsSpin    22s linear infinite; }
+        .ah-orbit-2 { --r: 108px; animation: vsSpinRev 30s linear infinite; }
+
+        .ah-node {
+            position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0;
+            transform: rotate(var(--a)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--a)));
+        }
+        .ah-node-i {
+            position: absolute; top: -18px; left: -18px;
+            width: 36px; height: 36px;
+            display: grid; place-items: center;
+            border-radius: 12px;
+            font-size: .95rem;
+            line-height: 1;
+            background: rgba(12, 9, 34, .82);
+            border: 1px solid rgba(67,238,147,.22);
+            box-shadow: 0 6px 18px rgba(0,0,0,.45), inset 0 0 0 1px rgba(67,238,147,.05);
+            backdrop-filter: blur(6px);
+        }
+        .ah-orbit-1 .ah-node-i { animation: vsSpinRev 22s linear infinite; }
+        .ah-orbit-2 .ah-node-i { animation: vsSpin    30s linear infinite; }
+
+        .ah-core {
+            position: absolute; top: 50%; left: 50%;
+            width: 98px; height: 98px;
+            margin: -49px 0 0 -49px;
+            border-radius: 50%;
+            display: grid; place-items: center;
+            background: radial-gradient(circle at 50% 35%,
+                rgba(67,238,147,.22) 0%,
+                rgba(7,120,182,.18) 45%,
+                rgba(12,9,34,.9) 78%);
+            border: 1px solid rgba(67,238,147,.3);
+            box-shadow: 0 0 44px rgba(67,238,147,.22), inset 0 0 26px rgba(7,120,182,.3);
+            z-index: 3;
+        }
+        .ah-shield { width: 44px; height: 44px; position: relative; z-index: 2; }
+        .ah-pulse {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba(67,238,147,.55);
+            animation: vsHalo 3.2s ease-out infinite;
+        }
+        .ah-pulse--2 { animation-delay: 1.6s; }
+
+        /* ---------- 2. THREAT DEFENSE — "Why It Matters" ---------- */
+        .th-stage {
+            inset: auto;
+            position: absolute; top: 50%; left: 50%;
+            width: 340px; height: 340px;
+            --from: 168px;
+            --to: 120px;
+            --vs-scale: 1;
+            transform: translate(-50%, -50%) scale(var(--vs-scale));
+        }
+        .th-ring {
+            position: absolute; top: 50%; left: 50%;
+            width: 236px; height: 236px;
+            margin: -118px 0 0 -118px;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(67,238,147,.32);
+            animation: vsSpin 26s linear infinite;
+        }
+        .th-ring::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba(67,238,147,.45);
+            animation: vsHalo 3.4s ease-out infinite;
+        }
+        .th-core {
+            position: absolute; top: 50%; left: 50%;
+            width: 104px; height: 104px;
+            margin: -52px 0 0 -52px;
+            border-radius: 50%;
+            display: grid; place-items: center;
+            font-size: 2rem;
+            background: radial-gradient(circle at 50% 35%, rgba(7,120,182,.4), rgba(12,9,34,.92) 72%);
+            border: 1px solid rgba(67,238,147,.3);
+            box-shadow: 0 0 46px rgba(7,120,182,.4), inset 0 0 26px rgba(67,238,147,.14);
+            z-index: 3;
+        }
+        .th-threat {
+            position: absolute; top: 50%; left: 50%;
+            width: 9px; height: 9px;
+            margin: -4.5px 0 0 -4.5px;
+            border-radius: 50%;
+            background: #ff5a5a;
+            opacity: 0;
+            animation: threatRun 4.3s cubic-bezier(.42, 0, .58, 1) infinite;
+            animation-delay: calc(var(--i) * -0.54s);
+        }
+        @keyframes threatRun {
+            0%   { transform: rotate(var(--a)) translateY(calc(-1 * var(--from))) scale(.35); opacity: 0;  background: #ff5a5a; box-shadow: 0 0 0 rgba(255,90,90,0); }
+            12%  { opacity: .95; }
+            48%  { transform: rotate(var(--a)) translateY(calc(-1 * var(--to)))   scale(1);   opacity: 1;  background: #ff5a5a; box-shadow: 0 0 14px rgba(255,90,90,.9); }
+            58%  { transform: rotate(var(--a)) translateY(calc(-1 * var(--to)))   scale(1.15); opacity: 1; background: #43ee93; box-shadow: 0 0 24px rgba(67,238,147,1); }
+            74%  { transform: rotate(var(--a)) translateY(calc(-1 * var(--to)))   scale(2.3); opacity: 0;  background: #43ee93; box-shadow: 0 0 30px rgba(67,238,147,0); }
+            100% { transform: rotate(var(--a)) translateY(calc(-1 * var(--from))) scale(.35); opacity: 0;  background: #ff5a5a; box-shadow: 0 0 0 rgba(255,90,90,0); }
+        }
+        .th-hud {
+            position: absolute;
+            left: 50%; bottom: 14px;
+            transform: translateX(-50%);
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 15px;
+            border-radius: 999px;
+            background: rgba(10, 8, 30, .72);
+            border: 1px solid rgba(67,238,147,.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-family: var(--font-label);
+            font-size: .6rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            white-space: nowrap;
+        }
+        .th-hud b { color: var(--accent); font-weight: 700; font-size: .74rem; letter-spacing: .02em; }
+        .th-hud .th-live {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulseLive 1.6s ease-in-out infinite;
+        }
+
+        /* ---------- 3. SOLUTION — layered protection pipeline ---------- */
+        .anim-solution {
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+        .sol-outcomes { display: flex; flex-direction: column; gap: 6px; }
+        .sol-out {
+            display: flex; align-items: center; gap: 9px;
+            padding: 8px 12px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid var(--border-soft);
+            color: var(--text-secondary);
+            font-size: .74rem; font-weight: 600;
+            letter-spacing: .01em;
+            animation: solOut 6.6s ease-in-out infinite;
+            animation-delay: calc(var(--i) * .6s);
+        }
+        .sol-out-ic { font-size: .9rem; line-height: 1; }
+        @keyframes solOut {
+            0%, 76%, 100% { border-color: var(--border-soft); background: rgba(255,255,255,.03); color: var(--text-secondary); box-shadow: none; }
+            10%, 30%      { border-color: rgba(67,238,147,.45); background: rgba(67,238,147,.09); color: #fff; box-shadow: 0 0 22px rgba(67,238,147,.12); }
+        }
+        .sol-flow { height: 20px; display: flex; align-items: center; justify-content: center; gap: 18px; }
+        .sol-flow i {
+            width: 3px; height: 12px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, rgba(67,238,147,0), var(--accent));
+            opacity: 0;
+            animation: solRise 1.9s linear infinite;
+        }
+        .sol-flow i:nth-child(2) { animation-delay: .32s; }
+        .sol-flow i:nth-child(3) { animation-delay: .64s; }
+        @keyframes solRise {
+            0%   { transform: translateY(7px)  scaleY(.35); opacity: 0; }
+            35%  { opacity: .85; }
+            70%  { opacity: .85; }
+            100% { transform: translateY(-7px) scaleY(1);   opacity: 0; }
+        }
+        .sol-engine {
+            position: relative;
+            padding: 11px 14px;
+            border-radius: 14px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(7,120,182,.24), rgba(26,246,221,.07));
+            border: 1px solid rgba(67,238,147,.3);
+            box-shadow: 0 0 30px rgba(67,238,147,.1), inset 0 0 22px rgba(7,120,182,.2);
+            overflow: hidden;
+        }
+        .sol-engine-tag {
+            font-family: var(--font-label);
+            font-size: .58rem; font-weight: 700;
+            letter-spacing: .16em; text-transform: uppercase;
+            color: var(--accent);
+        }
+        .sol-engine-bar {
+            display: block; height: 3px;
+            margin-top: 9px;
+            border-radius: 3px;
+            background: rgba(255,255,255,.08);
+            overflow: hidden;
+        }
+        .sol-engine-bar i {
+            display: block; height: 100%; width: 42%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--cyan), transparent);
+            animation: solScan 2.6s ease-in-out infinite;
+        }
+        @keyframes solScan {
+            0%   { transform: translateX(-120%); }
+            100% { transform: translateX(340%); }
+        }
+        .sol-base { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .sol-base span {
+            padding: 8px 6px;
+            text-align: center;
+            border-radius: 10px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid var(--border-soft);
+            font-family: var(--font-label);
+            font-size: .64rem; letter-spacing: .05em;
+            color: var(--text-muted);
+            animation: solBase 3.8s ease-in-out infinite;
+        }
+        .sol-base span:nth-child(2) { animation-delay: .35s; }
+        .sol-base span:nth-child(3) { animation-delay: .7s; }
+        .sol-base span:nth-child(4) { animation-delay: 1.05s; }
+        @keyframes solBase {
+            0%, 100% { border-color: var(--border-soft); color: var(--text-muted); }
+            50%      { border-color: rgba(67,238,147,.3); color: var(--text-primary); }
+        }
+
+        /* info-visual-card becomes a full-bleed animation stage */
+        .info-visual-card--fill { padding: 0; display: block; }
+
         /* RESPONSIVE */
         @media (prefers-reduced-motion: reduce) {
             .flow-grid > *, .growth-dashboard { animation: none; }
             .orb, .hero-glyph-card { animation: none; }
+            .ah-sweep, .ah-orbit, .ah-node-i, .ah-pulse,
+            .th-ring, .th-ring::after, .th-threat,
+            .sol-out, .sol-flow i, .sol-engine-bar i, .sol-base span { animation: none; }
+            .th-threat { opacity: 0; }
         }
         @media (max-width: 1200px) {
             .tech-grid { grid-template-columns: repeat(3, 1fr); }
@@ -2122,6 +2411,9 @@
             .lc-center { padding: 0 60px; }
             .layer-card { max-width: 100% !important; padding: 18px 22px; }
             .benefit-list { grid-template-columns: 1fr; }
+
+            .anim-hero { --vs-scale: .75; }
+            .th-stage  { --vs-scale: .86; }
         }
         @media (max-width: 600px) {
             .stats-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -2143,6 +2435,16 @@
             .newsletter-block { grid-template-columns: 1fr; gap: 18px; padding: 22px 20px; }
             .nl-actions { align-items: flex-start; }
             .footer-follow { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+            .anim-hero { --vs-scale: .56; }
+            .anim-solution { padding: 18px 14px; gap: 6px; }
+            .sol-out { font-size: .68rem; padding: 6px 10px; }
+            .sol-out-ic { font-size: .8rem; }
+            .sol-base span { font-size: .58rem; padding: 6px 4px; }
+            .sol-flow { height: 16px; }
+            .sol-engine { padding: 9px 12px; }
+            .sol-engine-tag { font-size: .52rem; }
+            .th-hud { font-size: .54rem; padding: 6px 12px; }
         }
         @media (max-width: 480px) {
             .stats-inner { grid-template-columns: 1fr; }
@@ -2300,7 +2602,33 @@
             </div>
             <div class="hero-glyph">
                 <div class="hero-glyph-card">
-                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Security Visualization" />
+                    <div class="anim-visual anim-hero" aria-hidden="true">
+                        <div class="ah-grid"></div>
+                        <div class="ah-sweep"></div>
+                        <div class="ah-ring ah-ring-3"></div>
+                        <div class="ah-ring ah-ring-2"></div>
+                        <div class="ah-ring ah-ring-1"></div>
+
+                        <div class="ah-orbit ah-orbit-1">
+                            <div class="ah-node" style="--a:0deg"><div class="ah-node-i">🔐</div></div>
+                            <div class="ah-node" style="--a:120deg"><div class="ah-node-i">🏗️</div></div>
+                            <div class="ah-node" style="--a:240deg"><div class="ah-node-i">🗄️</div></div>
+                        </div>
+                        <div class="ah-orbit ah-orbit-2">
+                            <div class="ah-node" style="--a:60deg"><div class="ah-node-i">🧩</div></div>
+                            <div class="ah-node" style="--a:180deg"><div class="ah-node-i">📡</div></div>
+                            <div class="ah-node" style="--a:300deg"><div class="ah-node-i">⚖️</div></div>
+                        </div>
+
+                        <div class="ah-core">
+                            <div class="ah-pulse"></div>
+                            <div class="ah-pulse ah-pulse--2"></div>
+                            <svg class="ah-shield" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L4 5.5V11c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5.5L12 2z" stroke="#43ee93" stroke-width="1.6" fill="rgba(67,238,147,.1)"/>
+                                <path d="M9 12l2.2 2.2L15.5 10" stroke="#43ee93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2534,8 +2862,23 @@
                 </div>
             </div>
             <div class="info-visual reveal">
-                <div class="info-visual-card">
-                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Security Visualization" />
+                <div class="info-visual-card info-visual-card--fill">
+                    <div class="anim-visual th-stage" aria-hidden="true">
+                        <div class="th-ring"></div>
+                        <div class="th-core">🛡️</div>
+                        <span class="th-threat" style="--a:0deg;--i:0"></span>
+                        <span class="th-threat" style="--a:45deg;--i:1"></span>
+                        <span class="th-threat" style="--a:90deg;--i:2"></span>
+                        <span class="th-threat" style="--a:135deg;--i:3"></span>
+                        <span class="th-threat" style="--a:180deg;--i:4"></span>
+                        <span class="th-threat" style="--a:225deg;--i:5"></span>
+                        <span class="th-threat" style="--a:270deg;--i:6"></span>
+                        <span class="th-threat" style="--a:315deg;--i:7"></span>
+                        <div class="th-hud">
+                            <span class="th-live"></span>
+                            Threats Blocked <b id="liveThreatCounter">0</b>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2553,8 +2896,32 @@
                 </div>
             </div>
             <div class="info-visual reveal">
-                <div class="info-visual-card">
-                    <img src="https://seesec.io/wp-content/uploads/2025/04/cloud-optimization-VP-1.png" alt="Cloud Security Visualization" />
+                <div class="info-visual-card info-visual-card--fill">
+                    <div class="anim-visual anim-solution" aria-hidden="true">
+                        <div class="sol-outcomes">
+                            <div class="sol-out" style="--i:0">
+                                <span class="sol-out-ic">🔐</span> Stronger access control
+                            </div>
+                            <div class="sol-out" style="--i:1">
+                                <span class="sol-out-ic">📡</span> Proactive threat detection
+                            </div>
+                            <div class="sol-out" style="--i:2">
+                                <span class="sol-out-ic">⚙️</span> Continuous vulnerability protection
+                            </div>
+                        </div>
+                        <div class="sol-flow"><i></i><i></i><i></i></div>
+                        <div class="sol-engine">
+                            <span class="sol-engine-tag">SEESEC Security Layer</span>
+                            <span class="sol-engine-bar"><i></i></span>
+                        </div>
+                        <div class="sol-flow"><i></i><i></i><i></i></div>
+                        <div class="sol-base">
+                            <span>IAM</span>
+                            <span>CloudTrail</span>
+                            <span>GuardDuty</span>
+                            <span>Security Hub</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3138,9 +3505,9 @@
 
     <script>
         /* ============================================================
-           THEME TOGGLE — ported from index.html
-           'system' → purple theme, 'dark' → midnight theme
-           ============================================================ */
+        THEME TOGGLE — ported from index.html
+        'system' → purple theme, 'dark' → midnight theme
+        ============================================================ */
         (function() {
             const root = document.documentElement;
             const btn = document.getElementById('themeToggle');
@@ -3201,8 +3568,8 @@
         })();
 
         /* ============================================================
-           HAMBURGER + MOBILE MENU
-           ============================================================ */
+        HAMBURGER + MOBILE MENU
+        ============================================================ */
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-accordion-trigger), .mobile-sublink');
@@ -3226,8 +3593,8 @@
         });
 
         /* ============================================================
-           MOBILE ACCORDION (Services / Solutions)
-           ============================================================ */
+        MOBILE ACCORDION (Services / Solutions)
+        ============================================================ */
         document.querySelectorAll('.mobile-accordion').forEach(acc => {
             const trigger = acc.querySelector('.mobile-accordion-trigger');
             trigger.addEventListener('click', () => {
@@ -3244,8 +3611,8 @@
         });
 
         /* ============================================================
-           NAV SCROLL HIDE/SHOW + PROGRESS BAR
-           ============================================================ */
+        NAV SCROLL HIDE/SHOW + PROGRESS BAR
+        ============================================================ */
         const navEl = document.getElementById('nav');
         const pb = document.getElementById('progressBar');
         let lastScroll = 0;
@@ -3276,8 +3643,8 @@
         });
 
         /* ============================================================
-           SMOOTH ANCHOR SCROLL
-           ============================================================ */
+        SMOOTH ANCHOR SCROLL
+        ============================================================ */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -3293,8 +3660,8 @@
         });
 
         /* ============================================================
-           KEYBOARD: Escape closes mobile menu
-           ============================================================ */
+        KEYBOARD: Escape closes mobile menu
+        ============================================================ */
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
                 toggleMenu();
@@ -3302,8 +3669,8 @@
         });
 
         /* ============================================================
-           STARS
-           ============================================================ */
+        STARS
+        ============================================================ */
         (function initStars() {
             const starsEl = document.getElementById('stars');
             if (!starsEl) return;
@@ -3317,8 +3684,8 @@
         })();
 
         /* ============================================================
-           REVEAL
-           ============================================================ */
+        REVEAL
+        ============================================================ */
         const revealEls = document.querySelectorAll('.reveal');
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
@@ -3331,8 +3698,8 @@
         revealEls.forEach(el => io.observe(el));
 
         /* ============================================================
-           COUNTER
-           ============================================================ */
+        COUNTER
+        ============================================================ */
         function animateCount(el) {
             const target = parseFloat(el.getAttribute('data-target'));
             if (isNaN(target)) return;
@@ -3360,8 +3727,8 @@
         document.querySelectorAll('.count-num').forEach(el => countObserver.observe(el));
 
         /* ============================================================
-           DASHBOARD METRIC ANIMATIONS
-           ============================================================ */
+        DASHBOARD METRIC ANIMATIONS
+        ============================================================ */
         const metricObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.dataset.animated) {
@@ -3391,8 +3758,8 @@
         document.querySelectorAll('.growth-dashboard .metric-row').forEach(r => metricObserver.observe(r));
 
         /* ============================================================
-           FAQ
-           ============================================================ */
+        FAQ
+        ============================================================ */
         document.querySelectorAll('.faq-q').forEach(q => {
             q.addEventListener('click', () => {
                 const item = q.closest('.faq-item');
@@ -3403,8 +3770,8 @@
         });
 
         /* ============================================================
-           TYPEWRITER
-           ============================================================ */
+        TYPEWRITER
+        ============================================================ */
         (function typewriter() {
             const el = document.getElementById('typewriter');
             if (!el) return;
@@ -3436,8 +3803,8 @@
         })();
 
         /* ============================================================
-           LIFECYCLE WHEEL
-           ============================================================ */
+        LIFECYCLE WHEEL
+        ============================================================ */
         (function() {
             const nodes = document.querySelectorAll('.lc-node');
             if (!nodes.length) return;
@@ -3552,6 +3919,20 @@
             });
 
             goTo(0);
+        })();
+
+        /* ============================================================
+        LIVE THREAT COUNTER (Why It Matters animation)
+        ============================================================ */
+        (function liveThreatCounter() {
+            const el = document.getElementById('liveThreatCounter');
+            if (!el) return;
+            let n = 1284;
+            el.textContent = n.toLocaleString();
+            setInterval(() => {
+                n += Math.floor(Math.random() * 4) + 1;
+                el.textContent = n.toLocaleString();
+            }, 2400);
         })();
     </script>
 
