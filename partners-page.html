@@ -1,0 +1,3460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Partners | SEESEC - Our Strategic Technology Ecosystem</title>
+    <meta name="description" content="SEESEC builds strategic technology partnerships across Cloud, AI, Data, Cybersecurity and Automation - turning innovative technologies into working solutions for customers." />
+    <link rel="canonical" href="https://seesec.io/partners" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="SEESEC Infotech" />
+    <meta name="theme-color" content="#051424" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SEESEC" />
+    <meta property="og:title" content="Partners | SEESEC - Our Strategic Technology Ecosystem" />
+    <meta property="og:description" content="One Ecosystem. More Possibilities. Greater Impact. Explore SEESEC's strategic technology partnerships." />
+    <meta property="og:url" content="https://seesec.io/partners" />
+    <meta property="og:image" content="https://seesec.io/wp-content/uploads/2025/03/logo.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Partners | SEESEC" />
+    <meta name="twitter:description" content="One Ecosystem. More Possibilities. Greater Impact." />
+    <meta name="twitter:image" content="https://seesec.io/wp-content/uploads/2025/03/logo.png" />
+
+    <!-- ===== THEME INIT (identical to index.html) ===== -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('seesec-theme') || 'system';
+                if (stored === 'light') stored = 'dark';
+                var effective;
+                if (stored === 'system') {
+                    effective = 'dark';
+                } else if (stored === 'dark') {
+                    effective = 'midnight';
+                } else {
+                    effective = stored;
+                }
+                document.documentElement.setAttribute('data-theme', effective);
+                document.documentElement.setAttribute('data-theme-pref', stored);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-theme-pref', 'system');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" href="https://seesec.io/wp-content/uploads/2025/03/logo.png" sizes="32x32" />
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           RESET + THEME TOKENS  (mirrors index.html exactly)
+           ═══════════════════════════════════════════════════════════ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink: #1a1341;
+            --accent: #43ee93;
+            --cyan: #1af6dd;
+            --blue: #0778b6;
+            --mid: #8a9ab5;
+            --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            --font-display: 'Hanken Grotesk', sans-serif;
+            --nav-height: 56px;
+            --seesec-green: #43ee93;
+            --seesec-cyan: #1af6dd;
+            --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+
+            color-scheme: dark;
+            --fg-rgb: 255, 255, 255;
+            --bg-0: #1a1341;
+            --bg-1: #0d0a2e;
+            --bg-2: #110e35;
+            --page-text: #ffffff;
+            --page-text-soft: rgba(var(--fg-rgb), 0.78);
+            --nav-bg: rgba(15, 10, 45, 0.28);
+            --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
+
+            --bg-primary: var(--bg-0);
+            --text-primary: var(--page-text);
+            --text-secondary: rgba(var(--fg-rgb), 0.78);
+            --text-muted: rgba(var(--fg-rgb), 0.55);
+            --text-faint: rgba(var(--fg-rgb), 0.35);
+            --surface-card: rgba(var(--fg-rgb), 0.04);
+            --border-card: rgba(var(--fg-rgb), 0.1);
+            --border-soft: rgba(var(--fg-rgb), 0.06);
+            --line: rgba(var(--fg-rgb), 0.08);
+
+            --panel-bg: rgba(var(--fg-rgb), 0.035);
+            --panel-bg-hover: rgba(var(--fg-rgb), 0.065);
+            --deep-bg: rgba(6, 10, 24, 0.6);
+        }
+
+        [data-theme="midnight"] {
+            color-scheme: dark;
+            --fg-rgb: 255, 255, 255;
+            --bg-0: #06070c;
+            --bg-1: #0a0c14;
+            --bg-2: #0d0f1a;
+            --page-text: #f4f6fb;
+            --page-text-soft: rgba(244, 246, 251, 0.78);
+            --nav-bg: rgba(4, 5, 10, 0.55);
+            --nav-bg-scrolled: rgba(4, 5, 10, 0.85);
+            --mid: #98a2b8;
+            --line: rgba(255, 255, 255, 0.1);
+            --deep-bg: rgba(2, 3, 6, 0.6);
+        }
+
+        [data-theme="midnight"] body { background: var(--bg-0); }
+        [data-theme="midnight"] nav {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(67, 238, 147, 0.10) inset;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-0);
+            color: var(--page-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color .5s ease, color .4s ease;
+        }
+        img, svg, video, canvas { max-width: 100%; }
+
+        a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+            outline: 2px solid var(--seesec-green);
+            outline-offset: 4px;
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
+            z-index: 999; transition: width .1s;
+            box-shadow: 0 0 20px rgba(67, 238, 147, .3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           NAVBAR - exactly like index.html
+           ═══════════════════════════════════════════════════════════ */
+        nav {
+            position: fixed; top: 8px; left: 48px; right: 48px; z-index: 800;
+            height: var(--nav-height);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 28px; border-radius: 999px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px) saturate(1.5);
+            -webkit-backdrop-filter: blur(14px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), 0.08);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, .18), 0 1px 0 rgba(var(--fg-rgb), .07) inset, 0 0 0 1px rgba(67, 238, 147, .04) inset;
+            transition: transform .35s var(--transition-smooth), background .4s ease, backdrop-filter .4s ease, box-shadow .4s ease, border-color .4s ease, top .4s ease;
+        }
+        nav.nav-hidden { transform: translateY(-140%); }
+        nav.scrolled { background: var(--nav-bg-scrolled); border-color: rgba(var(--fg-rgb), .11); }
+
+        .nav-logo {
+            font-weight: 800; font-size: 1.4rem; letter-spacing: -.02em;
+            color: var(--page-text); text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+            transition: transform .3s ease; flex-shrink: 0;
+            background: transparent;
+        }
+        .nav-logo:hover { transform: scale(1.02); }
+        .nav-logo img { height: 44px; width: auto; display: block; }
+        /* Logo per theme: System -> seesec_white, Dark -> seesec_dark */
+        .nav-logo img.logo-for-dark { display: none; }
+        html[data-theme-pref="dark"] .nav-logo img.logo-for-system { display: none; }
+        html[data-theme-pref="dark"] .nav-logo img.logo-for-dark { display: block; }
+        /* logo images already include the SEESEC wordmark, so the text next to them is hidden */
+        .nav-logo .logo-text, .footer-brand .nav-logo > span { display: none; }
+
+        .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; margin: 0; padding: 0; }
+        .nav-links a {
+            font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+            color: rgba(var(--fg-rgb), .88); text-decoration: none; font-weight: 500;
+            position: relative; padding: 4px 0; transition: color .25s ease; white-space: nowrap;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+            background: var(--accent); border-radius: 2px;
+            transition: width .4s var(--transition-smooth);
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--page-text); }
+
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: transparent; border: 1.5px solid rgba(67, 238, 147, .25);
+            color: var(--page-text); padding: 7px 18px; border-radius: 50px;
+            font-size: .68rem; font-weight: 600; letter-spacing: .06em;
+            text-decoration: none; text-transform: uppercase;
+            position: relative; overflow: hidden; flex-shrink: 0;
+            transition: all .4s var(--transition-smooth);
+        }
+        .nav-cta .nav-bg {
+            position: absolute; inset: 0; border-radius: 50px; background: var(--accent);
+            transform: scaleX(0); transform-origin: right;
+            transition: transform .5s var(--transition-smooth); z-index: -1;
+        }
+        .nav-cta:hover .nav-bg { transform: scaleX(1); transform-origin: left; }
+        .nav-cta:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-2px); }
+
+        .has-dropdown { position: relative; }
+        .dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; cursor: default; }
+        .dropdown-caret { width: 9px; height: 9px; flex-shrink: 0; opacity: .55; transition: transform .4s var(--transition-smooth), opacity .3s ease; }
+        .has-dropdown:hover .dropdown-caret, .has-dropdown:focus-within .dropdown-caret { transform: rotate(180deg); opacity: 1; }
+        .nav-dropdown {
+            position: absolute; top: calc(100% + 16px); left: 50%; min-width: 232px;
+            background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), .08); border-radius: 16px; padding: 10px;
+            display: flex; flex-direction: column; gap: 2px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transform: translateX(-50%) translateY(-8px) scale(.98);
+            transform-origin: top center;
+            transition: opacity .35s var(--transition-smooth), transform .35s var(--transition-smooth), visibility .35s;
+            z-index: 60;
+        }
+        .has-dropdown:hover .nav-dropdown, .has-dropdown:focus-within .nav-dropdown {
+            opacity: 1; visibility: visible; pointer-events: auto;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .nav-dropdown a {
+            font-size: .74rem; letter-spacing: .02em; text-transform: none; font-weight: 500;
+            color: rgba(var(--fg-rgb), .88); padding: 10px 14px; border-radius: 10px; white-space: nowrap;
+            opacity: 0; transform: translateY(-6px);
+            transition: opacity .3s ease, transform .3s ease, background .25s ease, color .25s ease;
+        }
+        .nav-dropdown a::after { content: none !important; }
+        .has-dropdown:hover .nav-dropdown a, .has-dropdown:focus-within .nav-dropdown a { opacity: 1; transform: translateY(0); }
+        .nav-dropdown a:hover { background: rgba(67, 238, 147, .1); color: var(--page-text); transform: translateX(3px); }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            padding: 6px 4px; z-index: 850; background: none; border: none; flex-shrink: 0;
+        }
+        .hamburger span { display: block; width: 26px; height: 2.5px; border-radius: 4px; background: var(--page-text); transition: all .35s var(--transition-smooth); transform-origin: center; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        .theme-toggle {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+            border: 1px solid rgba(var(--fg-rgb), .12); background: rgba(var(--fg-rgb), .04);
+            color: var(--page-text); cursor: pointer; position: relative;
+            transition: border-color .3s ease, background .3s ease, transform .3s ease;
+        }
+        .theme-toggle:hover { border-color: rgba(67, 238, 147, .4); transform: translateY(-1px); }
+        .theme-icon {
+            width: 16px; height: 16px; position: absolute; opacity: 0;
+            transform: scale(.6) rotate(-40deg);
+            transition: opacity .35s var(--transition-smooth), transform .35s var(--transition-smooth);
+        }
+        .theme-toggle[data-mode="system"] .theme-icon-system,
+        .theme-toggle[data-mode="dark"] .theme-icon-dark { opacity: 1; transform: scale(1) rotate(0deg); }
+
+        .mobile-theme-row {
+            display: flex; gap: 8px; margin-top: 6px; padding: 5px; border-radius: 999px;
+            background: rgba(var(--fg-rgb), .04); border: 1px solid rgba(var(--fg-rgb), .1);
+        }
+        .mobile-theme-option {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            padding: 8px 16px; border-radius: 999px; border: none; background: transparent;
+            color: rgba(var(--fg-rgb), .6); cursor: pointer; font-family: var(--font-sans);
+            font-size: .6rem; letter-spacing: .04em; text-transform: uppercase;
+            transition: background .3s ease, color .3s ease;
+        }
+        .mobile-theme-option svg { width: 17px; height: 17px; }
+        .mobile-theme-option.active { background: rgba(67, 238, 147, .14); color: var(--accent); }
+
+        .mobile-menu {
+            position: fixed; inset: 0; z-index: 750;
+            background: rgba(10, 8, 30, .97);
+            backdrop-filter: blur(32px) saturate(1.4);
+            -webkit-backdrop-filter: blur(32px) saturate(1.4);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px;
+            opacity: 0; pointer-events: none;
+            transition: opacity .5s var(--transition-smooth);
+            padding: 40px 24px; overflow-y: auto;
+        }
+        [data-theme="midnight"] .mobile-menu { background: rgba(3, 4, 8, .97); }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-size: 1.25rem; font-weight: 600; color: rgba(var(--fg-rgb), .9);
+            text-decoration: none; letter-spacing: .04em;
+            transition: color .3s ease, transform .3s ease; padding: 6px 0;
+        }
+        .mobile-menu a:hover { color: #fff; transform: scale(1.04); }
+        .mobile-menu .mobile-cta {
+            margin-top: 14px; padding: 13px 40px; border-radius: 50px;
+            background: var(--accent); color: var(--ink); font-weight: 700; font-size: .85rem;
+            text-transform: uppercase; letter-spacing: .06em;
+        }
+        .mobile-accordion { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .mobile-accordion-trigger { background: none; border: none; display: inline-flex; align-items: center; gap: 8px; color: inherit; cursor: pointer; }
+        .mobile-accordion-caret { width: 13px; height: 13px; opacity: .5; transition: transform .4s var(--transition-smooth); }
+        .mobile-accordion.open .mobile-accordion-caret { transform: rotate(180deg); }
+        .mobile-submenu {
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+            max-height: 0; overflow: hidden; width: 100%;
+            transition: max-height .45s var(--transition-smooth), opacity .35s ease; opacity: 0;
+        }
+        .mobile-accordion.open .mobile-submenu { max-height: 420px; opacity: 1; margin-top: 6px; }
+        .mobile-sublink { font-size: .92rem !important; font-weight: 500 !important; color: rgba(var(--fg-rgb), .86) !important; padding: 6px 0 !important; }
+
+        /* ── BUTTONS (index-identical) ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-weight: 600; letter-spacing: .04em; text-decoration: none;
+            text-transform: uppercase; position: relative; overflow: hidden;
+            cursor: pointer; border: none;
+            transition: color .4s ease, transform .3s ease, box-shadow .4s ease;
+            font-family: var(--font-sans);
+        }
+        .btn:active { transform: scale(.97); }
+        .btn-primary {
+            color: var(--page-text); background: transparent;
+            padding: 14px 32px; border-radius: 50px; font-size: .85rem;
+            border: 2px solid var(--accent); box-shadow: 0 0 30px rgba(67, 238, 147, .12); z-index: 1;
+        }
+        .btn-primary .btn-bg {
+            position: absolute; inset: 0; border-radius: 50px; z-index: -1;
+            background: var(--accent); transform: scaleX(0); transform-origin: left;
+            transition: transform .5s var(--transition-smooth);
+        }
+        .btn-primary:hover .btn-bg { transform: scaleX(1); }
+        .btn-primary:hover { color: var(--ink); box-shadow: 0 0 50px rgba(67, 238, 147, .3); transform: translateY(-2px) scale(1.02); }
+        .btn-ghost {
+            color: rgba(var(--fg-rgb), .7); font-size: .85rem; padding: 10px 4px;
+            background: transparent; gap: 8px; position: relative;
+        }
+        .btn-ghost .ghost-line {
+            position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--accent); border-radius: 2px; transition: width .4s var(--transition-smooth);
+        }
+        .btn-ghost:hover .ghost-line { width: 100%; }
+        .btn-ghost:hover { color: var(--page-text); }
+        .btn-ghost .arrow { display: inline-block; transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+        .btn-ghost:hover .arrow { transform: translateX(6px); }
+
+        /* ── SHARED ── */
+        .section-label {
+            font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+            color: var(--accent); font-weight: 600; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+        .section-label.centered { justify-content: center; }
+        .section-label.centered::before { display: none; }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1); }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* ── STARFIELD ── */
+        .stars-layer {
+            position: absolute; inset: 0; z-index: 1; pointer-events: none;
+            overflow: hidden; opacity: .85; mix-blend-mode: screen;
+        }
+        .star {
+            position: absolute; top: var(--sy); left: var(--sx);
+            width: var(--ss); height: var(--ss); border-radius: 50%;
+            background: #fff; opacity: var(--so);
+            animation: starTwinkle var(--sd) ease-in-out infinite;
+            animation-delay: var(--sdel);
+        }
+        .star.star-accent { background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+        .star.star-big { box-shadow: 0 0 4px rgba(255, 255, 255, .8); }
+        @keyframes starTwinkle {
+            0%, 100% { opacity: var(--so); transform: scale(1); }
+            50% { opacity: calc(var(--so) * .15); transform: scale(.6); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           1 · HERO - STRATEGIC TECHNOLOGY ALLIANCES
+           ═══════════════════════════════════════════════════════════ */
+        #partners-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 148px 48px 90px;
+            overflow: hidden;
+            background: var(--bg-0);
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--bg-1) 0%, var(--bg-0) 70%);
+            transition: background .5s ease;
+        }
+        [data-theme="midnight"] .hero-bg {
+            background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--bg-2) 0%, var(--bg-0) 70%);
+        }
+        #partners-hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 1;
+            background-image:
+                linear-gradient(rgba(7, 120, 182, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(7, 120, 182, .04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 78%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 78%);
+            pointer-events: none;
+        }
+        .ph-inner {
+            position: relative; z-index: 5;
+            max-width: 1340px; width: 100%; margin: 0 auto;
+            display: grid; grid-template-columns: 1.02fr .98fr;
+            gap: 48px; align-items: center;
+        }
+        .ph-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+            color: var(--accent); font-weight: 600; margin-bottom: 22px;
+            opacity: 0; animation: fadeUp .8s .2s forwards;
+        }
+        .ph-eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--accent); }
+
+        .ph-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5vw, 4.4rem);
+            font-weight: 800; line-height: 1.04; letter-spacing: -.04em;
+            color: var(--page-text); margin-bottom: 20px;
+            opacity: 0; animation: fadeUp .9s .3s forwards;
+        }
+        .ph-title em {
+            font-style: normal;
+            background: linear-gradient(120deg, #43ee93 0%, #1af6dd 100%);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ph-lead {
+            font-size: clamp(1rem, 1.3vw, 1.16rem);
+            line-height: 1.65; color: rgba(var(--fg-rgb), .94);
+            max-width: 560px; margin-bottom: 18px; font-weight: 400;
+            opacity: 0; animation: fadeUp .9s .42s forwards;
+        }
+        .ph-body {
+            font-size: .93rem; line-height: 1.82; color: rgba(var(--fg-rgb), .76);
+            max-width: 580px; margin-bottom: 16px;
+            opacity: 0; animation: fadeUp .9s .52s forwards;
+        }
+        .ph-strap {
+            display: inline-flex; align-items: center; gap: 12px;
+            margin-top: 14px; padding: 12px 22px; border-radius: 50px;
+            background: rgba(67, 238, 147, .05);
+            border: 1px solid rgba(67, 238, 147, .2);
+            font-family: var(--font-display);
+            font-size: clamp(.82rem, 1.05vw, 1rem);
+            font-weight: 700; letter-spacing: -.01em;
+            color: var(--page-text);
+            opacity: 0; animation: fadeUp .9s .62s forwards;
+        }
+        .ph-strap .dot-sep { color: var(--accent); opacity: .55; }
+        .ph-strap .st-accent { color: var(--accent); }
+
+        .ph-actions {
+            display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+            margin-top: 30px; opacity: 0; animation: fadeUp .9s .72s forwards;
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ── 3D ECOSYSTEM ── */
+        .ph-visual {
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; animation: fadeIn 1.2s .45s forwards;
+        }
+        .eco-stage {
+            position: relative;
+            width: min(560px, 46vw);
+            aspect-ratio: 1 / 1;
+            flex-shrink: 0;
+        }
+        .eco-stage::before {
+            content: '';
+            position: absolute; inset: 8%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(67, 238, 147, .12) 0%, rgba(26, 246, 221, .05) 38%, transparent 70%);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+        .eco-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+
+        .eco-orbit {
+            transform-box: view-box;
+            transform-origin: 50px 50px;
+            animation: ecoSpin 60s linear infinite;
+        }
+        .eco-orbit.rev { animation: ecoSpin 90s linear infinite reverse; }
+        @keyframes ecoSpin { to { transform: rotate(360deg); } }
+
+        .eco-line {
+            stroke: rgba(26, 246, 221, .34);
+            stroke-width: .35;
+            stroke-dasharray: 3 5;
+            animation: ecoFlow 3.2s linear infinite;
+        }
+        .eco-line:nth-child(2) { animation-delay: -.4s; }
+        .eco-line:nth-child(3) { animation-delay: -.8s; }
+        .eco-line:nth-child(4) { animation-delay: -1.2s; }
+        .eco-line:nth-child(5) { animation-delay: -1.6s; }
+        @keyframes ecoFlow { to { stroke-dashoffset: -16; } }
+
+        .eco-pulse-line {
+            stroke: rgba(67, 238, 147, .55);
+            stroke-width: .5;
+            stroke-linecap: round;
+            stroke-dasharray: 6 44;
+            animation: ecoPulseTravel 4s linear infinite;
+        }
+        @keyframes ecoPulseTravel { to { stroke-dashoffset: -50; } }
+
+        .eco-core {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 118px; height: 118px;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 4;
+        }
+        .eco-core-halo {
+            position: absolute; inset: -34px; border-radius: 50%;
+            border: 1px solid rgba(67, 238, 147, .14);
+            animation: ecoHalo 4s ease-in-out infinite;
+        }
+        .eco-core-halo.h2 { inset: -64px; border-color: rgba(26, 246, 221, .09); animation-delay: 1.2s; }
+        @keyframes ecoHalo {
+            0%, 100% { transform: scale(1); opacity: .75; }
+            50% { transform: scale(1.06); opacity: 1; }
+        }
+        .eco-core-inner {
+            position: relative;
+            width: 100%; height: 100%; border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, rgba(67,238,147,.14) 0%, rgba(6,23,38,.96) 70%);
+            border: 1.5px solid rgba(67, 238, 147, .45);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+            box-shadow:
+                0 0 42px rgba(67, 238, 147, .26),
+                0 0 90px rgba(26, 246, 221, .12),
+                inset 0 0 26px rgba(67, 238, 147, .09);
+            animation: ecoCorePulse 3.4s ease-in-out infinite;
+        }
+        @keyframes ecoCorePulse {
+            0%, 100% { box-shadow: 0 0 42px rgba(67, 238, 147, .26), 0 0 90px rgba(26, 246, 221, .12), inset 0 0 26px rgba(67, 238, 147, .09); }
+            50% { box-shadow: 0 0 60px rgba(67, 238, 147, .4), 0 0 120px rgba(26, 246, 221, .18), inset 0 0 34px rgba(67, 238, 147, .15); }
+        }
+        .eco-core-inner svg { width: 40px; height: 40px; }
+        .eco-core-inner span {
+            font-family: var(--font-display);
+            font-size: .55rem; font-weight: 800; letter-spacing: .2em;
+            text-transform: uppercase; color: var(--page-text); opacity: .9;
+        }
+
+        .eco-node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            width: 96px;
+            z-index: 5;
+        }
+        .eco-node-chip {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: radial-gradient(circle at 40% 30%, rgba(67,238,147,.12) 0%, rgba(6,18,30,.96) 72%);
+            border: 1px solid rgba(67, 238, 147, .28);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 26px rgba(67, 238, 147, .13), inset 0 0 18px rgba(26, 246, 221, .05);
+            transition: transform .45s var(--transition-smooth), box-shadow .45s ease, border-color .45s ease;
+            animation: ecoNodePulse 4s ease-in-out infinite;
+        }
+        .eco-node:nth-child(odd) .eco-node-chip { animation-delay: 1.4s; }
+        @keyframes ecoNodePulse {
+            0%, 100% { box-shadow: 0 0 26px rgba(67, 238, 147, .13), inset 0 0 18px rgba(26, 246, 221, .05); }
+            50% { box-shadow: 0 0 38px rgba(67, 238, 147, .26), inset 0 0 24px rgba(26, 246, 221, .1); }
+        }
+        .eco-node-chip svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .eco-node-label {
+            font-size: .58rem; font-weight: 700; letter-spacing: .14em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .82);
+            white-space: nowrap; text-align: center;
+        }
+        .eco-node:hover .eco-node-chip { transform: scale(1.12); border-color: var(--accent); box-shadow: 0 0 46px rgba(67, 238, 147, .4); }
+
+        /* ═══════════════════════════════════════════════════════════
+           2 · OUR PARTNER NETWORK - matches index.html "clients" section
+           ═══════════════════════════════════════════════════════════ */
+        #clients {
+            position: relative;
+            padding: 88px 48px;
+            background: var(--bg-0);
+            overflow: hidden;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .clients-inner { max-width: 1440px; margin: 0 auto; position: relative; z-index: 1; }
+        .clients-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+        .clients-head h2 {
+            font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+            font-weight: 800; letter-spacing: -0.03em; line-height: 1.2;
+            color: var(--page-text); margin-bottom: 14px;
+            font-family: var(--font-display);
+        }
+        .clients-head h2 em { font-style: normal; color: var(--accent); }
+        .clients-sub { font-size: clamp(0.88rem, 1.1vw, 1.05rem); line-height: 1.6; color: rgba(var(--fg-rgb), 0.88); }
+        .clients-rows { display: flex; flex-direction: column; gap: 40px; }
+        .clients-track-wrap { overflow: hidden; position: relative; padding: 12px 0; }
+        .clients-track-wrap::before, .clients-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 14%; max-width: 180px; z-index: 2; pointer-events: none; }
+        .clients-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg-0) 0%, transparent 100%); }
+        .clients-track-wrap::after { right: 0; background: linear-gradient(270deg, var(--bg-0) 0%, transparent 100%); }
+        .clients-track { display: flex; align-items: center; width: max-content; will-change: transform; }
+        .clients-track.marquee-rtl { animation: clientsMarqueeRTL 42s linear infinite; }
+        .clients-track.marquee-ltr { animation: clientsMarqueeLTR 42s linear infinite; }
+        .clients-track-wrap:hover .clients-track { animation-play-state: paused; }
+        @keyframes clientsMarqueeRTL { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+        @keyframes clientsMarqueeLTR { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+        .client-logo-item {
+            flex: 0 0 auto;
+            width: 176px; height: 88px;
+            margin-right: 64px;
+            display: flex; align-items: center; justify-content: center;
+            padding: 12px 18px;
+            background: #ffffff;
+            border: 1px solid rgba(var(--fg-rgb), 0.10);
+            border-radius: 14px;
+            cursor: pointer;
+            gap: 10px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .client-logo-item:hover {
+            transform: translateY(-4px) scale(1.08);
+            border-color: rgba(67, 238, 147, 0.35);
+            box-shadow: 0 14px 34px rgba(67, 238, 147, 0.18);
+            z-index: 3;
+        }
+        .client-logo-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--brand, #43ee93);
+            flex-shrink: 0;
+            box-shadow: 0 0 12px var(--brand, #43ee93);
+        }
+        .client-logo-text {
+            font-family: var(--font-display);
+            font-size: 0.82rem; font-weight: 800;
+            letter-spacing: -0.01em; white-space: nowrap;
+            color: #1a1341; line-height: 1.1;
+        }
+        .client-logo-text small {
+            display: block;
+            font-size: 0.48rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: #6a6488; margin-top: 2px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           3 · PARTNER HUB - VALUE FOR OUR PARTNERS
+           ═══════════════════════════════════════════════════════════ */
+        #partner-value {
+            position: relative;
+            padding: 110px 48px 100px;
+            background: var(--bg-0);
+            border-top: 1px solid var(--line);
+            overflow: hidden;
+        }
+        #partner-value::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 50% 42%, rgba(67, 238, 147, .05) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .pv-head {
+            position: relative; z-index: 2;
+            max-width: 840px; margin: 0 auto 26px; text-align: center;
+        }
+        .pv-head h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+            font-weight: 800; line-height: 1.08; letter-spacing: -.035em;
+            color: var(--page-text); margin-bottom: 18px;
+        }
+        .pv-head h2 em { font-style: normal; color: var(--accent); }
+        .pv-head p {
+            font-size: .95rem; line-height: 1.8;
+            color: rgba(var(--fg-rgb), .82); margin-bottom: 12px;
+        }
+
+        /* ── HUB STAGE ── */
+        .hub-stage {
+            position: relative;
+            width: min(660px, 92vw);
+            height: min(660px, 92vw);
+            --r: calc(min(660px, 92vw) * 0.352);
+            margin: 30px auto 10px;
+            z-index: 2;
+        }
+        .hub-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+
+        .hub-ring {
+            fill: none;
+            stroke: rgba(var(--fg-rgb), .07);
+            stroke-width: .3;
+            stroke-dasharray: 1.5 3;
+            transform-box: view-box;
+            transform-origin: 50px 50px;
+        }
+        .hub-ring.r1 { animation: ecoSpin 130s linear infinite; }
+        .hub-ring.r2 { animation: ecoSpin 90s linear infinite reverse; stroke: rgba(67, 238, 147, .09); }
+        .hub-ring.r3 { animation: ecoSpin 200s linear infinite; stroke: rgba(26, 246, 221, .06); stroke-dasharray: 0.8 5; }
+
+        .hub-orbit { transform-box: view-box; transform-origin: 50px 50px; animation: ecoSpin 24s linear infinite; }
+        .hub-orbit.rev { animation: ecoSpin 36s linear infinite reverse; }
+        .hub-orbit .od { fill: var(--accent); filter: drop-shadow(0 0 1.6px rgba(67,238,147,.9)); }
+        .hub-orbit.rev .od { fill: var(--cyan); filter: drop-shadow(0 0 1.6px rgba(26,246,221,.9)); }
+
+        .hub-spoke-line {
+            stroke: rgba(26, 246, 221, .26);
+            stroke-width: .38;
+            stroke-dasharray: 52;
+            stroke-dashoffset: 52;
+            transition: stroke-dashoffset .9s var(--transition-smooth),
+                        stroke .4s ease, stroke-width .4s ease;
+            transition-delay: calc(var(--i) * 110ms + 200ms);
+        }
+        .hub-stage.revealed .hub-spoke-line { stroke-dashoffset: 0; }
+        .hub-spoke-line.hi { stroke: rgba(67, 238, 147, .85); stroke-width: .62; }
+
+        .hub-core {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 138px; height: 138px; border-radius: 50%;
+            background: radial-gradient(circle at 35% 28%, rgba(67,238,147,.15) 0%, rgba(6,23,38,.96) 72%);
+            border: 1.5px solid rgba(67, 238, 147, .42);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+            box-shadow: 0 0 52px rgba(67, 238, 147, .24), inset 0 0 32px rgba(26, 246, 221, .07);
+            z-index: 6;
+            animation: ecoCorePulse 4s ease-in-out infinite;
+        }
+        .hub-core::before {
+            content: '';
+            position: absolute; inset: -22px; border-radius: 50%;
+            border: 1px dashed rgba(67, 238, 147, .18);
+            animation: ecoSpin 40s linear infinite;
+        }
+        .hub-core svg { width: 36px; height: 36px; }
+        .hub-core span {
+            font-family: var(--font-display);
+            font-size: .6rem; font-weight: 800; letter-spacing: .2em;
+            text-transform: uppercase; color: var(--page-text);
+        }
+        .hub-core small { font-size: .44rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); opacity: .85; }
+
+        .hub-spoke {
+            position: absolute; left: 50%; top: 50%;
+            width: 1px; height: 1px;
+            transform: translate(-50%, -50%) rotate(var(--a)) translate(0px) rotate(calc(-1 * var(--a))) scale(.35);
+            opacity: 0;
+            transition: transform .95s var(--transition-smooth), opacity .5s ease;
+            transition-delay: calc(var(--i) * 110ms);
+            z-index: 7;
+        }
+        .hub-stage.revealed .hub-spoke {
+            transform: translate(-50%, -50%) rotate(var(--a)) translate(var(--r)) rotate(calc(-1 * var(--a))) scale(1);
+            opacity: 1;
+        }
+
+        .hub-node {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 162px;
+            display: flex; flex-direction: column; align-items: center; gap: 9px;
+            cursor: pointer;
+        }
+        .hub-node-badge {
+            position: relative;
+            width: 64px; height: 64px; border-radius: 18px;
+            background: linear-gradient(160deg, rgba(13, 33, 51, .96) 0%, rgba(6, 18, 30, .96) 100%);
+            border: 1px solid rgba(67, 238, 147, .26);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 26px rgba(0, 0, 0, .45), inset 0 0 18px rgba(26, 246, 221, .05);
+            transition: transform .45s var(--transition-smooth), box-shadow .4s ease, border-color .4s ease, background .4s ease;
+        }
+        .hub-node-badge::after {
+            content: '';
+            position: absolute; inset: -6px; border-radius: 22px;
+            border: 1px solid rgba(67, 238, 147, .14);
+            opacity: 0;
+            transition: opacity .4s ease, transform .5s var(--transition-smooth);
+            transform: scale(.9);
+        }
+        .hub-node-num {
+            position: absolute; top: -8px; right: -8px;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--blue); color: #fff;
+            font-size: .53rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--bg-0);
+            transition: background .35s ease, color .35s ease, transform .35s var(--transition-smooth);
+        }
+        .hub-node-badge svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .hub-node-title {
+            font-size: .66rem; font-weight: 700; letter-spacing: .07em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .92);
+            text-align: center; line-height: 1.3;
+            transition: color .35s ease;
+        }
+        .hub-node:hover .hub-node-badge {
+            transform: scale(1.12) translateY(-3px);
+            border-color: var(--accent);
+            background: linear-gradient(160deg, rgba(67, 238, 147, .18) 0%, rgba(6, 18, 30, .96) 100%);
+            box-shadow: 0 0 0 7px rgba(67, 238, 147, .08), 0 14px 38px rgba(67, 238, 147, .24);
+        }
+        .hub-node:hover .hub-node-badge::after { opacity: 1; transform: scale(1); }
+        .hub-node:hover .hub-node-num { background: var(--accent); color: var(--ink); transform: scale(1.1); }
+        .hub-node:hover .hub-node-title { color: var(--page-text); }
+
+        .hub-tip {
+            position: absolute;
+            width: 254px;
+            padding: 15px 17px;
+            border-radius: 14px;
+            background: var(--deep-bg);
+            border: 1px solid rgba(67, 238, 147, .26);
+            box-shadow: 0 20px 56px rgba(0, 0, 0, .62);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transition: opacity .35s ease, transform .35s var(--transition-smooth), visibility .35s;
+            z-index: 40;
+            text-align: left;
+        }
+        .hub-node:hover .hub-tip,
+        .hub-node:focus-within .hub-tip { opacity: 1; visibility: visible; }
+
+        .hub-tip.t-top { bottom: calc(100% + 16px); left: 50%; transform: translateX(-50%) translateY(8px); }
+        .hub-node:hover .hub-tip.t-top { transform: translateX(-50%) translateY(0); }
+        .hub-tip.t-bottom { top: calc(100% + 16px); left: 50%; transform: translateX(-50%) translateY(-8px); }
+        .hub-node:hover .hub-tip.t-bottom { transform: translateX(-50%) translateY(0); }
+        .hub-tip.t-right { left: calc(100% + 18px); top: 50%; transform: translateY(-50%) translateX(-8px); }
+        .hub-node:hover .hub-tip.t-right { transform: translateY(-50%) translateX(0); }
+        .hub-tip.t-left { right: calc(100% + 18px); top: 50%; transform: translateY(-50%) translateX(8px); }
+        .hub-node:hover .hub-tip.t-left { transform: translateY(-50%) translateX(0); }
+
+        .hub-tip strong {
+            display: block; font-family: var(--font-display);
+            font-size: .84rem; font-weight: 800; color: var(--page-text); margin-bottom: 3px; letter-spacing: -.01em;
+        }
+        .hub-tip em {
+            display: block; font-style: normal; font-size: .52rem; font-weight: 700;
+            letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+        }
+        .hub-tip p { font-size: .74rem; line-height: 1.62; color: rgba(var(--fg-rgb), .8); margin: 0; }
+
+        /* ═══════════════════════════════════════════════════════════
+           3b · ANIMATED PARTNERSHIP PIPELINE
+           ═══════════════════════════════════════════════════════════ */
+        .pv-pipeline {
+            position: relative; z-index: 2;
+            max-width: 1120px; margin: 56px auto 0;
+            padding: 0 8px;
+        }
+        .pvp-head {
+            text-align: center; margin-bottom: 34px;
+        }
+        .pvp-head h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+            font-weight: 800; letter-spacing: -.025em; color: var(--page-text); margin-bottom: 8px;
+        }
+        .pvp-head p { font-size: .8rem; color: rgba(var(--fg-rgb), .6); }
+
+        .pvp-track {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            padding: 0 0 6px;
+        }
+        .pvp-rail {
+            position: absolute;
+            top: 22px;
+            left: calc(100% / 10);
+            right: calc(100% / 10);
+            height: 2px;
+            border-radius: 2px;
+            background: rgba(var(--fg-rgb), .09);
+            overflow: visible;
+        }
+        .pvp-rail-fill {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 0%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--accent) 60%, var(--cyan));
+            box-shadow: 0 0 16px rgba(67, 238, 147, .5);
+            transition: width .08s linear;
+        }
+        .pvp-pulse {
+            position: absolute; top: 50%; left: 0;
+            width: 12px; height: 12px; margin-left: -6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(67, 238, 147, .16), 0 0 22px rgba(67, 238, 147, .9);
+            transform: translateY(-50%);
+            transition: left .08s linear;
+            z-index: 3;
+        }
+
+        .pvp-step {
+            position: relative;
+            display: flex; flex-direction: column; align-items: center; gap: 9px;
+            padding: 0 6px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 4;
+        }
+        .pvp-dot {
+            position: relative;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--bg-0);
+            border: 1.5px solid rgba(var(--fg-rgb), .14);
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .45s ease, background .45s ease, box-shadow .45s ease, transform .45s var(--transition-smooth);
+        }
+        .pvp-dot svg { width: 19px; height: 19px; stroke: rgba(var(--fg-rgb), .4); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke .45s ease; }
+        .pvp-num {
+            position: absolute; top: -5px; right: -5px;
+            width: 17px; height: 17px; border-radius: 50%;
+            background: rgba(var(--fg-rgb), .1); color: rgba(var(--fg-rgb), .5);
+            font-size: .44rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--bg-0);
+            transition: background .4s ease, color .4s ease;
+        }
+
+        .pvp-label {
+            font-family: var(--font-display);
+            font-size: .78rem; font-weight: 800; letter-spacing: -.01em;
+            color: rgba(var(--fg-rgb), .52); line-height: 1.2;
+            transition: color .45s ease;
+        }
+        .pvp-sub {
+            font-size: .53rem; font-weight: 700; letter-spacing: .14em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .3);
+            transition: color .45s ease;
+        }
+
+        .pvp-step.on .pvp-dot {
+            border-color: var(--accent);
+            background: rgba(67, 238, 147, .12);
+            box-shadow: 0 0 0 8px rgba(67, 238, 147, .07), 0 0 34px rgba(67, 238, 147, .4);
+            transform: scale(1.09);
+        }
+        .pvp-step.on .pvp-dot svg { stroke: var(--accent); }
+        .pvp-step.on .pvp-num { background: var(--accent); color: var(--ink); }
+        .pvp-step.on .pvp-label { color: var(--page-text); }
+        .pvp-step.on .pvp-sub { color: var(--accent); }
+
+        .pvp-step.done .pvp-dot { border-color: rgba(67, 238, 147, .45); }
+        .pvp-step.done .pvp-dot svg { stroke: rgba(67, 238, 147, .7); }
+        .pvp-step.done .pvp-label { color: rgba(var(--fg-rgb), .82); }
+
+        /* ═══════════════════════════════════════════════════════════
+           4 · CUSTOMER VALUE - CONVERGENCE
+           ═══════════════════════════════════════════════════════════ */
+        #customer-value {
+            position: relative;
+            background: var(--bg-0);
+            border-top: 1px solid var(--line);
+        }
+        .cv-head {
+            max-width: 900px; margin: 0 auto; text-align: center;
+            padding: 100px 24px 20px;
+        }
+        .cv-head h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+            font-weight: 800; line-height: 1.08; letter-spacing: -.035em;
+            color: var(--page-text); margin-bottom: 18px;
+        }
+        .cv-head h2 em { font-style: normal; color: var(--accent); }
+        .cv-head p { font-size: .95rem; line-height: 1.82; color: rgba(var(--fg-rgb), .82); }
+
+        .cv-scroll { position: relative; height: 280vh; }
+        .cv-sticky {
+            position: sticky; top: 0; height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            overflow: hidden; padding: 60px 24px 30px;
+        }
+
+        .cv-stage {
+            position: relative;
+            width: min(640px, 88vw);
+            height: min(640px, 88vw);
+            flex-shrink: 0;
+        }
+        .cv-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+        .cv-line {
+            stroke: rgba(26, 246, 221, .3);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            transition: stroke .5s ease;
+        }
+        .cv-line.glow { stroke: rgba(67, 238, 147, .6); }
+
+        .cv-center {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: min(300px, 62%);
+            height: min(300px, 62%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 5;
+        }
+        .cv-center-halo {
+            position: absolute; inset: -18px; border-radius: 50%;
+            border: 1px solid rgba(67, 238, 147, .16);
+            animation: ecoHalo 5s ease-in-out infinite;
+        }
+        .cv-center-inner {
+            position: relative;
+            width: 100%; height: 100%; border-radius: 50%;
+            background: radial-gradient(circle at 38% 30%, rgba(67,238,147,.12) 0%, rgba(4,16,28,.96) 72%);
+            border: 1.5px solid rgba(67, 238, 147, .34);
+            box-shadow: 0 0 60px rgba(67, 238, 147, .16), inset 0 0 40px rgba(26, 246, 221, .06);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            transition: box-shadow .5s ease, border-color .5s ease;
+        }
+        .cv-center.merged .cv-center-inner {
+            border-color: rgba(67, 238, 147, .7);
+            box-shadow: 0 0 100px rgba(67, 238, 147, .38), inset 0 0 60px rgba(26, 246, 221, .14);
+        }
+        .cv-state {
+            position: absolute;
+            inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+            padding: 0 30px; text-align: center;
+            opacity: 0;
+            transition: opacity .55s ease, transform .55s var(--transition-smooth);
+            transform: scale(.94);
+        }
+        .cv-state.on { opacity: 1; transform: scale(1); }
+        .cv-state .cv-state-icon { width: 34px; height: 34px; stroke: var(--accent); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .cv-state h4 {
+            font-family: var(--font-display);
+            font-size: clamp(.9rem, 1.5vw, 1.16rem);
+            font-weight: 800; letter-spacing: -.02em; color: var(--page-text); line-height: 1.2;
+        }
+        .cv-state p {
+            font-size: .56rem; letter-spacing: .16em; text-transform: uppercase;
+            color: var(--accent); font-weight: 700;
+        }
+
+        .cv-node {
+            position: absolute; left: 50%; top: 50%;
+            width: 108px;
+            display: flex; flex-direction: column; align-items: center; gap: 7px;
+            will-change: transform, opacity;
+            z-index: 6;
+        }
+        .cv-node-chip {
+            width: 58px; height: 58px; border-radius: 16px;
+            background: linear-gradient(160deg, rgba(13, 33, 51, .95) 0%, rgba(6, 18, 30, .95) 100%);
+            border: 1px solid rgba(67, 238, 147, .3);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .45), 0 0 22px rgba(67, 238, 147, .12);
+        }
+        .cv-node-chip svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .cv-node-label {
+            font-size: .55rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .88);
+            text-align: center; white-space: nowrap;
+        }
+
+        .cv-stepper {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; flex-wrap: wrap;
+            margin-top: 26px; padding: 0 16px;
+            position: relative; z-index: 8;
+        }
+        .cv-step {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 40px;
+            border: 1px solid rgba(var(--fg-rgb), .1);
+            background: rgba(var(--fg-rgb), .03);
+            font-size: .58rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .5);
+            transition: all .45s var(--transition-smooth);
+            white-space: nowrap;
+        }
+        .cv-step .n {
+            width: 16px; height: 16px; border-radius: 50%;
+            background: rgba(var(--fg-rgb), .12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .48rem; color: rgba(var(--fg-rgb), .7);
+            transition: all .4s ease;
+        }
+        .cv-step.on {
+            border-color: rgba(67, 238, 147, .55);
+            background: rgba(67, 238, 147, .08);
+            color: var(--page-text);
+            box-shadow: 0 0 26px rgba(67, 238, 147, .13);
+        }
+        .cv-step.on .n { background: var(--accent); color: var(--ink); }
+        .cv-step-arrow { color: rgba(var(--fg-rgb), .2); font-size: .72rem; }
+
+        .cv-closing {
+            max-width: 840px; margin: 0 auto; padding: 0 24px 80px;
+            text-align: center;
+        }
+        .cv-closing p {
+            font-family: var(--font-display);
+            font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+            font-weight: 700; line-height: 1.4; letter-spacing: -.025em;
+            color: var(--page-text);
+        }
+        .cv-closing p em {
+            font-style: normal;
+            background: linear-gradient(120deg, #43ee93, #1af6dd);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           4b · CUSTOMER OUTCOME SHOWCASE
+           ═══════════════════════════════════════════════════════════ */
+        .cvs-wrap { padding: 0 48px 120px; }
+        .cvs-head { max-width: 780px; margin: 0 auto 46px; text-align: center; }
+        .cvs-head h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+            font-weight: 800; letter-spacing: -.03em; color: var(--page-text); margin-bottom: 10px;
+        }
+        .cvs-head h3 em { font-style: normal; color: var(--accent); }
+        .cvs-head p { font-size: .9rem; color: rgba(var(--fg-rgb), .78); line-height: 1.7; }
+
+        .cvs {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.15fr .85fr;
+            gap: 48px; align-items: stretch;
+        }
+
+        .cvs-display {
+            position: relative;
+            min-height: 400px;
+            border-radius: 24px;
+            border: 1px solid rgba(var(--fg-rgb), .09);
+            background:
+                radial-gradient(circle at 15% 10%, rgba(67, 238, 147, .07) 0%, transparent 58%),
+                rgba(var(--fg-rgb), .022);
+            overflow: hidden;
+            padding: 46px 48px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .cvs-display::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(7, 120, 182, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(7, 120, 182, .045) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, #000 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, #000 20%, transparent 80%);
+            pointer-events: none;
+        }
+        .cvs-progress-ring {
+            position: absolute; top: 26px; right: 26px;
+            width: 46px; height: 46px;
+            z-index: 3;
+        }
+        .cvs-progress-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .cvs-progress-ring .track { fill: none; stroke: rgba(var(--fg-rgb), .1); stroke-width: 3; }
+        .cvs-progress-ring .fill {
+            fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round;
+            stroke-dasharray: 113;
+            stroke-dashoffset: 113;
+            transition: stroke-dashoffset .3s linear;
+            filter: drop-shadow(0 0 5px rgba(67, 238, 147, .7));
+        }
+        .cvs-progress-ring .rnum {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display);
+            font-size: .58rem; font-weight: 800; color: var(--accent);
+        }
+
+        .cvs-item {
+            position: absolute;
+            inset: 46px 48px;
+            display: flex; flex-direction: column; justify-content: center;
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .65s var(--transition-smooth), transform .65s var(--transition-smooth);
+            pointer-events: none;
+        }
+        .cvs-item.on { opacity: 1; transform: none; pointer-events: auto; }
+
+        .cvs-ghost {
+            position: absolute; top: -34px; left: -12px;
+            font-family: var(--font-display);
+            font-size: clamp(5rem, 11vw, 9rem);
+            font-weight: 900; line-height: 1;
+            letter-spacing: -.06em;
+            color: rgba(var(--fg-rgb), .035);
+            user-select: none; pointer-events: none;
+            transition: color .6s ease;
+        }
+        .cvs-item.on .cvs-ghost { color: rgba(67, 238, 147, .085); }
+
+        .cvs-icon {
+            width: 62px; height: 62px; border-radius: 18px;
+            background: rgba(67, 238, 147, .09);
+            border: 1px solid rgba(67, 238, 147, .22);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            transition: transform .6s var(--transition-smooth), background .5s ease, border-color .5s ease;
+        }
+        .cvs-item.on .cvs-icon { transform: translateY(0) rotate(0); }
+        .cvs-icon::after {
+            content: '';
+            position: absolute; inset: -8px; border-radius: 24px;
+            border: 1px dashed rgba(67, 238, 147, .2);
+            animation: ecoSpin 22s linear infinite;
+        }
+        .cvs-icon svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+        .cvs-item h4 {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+            font-weight: 800; letter-spacing: -.03em; line-height: 1.15;
+            color: var(--page-text); margin-bottom: 16px;
+            position: relative; z-index: 2;
+        }
+        .cvs-item p {
+            font-size: .93rem; line-height: 1.78;
+            color: rgba(var(--fg-rgb), .82);
+            max-width: 520px;
+            position: relative; z-index: 2;
+        }
+        .cvs-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 22px;
+            padding: 7px 16px; border-radius: 40px;
+            border: 1px solid rgba(67, 238, 147, .22);
+            background: rgba(67, 238, 147, .05);
+            font-size: .58rem; font-weight: 700; letter-spacing: .14em;
+            text-transform: uppercase; color: var(--accent);
+            width: fit-content;
+            position: relative; z-index: 2;
+        }
+        .cvs-tag .tdot {
+            width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+            animation: dotPulse 1.6s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: .5; }
+        }
+
+        .cvs-rail {
+            display: flex; flex-direction: column; gap: 8px;
+            justify-content: center;
+        }
+        .cvs-rail-item {
+            position: relative;
+            display: flex; align-items: center; gap: 14px;
+            padding: 15px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(var(--fg-rgb), .07);
+            background: rgba(var(--fg-rgb), .018);
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-sans);
+            color: inherit;
+            overflow: hidden;
+            transition: border-color .45s ease, background .45s ease, transform .45s var(--transition-smooth);
+        }
+        .cvs-rail-item::before {
+            content: '';
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent), var(--cyan));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform .5s var(--transition-smooth);
+        }
+        .cvs-rail-item:hover {
+            border-color: rgba(67, 238, 147, .26);
+            background: rgba(67, 238, 147, .045);
+            transform: translateX(4px);
+        }
+        .cvs-rail-item.on {
+            border-color: rgba(67, 238, 147, .42);
+            background: rgba(67, 238, 147, .07);
+        }
+        .cvs-rail-item.on::before { transform: scaleY(1); }
+
+        .cvs-rail-num {
+            font-family: var(--font-display);
+            font-size: .68rem; font-weight: 800;
+            color: rgba(var(--fg-rgb), .3);
+            flex-shrink: 0;
+            width: 22px;
+            transition: color .45s ease;
+        }
+        .cvs-rail-item.on .cvs-rail-num,
+        .cvs-rail-item:hover .cvs-rail-num { color: var(--accent); }
+
+        .cvs-rail-title {
+            flex: 1;
+            font-size: .8rem; font-weight: 600;
+            color: rgba(var(--fg-rgb), .6);
+            line-height: 1.35;
+            transition: color .45s ease;
+        }
+        .cvs-rail-item.on .cvs-rail-title { color: var(--page-text); }
+        .cvs-rail-item:hover .cvs-rail-title { color: var(--page-text); }
+
+        .cvs-rail-bar {
+            position: absolute; left: 18px; right: 18px; bottom: 6px;
+            height: 2px; border-radius: 2px;
+            background: rgba(var(--fg-rgb), .07);
+            overflow: hidden;
+        }
+        .cvs-rail-bar i {
+            display: block; height: 100%; width: 0%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            box-shadow: 0 0 10px rgba(67, 238, 147, .5);
+        }
+        .cvs-rail-item.on .cvs-rail-bar i { animation: cvsFill 5.6s linear forwards; }
+        @keyframes cvsFill { from { width: 0%; } to { width: 100%; } }
+        .cvs.paused .cvs-rail-item.on .cvs-rail-bar i { animation-play-state: paused; }
+
+        /* ═══════════════════════════════════════════════════════════
+           5 · BECOME A PARTNER - ORBITAL CAROUSEL
+           ═══════════════════════════════════════════════════════════ */
+        #become-partner {
+            position: relative;
+            padding: 110px 48px 110px;
+            background: var(--bg-0);
+            overflow: hidden;
+            border-top: 1px solid var(--line);
+        }
+        #become-partner::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 62% 58% at 50% 48%, rgba(67, 238, 147, .07) 0%, transparent 66%),
+                radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26, 246, 221, .05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #become-partner::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(7, 120, 182, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(7, 120, 182, .035) 1px, transparent 1px);
+            background-size: 70px 70px;
+            mask-image: radial-gradient(ellipse 70% 62% at 50% 50%, #000 22%, transparent 76%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 62% at 50% 50%, #000 22%, transparent 76%);
+            pointer-events: none;
+        }
+
+        .bp-copy { position: relative; z-index: 3; max-width: 860px; margin: 0 auto 12px; text-align: center; }
+        .bp-copy h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.2vw, 3.8rem);
+            font-weight: 800; line-height: 1.06; letter-spacing: -.04em;
+            color: var(--page-text); margin-bottom: 20px;
+        }
+        .bp-copy h2 em {
+            font-style: normal;
+            background: linear-gradient(120deg, #43ee93, #1af6dd);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bp-copy p {
+            font-size: .95rem; line-height: 1.82;
+            color: rgba(var(--fg-rgb), .78); margin-bottom: 12px;
+        }
+
+        /* ── ORBIT STAGE ── */
+        .or-stage {
+            position: relative; z-index: 3;
+            width: min(640px, 92vw);
+            height: min(400px, 62vw);
+            margin: 26px auto 0;
+            perspective: 1200px;
+        }
+        .or-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+
+        /* ── ORBIT LINES - now visible & white ── */
+        .or-line {
+            stroke: rgba(255, 255, 255, 0.55);
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            transition: stroke .5s ease, stroke-width .5s ease, opacity .5s ease;
+        }
+        .or-line.lit {
+            stroke: #ffffff;
+            stroke-width: 2.2;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+        }
+
+        .or-guide {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, .22);
+            pointer-events: none;
+        }
+
+        .or-core {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 146px; height: 146px; border-radius: 50%;
+            background: radial-gradient(circle at 36% 28%, rgba(67,238,147,.16) 0%, rgba(6,23,38,.97) 74%);
+            border: 1.5px solid rgba(67, 238, 147, .45);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+            box-shadow: 0 0 70px rgba(67, 238, 147, .28), 0 0 150px rgba(26, 246, 221, .12), inset 0 0 40px rgba(67, 238, 147, .1);
+            animation: ecoCorePulse 3.6s ease-in-out infinite;
+            z-index: 60;
+            transition: box-shadow .5s ease, transform .5s var(--transition-smooth);
+        }
+        .or-core::before,
+        .or-core::after {
+            content: '';
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .28);
+            animation: ecoHalo 4.5s ease-in-out infinite;
+        }
+        .or-core::before { inset: -20px; }
+        .or-core::after { inset: -40px; border-color: rgba(255, 255, 255, .18); animation-delay: 1.2s; }
+        .or-core svg { width: 42px; height: 42px; }
+        .or-core span {
+            font-family: var(--font-display);
+            font-size: .6rem; font-weight: 800; letter-spacing: .22em;
+            text-transform: uppercase; color: var(--page-text);
+        }
+        .or-core small {
+            font-size: .43rem; letter-spacing: .18em; text-transform: uppercase;
+            color: var(--accent); opacity: .85;
+        }
+        .or-core.hot { box-shadow: 0 0 110px rgba(67, 238, 147, .52), 0 0 220px rgba(26, 246, 221, .22), inset 0 0 62px rgba(67, 238, 147, .22); }
+
+        .or-node {
+            position: absolute; left: 50%; top: 50%;
+            width: 92px;
+            display: flex; flex-direction: column; align-items: center; gap: 7px;
+            will-change: transform, opacity;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .or-node-chip {
+            width: 52px; height: 52px; border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, .55);
+            background: rgba(255, 255, 255, .06);
+            display: flex; align-items: center; justify-content: center;
+            transition: all .6s var(--transition-smooth);
+        }
+        .or-node-chip svg { width: 20px; height: 20px; stroke: rgba(255, 255, 255, .85); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .5s ease; }
+        .or-node-label {
+            font-size: .5rem; font-weight: 700; letter-spacing: .13em;
+            text-transform: uppercase; color: rgba(255, 255, 255, .7);
+            white-space: nowrap; transition: color .5s ease;
+        }
+        .or-node.lit .or-node-chip {
+            border-style: solid;
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, .18);
+            box-shadow: 0 0 0 9px rgba(255, 255, 255, .12), 0 0 42px rgba(255, 255, 255, .65);
+            transform: scale(1.14);
+        }
+        .or-node.lit .or-node-chip svg { stroke: #ffffff; }
+        .or-node.lit .or-node-label { color: #ffffff; }
+
+        .bp-cta {
+            position: relative; z-index: 4;
+            max-width: 780px; margin: 46px auto 0;
+            text-align: center;
+        }
+        .bp-cta h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.4vw, 1.85rem);
+            font-weight: 800; letter-spacing: -.03em; line-height: 1.3;
+            color: var(--page-text); margin-bottom: 28px;
+        }
+        .bp-cta h3 em { font-style: normal; color: var(--accent); }
+        .bp-cta-row {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px;
+        }
+        .bp-cta .btn-primary { padding: 16px 40px; font-size: .88rem; }
+        .bp-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: .82rem; font-weight: 600; letter-spacing: .05em;
+            text-transform: uppercase; color: rgba(var(--fg-rgb), .72);
+            text-decoration: none; position: relative; padding: 8px 2px;
+            transition: color .35s ease;
+        }
+        .bp-secondary::after {
+            content: ''; position: absolute; left: 0; bottom: 2px; height: 2px; width: 0;
+            background: var(--accent); border-radius: 2px;
+            transition: width .45s var(--transition-smooth);
+        }
+        .bp-secondary:hover { color: var(--page-text); }
+        .bp-secondary:hover::after { width: 100%; }
+        .bp-secondary .arrow { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); display: inline-block; }
+        .bp-secondary:hover .arrow { transform: translateX(6px); }
+
+        /* ═══════════════════════════════════════════════════════════
+           FOOTER - exactly like index.html
+           ═══════════════════════════════════════════════════════════ */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 56px 48px 28px;
+            background: var(--bg-primary);
+            backdrop-filter: blur(4px);
+            transition: background .5s ease;
+        }
+        .footer-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px; margin-bottom: 36px;
+        }
+        .footer-brand .nav-logo {
+            font-size: 1.5rem; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--page-text); font-weight: 800;
+            background: transparent;
+        }
+        .footer-brand .nav-logo img { height: 64px; width: auto; display: block; }
+        .footer-brand .nav-logo img.logo-for-dark { display: none; }
+        html[data-theme-pref="dark"] .footer-brand .nav-logo img.logo-for-system { display: none; }
+        html[data-theme-pref="dark"] .footer-brand .nav-logo img.logo-for-dark { display: block; }
+        .footer-brand p {
+            color: rgba(var(--fg-rgb), .86);
+            font-size: .88rem; max-width: 380px; line-height: 1.7;
+        }
+        .footer-offices {
+            display: flex; flex-direction: column; gap: 12px;
+            margin-top: 20px; max-width: 400px;
+        }
+        .footer-office-item { display: flex; align-items: flex-start; gap: 10px; }
+        .footer-office-icon { font-size: .85rem; line-height: 1.45; flex-shrink: 0; opacity: .85; }
+        .footer-office-label {
+            display: block; font-size: .68rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 3px;
+        }
+        .footer-office-addr {
+            font-size: .8rem; line-height: 1.55;
+            color: rgba(var(--fg-rgb), .86); margin: 0; max-width: 360px;
+        }
+        .footer-office-item:hover .footer-office-addr { color: var(--page-text); transition: color .3s ease; }
+        .footer-col h3 {
+            font-size: .9rem; text-transform: uppercase; letter-spacing: .04em;
+            color: #ffffff; margin-bottom: 14px; font-weight: 600;
+        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .footer-col ul a {
+            color: rgba(var(--fg-rgb), .86); text-decoration: none;
+            font-size: .88rem; transition: all .25s ease; display: inline-block;
+        }
+        .footer-col ul a:hover { color: var(--accent); transform: translateX(4px); }
+        .newsletter-block {
+            max-width: 1280px; margin: 0 auto 36px; padding: 28px 32px;
+            border: 1px solid var(--border-card); border-radius: 20px;
+            background: var(--surface-card);
+            display: grid; grid-template-columns: 1fr auto;
+            gap: 28px; align-items: center; position: relative;
+            overflow: hidden; backdrop-filter: blur(6px);
+        }
+        .newsletter-block::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan)); opacity: .7;
+        }
+        .nl-text h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; color: #ffffff; }
+        .nl-text p {
+            font-size: .88rem; color: rgba(var(--fg-rgb), .86);
+            line-height: 1.6; margin-bottom: 10px; max-width: 520px;
+        }
+        .nl-email {
+            font-size: .85rem; color: var(--accent); font-weight: 600;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .nl-email:hover { color: var(--cyan); }
+        .nl-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .nl-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+        .nl-input {
+            min-width: 220px; padding: 12px 18px; border-radius: 50px;
+            border: 1px solid rgba(var(--fg-rgb), .25);
+            background: rgba(var(--fg-rgb), .06); color: #fff;
+            font: inherit; font-size: .85rem;
+        }
+        .nl-input::placeholder { color: rgba(var(--fg-rgb), .55); }
+        .nl-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .nl-signup-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: var(--ink); font-weight: 700; font-size: .82rem;
+            letter-spacing: .06em; text-transform: uppercase;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: transform .25s, box-shadow .3s;
+            box-shadow: 0 6px 24px rgba(67, 238, 147, .25);
+            font-family: inherit;
+        }
+        .nl-signup-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 36px rgba(67, 238, 147, .4); }
+        .nl-privacy { font-size: .72rem; color: rgba(var(--fg-rgb), .72); text-decoration: none; letter-spacing: .04em; transition: color .3s; }
+        .nl-privacy:hover { color: var(--accent); }
+        .nl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .nl-status { font-size: .75rem; min-height: 1em; margin: 0; }
+        .nl-status.ok { color: var(--accent); }
+        .nl-status.err { color: #ff8a8a; }
+        .footer-follow {
+            max-width: 1280px; margin: 0 auto 28px; padding: 20px 0;
+            border-top: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 20px; flex-wrap: wrap;
+        }
+        .footer-follow-label {
+            font-size: .8rem; text-transform: uppercase; letter-spacing: .16em;
+            color: rgba(var(--fg-rgb), .78); font-weight: 600;
+        }
+        .footer-follow-socials { display: flex; gap: 12px; align-items: center; }
+        .footer-follow-socials a {
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid var(--border-soft);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(var(--fg-rgb), .86); font-size: .95rem;
+            text-decoration: none; transition: all .3s var(--transition-smooth);
+            background: var(--surface-card);
+        }
+        .footer-follow-socials a:hover {
+            color: var(--ink); background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 24px rgba(67, 238, 147, .3);
+        }
+        .footer-bottom {
+            max-width: 1280px; margin: 0 auto; padding-top: 18px;
+            border-top: 1px solid var(--line);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: .8rem; color: rgba(var(--fg-rgb), .7);
+            flex-wrap: wrap; gap: 14px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════ */
+        @media (max-width: 1280px) {
+            .nav-links { gap: 14px; }
+            .nav-links a { font-size: .68rem; letter-spacing: .05em; }
+        }
+        @media (max-width: 1180px) {
+            .eco-stage { width: min(480px, 44vw); }
+            .hub-tip { width: 224px; }
+            .cvs { gap: 32px; }
+        }
+        @media (max-width: 1100px) and (min-width: 821px) {
+            nav { left: 20px; right: 20px; padding: 0 18px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: .62rem; letter-spacing: .03em; }
+            .nav-cta { padding: 6px 12px; font-size: .6rem; }
+            .nav-logo { font-size: 1.15rem; }
+            .nav-logo img { height: 38px; }
+        }
+        @media (max-width: 1024px) {
+            #partners-hero { padding: 132px 32px 70px; }
+            .ph-inner { grid-template-columns: 1fr; gap: 40px; }
+            .ph-visual { order: 2; }
+            .ph-copy { order: 1; }
+            .eco-stage { width: min(520px, 84vw); }
+            .ph-lead, .ph-body { max-width: 100%; }
+            .cvs { grid-template-columns: 1fr; gap: 28px; }
+            .cvs-display { min-height: 360px; padding: 38px 36px; }
+            .cvs-item { inset: 38px 36px; }
+            .cvs-wrap { padding: 0 32px 100px; }
+            .or-stage { width: min(560px, 94vw); height: min(360px, 62vw); }
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .newsletter-block { grid-template-columns: 1fr; gap: 18px; }
+            .nl-actions { align-items: flex-start; }
+        }
+        @media (max-width: 900px) {
+            .hub-stage {
+                width: 100%; height: auto; max-width: 700px;
+                display: flex; flex-direction: column; gap: 14px;
+                padding: 0; margin-top: 34px;
+            }
+            .hub-svg { display: none; }
+            .hub-core {
+                position: relative; left: auto; top: auto; transform: none;
+                margin: 0 auto 18px; width: 122px; height: 122px;
+            }
+            .hub-core::before { inset: -16px; }
+            .hub-spoke {
+                position: static; width: 100%; height: auto;
+                transform: none !important; opacity: 1 !important;
+                transition: none;
+            }
+            .hub-node {
+                position: relative; left: auto; top: auto; transform: none;
+                width: 100%;
+                flex-direction: column; align-items: flex-start; gap: 12px;
+                padding: 18px 20px;
+                border-radius: 16px;
+                background: rgba(var(--fg-rgb), .03);
+                border: 1px solid rgba(var(--fg-rgb), .08);
+                text-align: left;
+                transition: border-color .4s ease, background .4s ease;
+            }
+            .hub-node:hover { border-color: rgba(67, 238, 147, .32); background: rgba(67, 238, 147, .05); }
+            .hub-node-badge { flex-shrink: 0; }
+            .hub-node-title { text-align: left; font-size: .74rem; }
+            .hub-node-title br { display: none; }
+            .hub-tip {
+                position: static !important;
+                width: 100%; opacity: 1 !important; visibility: visible !important;
+                transform: none !important;
+                margin: 0; padding: 0; background: none; border: none; box-shadow: none;
+                backdrop-filter: none;
+                text-align: left;
+            }
+            .hub-tip em { margin-bottom: 5px; }
+            .hub-tip p { font-size: .76rem; }
+
+            .pvp-label { font-size: .68rem; }
+            .pvp-sub { font-size: .46rem; letter-spacing: .1em; }
+            .pvp-dot { width: 40px; height: 40px; }
+            .pvp-dot svg { width: 17px; height: 17px; }
+            .pvp-rail { top: 19px; }
+
+            .cv-scroll { height: 220vh; }
+            .cv-stage { width: min(520px, 90vw); height: min(520px, 90vw); }
+            .cv-node { width: 88px; }
+            .cv-node-chip { width: 48px; height: 48px; border-radius: 13px; }
+            .cv-node-chip svg { width: 20px; height: 20px; }
+            .cv-node-label { font-size: .46rem; }
+            .cv-center-inner { padding: 0 22px; }
+            .cv-step { font-size: .5rem; padding: 6px 12px; }
+            .cv-step-arrow { display: none; }
+            .or-stage { width: min(500px, 94vw); height: min(330px, 62vw); }
+            .or-core { width: 124px; height: 124px; }
+            .or-core svg { width: 34px; height: 34px; }
+            .or-node { width: 78px; }
+            .or-node-chip { width: 44px; height: 44px; }
+            .or-node-chip svg { width: 17px; height: 17px; }
+            .or-node-label { font-size: .44rem; letter-spacing: .08em; }
+        }
+        @media (max-width: 820px) {
+            nav { top: 0; left: 0; right: 0; padding: 0 20px; border-radius: 0 0 18px 18px; }
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .hamburger { display: flex; }
+
+            #partners-hero { padding: 110px 20px 56px; min-height: auto; }
+            #clients { padding: 56px 20px; }
+            #partner-value { padding: 76px 20px 76px; }
+            #customer-value .cvs-wrap { padding: 0 20px 80px; }
+            #become-partner { padding: 76px 20px 80px; }
+            .cv-head { padding: 76px 20px 12px; }
+            .cvs-head { margin-bottom: 32px; }
+            .cvs-display { min-height: 380px; padding: 34px 26px; }
+            .cvs-item { inset: 34px 26px; }
+            .cvs-ghost { top: -18px; left: -8px; font-size: clamp(3.4rem, 16vw, 5rem); }
+            .cvs-icon { width: 52px; height: 52px; border-radius: 15px; margin-bottom: 18px; }
+            .cvs-icon svg { width: 24px; height: 24px; }
+            .cvs-item h4 { font-size: clamp(1.1rem, 5vw, 1.45rem); margin-bottom: 12px; }
+            .cvs-item p { font-size: .84rem; }
+            .cvs-progress-ring { width: 38px; height: 38px; top: 20px; right: 20px; }
+            .cvs-rail-item { padding: 12px 14px; gap: 11px; border-radius: 12px; }
+            .cvs-rail-title { font-size: .72rem; }
+
+            .client-logo-item { width: 132px; height: 68px; padding: 8px 12px; margin-right: 32px; border-radius: 12px; gap: 8px; }
+            .client-logo-text { font-size: .66rem; }
+            .client-logo-text small { font-size: .42rem; }
+            .client-logo-dot { width: 8px; height: 8px; }
+            .clients-head { margin-bottom: 36px; }
+            .clients-rows { gap: 24px; }
+
+            .pvp-track {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .pvp-rail { display: none; }
+            .pvp-step {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                padding: 14px 16px;
+                border-radius: 14px;
+                border: 1px solid rgba(var(--fg-rgb), .08);
+                background: rgba(var(--fg-rgb), .022);
+                text-align: left;
+            }
+            .pvp-step.on { border-color: rgba(67, 238, 147, .42); background: rgba(67, 238, 147, .06); }
+            .pvp-step.done { border-color: rgba(67, 238, 147, .22); }
+            .pvp-step > div:last-child { display: flex; flex-direction: column; gap: 3px; }
+            .pvp-label { font-size: .82rem; }
+            .pvp-sub { font-size: .5rem; }
+
+            .bp-cta-row { flex-direction: column; width: 100%; }
+            .bp-cta .btn-primary { width: 100%; justify-content: center; }
+
+            .eco-node { width: 78px; }
+            .eco-node-chip { width: 52px; height: 52px; }
+            .eco-node-chip svg { width: 20px; height: 20px; }
+            .eco-node-label { font-size: .48rem; letter-spacing: .1em; }
+            .eco-core { width: 96px; height: 96px; }
+            .eco-core-inner svg { width: 32px; height: 32px; }
+            .eco-core-inner span { font-size: .48rem; }
+
+            footer { padding: 40px 20px 24px; }
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .footer-brand .nav-logo img { height: 52px; }
+            .newsletter-block { grid-template-columns: 1fr; gap: 18px; padding: 22px 20px; }
+            .nl-actions { align-items: flex-start; }
+        }
+        @media (max-width: 620px) {
+            .cv-scroll { height: 190vh; }
+            .cv-stage { width: min(420px, 94vw); height: min(420px, 94vw); }
+            .cv-node { width: 74px; }
+            .cv-node-chip { width: 42px; height: 42px; border-radius: 12px; }
+            .cv-node-chip svg { width: 17px; height: 17px; }
+            .cv-node-label { font-size: .4rem; letter-spacing: .06em; }
+            .cv-center-inner { padding: 0 16px; }
+            .cv-state h4 { font-size: .82rem; }
+            .cv-state p { font-size: .46rem; }
+            .cv-state .cv-state-icon { width: 26px; height: 26px; }
+            .cv-stepper { gap: 6px; }
+            .cv-step { font-size: .44rem; padding: 5px 10px; gap: 5px; }
+            .cv-step .n { width: 14px; height: 14px; font-size: .42rem; }
+            .or-stage { width: min(400px, 96vw); height: min(290px, 64vw); }
+            .or-core { width: 108px; height: 108px; }
+            .or-core svg { width: 30px; height: 30px; }
+            .or-core span { font-size: .5rem; }
+            .or-node { width: 66px; }
+            .or-node-chip { width: 38px; height: 38px; }
+            .or-node-chip svg { width: 15px; height: 15px; }
+            .or-node-label { font-size: .38rem; letter-spacing: .05em; }
+        }
+        @media (max-width: 520px) {
+            :root { --nav-height: 52px; }
+            nav { padding: 0 16px; }
+            .nav-logo { font-size: 1rem; }
+            .nav-logo img { height: 38px; }
+            .hamburger span { width: 20px; height: 2px; }
+            .ph-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+            .ph-strap { font-size: .7rem; padding: 10px 16px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+            .ph-actions { flex-direction: column; align-items: stretch; }
+            .ph-actions .btn-primary { justify-content: center; padding: 12px 20px; font-size: .72rem; }
+            .ph-actions .btn-ghost { justify-content: center; font-size: .74rem; }
+            .client-logo-item { width: 104px; height: 54px; padding: 6px 10px; margin-right: 22px; border-radius: 10px; gap: 6px; }
+            .client-logo-text { font-size: .56rem; }
+            .client-logo-text small { font-size: .38rem; }
+            .client-logo-dot { width: 6px; height: 6px; }
+            .clients-track-wrap::before, .clients-track-wrap::after { width: 10%; max-width: 48px; }
+            .hub-tip p { font-size: .72rem; }
+            .cv-head h2 { font-size: clamp(1.5rem, 7.5vw, 2.1rem); }
+            .cv-head p { font-size: .82rem; }
+            .pv-head h2 { font-size: clamp(1.5rem, 7.5vw, 2.1rem); }
+            .pv-head p { font-size: .82rem; }
+            .cvs-head h3 { font-size: clamp(1.25rem, 6.5vw, 1.8rem); }
+            .cvs-head p { font-size: .78rem; }
+            .cvs-display { min-height: 400px; padding: 30px 20px; border-radius: 18px; }
+            .cvs-item { inset: 30px 20px; }
+            .cvs-icon { width: 46px; height: 46px; border-radius: 13px; }
+            .cvs-icon svg { width: 21px; height: 21px; }
+            .cvs-item h4 { font-size: 1.05rem; }
+            .cvs-item p { font-size: .78rem; }
+            .cvs-tag { font-size: .5rem; padding: 6px 12px; margin-top: 16px; }
+            .cvs-rail-num { font-size: .6rem; width: 18px; }
+            .cvs-rail-title { font-size: .66rem; }
+            .bp-copy h2 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+            .bp-copy p { font-size: .82rem; }
+            .bp-cta h3 { font-size: 1.05rem; }
+            .bp-cta .btn-primary { font-size: .72rem; padding: 13px 22px; }
+            .bp-secondary { font-size: .72rem; }
+            footer { padding: 32px 16px 20px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 24px; margin-bottom: 24px; }
+            .footer-brand .nav-logo img { height: 52px; }
+            .footer-brand p { font-size: .75rem; }
+            .newsletter-block { grid-template-columns: 1fr; gap: 18px; padding: 22px 20px; }
+            .nl-actions { align-items: flex-start; }
+            .footer-follow { flex-direction: column; align-items: flex-start; gap: 14px; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; padding-top: 14px; }
+            .nl-input { min-width: 0; flex: 1 1 180px; }
+        }
+        @media (max-width: 400px) {
+            .cv-node { width: 64px; }
+            .cv-node-chip { width: 36px; height: 36px; }
+            .cv-node-chip svg { width: 15px; height: 15px; }
+            .cv-node-label { font-size: .34rem; }
+            .or-node { width: 58px; }
+            .or-node-chip { width: 34px; height: 34px; }
+            .or-node-label { font-size: .34rem; }
+            .pvp-step { padding: 11px 12px; gap: 12px; }
+            .pvp-dot { width: 34px; height: 34px; }
+            .pvp-dot svg { width: 15px; height: 15px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .cv-scroll { height: auto; }
+            .cv-sticky { position: relative; height: auto; padding: 40px 20px; }
+            .clients-track.marquee-rtl, .clients-track.marquee-ltr { animation: none !important; }
+            .cvs-rail-item.on .cvs-rail-bar i { animation: none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ===== SVG DEFS ===== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#43ee93" />
+                <stop offset="100%" stop-color="#1af6dd" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- ===== NAVBAR - exactly like index.html ===== -->
+    <nav id="nav">
+        <a href="index.html" class="nav-logo">
+            <img class="logo-for-system" src="logo/seesec-white.png" alt="SEESEC Logo" width="277" height="240" />
+            <img class="logo-for-dark" src="logo/seesec-dark.png" alt="SEESEC Logo" width="278" height="240" />
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Services
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="aws.html">AWS T&C</a>
+                    <a href="cloud-compliance.html">Cloud Compliance</a>
+                    <a href="cloud-migration.html">Cloud Migration</a>
+                    <a href="cloud-optimization.html">Cloud Optimization</a>
+                    <a href="cloud-security.html">Cloud Security</a>
+                    <a href="data-analytics.html">Data Analytics</a>
+                    <a href="gen-ai.html">Gen AI</a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Solutions
+                    <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+                <div class="nav-dropdown">
+                    <a href="chat-a-lot.html">Chat-A-Lot</a>
+                    <a href="dpdp-solutions.html">Dpdp Solutions</a>
+                    <a href="email-archival.html">Email Archival</a>
+                    <a href="enterprise-ai.html">Enterprise AI</a>
+                    <a href="interactive-email.html">Interactive Email</a>
+                    <a href="sms-sense.html">SMS Sense</a>
+                    <a href="talk-track.html">Talk Track</a>
+                    <a href="content-automation.html">Content AI</a>
+                </div>
+            </li>
+            <li><a href="content-automation.html">Content AI</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="partners-page.html" class="active">Partners</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta"><span class="nav-bg"></span>Get a Quote →</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: System">
+            <svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- ===== MOBILE MENU - exactly like index.html ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">Services
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-submenu">
+                <a href="aws.html" class="mobile-sublink">AWS Managed Services</a>
+                <a href="cloud-migration.html" class="mobile-sublink">Cloud Migration</a>
+                <a href="cloud-optimization.html" class="mobile-sublink">Cloud Optimization</a>
+                <a href="cloud-security.html" class="mobile-sublink">Cloud Security</a>
+                <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
+                <a href="data-analytics.html" class="mobile-sublink">Data Analytics</a>
+                <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
+            </div>
+        </div>
+        <div class="mobile-accordion" data-accordion>
+            <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">Solutions
+                <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mobile-submenu">
+                <a href="chat-a-lot.html" class="mobile-sublink">Chat-A-Lot</a>
+                <a href="talk-track.html" class="mobile-sublink">Talk Track</a>
+                <a href="sms-sense.html" class="mobile-sublink">SMS Sense</a>
+                <a href="interactive-email.html" class="mobile-sublink">Interactive Email</a>
+                <a href="email-archival.html" class="mobile-sublink">Email Archival</a>
+            </div>
+        </div>
+        <a href="content-automation.html" class="mobile-link">Content AI</a>
+        <a href="aboutus.html" class="mobile-link">About Us</a>
+        <a href="partners-page.html" class="mobile-link">Partners</a>
+        <a href="contact.html" class="mobile-link">Contact</a>
+        <a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer" class="mobile-link">Blogs</a>
+        <a href="contact.html" class="mobile-cta">Get a Quote →</a>
+        <div class="mobile-theme-row" role="group" aria-label="Color theme">
+            <button class="mobile-theme-option" data-mode="system" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>System</span>
+            </button>
+            <button class="mobile-theme-option" data-mode="dark" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
+                <span>Dark</span>
+            </button>
+        </div>
+        <span style="position:absolute;bottom:34px;font-size:.62rem;color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase;">Tap to close</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         1 · HERO - STRATEGIC TECHNOLOGY ALLIANCES
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="partners-hero">
+        <div class="hero-bg"></div>
+        <div class="stars-layer" id="starsLayer" aria-hidden="true"></div>
+
+        <div class="ph-inner">
+            <div class="ph-copy">
+                <p class="ph-eyebrow">Strategic Technology Alliances</p>
+                <h1 class="ph-title">Our <em>Strategic</em><br>Partnerships</h1>
+                <p class="ph-lead">Building a stronger technology ecosystem to deliver greater value to our customers.</p>
+                <p class="ph-body">At SEESEC, strategic partnerships have been an integral part of our journey from the beginning.</p>
+                <p class="ph-body">We started as an AWS Partner, building our foundation on cloud excellence and steadily expanding our capabilities to become an AWS Advanced Tier Services Partner. As our customers, capabilities, and ambitions grew, we continued building meaningful relationships across the technology ecosystem, including Ingram Micro, IBM, Anthropic and OpenAI.</p>
+                <p class="ph-body">Today, our growing network of strategic technology partnerships strengthens our ability to bring together the right Cloud, AI, Data, Cybersecurity, Automation and Enterprise Technologies to deliver powerful technology solutions and services for our customers.</p>
+
+                <div class="ph-strap">
+                    <span>One Ecosystem.</span>
+                    <span class="dot-sep">•</span>
+                    <span class="st-accent">More Possibilities.</span>
+                    <span class="dot-sep">•</span>
+                    <span>Greater Impact.</span>
+                </div>
+
+                <div class="ph-actions">
+                    <a href="#partner-value" class="btn btn-primary"><span class="btn-bg"></span>Explore the Ecosystem →</a>
+                    <a href="#become-partner" class="btn btn-ghost">Become a Partner <span class="arrow">→</span><span class="ghost-line"></span></a>
+                </div>
+            </div>
+
+            <div class="ph-visual">
+                <div class="eco-stage" aria-hidden="true">
+                    <svg class="eco-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <g class="eco-orbit">
+                            <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(26,246,221,0.10)" stroke-width="0.25" stroke-dasharray="1.6 3.4" />
+                        </g>
+                        <g class="eco-orbit rev">
+                            <circle cx="50" cy="50" r="37" fill="none" stroke="rgba(67,238,147,0.08)" stroke-width="0.25" stroke-dasharray="0.8 5" />
+                        </g>
+
+                        <g>
+                            <line class="eco-line" x1="50" y1="50" x2="50" y2="6" />
+                            <line class="eco-line" x1="50" y1="50" x2="91.85" y2="36.4" />
+                            <line class="eco-line" x1="50" y1="50" x2="75.86" y2="85.6" />
+                            <line class="eco-line" x1="50" y1="50" x2="24.14" y2="85.6" />
+                            <line class="eco-line" x1="50" y1="50" x2="8.15" y2="36.4" />
+                        </g>
+                        <g>
+                            <line class="eco-pulse-line" x1="50" y1="50" x2="50" y2="6" />
+                            <line class="eco-pulse-line" x1="50" y1="50" x2="91.85" y2="36.4" style="animation-delay:-.8s" />
+                            <line class="eco-pulse-line" x1="50" y1="50" x2="75.86" y2="85.6" style="animation-delay:-1.6s" />
+                            <line class="eco-pulse-line" x1="50" y1="50" x2="24.14" y2="85.6" style="animation-delay:-2.4s" />
+                            <line class="eco-pulse-line" x1="50" y1="50" x2="8.15" y2="36.4" style="animation-delay:-3.2s" />
+                        </g>
+                    </svg>
+
+                    <div class="eco-core">
+                        <div class="eco-core-halo"></div>
+                        <div class="eco-core-halo h2"></div>
+                        <div class="eco-core-inner">
+                            <svg viewBox="0 0 48 48" fill="none">
+                                <path d="M24 3.5 L41.5 13.2 V34.8 L24 44.5 L6.5 34.8 V13.2 Z" stroke="url(#coreGrad)" stroke-width="1.5" fill="rgba(67,238,147,0.06)"/>
+                                <path d="M30.4 17.6c-1.6-2.2-3.8-3.3-6.4-3.3-3.7 0-6.2 1.9-6.2 4.7 0 2.5 1.8 3.9 5.7 4.6 4.5.8 6.8 2.7 6.8 6 0 3.5-3.1 5.8-7.5 5.8-3.1 0-5.6-1.2-7.4-3.7" stroke="#43ee93" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                            </svg>
+                            <span>SEESEC</span>
+                        </div>
+                    </div>
+
+                    <div class="eco-node" style="left:50%; top:6%;">
+                        <div class="eco-node-chip">
+                            <svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 10.3A4 4 0 0 0 7 19z"/></svg>
+                        </div>
+                        <span class="eco-node-label">Cloud</span>
+                    </div>
+                    <div class="eco-node" style="left:91.85%; top:36.4%;">
+                        <div class="eco-node-chip">
+                            <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
+                        </div>
+                        <span class="eco-node-label">AI</span>
+                    </div>
+                    <div class="eco-node" style="left:75.86%; top:85.6%;">
+                        <div class="eco-node-chip">
+                            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+                        </div>
+                        <span class="eco-node-label">Data</span>
+                    </div>
+                    <div class="eco-node" style="left:24.14%; top:85.6%;">
+                        <div class="eco-node-chip">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span class="eco-node-label">Security</span>
+                    </div>
+                    <div class="eco-node" style="left:8.15%; top:36.4%;">
+                        <div class="eco-node-chip">
+                            <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.2"/></svg>
+                        </div>
+                        <span class="eco-node-label">Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         2 · OUR PARTNER NETWORK - styled exactly like index "Trusted by" section
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="clients">
+        <div class="clients-inner">
+            <div class="clients-head reveal">
+                <h2>Our <em>Partner Network</em></h2>
+                <p class="clients-sub">The companies powering what we build next - Cloud, AI, Data, Cybersecurity, Automation and Enterprise platforms brought together under one technology partner.</p>
+            </div>
+            <div class="clients-rows">
+                <div class="clients-track-wrap reveal">
+                    <div class="clients-track marquee-rtl" id="plmTrack1"></div>
+                </div>
+                <div class="clients-track-wrap reveal">
+                    <div class="clients-track marquee-ltr" id="plmTrack2" aria-hidden="true"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         3 · PARTNER HUB - VALUE FOR OUR PARTNERS
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="partner-value">
+        <div class="pv-head reveal">
+            <p class="section-label centered">Value for Our Partners</p>
+            <h2>More Than a Partnership.<br><em>A Platform for Shared Growth.</em></h2>
+            <p>SEESEC works closely with its technology partners to take innovative technologies and solutions to the right customers, create new business opportunities and accelerate adoption across the enterprise ecosystem.</p>
+            <p>Our partnerships combine technology, market access, sales capabilities, engineering expertise, and execution to create sustainable opportunities for shared growth.</p>
+        </div>
+
+        <div class="hub-stage" id="hubStage" role="list" aria-label="What we bring to our partners">
+            <svg class="hub-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <circle class="hub-ring r3" cx="50" cy="50" r="47" />
+                <circle class="hub-ring r1" cx="50" cy="50" r="41" />
+                <circle class="hub-ring r2" cx="50" cy="50" r="34" />
+
+                <g class="hub-orbit">
+                    <circle class="od" cx="50" cy="3" r="0.62" />
+                </g>
+                <g class="hub-orbit rev">
+                    <circle class="od" cx="50" cy="9" r="0.45" />
+                </g>
+
+                <line class="hub-spoke-line" data-spoke="0" style="--i:0" x1="50" y1="50" x2="50" y2="14.8" />
+                <line class="hub-spoke-line" data-spoke="1" style="--i:1" x1="50" y1="50" x2="80.5" y2="32.4" />
+                <line class="hub-spoke-line" data-spoke="2" style="--i:2" x1="50" y1="50" x2="80.5" y2="67.6" />
+                <line class="hub-spoke-line" data-spoke="3" style="--i:3" x1="50" y1="50" x2="50" y2="85.2" />
+                <line class="hub-spoke-line" data-spoke="4" style="--i:4" x1="50" y1="50" x2="19.5" y2="67.6" />
+                <line class="hub-spoke-line" data-spoke="5" style="--i:5" x1="50" y1="50" x2="19.5" y2="32.4" />
+            </svg>
+
+            <div class="hub-core">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <path d="M24 3.5 L41.5 13.2 V34.8 L24 44.5 L6.5 34.8 V13.2 Z" stroke="url(#coreGrad)" stroke-width="1.5" fill="rgba(67,238,147,0.06)"/>
+                    <path d="M30.4 17.6c-1.6-2.2-3.8-3.3-6.4-3.3-3.7 0-6.2 1.9-6.2 4.7 0 2.5 1.8 3.9 5.7 4.6 4.5.8 6.8 2.7 6.8 6 0 3.5-3.1 5.8-7.5 5.8-3.1 0-5.6-1.2-7.4-3.7" stroke="#43ee93" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span>SEESEC</span>
+                <small>Partner Hub</small>
+            </div>
+
+            <div class="hub-spoke" style="--a:-90deg; --i:0;">
+                <div class="hub-node" data-spoke="0" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+                        <span class="hub-node-num">1</span>
+                    </div>
+                    <div class="hub-node-title">Market<br>Reach</div>
+                    <div class="hub-tip t-top">
+                        <strong>Market Reach</strong>
+                        <em>Access</em>
+                        <p>Access a growing network of startups, digital businesses, enterprises and decision-makers across industries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-spoke" style="--a:-30deg; --i:1;">
+                <div class="hub-node" data-spoke="1" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8v7l-4 2v-9z"/></svg>
+                        <span class="hub-node-num">2</span>
+                    </div>
+                    <div class="hub-node-title">Sales Pipeline<br>Development</div>
+                    <div class="hub-tip t-right">
+                        <strong>Sales Pipeline Development</strong>
+                        <em>Qualified Opportunities</em>
+                        <p>Build qualified opportunities through customer conversations, prospecting, account mapping, and solution-led selling.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-spoke" style="--a:30deg; --i:2;">
+                <div class="hub-node" data-spoke="2" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><path d="M3 7h18l-1.4 12.2a2 2 0 0 1-2 1.8H6.4a2 2 0 0 1-2-1.8z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
+                        <span class="hub-node-num">3</span>
+                    </div>
+                    <div class="hub-node-title">Reselling &amp;<br>Technology Adoption</div>
+                    <div class="hub-tip t-right">
+                        <strong>Reselling &amp; Technology Adoption</strong>
+                        <em>Go-to-Market</em>
+                        <p>Take partner technologies to market through relevant customer opportunities, licensing, reselling and solution-led engagements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-spoke" style="--a:90deg; --i:3;">
+                <div class="hub-node" data-spoke="3" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg>
+                        <span class="hub-node-num">4</span>
+                    </div>
+                    <div class="hub-node-title">Joint<br>Go-to-Market</div>
+                    <div class="hub-tip t-bottom">
+                        <strong>Joint Go-to-Market</strong>
+                        <em>Demand Generation</em>
+                        <p>Create campaigns, industry propositions, use cases and market initiatives that generate awareness and demand.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-spoke" style="--a:150deg; --i:4;">
+                <div class="hub-node" data-spoke="4" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 3v3.5M16 3v3.5"/><path d="M8 14h3"/></svg>
+                        <span class="hub-node-num">5</span>
+                    </div>
+                    <div class="hub-node-title">Events &amp; Executive<br>Engagements</div>
+                    <div class="hub-tip t-left">
+                        <strong>Events &amp; Executive Engagements</strong>
+                        <em>Collaboration</em>
+                        <p>Collaborate on CXO roundtables, technology workshops, industry events, webinars, demonstrations and customer-focused sessions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-spoke" style="--a:210deg; --i:5;">
+                <div class="hub-node" data-spoke="5" tabindex="0" role="listitem">
+                    <div class="hub-node-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><circle cx="12" cy="12" r="3.2"/></svg>
+                        <span class="hub-node-num">6</span>
+                    </div>
+                    <div class="hub-node-title">Solution<br>Integration</div>
+                    <div class="hub-tip t-left">
+                        <strong>Solution Integration</strong>
+                        <em>Engineering</em>
+                        <p>Integrate partner technologies into larger Cloud, AI, Data, Cybersecurity and Automation solutions designed and delivered by SEESEC.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pv-pipeline" id="pvPipeline">
+            <div class="pvp-head reveal">
+                <h3>From Partnership to <em style="font-style:normal;color:var(--accent)">Customer Adoption</em></h3>
+                <p>A continuous pipeline - SEESEC takes technology from partnership to market to customer growth.</p>
+            </div>
+
+            <div class="pvp-track" id="pvpTrack">
+                <div class="pvp-rail">
+                    <span class="pvp-rail-fill" id="pvpFill"></span>
+                    <span class="pvp-pulse" id="pvpPulse"></span>
+                </div>
+
+                <div class="pvp-step" data-i="0">
+                    <span class="pvp-dot">
+                        <svg viewBox="0 0 24 24"><path d="M12 3l7 4v10l-7 4-7-4V7z"/><path d="M12 12l7-4M12 12v9M12 12L5 8"/></svg>
+                        <span class="pvp-num">1</span>
+                    </span>
+                    <span class="pvp-label">SEESEC</span>
+                    <span class="pvp-sub">Orchestration</span>
+                </div>
+
+                <div class="pvp-step" data-i="1">
+                    <span class="pvp-dot">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M8 9h8M8 13h5"/></svg>
+                        <span class="pvp-num">2</span>
+                    </span>
+                    <span class="pvp-label">Technology Partner</span>
+                    <span class="pvp-sub">Capability</span>
+                </div>
+
+                <div class="pvp-step" data-i="2">
+                    <span class="pvp-dot">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 12h5M18.5 9.5v5"/></svg>
+                        <span class="pvp-num">3</span>
+                    </span>
+                    <span class="pvp-label">Customer Opportunity</span>
+                    <span class="pvp-sub">Market Fit</span>
+                </div>
+
+                <div class="pvp-step" data-i="3">
+                    <span class="pvp-dot">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6-1.4-1.4z"/></svg>
+                        <span class="pvp-num">4</span>
+                    </span>
+                    <span class="pvp-label">Implementation</span>
+                    <span class="pvp-sub">Engineering</span>
+                </div>
+
+                <div class="pvp-step" data-i="4">
+                    <span class="pvp-dot">
+                        <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+                        <span class="pvp-num">5</span>
+                    </span>
+                    <span class="pvp-label">Growth</span>
+                    <span class="pvp-sub">Outcomes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         4 · CUSTOMER VALUE - CONVERGENCE + ANIMATED SHOWCASE
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="customer-value">
+        <div class="cv-head reveal">
+            <p class="section-label centered">Value for Our Customers</p>
+            <h2>More Technologies. More Expertise.<br><em>One Technology Partner.</em></h2>
+            <p>Our partnerships expand what SEESEC can bring to every customer engagement.</p>
+            <p style="margin-top:12px;">By combining our consulting, engineering and implementation capabilities with a growing ecosystem of leading technologies, we help customers access the solutions they need while working with one technology partner across their transformation journey.</p>
+        </div>
+
+        <div class="cv-scroll" id="cvScroll">
+            <div class="cv-sticky">
+                <div class="cv-stage" id="cvStage">
+                    <svg class="cv-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                        <line class="cv-line" data-line="0" x1="500" y1="500" x2="500" y2="140" />
+                        <line class="cv-line" data-line="1" x1="500" y1="500" x2="812" y2="320" />
+                        <line class="cv-line" data-line="2" x1="500" y1="500" x2="812" y2="680" />
+                        <line class="cv-line" data-line="3" x1="500" y1="500" x2="500" y2="860" />
+                        <line class="cv-line" data-line="4" x1="500" y1="500" x2="188" y2="680" />
+                        <line class="cv-line" data-line="5" x1="500" y1="500" x2="188" y2="320" />
+                    </svg>
+
+                    <div class="cv-center" id="cvCenter">
+                        <div class="cv-center-halo"></div>
+                        <div class="cv-center-inner">
+                            <div class="cv-state on" data-state="0">
+                                <svg class="cv-state-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+                                <h4>Your Business Challenge</h4>
+                                <p>Starting Point</p>
+                            </div>
+                            <div class="cv-state" data-state="1">
+                                <svg class="cv-state-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.7 7.2 9.9 10M17.3 7.2 14.1 10M6.7 16.8 9.9 14M17.3 16.8 14.1 14"/></svg>
+                                <h4>SEESEC Technology Ecosystem</h4>
+                                <p>Combining</p>
+                            </div>
+                            <div class="cv-state" data-state="2">
+                                <svg class="cv-state-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+                                <h4>Integrated Solution</h4>
+                                <p>Engineered</p>
+                            </div>
+                            <div class="cv-state" data-state="3">
+                                <svg class="cv-state-icon" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+                                <h4>Business Outcome</h4>
+                                <p>Delivered</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cv-node" data-node="0">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 10.3A4 4 0 0 0 7 19z"/></svg></div>
+                        <span class="cv-node-label">Cloud</span>
+                    </div>
+                    <div class="cv-node" data-node="1">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></div>
+                        <span class="cv-node-label">AI</span>
+                    </div>
+                    <div class="cv-node" data-node="2">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+                        <span class="cv-node-label">Data</span>
+                    </div>
+                    <div class="cv-node" data-node="3">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                        <span class="cv-node-label">Security</span>
+                    </div>
+                    <div class="cv-node" data-node="4">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+                        <span class="cv-node-label">Automation</span>
+                    </div>
+                    <div class="cv-node" data-node="5">
+                        <div class="cv-node-chip"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+                        <span class="cv-node-label">Enterprise Tech</span>
+                    </div>
+                </div>
+
+                <div class="cv-stepper" id="cvStepper">
+                    <span class="cv-step on" data-step="0"><span class="n">1</span>Your Business Challenge</span>
+                    <span class="cv-step-arrow">→</span>
+                    <span class="cv-step" data-step="1"><span class="n">2</span>SEESEC Technology Ecosystem</span>
+                    <span class="cv-step-arrow">→</span>
+                    <span class="cv-step" data-step="2"><span class="n">3</span>Integrated Solution</span>
+                    <span class="cv-step-arrow">→</span>
+                    <span class="cv-step" data-step="3"><span class="n">4</span>Business Outcome</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-closing reveal">
+            <p>Our partnerships expand what's possible. <em>SEESEC turns those possibilities into working solutions.</em></p>
+        </div>
+
+        <div class="cvs-wrap">
+            <div class="cvs-head reveal">
+                <p class="section-label centered">What This Means for Our Customers</p>
+                <h3>Six Ways Our Ecosystem <em>Becomes Your Advantage</em></h3>
+                <p>Hover to pause. Click any line to explore it in detail.</p>
+            </div>
+
+            <div class="cvs reveal" id="cvs">
+                <div class="cvs-display" id="cvsDisplay">
+                    <div class="cvs-progress-ring">
+                        <svg viewBox="0 0 46 46">
+                            <circle class="track" cx="23" cy="23" r="18" />
+                            <circle class="fill" id="cvsRing" cx="23" cy="23" r="18" />
+                        </svg>
+                        <span class="rnum" id="cvsRingNum">1/6</span>
+                    </div>
+
+                    <div class="cvs-item on" data-cv="0">
+                        <span class="cvs-ghost">01</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div>
+                        <h4>The Right Technology for the Requirement</h4>
+                        <p>Solutions designed around the business problem, existing environment, scalability needs and long-term objectives.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> Right-Fit Architecture</span>
+                    </div>
+
+                    <div class="cvs-item" data-cv="1">
+                        <span class="cvs-ghost">02</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div>
+                        <h4>Broader Technology Capabilities</h4>
+                        <p>Access capabilities across Cloud, AI, Generative AI, Data &amp; Analytics, Cybersecurity, Automation and Enterprise Technology.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> Full-Stack Coverage</span>
+                    </div>
+
+                    <div class="cvs-item" data-cv="2">
+                        <span class="cvs-ghost">03</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10.5H13z"/></svg></div>
+                        <h4>Faster Access to Innovation</h4>
+                        <p>Explore emerging technologies and enterprise-ready capabilities through an ecosystem that continuously evolves with the market.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> Market Velocity</span>
+                    </div>
+
+                    <div class="cvs-item" data-cv="3">
+                        <span class="cvs-ghost">04</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3A5 5 0 0 0 13.5 3.5l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3A5 5 0 0 0 10.5 20.5l1.7-1.7"/></svg></div>
+                        <h4>Integrated Solutions</h4>
+                        <p>Bring multiple technologies together into cohesive solutions designed around business outcomes.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> Unified Stack</span>
+                    </div>
+
+                    <div class="cvs-item" data-cv="4">
+                        <span class="cvs-ghost">05</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><path d="M4 12h5l2-5 2.5 10L16 12h4"/></svg></div>
+                        <h4>End-to-End Execution</h4>
+                        <p>Move seamlessly from consulting and architecture to implementation, integration, deployment, optimization and ongoing support.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> One Partner, Full Journey</span>
+                    </div>
+
+                    <div class="cvs-item" data-cv="5">
+                        <span class="cvs-ghost">06</span>
+                        <div class="cvs-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+                        <h4>Greater Business Impact</h4>
+                        <p>Turn technology investments into measurable improvements across efficiency, scalability, security, customer experience and innovation.</p>
+                        <span class="cvs-tag"><span class="tdot"></span> Measurable Outcomes</span>
+                    </div>
+                </div>
+
+                <div class="cvs-rail" id="cvsRail" role="tablist" aria-label="Customer value items">
+                    <button class="cvs-rail-item on" data-cv="0" role="tab" aria-selected="true">
+                        <span class="cvs-rail-num">01</span>
+                        <span class="cvs-rail-title">The Right Technology for the Requirement</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                    <button class="cvs-rail-item" data-cv="1" role="tab" aria-selected="false">
+                        <span class="cvs-rail-num">02</span>
+                        <span class="cvs-rail-title">Broader Technology Capabilities</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                    <button class="cvs-rail-item" data-cv="2" role="tab" aria-selected="false">
+                        <span class="cvs-rail-num">03</span>
+                        <span class="cvs-rail-title">Faster Access to Innovation</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                    <button class="cvs-rail-item" data-cv="3" role="tab" aria-selected="false">
+                        <span class="cvs-rail-num">04</span>
+                        <span class="cvs-rail-title">Integrated Solutions</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                    <button class="cvs-rail-item" data-cv="4" role="tab" aria-selected="false">
+                        <span class="cvs-rail-num">05</span>
+                        <span class="cvs-rail-title">End-to-End Execution</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                    <button class="cvs-rail-item" data-cv="5" role="tab" aria-selected="false">
+                        <span class="cvs-rail-num">06</span>
+                        <span class="cvs-rail-title">Greater Business Impact</span>
+                        <span class="cvs-rail-bar"><i></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         5 · BECOME A PARTNER - ORBITAL CAROUSEL (white visible orbits)
+         ═══════════════════════════════════════════════════════════ -->
+    <section id="become-partner">
+        <div class="stars-layer" id="starsLayer2" aria-hidden="true"></div>
+
+        <div class="bp-copy reveal">
+            <p class="section-label centered">Become a Partner</p>
+            <h2>Great Technology Deserves <em>Greater Reach.</em></h2>
+            <p>We are continuously expanding the SEESEC technology ecosystem and building relationships with companies creating meaningful technologies across Cloud, AI, Data, Cybersecurity, Automation and Enterprise Technology.</p>
+            <p>Whether you are an established technology company or an emerging innovator, we can explore opportunities across reselling, joint go-to-market, solution integration, sales pipeline development, customer engagements, events and collaborative technology offerings.</p>
+        </div>
+
+        <div class="or-stage" id="orStage" aria-hidden="true">
+            <svg class="or-svg" id="orSvg" preserveAspectRatio="none"></svg>
+
+            <div class="or-core" id="orCore">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <path d="M24 3.5 L41.5 13.2 V34.8 L24 44.5 L6.5 34.8 V13.2 Z" stroke="url(#coreGrad)" stroke-width="1.5" fill="rgba(67,238,147,0.07)"/>
+                    <path d="M30.4 17.6c-1.6-2.2-3.8-3.3-6.4-3.3-3.7 0-6.2 1.9-6.2 4.7 0 2.5 1.8 3.9 5.7 4.6 4.5.8 6.8 2.7 6.8 6 0 3.5-3.1 5.8-7.5 5.8-3.1 0-5.6-1.2-7.4-3.7" stroke="#43ee93" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span>SEESEC</span>
+                <small>Open Ecosystem</small>
+            </div>
+
+            <div class="or-node" data-i="0">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+                <span class="or-node-label">Your Tech</span>
+            </div>
+            <div class="or-node" data-i="1">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.3 10.3A4 4 0 0 0 7 19z"/></svg></div>
+                <span class="or-node-label">Cloud</span>
+            </div>
+            <div class="or-node" data-i="2">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></div>
+                <span class="or-node-label">AI</span>
+            </div>
+            <div class="or-node" data-i="3">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6.5" rx="7" ry="2.8"/><path d="M5 6.5v11c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-11"/></svg></div>
+                <span class="or-node-label">Data</span>
+            </div>
+            <div class="or-node" data-i="4">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-9V5.5L12 3 5 5.5V12c0 5.5 7 9 7 9z"/></svg></div>
+                <span class="or-node-label">Security</span>
+            </div>
+            <div class="or-node" data-i="5">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg></div>
+                <span class="or-node-label">Automation</span>
+            </div>
+            <div class="or-node" data-i="6">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+                <span class="or-node-label">Enterprise</span>
+            </div>
+            <div class="or-node" data-i="7">
+                <div class="or-node-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+                <span class="or-node-label">Open Slot</span>
+            </div>
+        </div>
+
+        <div class="bp-cta reveal">
+            <h3>You Bring the Technology.<br><em>Together, We Create the Opportunity.</em></h3>
+            <div class="bp-cta-row">
+                <a href="contact.html" class="btn btn-primary" id="bpCta">
+                    <span class="btn-bg"></span>
+                    Become a SEESEC Partner →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER - exactly like index.html ===== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img class="logo-for-system" src="logo/seesec-white.webp" alt="SEESEC Logo" width="277" height="240" loading="lazy" />
+                    <img class="logo-for-dark" src="logo/seesec-dark.webp" alt="SEESEC Logo" width="278" height="240" loading="lazy" />
+                </a>
+                <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
+
+                <div class="footer-offices">
+                    <div class="footer-office-item">
+                        <span class="footer-office-icon" aria-hidden="true">🏢</span>
+                        <div>
+                            <strong class="footer-office-label">Head Office</strong>
+                            <p class="footer-office-addr">Signature Tower 3, Sec-15, Gurugram</p>
+                        </div>
+                    </div>
+                    <div class="footer-office-item">
+                        <span class="footer-office-icon" aria-hidden="true">📍</span>
+                        <div>
+                            <strong class="footer-office-label">Regional Office 1</strong>
+                            <p class="footer-office-addr">Majestic Omnia, 3rd Floor, Sector 4, Noida, UP 201301</p>
+                        </div>
+                    </div>
+                    <div class="footer-office-item">
+                        <span class="footer-office-icon" aria-hidden="true">📍</span>
+                        <div>
+                            <strong class="footer-office-label">Regional Office 2</strong>
+                            <p class="footer-office-addr">Sanskar Chand Road, Jaipur</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top:16px; font-size:0.78rem; color:var(--text-secondary);">📞 +91-922-055-0666</p>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="aws.html">AWS T&C</a></li>
+                    <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+                    <li><a href="cloud-migration.html">Cloud Migration</a></li>
+                    <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
+                    <li><a href="cloud-security.html">Cloud Security</a></li>
+                    <li><a href="data-analytics.html">Data Analytics</a></li>
+                    <li><a href="gen-ai.html">Gen AI</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Solutions</h3>
+                <ul>
+                    <li><a href="chat-a-lot.html">Chat-A-Lot</a></li>
+                    <li><a href="dpdp-solutions.html">Dpdp Solutions</a></li>
+                    <li><a href="email-archival.html">Email Archival</a></li>
+                    <li><a href="enterprise-ai.html">Enterprise AI</a></li>
+                    <li><a href="interactive-email.html">Interactive Email</a></li>
+                    <li><a href="sms-sense.html">SMS Sense</a></li>
+                    <li><a href="talk-track.html">Talk Track</a></li>
+                    <li><a href="content-automation.html">Content AI</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="partners-page.html">Partners</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="news.html">Newsletter</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="aws.html">AWS Terms &amp; Conditions</a></li>
+                    <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="newsletter-block">
+            <div class="nl-text">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for day to day cloud updates!</p>
+                <a href="mailto:contactus@seesec.io" class="nl-email"><i class="fas fa-envelope"></i> contactus@seesec.io</a>
+            </div>
+            <div class="nl-actions">
+                <form class="nl-form" id="nlForm" novalidate>
+                    <label for="nlEmail" class="nl-sr">Email address</label>
+                    <input type="email" id="nlEmail" name="email" class="nl-input" placeholder="you@company.com" autocomplete="email" required />
+                    <button type="submit" class="nl-signup-btn">Sign Up →</button>
+                </form>
+                <p class="nl-status" id="nlStatus" role="status" aria-live="polite"></p>
+                <a href="privacy-policy.html" class="nl-privacy">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-follow">
+            <span class="footer-follow-label">Follow Us</span>
+            <div class="footer-follow-socials">
+                <a href="mailto:contactus@seesec.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/company/seesec-infotech/posts/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/seesec.io" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Seesec_io" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© <span id="copyrightYear">2026</span> SEESEC Infotech. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+    /* ═══════════════════════════════════════════════════════════
+       STARFIELD
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        function buildStars(layer, count) {
+            if (!layer) return;
+            var frag = document.createDocumentFragment();
+            for (var i = 0; i < count; i++) {
+                var el = document.createElement('span');
+                var isBig = Math.random() < 0.17;
+                var isAccent = !isBig && Math.random() < 0.12;
+                el.className = 'star' + (isBig ? ' star-big' : '') + (isAccent ? ' star-accent' : '');
+                el.style.setProperty('--sx', (Math.random() * 100) + '%');
+                el.style.setProperty('--sy', (Math.random() * 100) + '%');
+                var baseSize = isBig ? 3.4 + Math.random() * 2.4 : 1.8 + Math.random() * 1.9;
+                el.style.setProperty('--ss', baseSize + 'px');
+                el.style.setProperty('--so', isBig ? (0.68 + Math.random() * 0.3) : (0.3 + Math.random() * 0.5));
+                el.style.setProperty('--sd', (2.6 + Math.random() * 4.4) + 's');
+                el.style.setProperty('--sdel', (Math.random() * 6) + 's');
+                frag.appendChild(el);
+            }
+            layer.appendChild(frag);
+        }
+        buildStars(document.getElementById('starsLayer'), 120);
+        buildStars(document.getElementById('starsLayer2'), 90);
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       PARTNER NETWORK MARQUEE (styled like index.html "clients")
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var partners = [
+            { name: 'AWS', sub: 'Advanced Tier', brand: '#FF9900' },
+            { name: 'Ingram Micro', sub: 'Distribution', brand: '#E31837' },
+            { name: 'IBM', sub: 'Enterprise', brand: '#0F62FE' },
+            { name: 'Anthropic', sub: 'AI Safety', brand: '#D97757' },
+            { name: 'OpenAI', sub: 'Generative AI', brand: '#10A37F' },
+            { name: 'Microsoft Azure', sub: 'Cloud', brand: '#0078D4' },
+            { name: 'Google Cloud', sub: 'Cloud', brand: '#4285F4' },
+            { name: 'Snowflake', sub: 'Data Cloud', brand: '#29B5E8' },
+            { name: 'Databricks', sub: 'Lakehouse', brand: '#FF3621' },
+            { name: 'Palo Alto Networks', sub: 'Security', brand: '#FA582D' },
+            { name: 'CrowdStrike', sub: 'Endpoint', brand: '#E01F3D' },
+            { name: 'ServiceNow', sub: 'Workflow', brand: '#62D84E' },
+            { name: 'Salesforce', sub: 'CRM', brand: '#00A1E0' },
+            { name: 'MongoDB', sub: 'Database', brand: '#47A248' },
+            { name: 'Cloudflare', sub: 'Edge Network', brand: '#F38020' },
+            { name: 'HashiCorp', sub: 'Infrastructure', brand: '#844FBA' },
+            { name: 'NVIDIA', sub: 'Accelerated AI', brand: '#76B900' },
+            { name: 'VMware', sub: 'Virtualisation', brand: '#607078' }
+        ];
+
+        function makeItem(p) {
+            var el = document.createElement('div');
+            el.className = 'client-logo-item';
+            el.style.setProperty('--brand', p.brand);
+            el.setAttribute('role', 'listitem');
+            var dot = document.createElement('span');
+            dot.className = 'client-logo-dot';
+            var text = document.createElement('span');
+            text.className = 'client-logo-text';
+            text.textContent = p.name;
+            var small = document.createElement('small');
+            small.textContent = p.sub;
+            text.appendChild(small);
+            el.appendChild(dot);
+            el.appendChild(text);
+            return el;
+        }
+
+        function fill(trackEl, list) {
+            if (!trackEl) return;
+            var frag = document.createDocumentFragment();
+            for (var pass = 0; pass < 2; pass++) {
+                for (var i = 0; i < list.length; i++) frag.appendChild(makeItem(list[i]));
+            }
+            trackEl.appendChild(frag);
+        }
+
+        var half = Math.ceil(partners.length / 2);
+        fill(document.getElementById('plmTrack1'), partners.slice(0, half));
+        fill(document.getElementById('plmTrack2'), partners.slice(half));
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       NAV / SCROLL PROGRESS
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var navEl = document.getElementById('nav');
+        var pb = document.getElementById('progressBar');
+        var lastScroll = 0, ticking = false;
+
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(function () {
+                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > lastScroll && currentScroll > 140) navEl.classList.add('nav-hidden');
+                else navEl.classList.remove('nav-hidden');
+                lastScroll = currentScroll;
+
+                var total = document.body.scrollHeight - window.innerHeight;
+                if (total > 0) pb.style.width = (currentScroll / total * 100) + '%';
+
+                if (currentScroll > 40) navEl.classList.add('scrolled');
+                else navEl.classList.remove('scrolled');
+
+                ticking = false;
+            });
+        }, { passive: true });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       HAMBURGER / MOBILE MENU
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var mobileLinks = document.querySelectorAll('.mobile-link:not(.mobile-accordion-trigger), .mobile-sublink');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            var isOpen = mobileMenu.classList.contains('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        mobileMenu.addEventListener('click', function (e) { if (e.target === mobileMenu) toggleMenu(); });
+        mobileLinks.forEach(function (l) { l.addEventListener('click', toggleMenu); });
+
+        document.querySelectorAll('.mobile-accordion').forEach(function (acc) {
+            var trigger = acc.querySelector('.mobile-accordion-trigger');
+            trigger.addEventListener('click', function () {
+                var isOpen = acc.classList.contains('open');
+                document.querySelectorAll('.mobile-accordion.open').forEach(function (other) {
+                    if (other !== acc) {
+                        other.classList.remove('open');
+                        other.querySelector('.mobile-accordion-trigger').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                acc.classList.toggle('open', !isOpen);
+                trigger.setAttribute('aria-expanded', String(!isOpen));
+            });
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu();
+        });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       THEME TOGGLE (system ↔ dark, mirrors index.html)
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('themeToggle');
+        var mobileOptions = document.querySelectorAll('.mobile-theme-option');
+        var order = ['system', 'dark'];
+        var labels = { system: 'System', dark: 'Dark' };
+        var media = window.matchMedia('(prefers-color-scheme: light)');
+
+        function effectiveTheme(pref) {
+            if (pref === 'dark') return 'midnight';
+            return 'dark';
+        }
+        function applyTheme(pref, persist) {
+            root.setAttribute('data-theme', effectiveTheme(pref));
+            root.setAttribute('data-theme-pref', pref);
+            if (btn) {
+                btn.setAttribute('data-mode', pref);
+                btn.setAttribute('title', 'Theme: ' + labels[pref]);
+            }
+            mobileOptions.forEach(function (opt) { opt.classList.toggle('active', opt.dataset.mode === pref); });
+            if (persist) { try { localStorage.setItem('seesec-theme', pref); } catch (e) {} }
+        }
+
+        var currentPref = root.getAttribute('data-theme-pref') || 'system';
+        if (currentPref === 'light') currentPref = 'dark';
+        applyTheme(currentPref, false);
+
+        if (btn) {
+            btn.addEventListener('click', function () {
+                var idx = order.indexOf(currentPref);
+                currentPref = order[(idx + 1) % order.length];
+                applyTheme(currentPref, true);
+            });
+        }
+        mobileOptions.forEach(function (opt) {
+            opt.addEventListener('click', function () {
+                currentPref = opt.dataset.mode;
+                applyTheme(currentPref, true);
+            });
+        });
+        media.addEventListener('change', function () { if (currentPref === 'system') applyTheme('system', false); });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       REVEAL ON SCROLL
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) {
+            els.forEach(function (el) { el.classList.add('visible'); });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       PARTNER HUB
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var stage = document.getElementById('hubStage');
+        if (!stage) return;
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { stage.classList.add('revealed'); io.unobserve(stage); }
+                });
+            }, { threshold: 0.22 });
+            io.observe(stage);
+        } else {
+            stage.classList.add('revealed');
+        }
+
+        var nodes = stage.querySelectorAll('.hub-node');
+        var lines = stage.querySelectorAll('.hub-spoke-line');
+        nodes.forEach(function (node) {
+            var idx = node.getAttribute('data-spoke');
+            function on() {
+                lines.forEach(function (l) {
+                    if (l.getAttribute('data-spoke') === idx) l.classList.add('hi');
+                });
+            }
+            function off() {
+                lines.forEach(function (l) { l.classList.remove('hi'); });
+            }
+            node.addEventListener('mouseenter', on);
+            node.addEventListener('focus', on);
+            node.addEventListener('mouseleave', off);
+            node.addEventListener('blur', off);
+        });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       ANIMATED PARTNERSHIP PIPELINE
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var track = document.getElementById('pvpTrack');
+        var fill = document.getElementById('pvpFill');
+        var pulse = document.getElementById('pvpPulse');
+        if (!track || !fill || !pulse) return;
+
+        var steps = Array.prototype.slice.call(track.querySelectorAll('.pvp-step'));
+        var N = steps.length;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var STEP_MS = 2600;
+        var progress = 0;
+        var last = performance.now();
+        var paused = false;
+        var visible = true;
+
+        function setActive(index) {
+            steps.forEach(function (s, i) {
+                s.classList.toggle('on', i === index);
+                s.classList.toggle('done', i < index);
+            });
+        }
+
+        function update(p) {
+            var norm = p / N;
+            fill.style.width = (norm * 100).toFixed(2) + '%';
+            pulse.style.left = (norm * 100).toFixed(2) + '%';
+            var active = Math.floor(p) % N;
+            setActive(active);
+        }
+
+        function loop(t) {
+            var dt = t - last;
+            last = t;
+            if (dt > 200) dt = 200;
+
+            if (!paused && visible && !reduceMotion) {
+                progress += dt / STEP_MS;
+                if (progress >= N) progress -= N;
+                update(progress);
+            }
+            requestAnimationFrame(loop);
+        }
+
+        steps.forEach(function (s, i) {
+            s.addEventListener('mouseenter', function () {
+                paused = true;
+                progress = i + 0.999;
+                update(progress);
+            });
+            s.addEventListener('mouseleave', function () { paused = false; });
+            s.addEventListener('click', function () {
+                paused = true;
+                progress = i + 0.999;
+                update(progress);
+            });
+            s.setAttribute('tabindex', '0');
+            s.setAttribute('role', 'button');
+        });
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                visible = entries[0].isIntersecting;
+                if (visible) last = performance.now();
+            }, { threshold: 0.1 });
+            io.observe(track);
+        }
+
+        if (reduceMotion) {
+            setActive(0);
+            fill.style.width = '100%';
+            pulse.style.left = '100%';
+            return;
+        }
+
+        update(0);
+        requestAnimationFrame(loop);
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       CUSTOMER CONVERGENCE - SCROLL DRIVEN
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var scrollWrap = document.getElementById('cvScroll');
+        var stage = document.getElementById('cvStage');
+        if (!scrollWrap || !stage) return;
+
+        var nodes = Array.prototype.slice.call(stage.querySelectorAll('.cv-node'));
+        var lines = Array.prototype.slice.call(stage.querySelectorAll('.cv-line'));
+        var states = Array.prototype.slice.call(document.querySelectorAll('.cv-state'));
+        var steps = Array.prototype.slice.call(document.querySelectorAll('.cv-step'));
+        var center = document.getElementById('cvCenter');
+
+        var ANGLES = [-90, -30, 30, 90, 150, 210];
+        var VB = 1000;
+        var stageSize = 600;
+        var startR = 200;
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function measure() {
+            stageSize = stage.offsetWidth || 600;
+            startR = stageSize * 0.335;
+        }
+
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
+        function mapRange(v, a, b, c, d) {
+            if (v <= a) return c;
+            if (v >= b) return d;
+            var t = (v - a) / (b - a);
+            return c + (d - c) * t;
+        }
+
+        var lastP = -1;
+
+        function render(p) {
+            if (Math.abs(p - lastP) < 0.0015) return;
+            lastP = p;
+
+            var converge = easeOutCubic(clamp(p / 0.56, 0, 1));
+            var nodeOpacity = mapRange(p, 0.30, 0.56, 1, 0);
+            var nodeScale = mapRange(p, 0.30, 0.56, 1, 0.42);
+
+            var vbR = (startR * (1 - converge)) / stageSize * VB;
+
+            nodes.forEach(function (node, i) {
+                var a = ANGLES[i];
+                var rPx = startR * (1 - converge);
+                node.style.transform =
+                    'translate(-50%,-50%) rotate(' + a + 'deg) translate(' + rPx + 'px) rotate(' + (-a) + 'deg) scale(' + nodeScale + ')';
+                node.style.opacity = nodeOpacity;
+            });
+
+            lines.forEach(function (line, i) {
+                var a = ANGLES[i];
+                var rad = a * Math.PI / 180;
+                var x = 500 + vbR * Math.cos(rad);
+                var y = 500 + vbR * Math.sin(rad);
+                line.setAttribute('x2', x);
+                line.setAttribute('y2', y);
+                line.style.opacity = clamp(nodeOpacity * 0.95, 0, 1);
+            });
+
+            var stateIndex;
+            if (p < 0.30) stateIndex = 0;
+            else if (p < 0.56) stateIndex = 1;
+            else if (p < 0.78) stateIndex = 2;
+            else stateIndex = 3;
+
+            states.forEach(function (s, i) { s.classList.toggle('on', i === stateIndex); });
+            steps.forEach(function (s, i) { s.classList.toggle('on', i === stateIndex); });
+            center.classList.toggle('merged', p >= 0.56);
+            lines.forEach(function (l) { l.classList.toggle('glow', p >= 0.56); });
+        }
+
+        function onScroll() {
+            var rect = scrollWrap.getBoundingClientRect();
+            var total = scrollWrap.offsetHeight - window.innerHeight;
+            if (total <= 0) return;
+            var p = clamp(-rect.top / total, 0, 1);
+            render(p);
+        }
+
+        var rafId = null;
+        function schedule() {
+            if (rafId) return;
+            rafId = requestAnimationFrame(function () {
+                rafId = null;
+                onScroll();
+            });
+        }
+
+        measure();
+        render(0);
+
+        if (reduceMotion) {
+            render(1);
+        } else {
+            window.addEventListener('scroll', schedule, { passive: true });
+            window.addEventListener('resize', function () { measure(); lastP = -1; onScroll(); });
+            onScroll();
+        }
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       CUSTOMER OUTCOME SHOWCASE
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var wrap = document.getElementById('cvs');
+        var rail = document.getElementById('cvsRail');
+        if (!wrap || !rail) return;
+
+        var items = Array.prototype.slice.call(wrap.querySelectorAll('.cvs-item'));
+        var railItems = Array.prototype.slice.call(rail.querySelectorAll('.cvs-rail-item'));
+        var ring = document.getElementById('cvsRing');
+        var ringNum = document.getElementById('cvsRingNum');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var N = items.length;
+        var total = 6;
+        var current = 0;
+        var DURATION = 5600;
+        var paused = false;
+        var last = performance.now();
+        var ringProgress = 0;
+        var visible = true;
+
+        var CIRC = 2 * Math.PI * 18;
+
+        if (ring) {
+            ring.style.strokeDasharray = CIRC;
+            ring.style.strokeDashoffset = CIRC;
+        }
+
+        function setActive(idx) {
+            current = idx;
+            items.forEach(function (el, i) { el.classList.toggle('on', i === idx); });
+            railItems.forEach(function (el, i) {
+                var on = i === idx;
+                el.classList.toggle('on', on);
+                el.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            if (ringNum) ringNum.textContent = (idx + 1) + '/' + total;
+        }
+
+        function loop(t) {
+            var dt = t - last;
+            last = t;
+            if (dt > 300) dt = 300;
+
+            if (!paused && visible && !reduceMotion) {
+                ringProgress += dt / DURATION;
+                if (ringProgress >= 1) {
+                    ringProgress -= 1;
+                    setActive((current + 1) % N);
+                }
+            }
+
+            if (ring) ring.style.strokeDashoffset = (CIRC * (1 - ringProgress)).toFixed(2);
+            requestAnimationFrame(loop);
+        }
+
+        railItems.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var idx = parseInt(btn.getAttribute('data-cv'), 10) || 0;
+                ringProgress = 0;
+                setActive(idx);
+            });
+            btn.addEventListener('mouseenter', function () { paused = true; });
+            btn.addEventListener('mouseleave', function () {
+                paused = false;
+                last = performance.now();
+            });
+        });
+
+        wrap.addEventListener('mouseenter', function () { paused = true; });
+        wrap.addEventListener('mouseleave', function () {
+            paused = false;
+            last = performance.now();
+        });
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                visible = entries[0].isIntersecting;
+                if (visible) last = performance.now();
+            }, { threshold: 0.15 });
+            io.observe(wrap);
+        }
+
+        setActive(0);
+
+        if (reduceMotion) {
+            if (ring) ring.style.strokeDashoffset = 0;
+            return;
+        }
+        requestAnimationFrame(loop);
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       BECOME A PARTNER - ORBITAL CAROUSEL
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var section = document.getElementById('become-partner');
+        var stage = document.getElementById('orStage');
+        var svg = document.getElementById('orSvg');
+        var core = document.getElementById('orCore');
+        var cta = document.getElementById('bpCta');
+        if (!stage || !svg || !core || !cta) return;
+
+        var nodes = Array.prototype.slice.call(stage.querySelectorAll('.or-node'));
+        var lines = [];
+        var N = nodes.length;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        for (var i = 0; i < N; i++) {
+            var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            ln.setAttribute('class', 'or-line');
+            ln.setAttribute('data-line', i);
+            svg.appendChild(ln);
+            lines.push(ln);
+        }
+
+        var W = 0, H = 0, CX = 0, CY = 0;
+        var R = 0;
+        var squash = 0.42;
+
+        function measure() {
+            W = stage.offsetWidth || 600;
+            H = stage.offsetHeight || 380;
+            CX = W / 2;
+            CY = H / 2;
+            R = W * 0.37;
+            svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        }
+
+        var t = 0;
+        var last = performance.now();
+        var visible = true;
+
+        var targetX = 0, targetY = 0, curX = 0, curY = 0;
+
+        function layout(now) {
+            var dt = now - last;
+            last = now;
+            if (dt > 120) dt = 120;
+
+            if (visible && !reduceMotion) t += dt * 0.00013;
+
+            curX += (targetX - curX) * 0.06;
+            curY += (targetY - curY) * 0.06;
+
+            var tiltX = curX * 26;
+            var tiltY = curY * 14;
+
+            for (var i = 0; i < N; i++) {
+                var a = t + (i / N) * Math.PI * 2;
+                var cosA = Math.cos(a);
+                var sinA = Math.sin(a);
+
+                var x = cosA * R + tiltX;
+                var y = sinA * R * squash + tiltY;
+                var depth = (sinA + 1) / 2;
+
+                var scale = 0.62 + 0.38 * depth;
+                var op = 0.26 + 0.74 * depth;
+                var z = Math.round(depth * 100) + 10;
+
+                var node = nodes[i];
+                node.style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px) scale(' + scale.toFixed(3) + ')';
+                node.style.opacity = op.toFixed(3);
+                node.style.zIndex = z;
+                node.style.filter = depth < 0.28 ? 'blur(1.1px)' : 'none';
+
+                var line = lines[i];
+                line.setAttribute('x1', CX.toFixed(1));
+                line.setAttribute('y1', CY.toFixed(1));
+                line.setAttribute('x2', (CX + x).toFixed(1));
+                line.setAttribute('y2', (CY + y).toFixed(1));
+                line.style.opacity = (op * 0.85).toFixed(3);
+            }
+
+            requestAnimationFrame(layout);
+        }
+
+        measure();
+        if (reduceMotion) {
+            for (var i = 0; i < N; i++) {
+                var a = (i / N) * Math.PI * 2;
+                var x = Math.cos(a) * R;
+                var y = Math.sin(a) * R * squash;
+                nodes[i].style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px)';
+                nodes[i].style.opacity = .6;
+                lines[i].setAttribute('x1', CX); lines[i].setAttribute('y1', CY);
+                lines[i].setAttribute('x2', CX + x); lines[i].setAttribute('y2', CY + y);
+            }
+        } else {
+            requestAnimationFrame(layout);
+        }
+
+        window.addEventListener('resize', function () { measure(); });
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                visible = entries[0].isIntersecting;
+                last = performance.now();
+            }, { threshold: 0.1 });
+            io.observe(stage);
+        }
+
+        if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+            section.addEventListener('pointermove', function (e) {
+                var r = section.getBoundingClientRect();
+                targetX = ((e.clientX - r.left) / r.width - 0.5) * 2;
+                targetY = ((e.clientY - r.top) / r.height - 0.5) * 2;
+            });
+            section.addEventListener('pointerleave', function () {
+                targetX = 0; targetY = 0;
+            });
+        }
+
+        var litIndex = -1;
+        function lightUp() {
+            var idx = Math.floor(Math.random() * N);
+            litIndex = idx;
+            nodes[idx].classList.add('lit');
+            lines[idx].classList.add('lit');
+            core.classList.add('hot');
+        }
+        function dimDown() {
+            if (litIndex >= 0) {
+                nodes[litIndex].classList.remove('lit');
+                lines[litIndex].classList.remove('lit');
+                litIndex = -1;
+            }
+            core.classList.remove('hot');
+        }
+
+        cta.addEventListener('mouseenter', lightUp);
+        cta.addEventListener('mouseleave', dimDown);
+        cta.addEventListener('focus', lightUp);
+        cta.addEventListener('blur', dimDown);
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER YEAR + NEWSLETTER (matches index.html)
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var y = document.getElementById('copyrightYear');
+        if (y) y.textContent = new Date().getFullYear();
+
+        var NEWSLETTER_ENDPOINT = '';
+        var form = document.getElementById('nlForm');
+        var status = document.getElementById('nlStatus');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = (document.getElementById('nlEmail').value || '').trim();
+            var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+            status.className = 'nl-status';
+            if (!ok) {
+                status.textContent = 'Please enter a valid email address.';
+                status.classList.add('err');
+                return;
+            }
+            if (!NEWSLETTER_ENDPOINT) {
+                window.location.href = 'mailto:contactus@seesec.io?subject=' +
+                    encodeURIComponent('Newsletter Signup') + '&body=' +
+                    encodeURIComponent('Please subscribe this address: ' + email);
+                return;
+            }
+            status.textContent = 'Subscribing…';
+            fetch(NEWSLETTER_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            }).then(function (r) {
+                if (!r.ok) throw new Error();
+                status.textContent = 'Thanks! You are subscribed.';
+                status.classList.add('ok');
+                form.reset();
+            }).catch(function () {
+                status.textContent = 'Something went wrong. Please try again or email contactus@seesec.io.';
+                status.classList.add('err');
+            });
+        });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════
+       SMOOTH ANCHOR SCROLL
+       ═══════════════════════════════════════════════════════════ */
+    (function () {
+        var navEl = document.getElementById('nav');
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var targetEl = document.querySelector(targetId);
+                if (!targetEl) return;
+                e.preventDefault();
+                var navHeight = navEl ? navEl.offsetHeight : 0;
+                var targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
