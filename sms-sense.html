@@ -29,12 +29,37 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600&family=Geist:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#1a1341;--paper:#f5f4ef;--blue:#0778b6;--blue-mid:#0668a0;--accent:#43ee93;--cyan:#1af6dd;--font-sans:'Manrope','Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--font-display:'Hanken Grotesk','Poppins',-apple-system,sans-serif;--font-label:'Geist','Poppins',-apple-system,sans-serif;--font-body:'Manrope','Poppins',-apple-system,sans-serif;--bg-primary:#1a1341;--bg-secondary:#110e35;--bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);--bg-nav-scrolled:rgba(5,6,13,.88);--text-primary:#fff;--text-secondary:rgba(255,255,255,.6);--text-muted:rgba(255,255,255,.4);--text-faint:rgba(255,255,255,.22);--surface-card:rgba(255,255,255,.02);--surface-card-strong:rgba(255,255,255,.06);--border-soft:rgba(255,255,255,.06);--border-card:rgba(255,255,255,.12);--line:rgba(255,255,255,.08);--shadow-card:0 8px 32px rgba(0,0,0,.35);--shadow-card-hover:0 16px 56px rgba(0,0,0,.5)
+:root{
+  --ink:#1a1341;
+  --paper:#f5f4ef;
+  --blue:#0778b6;
+  --blue-mid:#0668a0;
+  --accent:#43ee93;
+  --cyan:#1af6dd;
+  --font-sans:'Manrope','Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-display:'Hanken Grotesk','Poppins',-apple-system,sans-serif;
+  --font-label:'Geist','Poppins',-apple-system,sans-serif;
+  --font-body:'Manrope','Poppins',-apple-system,sans-serif;
+  --bg-primary:#1a1341;
+  --bg-secondary:#110e35;
+  --bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);
+  --bg-nav-scrolled:rgba(8, 5, 28, .6);
+  --text-primary:#fff;
+  --text-secondary:rgba(255,255,255,.62);
+  --text-muted:rgba(255,255,255,.4);
+  --text-faint:rgba(255,255,255,.22);
+  --surface-card:rgba(26, 19, 65, .55);
+  --surface-card-strong:rgba(26, 19, 65, .7);
+  --border-soft:rgba(255,255,255,.06);
+  --border-card:rgba(139, 92, 246, .18);
+  --line:rgba(255,255,255,.08);
+  --shadow-card:0 2px 20px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(139, 92, 246, .1);
+  --shadow-card-hover:0 16px 56px rgba(0, 0, 0, .5), inset 0 0 0 1px rgba(139, 92, 246, .15);
 
-  /* ── NAV TOKENS (ported from index.html) ── */
+  /* ── NAV TOKENS ── */
   --fg-rgb: 255, 255, 255;
   --nav-height: 56px;
   --nav-bg: rgba(15, 10, 45, 0.28);
@@ -42,22 +67,68 @@
   --page-text: #ffffff;
   --page-text-soft: rgba(255, 255, 255, 0.6);
 }
-[data-theme="purple"]{color-scheme:dark;--bg-primary:#1a1341;--bg-secondary:#110e35;--bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);--bg-nav-scrolled:rgba(8,5,28,.6);--text-primary:#fff;--text-secondary:rgba(255,255,255,.62);--text-muted:rgba(255,255,255,.4);--text-faint:rgba(255,255,255,.22);--surface-card:rgba(26,19,65,.55);--surface-card-strong:rgba(26,19,65,.7);--border-soft:rgba(255,255,255,.06);--border-card:rgba(139,92,246,.18);--line:rgba(255,255,255,.08);--shadow-card:0 2px 20px rgba(0,0,0,.4),inset 0 0 0 1px rgba(139,92,246,.1);--shadow-card-hover:0 16px 56px rgba(0,0,0,.5),inset 0 0 0 1px rgba(139,92,246,.15)}
-[data-theme="midnight"]{color-scheme:dark;--bg-primary:#000000;--bg-secondary:#000000;--bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#000000 0%,#000000 70%);--bg-nav-scrolled:rgba(0,0,0,.92);--text-primary:#ffffff;--text-secondary:rgba(255,255,255,.55);--text-muted:rgba(255,255,255,.35);--text-faint:rgba(255,255,255,.18);--surface-card:rgba(255,255,255,.025);--surface-card-strong:rgba(255,255,255,.05);--border-soft:rgba(255,255,255,.04);--border-card:rgba(255,255,255,.07);--line:rgba(255,255,255,.04);--shadow-card:0 2px 20px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.04);--shadow-card-hover:0 16px 56px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.06)
+
+[data-theme="purple"]{
+  color-scheme:dark;
+  --bg-primary:#1a1341;
+  --bg-secondary:#110e35;
+  --bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#0d0a2e 0%,#1a1341 70%);
+  --bg-nav-scrolled:rgba(8,5,28,.6);
+  --text-primary:#fff;
+  --text-secondary:rgba(255,255,255,.62);
+  --text-muted:rgba(255,255,255,.4);
+  --text-faint:rgba(255,255,255,.22);
+  --surface-card:rgba(26,19,65,.55);
+  --surface-card-strong:rgba(26,19,65,.7);
+  --border-soft:rgba(255,255,255,.06);
+  --border-card:rgba(139,92,246,.18);
+  --line:rgba(255,255,255,.08);
+  --shadow-card:0 2px 20px rgba(0,0,0,.4),inset 0 0 0 1px rgba(139,92,246,.1);
+  --shadow-card-hover:0 16px 56px rgba(0,0,0,.5),inset 0 0 0 1px rgba(139,92,246,.15);
+  --blue:#0778b6;
+  --blue-mid:#0668a0;
+}
+
+[data-theme="midnight"]{
+  color-scheme:dark;
+  --bg-primary:#000000;
+  --bg-secondary:#000000;
+  --bg-hero-radial:radial-gradient(ellipse 80% 60% at 60% 40%,#000000 0%,#000000 70%);
+  --bg-nav-scrolled:rgba(0,0,0,.92);
+  --text-primary:#ffffff;
+  --text-secondary:rgba(255,255,255,.55);
+  --text-muted:rgba(255,255,255,.35);
+  --text-faint:rgba(255,255,255,.18);
+  --surface-card:rgba(255,255,255,.025);
+  --surface-card-strong:rgba(255,255,255,.05);
+  --border-soft:rgba(255,255,255,.04);
+  --border-card:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.04);
+  --shadow-card:0 2px 20px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.04);
+  --shadow-card-hover:0 16px 56px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.06);
+  --blue:#2a2a2a;
+  --blue-mid:#1a1a1a;
 
   /* ── NAV TOKENS (midnight) ── */
   --nav-bg: rgba(4, 5, 10, 0.55);
   --nav-bg-scrolled: rgba(4, 5, 10, 0.85);
 }
+
 [data-theme="midnight"] #cta{background:#000000}
-html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;transition:background .3s,color .3s}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;transition:background .3s,color .3s}
+
 h1,h2,h3,.hero-title,.caps-head h2,.badge-head h2,.faq-head h2,#cta h2,.info-text h2,.spotlight-title{font-family:var(--font-display)}
 .section-label,.hero-eyebrow,.nav-links a,.nav-cta,.badge-chip,.footer-col h5,.cap-title,.faq-q,.glyph-caption,.vc-caption,.spotlight-rail-btn,.industry-caption-text{font-family:var(--font-label)}
-::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:12px}
+
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:12px}
+
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));z-index:900;width:0%;transition:width .1s;box-shadow:0 0 20px rgba(67,238,147,.3)}
 
 /* ============================================================
-   NAVIGATION — ported from index.html
+   NAVIGATION
    ============================================================ */
 nav {
   position: fixed;
@@ -336,28 +407,29 @@ nav.scrolled .nav-logo { text-shadow: 0 0 30px rgba(67, 238, 147, 0.12); }
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: 6px 4px;
+  padding: 8px 6px;
   z-index: 850;
   background: none;
   border: none;
   outline: none;
   transition: transform 0.3s ease;
   flex-shrink: 0;
+  border-radius: 8px;
 }
-.hamburger:hover { transform: scale(1.05); }
+.hamburger:hover { transform: scale(1.05); background: rgba(255,255,255,0.04); }
 .hamburger span {
   display: block;
-  width: 26px;
-  height: 2.5px;
+  width: 22px;
+  height: 2px;
   border-radius: 4px;
   background: var(--page-text);
   transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
   transform-origin: center;
   will-change: transform, opacity;
 }
-.hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .theme-toggle {
   display: inline-flex;
@@ -393,149 +465,192 @@ nav.scrolled .nav-logo { text-shadow: 0 0 30px rgba(67, 238, 147, 0.12); }
   transform: scale(1) rotate(0deg);
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   MOBILE MENU — matches chat-a-lot.html exactly
+   ============================================================ */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 750;
+  background: rgba(8, 6, 26, 0.98);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 84px 20px 40px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+[data-theme="midnight"] .mobile-menu { background: rgba(0, 0, 0, 0.98); }
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+
+.mobile-menu::-webkit-scrollbar { width: 4px; }
+.mobile-menu::-webkit-scrollbar-thumb { background: rgba(67, 238, 147, 0.3); }
+
+/* Shared row styling */
+.mobile-menu .mobile-link,
+.mobile-menu .mobile-accordion-trigger {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 15px 18px;
+  border-radius: 14px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+.mobile-menu .mobile-link:hover,
+.mobile-menu .mobile-accordion-trigger:hover {
+  background: rgba(67, 238, 147, 0.08);
+  color: #ffffff;
+}
+
+/* Accordion */
+.mobile-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.mobile-accordion-caret {
+  width: 14px; height: 14px;
+  opacity: 0.55;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+  flex-shrink: 0;
+}
+.mobile-accordion.open .mobile-accordion-caret {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+.mobile-accordion.open .mobile-accordion-trigger {
+  color: #ffffff;
+  background: rgba(67, 238, 147, 0.06);
+}
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease, margin 0.3s ease;
+  opacity: 0;
+  margin: 0 0 0 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(67, 238, 147, 0.15);
+}
+.mobile-accordion.open .mobile-submenu {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+.mobile-menu .mobile-sublink {
+  font-family: var(--font-sans);
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 10px 14px !important;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+  display: block;
+  width: 100%;
+}
+.mobile-menu .mobile-sublink:hover {
+  color: #43ee93 !important;
+  background: rgba(67, 238, 147, 0.06);
+  padding-left: 18px !important;
+}
+
+/* CTA button inside mobile menu */
+.mobile-menu .mobile-cta {
+  margin-top: 22px;
+  padding: 16px 28px !important;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #43ee93, #1af6dd);
+  color: #0a0820 !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.92rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 0 10px 36px rgba(67, 238, 147, 0.28);
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.mobile-menu .mobile-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 48px rgba(67, 238, 147, 0.42);
+  background: linear-gradient(135deg, #43ee93, #1af6dd);
+  color: #0a0820 !important;
+}
+
+/* Theme row inside mobile menu */
 .mobile-theme-row {
   display: flex;
   gap: 8px;
-  margin-top: 6px;
-  padding: 5px;
+  margin-top: 18px;
+  padding: 6px;
   border-radius: 999px;
-  background: rgba(var(--fg-rgb), 0.04);
-  border: 1px solid rgba(var(--fg-rgb), 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  align-self: center;
 }
 .mobile-theme-option {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 999px;
   border: none;
   background: transparent;
-  color: rgba(var(--fg-rgb), 0.45);
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   font-family: var(--font-label);
   font-size: 0.6rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 600;
 }
-.mobile-theme-option svg { width: 17px; height: 17px; }
+.mobile-theme-option svg { width: 16px; height: 16px; }
 .mobile-theme-option.active {
   background: rgba(67, 238, 147, 0.14);
-  color: var(--accent);
+  color: #43ee93;
 }
 
-.mobile-menu {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 750;
-  background: rgba(10, 8, 30, 0.97);
-  backdrop-filter: blur(32px) saturate(1.4);
-  -webkit-backdrop-filter: blur(32px) saturate(1.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  padding: 40px 24px;
-  overflow-y: auto;
-}
-.mobile-menu.open { opacity: 1; pointer-events: all; }
-.mobile-menu a {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: rgba(var(--fg-rgb), 0.5);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 8px 0;
-  position: relative;
-}
-.mobile-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  width: 0; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.4s ease, left 0.4s ease;
-}
-.mobile-menu a:hover { color: #fff; transform: scale(1.04); }
-.mobile-menu a:hover::after { width: 100%; left: 0; }
-.mobile-menu .mobile-cta {
-  margin-top: 16px;
-  padding: 14px 44px;
-  border-radius: 50px;
-  background: var(--accent);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 40px rgba(67, 238, 147, 0.15);
-}
-.mobile-menu .mobile-cta:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 60px rgba(67, 238, 147, 0.3);
-}
 .mobile-menu .close-hint {
-  position: absolute;
-  bottom: 40px;
-  font-size: 0.65rem;
-  color: rgba(var(--fg-rgb), 0.15);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 300;
+  display: none;
 }
-.mobile-accordion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.mobile-accordion-trigger {
-  background: none;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-family: var(--font-label);
-}
-.mobile-accordion-caret {
-  width: 13px; height: 13px;
-  opacity: 0.5;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.mobile-accordion.open .mobile-accordion-caret { transform: rotate(180deg); }
-.mobile-submenu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  max-height: 0;
-  overflow: hidden;
-  width: 100%;
-  transition: max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
-  opacity: 0;
-}
-.mobile-accordion.open .mobile-submenu {
-  max-height: 420px;
-  opacity: 1;
-  margin-top: 6px;
-}
-.mobile-sublink {
-  font-size: 0.95rem !important;
-  font-weight: 500 !important;
-  color: rgba(var(--fg-rgb), 0.45) !important;
-  padding: 7px 0 !important;
-}
-.mobile-sublink:hover { color: #fff !important; }
 
 #hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:140px 48px 100px;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
@@ -835,215 +950,52 @@ section{position:relative;transition:background .3s,color .3s}
 .cta-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px}
 #cta .btn-primary{color:#fff;border-color:rgba(67,238,147,.35)}
 
-/* ============================================================
-   FOOTER — matches aboutus.html
-   ============================================================ */
-footer {
-  border-top: 1px solid var(--line);
-  padding: 56px 48px 28px;
-  background: var(--bg-primary);
-  backdrop-filter: blur(4px);
-  transition: background .4s;
-}
-.footer-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 36px;
-}
-.footer-brand .nav-logo {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.footer-brand .nav-logo img { height: 38px; width: auto; display: block; }
-.footer-brand .nav-logo span { color: var(--accent); }
-.footer-brand p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  max-width: 380px;
-  line-height: 1.7;
-}
-.footer-col h5 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  color: var(--text-primary);
-  margin-bottom: 14px;
-  font-weight: 600;
-}
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.footer-col ul a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.88rem;
-  transition: all 0.25s ease;
-  display: inline-block;
-}
-.footer-col ul a:hover {
-  color: var(--accent);
-  transform: translateX(4px);
-}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:56px 48px 28px;background:var(--bg-primary);backdrop-filter:blur(4px)}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand .nav-logo{font-size:1.5rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-brand .nav-logo img{height:38px;width:auto}
+.footer-brand p{color:rgba(var(--fg-rgb),.86);font-size:.88rem;max-width:380px;line-height:1.7}
+.footer-offices{display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:400px}
+.footer-office-item{display:flex;align-items:flex-start;gap:10px}
+.footer-office-icon{font-size:.85rem;line-height:1.45;flex-shrink:0;opacity:.85}
+.footer-office-label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.footer-office-addr{font-size:.8rem;line-height:1.55;color:rgba(var(--fg-rgb),.86);margin:0;max-width:360px}
+.footer-office-item:hover .footer-office-addr{color:var(--page-text);transition:color .3s ease}
+.footer-col h5{font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;color:#ffffff;margin-bottom:14px;font-weight:600}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding:0;margin:0}
+.footer-col ul a{color:rgba(var(--fg-rgb),.86);text-decoration:none;font-size:.88rem;transition:all .25s ease;display:inline-block}
+.footer-col ul a:hover{color:var(--accent);transform:translateX(4px)}
+.newsletter-block{max-width:1280px;margin:0 auto 36px;padding:28px 32px;border:1px solid var(--border-card);border-radius:20px;background:var(--surface-card);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;position:relative;overflow:hidden;backdrop-filter:blur(6px)}
+.newsletter-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent),var(--cyan));opacity:.7}
+.nl-text h3{font-size:1.15rem;font-weight:700;margin-bottom:6px;color:#ffffff}
+.nl-text p{font-size:.88rem;color:rgba(var(--fg-rgb),.86);line-height:1.6;margin-bottom:10px;max-width:520px}
+.nl-email{font-size:.85rem;color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.nl-email:hover{color:var(--cyan)}
+.nl-actions{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.nl-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.nl-input{min-width:220px;padding:12px 18px;border-radius:50px;border:1px solid rgba(var(--fg-rgb),.25);background:rgba(var(--fg-rgb),.06);color:#fff;font:inherit;font-size:.85rem}
+.nl-input::placeholder{color:rgba(var(--fg-rgb),.55)}
+.nl-input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nl-signup-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .25s,box-shadow .3s;box-shadow:0 6px 24px rgba(67,238,147,.25);font-family:inherit}
+.nl-signup-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 36px rgba(67,238,147,.4)}
+.nl-privacy{font-size:.72rem;color:rgba(var(--fg-rgb),.72);text-decoration:none;letter-spacing:.04em;transition:color .3s}
+.nl-privacy:hover{color:var(--accent)}
+.nl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nl-status{font-size:.75rem;min-height:1em;margin:0}
+.nl-status.ok{color:var(--accent)}.nl-status.err{color:#ff8a8a}
+.footer-follow{max-width:1280px;margin:0 auto 28px;padding:20px 0;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-follow-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:rgba(var(--fg-rgb),.78);font-weight:600}
+.footer-follow-socials{display:flex;gap:12px;align-items:center}
+.footer-follow-socials a{width:42px;height:42px;border-radius:50%;border:1px solid var(--border-soft);display:flex;align-items:center;justify-content:center;color:rgba(var(--fg-rgb),.86);font-size:.95rem;text-decoration:none;transition:all .3s cubic-bezier(.23,1,.32,1);background:var(--surface-card)}
+.footer-follow-socials a:hover{color:var(--ink);background:var(--accent);border-color:var(--accent);transform:translateY(-3px) scale(1.08);box-shadow:0 8px 24px rgba(67,238,147,.3)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:rgba(var(--fg-rgb),.7);flex-wrap:wrap;gap:14px}
 
-.newsletter-block {
-  max-width: 1280px;
-  margin: 0 auto 36px;
-  padding: 28px 32px;
-  border: 1px solid var(--border-card);
-  border-radius: 20px;
-  background: var(--surface-card);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 28px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(6px);
-}
-.newsletter-block::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
-  opacity: .7;
-}
-.nl-text h4 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--text-primary);
-}
-.nl-text p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 10px;
-  max-width: 520px;
-}
-.nl-email {
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.nl-email:hover { color: var(--cyan); }
-.nl-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-.nl-signup-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, var(--accent), var(--cyan));
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: transform .25s, box-shadow .3s;
-  box-shadow: 0 6px 24px rgba(67,238,147,.25);
-}
-.nl-signup-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 36px rgba(67,238,147,.4);
-}
-.nl-privacy {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: .04em;
-  transition: color .3s;
-}
-.nl-privacy:hover { color: var(--accent); }
-
-.footer-follow {
-  max-width: 1280px;
-  margin: 0 auto 28px;
-  padding: 20px 0;
-  border-top: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.footer-follow-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-.footer-follow-socials {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.footer-follow-socials a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
-  background: var(--surface-card);
-}
-.footer-follow-socials a:hover {
-  color: var(--ink);
-  background: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 8px 24px rgba(67,238,147,.3);
-}
-
-.footer-bottom {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-faint);
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.float-cta{position:fixed;bottom:36px;right:36px;z-index:700;display:flex;align-items:center;gap:12px;background:var(--blue);color:#fff;padding:13px 24px;border-radius:50px;font-family:var(--font-label);font-size:.82rem;font-weight:500;text-decoration:none;box-shadow:0 8px 40px rgba(7,120,182,.45);transition:transform .3s,box-shadow .3s,background .3s}
+.float-cta{position:fixed;bottom:36px;right:36px;z-index:700;display:flex;align-items:center;gap:12px;background:var(--blue);color:#fff;padding:13px 24px;border-radius:50px;font-family:var(--font-label);font-size:.82rem;font-weight:500;text-decoration:none;box-shadow:0 8px 40px rgba(7,120,182,.45);transition:transform .3s,box-shadow .3s}
 .float-cta:hover{transform:scale(1.05);box-shadow:0 12px 50px rgba(7,120,182,.6)}
-[data-theme="midnight"] .float-cta{background:#2a2a2a;box-shadow:0 8px 40px rgba(0,0,0,.6)}
-[data-theme="midnight"] .float-cta:hover{background:#3a3a3a;box-shadow:0 12px 50px rgba(0,0,0,.7)}
 
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion:reduce){
   .orb,.hero-glyph-card,.signal-hub,.spotlight-icon-wrap,.glyph-header-dot,.glyph-footer,.sms-flow-waiting span{animation:none!important}
@@ -1061,12 +1013,26 @@ footer {
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 20px;
-    border-radius: 0 0 18px 18px;
+    padding: 0 16px;
+    height: 62px;
+    border-radius: 0 0 20px 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    gap: 10px;
+    justify-content: flex-start;
   }
+  .nav-logo { margin-right: auto; font-size: 1.15rem; gap: 8px; }
+  .nav-logo img { height: 26px; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .hamburger { display: flex; }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    margin-left: 0;
+  }
 
   #hero{padding:120px 24px 80px;min-height:auto}
   .hero-inner{grid-template-columns:1fr;gap:50px}
@@ -1075,21 +1041,33 @@ footer {
   .hero-title .title-line{white-space:normal}
   .info-inner{grid-template-columns:1fr;gap:50px}
   .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
-  footer { padding: 56px 24px 32px; }
-  section,.info-section,.badge-section,.faq-section,.caps-section,.icp-section{padding-left:24px !important;padding-right:24px !important}
+  .newsletter-block{grid-template-columns:1fr;gap:18px;padding:22px 20px}
+  .nl-actions{align-items:flex-start}
+  footer{padding:40px 24px 24px}
+  section,.info-section,.badge-section,.faq-section,.caps-section,.icp-section{padding-left:24px!important;padding-right:24px!important}
 }
 @media (max-width:600px){
   .cta-actions{flex-direction:column;width:100%}
   .cta-actions .btn-primary{width:100%;justify-content:center}
-  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
   .float-cta{bottom:20px;right:20px;padding:10px 18px;font-size:.75rem}
   .float-cta span{display:none}
   .hero-glyph-card{width:280px;height:340px}
   .hero-title{font-size:clamp(1.6rem,7vw,2.2rem)}
-  .footer-inner{grid-template-columns:1fr;gap:32px}
-  .newsletter-block{grid-template-columns:1fr;gap:18px;padding:22px 20px}
-  .nl-actions{align-items:flex-start}
+  .badge-chip{font-size:.78rem;padding:10px 18px}
+  .footer-inner{grid-template-columns:1fr;gap:24px;margin-bottom:24px}
+  .footer-brand .nav-logo img{height:24px}
+  .footer-brand p{font-size:.78rem}
+  .footer-offices{gap:10px;margin-top:16px}
+  .footer-office-label{font-size:.63rem}
+  .footer-office-addr{font-size:.73rem}
+  .footer-col h5{font-size:.78rem;margin-bottom:8px}
+  .footer-col ul a{font-size:.75rem}
   .footer-follow{flex-direction:column;align-items:flex-start;gap:14px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center;padding-top:14px}
+  .footer-bottom p{font-size:.68rem}
+  footer{padding:32px 16px 20px}
+  .nl-form{justify-content:flex-start}
+  .nl-input{min-width:0;flex:1 1 180px}
   .icp-list{grid-template-columns:1fr}
   .signal-node{width:44px;height:44px}
   .signal-node-label{font-size:.4rem}
@@ -1098,14 +1076,86 @@ footer {
   .spotlight-icon-wrap{width:58px;height:58px;font-size:1.7rem;border-radius:16px}
   .industry-chip{font-size:.78rem;padding:10px 16px}
 }
+
+@media (max-width: 480px) {
+  .mobile-menu { padding: 76px 14px 32px; }
+  .mobile-menu .mobile-link,
+  .mobile-menu .mobile-accordion-trigger { font-size: 1rem; padding: 14px 14px; }
+  .mobile-menu .mobile-sublink { font-size: .88rem !important; padding: 9px 12px !important; }
+}
+
+/* ── Instagram account picker ── */
+        .ig-picker { position: relative; display: inline-flex; }
+        .ig-trigger {
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid var(--border-soft);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(var(--fg-rgb), 0.86); font-size: 0.95rem;
+            background: var(--surface-card); cursor: pointer;
+            padding: 0; font-family: inherit;
+            transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .ig-trigger:hover,
+        .ig-trigger[aria-expanded="true"] {
+            color: var(--ink); background: var(--accent); border-color: var(--accent);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 24px rgba(67,238,147,.3);
+        }
+        .ig-menu {
+            position: absolute; bottom: calc(100% + 12px); left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            width: 240px;
+            padding: 8px;
+            box-sizing: border-box;
+            background: var(--nav-bg-scrolled);
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            border: 1px solid rgba(var(--fg-rgb), 0.12);
+            border-radius: 14px;
+            box-shadow: 0 18px 50px rgba(0,0,0,.45);
+            display: flex; flex-direction: column; gap: 4px;
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transition: opacity .3s ease, transform .3s cubic-bezier(0.23,1,0.32,1), visibility .3s;
+            z-index: 900;
+        }
+        .ig-menu.open {
+            opacity: 1; visibility: visible; pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        .ig-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 2px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            white-space: nowrap;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            transition: background .25s ease, transform .25s ease;
+        }
+        .ig-menu a:hover,
+        .ig-menu a:focus-visible { background: rgba(67,238,147,.12); transform: translateX(3px); }
+        .ig-menu-name { font-size: 0.8rem; font-weight: 700; color: #ffffff; line-height: 1.2; }
+        .ig-menu-handle { font-size: 0.68rem; color: rgba(var(--fg-rgb), 0.7); line-height: 1.2; }
+        .ig-menu a:hover .ig-menu-handle { color: var(--accent); }
+
+        /* Small screens: anchor the popup to the right so it never overflows */
+        @media (max-width: 520px) {
+            .ig-menu { left: auto; right: 0; transform: translateX(0) translateY(8px); }
+            .ig-menu.open { transform: translateX(0) translateY(0); }
+        }
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<a href="#cta" class="float-cta"><span>📱 Book a Demo</span></a>
+<a href="contact.html" class="float-cta"><span>📱 Book a Demo</span></a>
 
-<!-- ===== NAVBAR (exactly like index.html) ===== -->
+<!-- ===== NAVBAR (identical to chat-a-lot.html) ===== -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
     <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" />
@@ -1115,40 +1165,42 @@ footer {
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="has-dropdown">
-      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
-        Services
+      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Services
         <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </a>
       <div class="nav-dropdown">
-        <a href="aws-managed.html">AWS Managed Services</a>
+        <a href="aws.html">AWS T&C</a>
+        <a href="cloud-compliance.html">Cloud Compliance</a>
+        <a href="cloud-migration.html">Cloud Migration</a>
         <a href="cloud-optimization.html">Cloud Optimization</a>
         <a href="cloud-security.html">Cloud Security</a>
-        <a href="gen-ai.html">Gen AI</a>
         <a href="data-analytics.html">Data Analytics</a>
-        <a href="cloud-compliance.html">Cloud Compliance</a>
+        <a href="gen-ai.html">Gen AI</a>
       </div>
     </li>
     <li class="has-dropdown">
-      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
-        Solutions
+      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Solutions
         <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </a>
       <div class="nav-dropdown">
         <a href="chat-a-lot.html">Chat-A-Lot</a>
-        <a href="talk-track.html">Talk Track</a>
-        <a href="sms-sense.html" class="active">SMS Sense</a>
-        <a href="interactive-email.html">Interactive Email</a>
+        <a href="dpdp-solutions.html">Dpdp Solutions</a>
         <a href="email-archival.html">Email Archival</a>
+        <a href="enterprise-ai.html">Enterprise AI</a>
+        <a href="interactive-email.html">Interactive Email</a>
+        <a href="sms-sense.html" class="active" aria-current="page">SMS Sense</a>
+        <a href="talk-track.html">Talk Track</a>
+        <a href="content-automation.html">Content AI</a>
       </div>
     </li>
     <li><a href="content-automation.html">Content AI</a></li>
     <li><a href="aboutus.html">About Us</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="partners-page.html">Partners</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+    <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
   </ul>
 
-  <a href="#cta" class="nav-cta">
+  <a href="contact.html" class="nav-cta">
     <span class="nav-shine"></span>
     <span class="nav-bg"></span>
     Get a Quote →
@@ -1166,45 +1218,49 @@ footer {
   </button>
 </nav>
 
-<!-- ===== MOBILE MENU ===== -->
+<!-- ===== MOBILE MENU (identical to chat-a-lot.html) ===== -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" class="mobile-link">Home</a>
 
   <div class="mobile-accordion" data-accordion>
-    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+    <button type="button" class="mobile-accordion-trigger" aria-expanded="false">
       Services
       <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
     <div class="mobile-submenu">
-      <a href="aws-managed.html" class="mobile-sublink">AWS Managed Services</a>
+      <a href="aws.html" class="mobile-sublink">AWS T&amp;C</a>
+      <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
+      <a href="cloud-migration.html" class="mobile-sublink">Cloud Migration</a>
       <a href="cloud-optimization.html" class="mobile-sublink">Cloud Optimization</a>
       <a href="cloud-security.html" class="mobile-sublink">Cloud Security</a>
-      <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
       <a href="data-analytics.html" class="mobile-sublink">Data Analytics</a>
-      <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
+      <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
     </div>
   </div>
 
   <div class="mobile-accordion" data-accordion>
-    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
+    <button type="button" class="mobile-accordion-trigger" aria-expanded="false">
       Solutions
       <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
     <div class="mobile-submenu">
       <a href="chat-a-lot.html" class="mobile-sublink">Chat-A-Lot</a>
-      <a href="talk-track.html" class="mobile-sublink">Talk Track</a>
-      <a href="sms-sense.html" class="mobile-sublink">SMS Sense</a>
-      <a href="interactive-email.html" class="mobile-sublink">Interactive Email</a>
+      <a href="dpdp-solutions.html" class="mobile-sublink">Dpdp Solutions</a>
       <a href="email-archival.html" class="mobile-sublink">Email Archival</a>
+      <a href="enterprise-ai.html" class="mobile-sublink">Enterprise AI</a>
+      <a href="interactive-email.html" class="mobile-sublink">Interactive Email</a>
+      <a href="sms-sense.html" class="mobile-sublink" aria-current="page">SMS Sense</a>
+      <a href="talk-track.html" class="mobile-sublink">Talk Track</a>
+      <a href="content-automation.html" class="mobile-sublink">Content AI</a>
     </div>
   </div>
 
   <a href="content-automation.html" class="mobile-link">Content AI</a>
   <a href="aboutus.html" class="mobile-link">About Us</a>
-  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="partners-page.html" class="mobile-link">Partners</a>
   <a href="contact.html" class="mobile-link">Contact</a>
-  <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
-  <a href="#cta" class="mobile-cta">Get a Quote →</a>
+  <a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer" class="mobile-link">Blogs</a>
+  <a href="contact.html" class="mobile-cta">Get a Quote →</a>
 
   <div class="mobile-theme-row" role="group" aria-label="Color theme">
     <button class="mobile-theme-option" data-mode="system" type="button">
@@ -1216,8 +1272,6 @@ footer {
       <span>Dark</span>
     </button>
   </div>
-
-  <span class="close-hint">Tap to close</span>
 </div>
 
 <!-- HERO -->
@@ -1232,10 +1286,9 @@ footer {
         <span class="title-line">Every SMS tells a story.</span>
         <span class="title-line">Are you <span class="typewriter" id="typewriter"></span></span>
       </h1>
-      <p class="hero-sub">Every day, millions of SMS messages flow between customers and businesses — payment confirmations, shopping notifications, travel bookings, investment alerts. Hidden inside them is one of the richest sources of customer intelligence available today. SMS Sense transforms this data into actionable insights.</p>
+      <p class="hero-sub">Every day, millions of SMS messages flow between customers and businesses - payment confirmations, shopping notifications, travel bookings, investment alerts. Hidden inside them is one of the richest sources of customer intelligence available today. SMS Sense transforms this data into actionable insights.</p>
       <div class="hero-actions">
         <a href="#cta" class="btn-primary">Book a Live Demo →</a>
-        <a href="#capabilities" class="btn-ghost">Talk to an AI Expert <span class="arrow">→</span></a>
       </div>
     </div>
     <div class="hero-glyph">
@@ -1271,7 +1324,6 @@ footer {
       <h2>Discover customer <em>intelligence</em>.</h2>
       <p>Businesses already possess enormous volumes of customer data, yet one of the richest sources of behavioral intelligence remains hidden inside SMS interactions. SMS Sense applies Enterprise AI to uncover insights that traditional analytics platforms overlook.</p>
       <p>Instead of simply knowing who your customers are, you'll understand how they spend, what they value, which brands they trust, and how their preferences evolve over time.</p>
-      <div class="cta-row"><a href="#capabilities" class="btn-primary">See Business Outcomes →</a></div>
     </div>
     <div class="info-visual reveal">
       <div class="info-visual-card signal-card">
@@ -1315,7 +1367,7 @@ footer {
   <div class="caps-head reveal">
     <p class="section-label centered">Business Outcomes</p>
     <h2>Transform customer data into <em>business growth</em>.</h2>
-    <p>SMS Sense doesn't just analyze communication — it helps organizations make better decisions across marketing, retention, and personalization. Hover or click any outcome to explore.</p>
+    <p>SMS Sense doesn't just analyze communication - it helps organizations make better decisions across marketing, retention, and personalization. Hover or click any outcome to explore.</p>
   </div>
 
   <div class="spotlight reveal">
@@ -1404,7 +1456,7 @@ footer {
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>How does SMS Sense use AI?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">SMS Sense applies advanced AI models to identify patterns, trends, preferences, and contextual signals within SMS data — transforming unstructured communication into actionable customer intelligence.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">SMS Sense applies advanced AI models to identify patterns, trends, preferences, and contextual signals within SMS data - transforming unstructured communication into actionable customer intelligence.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>Does SMS Sense read every SMS individually?</span><span class="faq-marker">+</span></button>
@@ -1420,7 +1472,7 @@ footer {
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>How does SMS Sense increase customer lifetime value?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">By identifying customer preferences, predicting engagement opportunities, enabling personalized recommendations, and supporting intelligent cross-sell and retention strategies — SMS Sense helps businesses build stronger relationships and maximize long-term customer value.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">By identifying customer preferences, predicting engagement opportunities, enabling personalized recommendations, and supporting intelligent cross-sell and retention strategies - SMS Sense helps businesses build stronger relationships and maximize long-term customer value.</div></div>
     </div>
   </div>
 </section>
@@ -1431,13 +1483,12 @@ footer {
     <h2>Your customers are already telling you <em>what matters</em>.</h2>
     <p class="cta-sub">SMS Sense helps you understand it. Book a live demo or schedule a discovery session with our AI team.</p>
     <div class="cta-actions">
-      <a href="https://seesec.io/contact/" target="_blank" class="btn-primary">📱 Request a Live Demo →</a>
-      <a href="https://seesec.io/contact/" target="_blank" class="btn-ghost">Schedule a Discovery Session <span class="arrow">→</span></a>
+      <a href="contact.html" target="_blank" class="btn-primary"> Request a Live Demo →</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER — matches aboutus.html ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1446,77 +1497,112 @@ footer {
         <span>SEE<span>SEC</span></span>
       </a>
       <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
-      <p style="margin-top:12px; font-size:0.7rem; color:var(--text-faint);">
-        <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed var(--line);">
-          <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
-        </a>
-      </p>
+
+      <div class="footer-offices">
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">🏢</span>
+          <div>
+            <strong class="footer-office-label">Head Office</strong>
+            <p class="footer-office-addr">Signature Tower 3, Sec-15, Gurugram</p>
+          </div>
+        </div>
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong class="footer-office-label">Regional Office 1</strong>
+            <p class="footer-office-addr">Majestic Omnia, 3rd Floor, Sector 4, Noida, UP 201301</p>
+          </div>
+        </div>
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong class="footer-office-label">Regional Office 2</strong>
+            <p class="footer-office-addr">Sanskar Chand Road, Jaipur</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;font-size:.78rem;color:rgba(var(--fg-rgb),.86);">📞 +91-922-055-0666</p>
     </div>
+
     <div class="footer-col">
       <h5>Services</h5>
       <ul>
-        <li><a href="aws-managed.html">AWS Managed</a></li>
+        <li><a href="aws.html">AWS T&amp;C</a></li>
+        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+        <li><a href="cloud-migration.html">Cloud Migration</a></li>
         <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
         <li><a href="cloud-security.html">Cloud Security</a></li>
-        <li><a href="gen-ai.html">Gen AI</a></li>
         <li><a href="data-analytics.html">Data Analytics</a></li>
-        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+        <li><a href="gen-ai.html">Gen AI</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Solutions</h5>
       <ul>
         <li><a href="chat-a-lot.html">Chat-A-Lot</a></li>
-        <li><a href="talk-track.html">Talk Track</a></li>
-        <li><a href="sms-sense.html">SMS Sense</a></li>
-        <li><a href="interactive-email.html">Interactive Email</a></li>
+        <li><a href="dpdp-solutions.html">Dpdp Solutions</a></li>
         <li><a href="email-archival.html">Email Archival</a></li>
+        <li><a href="enterprise-ai.html">Enterprise AI</a></li>
+        <li><a href="interactive-email.html">Interactive Email</a></li>
+        <li><a href="sms-sense.html">SMS Sense</a></li>
+        <li><a href="talk-track.html">Talk Track</a></li>
+        <li><a href="content-automation.html">Content AI</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Company</h5>
       <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="news.html">Newsletter</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="aws.html">AWS Terms &amp; Conditions</a></li>
+        <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
       </ul>
     </div>
   </div>
 
   <div class="newsletter-block">
     <div class="nl-text">
-      <h4>Newsletter</h4>
+      <h3>Newsletter</h3>
       <p>Subscribe to our newsletter for day to day cloud updates!</p>
-      <a href="mailto:contactus@seesec.io" class="nl-email">
-        <i class="fas fa-envelope"></i> contactus@seesec.io
-      </a>
+      <span class="nl-email"><i class="fas fa-envelope" aria-hidden="true"></i> contactus@seesec.io</span>
     </div>
     <div class="nl-actions">
-      <a href="mailto:contactus@seesec.io?subject=Newsletter%20Signup" class="nl-signup-btn">
-        Sign Up →
-      </a>
-      <a href="#" class="nl-privacy">Privacy Policy</a>
+      <form class="nl-form" id="nlForm" novalidate>
+        <label for="nlEmail" class="nl-sr">Email address</label>
+        <input type="email" id="nlEmail" name="email" class="nl-input" placeholder="you@company.com" autocomplete="email" required />
+        <button type="submit" class="nl-signup-btn">Sign Up →</button>
+      </form>
+      <p class="nl-status" id="nlStatus" role="status" aria-live="polite"></p>
+      <a href="privacy-policy.html" class="nl-privacy">Privacy Policy</a>
     </div>
   </div>
 
   <div class="footer-follow">
     <span class="footer-follow-label">Follow Us</span>
     <div class="footer-follow-socials">
-      <a href="mailto:contactus@seesec.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/company/seesec" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/seesec" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@seesec" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contactus@seesec.io&amp;su=Enquiry%20from%20the%20SEESEC%20Website&amp;body=Hi%20SEESEC%20Team%2C%0A%0A" target="_blank" rel="noopener noreferrer" aria-label="Email SEESEC via Gmail" title="Compose an email to contactus@seesec.io in Gmail"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/company/seesec-infotech/posts/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+      <div class="ig-picker" id="igPicker">
+        <button type="button" class="ig-trigger" id="igTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="igMenu" aria-label="Choose an Instagram account" title="Open Instagram menu">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </button>
+        <div class="ig-menu" id="igMenu" role="menu" aria-label="Choose an Instagram account">
+          <a href="https://www.instagram.com/seesec.io" target="_blank" rel="noopener noreferrer" role="menuitem"><span class="ig-menu-name">SEESEC</span><span class="ig-menu-handle">@seesec.io</span></a>
+          <a href="https://www.instagram.com/inside.seesec?cplk=aWcydWFycTQyM2N6" target="_blank" rel="noopener noreferrer" role="menuitem"><span class="ig-menu-name">Inside SEESEC</span><span class="ig-menu-handle">@inside.seesec</span></a>
+        </div>
+      </div>
+      <a href="https://www.youtube.com/@Seesec_io" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 SEESEC Infotech. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© <span id="copyrightYear">2026</span> SEESEC Infotech. All rights reserved.</p></div>
 </footer>
 
 <script>
 /* ============================================================
-   THEME TOGGLE — ported from index.html
+   THEME TOGGLE — ported from chat-a-lot.html
    ============================================================ */
 (function() {
   const root = document.documentElement;
@@ -1578,7 +1664,7 @@ footer {
 })();
 
 /* ============================================================
-   HAMBURGER + MOBILE MENU
+   HAMBURGER + MOBILE MENU (chat-a-lot logic)
    ============================================================ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -1603,7 +1689,7 @@ mobileLinks.forEach(link => {
 });
 
 /* ============================================================
-   MOBILE ACCORDION
+   MOBILE ACCORDION (Services / Solutions)
    ============================================================ */
 document.querySelectorAll('.mobile-accordion').forEach(acc => {
   const trigger = acc.querySelector('.mobile-accordion-trigger');
@@ -1891,6 +1977,104 @@ document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{
   activate(0);
   setInterval(()=>activate(i), 1800);
 })();
+
+/* ── FOOTER YEAR + NEWSLETTER ── */
+(function(){
+  const y = document.getElementById('copyrightYear');
+  if (y) y.textContent = new Date().getFullYear();
+
+  const NEWSLETTER_ENDPOINT = '';
+  const form = document.getElementById('nlForm');
+  const status = document.getElementById('nlStatus');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = (document.getElementById('nlEmail').value || '').trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    status.className = 'nl-status';
+    if (!ok){ status.textContent = 'Please enter a valid email address.'; status.classList.add('err'); return; }
+    if (!NEWSLETTER_ENDPOINT){
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('contactus@seesec.io') +
+        '&su=' + encodeURIComponent('Newsletter Signup') +
+        '&body=' + encodeURIComponent('Please subscribe this address: ' + email), '_blank', 'noopener,noreferrer');
+      status.textContent = 'Opening Gmail… complete the send to subscribe.';
+      status.classList.add('ok');
+      form.reset();
+      return;
+    }
+    status.textContent = 'Subscribing…';
+    fetch(NEWSLETTER_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).then(r => {
+      if (!r.ok) throw new Error();
+      status.textContent = 'Thanks! You are subscribed.';
+      status.classList.add('ok');
+      form.reset();
+    }).catch(() => {
+      status.textContent = 'Something went wrong. Please try again or email contactus@seesec.io.';
+      status.classList.add('err');
+    });
+  });
+})();
+
+// ── INSTAGRAM ACCOUNT PICKER ──
+        (function () {
+            var picker  = document.getElementById('igPicker');
+            var trigger = document.getElementById('igTrigger');
+            var menu    = document.getElementById('igMenu');
+            if (!picker || !trigger || !menu) return;
+
+            function openMenu() {
+                menu.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+            function closeMenu() {
+                menu.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+            function toggleMenu() {
+                if (menu.classList.contains('open')) closeMenu();
+                else openMenu();
+            }
+
+            trigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            // Close when clicking anywhere outside the picker
+            document.addEventListener('click', function (e) {
+                if (!picker.contains(e.target)) closeMenu();
+            });
+
+            // Close on Escape and return focus to the trigger
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && menu.classList.contains('open')) {
+                    closeMenu();
+                    trigger.focus();
+                }
+            });
+
+            // Keyboard navigation inside the menu
+            menu.addEventListener('keydown', function (e) {
+                var items = Array.prototype.slice.call(menu.querySelectorAll('a'));
+                var idx = items.indexOf(document.activeElement);
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    (items[idx + 1] || items[0]).focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    (items[idx - 1] || items[items.length - 1]).focus();
+                }
+            });
+
+            // Close the menu once an account is chosen
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', closeMenu);
+            });
+        })();
 </script>
 </body>
 </html>
