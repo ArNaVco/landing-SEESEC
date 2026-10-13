@@ -29,12 +29,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 /* ===== Purple Theme (default) ===== */
-:root{
+:root,[data-theme="purple"]{
+  color-scheme:dark;
   --ink:#1a1341;--paper:#f5f4ef;--blue:#0778b6;--blue-mid:#0668a0;--accent:#43ee93;--cyan:#1af6dd;
   --font-sans:'Manrope','Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --font-display:'Hanken Grotesk','Poppins',-apple-system,sans-serif;
@@ -65,16 +66,19 @@
   --dash-kpi-bg:rgba(67,238,147,.08);
   --dash-kpi-border:rgba(67,238,147,.2);
 
-  /* ── NAV TOKENS (ported from index.html) ── */
+  /* ── NAV TOKENS (ported from cloud-compliance.html) ── */
   --fg-rgb: 255, 255, 255;
   --nav-height: 56px;
   --nav-bg: rgba(15, 10, 45, 0.28);
   --nav-bg-scrolled: rgba(8, 5, 28, 0.60);
   --page-text: #ffffff;
   --page-text-soft: rgba(255, 255, 255, 0.6);
+  --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+  --seesec-green: #43ee93;
+  --seesec-cyan: #1af6dd;
 }
 
-/* ===== Midnight Theme – Pure Black ===== */
+/* ===== Midnight Theme - Pure Black ===== */
 [data-theme="midnight"]{
   color-scheme:dark;
   --bg-primary:#000000;
@@ -131,491 +135,196 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;transition:background .3s,color .3s}
 h1,h2,h3,.hero-title,.caps-head h2,.badge-head h2,.faq-head h2,#cta h2,.info-text h2,.dept-head h2,.flow-head h2{font-family:var(--font-display)}
-.section-label,.hero-eyebrow,.nav-links a,.nav-cta,.badge-chip,.footer-col h5,.cap-title,.faq-q,.glyph-caption,.vc-caption,.dept-btn{font-family:var(--font-label)}
+.section-label,.hero-eyebrow,.badge-chip,.cap-title,.faq-q,.glyph-caption,.vc-caption,.dept-btn{font-family:var(--font-label)}
 ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:12px}
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));z-index:900;width:0%;transition:width .1s;box-shadow:0 0 20px rgba(67,238,147,.3)}
 
 /* ============================================================
-   NAVIGATION — ported from index.html
+   NAVIGATION (identical to cloud-compliance.html)
    ============================================================ */
+[data-theme="midnight"] nav {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(67, 238, 147, 0.10) inset;
+}
+
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--seesec-green);
+  outline-offset: 4px;
+}
+
 nav {
-  position: fixed;
-  top: 8px;
-  left: 48px;
-  right: 48px;
-  z-index: 800;
+  position: fixed; top: 8px; left: 48px; right: 48px; z-index: 800;
   height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  border-radius: 999px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; border-radius: 999px;
   background: var(--nav-bg);
   backdrop-filter: blur(14px) saturate(1.5);
   -webkit-backdrop-filter: blur(14px) saturate(1.5);
   border: 1px solid rgba(var(--fg-rgb), 0.08);
-  box-shadow:
-    0 10px 32px rgba(0, 0, 0, 0.18),
-    0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
-    0 0 0 1px rgba(67, 238, 147, 0.04) inset;
-  transition:
-    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-    background 0.4s ease,
-    backdrop-filter 0.4s ease,
-    box-shadow 0.4s ease,
-    border-color 0.4s ease,
-    top 0.4s ease;
-  will-change: transform, background, backdrop-filter;
-  transform: translateY(0);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, .18), 0 1px 0 rgba(var(--fg-rgb), .07) inset, 0 0 0 1px rgba(67, 238, 147, .04) inset;
+  transition: transform .35s var(--transition-smooth), background .4s ease, backdrop-filter .4s ease, box-shadow .4s ease, border-color .4s ease, top .4s ease;
 }
 nav.nav-hidden { transform: translateY(-140%); }
-nav.scrolled {
-  background: var(--nav-bg-scrolled);
-  backdrop-filter: blur(18px) saturate(1.6);
-  -webkit-backdrop-filter: blur(18px) saturate(1.6);
-  border-color: rgba(var(--fg-rgb), 0.11);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.28),
-    0 1px 0 rgba(var(--fg-rgb), 0.07) inset,
-    0 0 0 1px rgba(67, 238, 147, 0.06) inset;
-}
-nav.scrolled .nav-logo { text-shadow: 0 0 30px rgba(67, 238, 147, 0.12); }
+nav.scrolled { background: var(--nav-bg-scrolled); border-color: rgba(var(--fg-rgb), .11); }
 
 .nav-logo {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  color: var(--page-text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  transition: transform 0.3s ease;
-  border: none;
-  outline: none;
-  box-shadow: none;
+  font-weight: 800; font-size: 1.4rem; letter-spacing: -.02em;
+  color: var(--page-text); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+  transition: transform .3s ease; flex-shrink: 0;
   background: transparent;
-  flex-shrink: 0;
 }
 .nav-logo:hover { transform: scale(1.02); }
-.nav-logo img {
-  height: 30px;
-  width: auto;
-  display: block;
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
-.nav-logo .logo-text { display: flex; align-items: center; gap: 2px; }
-.nav-logo .logo-text span { color: var(--accent); position: relative; }
-.nav-logo .logo-text span::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  box-shadow: 0 0 16px rgba(67, 238, 147, 0.3);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s ease;
-}
-.nav-logo:hover .logo-text span::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+.nav-logo img { height: 44px; width: auto; display: block; }
+/* Logo per theme: System -> seesec_white, Dark -> seesec_dark */
+.nav-logo img.logo-for-dark { display: none; }
+html[data-theme-pref="dark"] .nav-logo img.logo-for-system { display: none; }
+html[data-theme-pref="dark"] .nav-logo img.logo-for-dark { display: block; }
+/* logo images already include the SEESEC wordmark, so the text next to them is hidden */
+.nav-logo .logo-text, .footer-brand .nav-logo > span { display: none; }
 
-.nav-links {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
+.nav-links { display: flex; gap: 24px; list-style: none; align-items: center; margin: 0; padding: 0; }
 .nav-links a {
   font-family: var(--font-label);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(var(--fg-rgb), 0.5);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  padding: 4px 0;
-  transition: color 0.25s ease;
-  white-space: nowrap;
+  font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(var(--fg-rgb), .88); text-decoration: none; font-weight: 500;
+  position: relative; padding: 4px 0; transition: color .25s ease; white-space: nowrap;
 }
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  box-shadow: 0 0 16px rgba(67, 238, 147, 0.4);
-  transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: width;
+  content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+  background: var(--accent); border-radius: 2px;
+  transition: width .4s var(--transition-smooth);
 }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a:hover { color: var(--page-text); }
-.nav-links a.active { color: var(--page-text); }
-.nav-links a.active::after { width: 100%; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a:hover, .nav-links a.active { color: var(--page-text); }
 
-/* ===== NAV DROPDOWN ===== */
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; border: 1.5px solid rgba(67, 238, 147, .25);
+  color: var(--page-text); padding: 7px 18px; border-radius: 50px;
+  font-family: var(--font-label);
+  font-size: .68rem; font-weight: 600; letter-spacing: .06em;
+  text-decoration: none; text-transform: uppercase;
+  position: relative; overflow: hidden; flex-shrink: 0;
+  transition: all .4s var(--transition-smooth);
+}
+.nav-cta .nav-bg {
+  position: absolute; inset: 0; border-radius: 50px; background: var(--accent);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform .5s var(--transition-smooth); z-index: -1;
+}
+.nav-cta:hover .nav-bg { transform: scaleX(1); transform-origin: left; }
+.nav-cta:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-2px); }
+
 .has-dropdown { position: relative; }
-.dropdown-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  cursor: default;
-}
-.dropdown-caret {
-  width: 9px; height: 9px;
-  flex-shrink: 0;
-  opacity: 0.55;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
-}
-.has-dropdown:hover .dropdown-caret,
-.has-dropdown:focus-within .dropdown-caret {
-  transform: rotate(180deg);
-  opacity: 1;
-}
+.dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; cursor: default; }
+.dropdown-caret { width: 9px; height: 9px; flex-shrink: 0; opacity: .55; transition: transform .4s var(--transition-smooth), opacity .3s ease; }
+.has-dropdown:hover .dropdown-caret, .has-dropdown:focus-within .dropdown-caret { transform: rotate(180deg); opacity: 1; }
 .nav-dropdown {
-  position: absolute;
-  top: calc(100% + 16px);
-  left: 50%;
-  min-width: 232px;
+  position: absolute; top: calc(100% + 16px); left: 50%; min-width: 232px;
   background: var(--nav-bg-scrolled);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid rgba(var(--fg-rgb), 0.08);
-  border-radius: 16px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateX(-50%) translateY(-8px) scale(0.98);
+  border: 1px solid rgba(var(--fg-rgb), .08); border-radius: 16px; padding: 10px;
+  display: flex; flex-direction: column; gap: 2px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateX(-50%) translateY(-8px) scale(.98);
   transform-origin: top center;
-  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-              transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
-              visibility 0.35s;
+  transition: opacity .35s var(--transition-smooth), transform .35s var(--transition-smooth), visibility .35s;
   z-index: 60;
 }
-.nav-dropdown::before {
-  content: '';
-  position: absolute;
-  top: -5px; left: 50%;
-  width: 10px; height: 10px;
-  background: var(--nav-bg-scrolled);
-  border-left: 1px solid rgba(var(--fg-rgb), 0.08);
-  border-top: 1px solid rgba(var(--fg-rgb), 0.08);
-  transform: translateX(-50%) rotate(45deg);
-  border-radius: 2px 0 0 0;
-}
-.has-dropdown:hover .nav-dropdown,
-.has-dropdown:focus-within .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.has-dropdown:hover .nav-dropdown, .has-dropdown:focus-within .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0) scale(1);
 }
 .nav-dropdown a {
   font-family: var(--font-label);
-  font-size: 0.74rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  font-weight: 500;
-  color: rgba(var(--fg-rgb), 0.6);
-  padding: 10px 14px;
-  border-radius: 10px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+  font-size: .74rem; letter-spacing: .02em; text-transform: none; font-weight: 500;
+  color: rgba(var(--fg-rgb), .88); padding: 10px 14px; border-radius: 10px; white-space: nowrap;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity .3s ease, transform .3s ease, background .25s ease, color .25s ease;
 }
 .nav-dropdown a::after { content: none !important; }
-.has-dropdown:hover .nav-dropdown a,
-.has-dropdown:focus-within .nav-dropdown a {
-  opacity: 1;
-  transform: translateY(0);
-}
-.nav-dropdown a:nth-child(1) { transition-delay: 0.03s; }
-.nav-dropdown a:nth-child(2) { transition-delay: 0.06s; }
-.nav-dropdown a:nth-child(3) { transition-delay: 0.09s; }
-.nav-dropdown a:nth-child(4) { transition-delay: 0.12s; }
-.nav-dropdown a:nth-child(5) { transition-delay: 0.15s; }
-.nav-dropdown a:nth-child(6) { transition-delay: 0.18s; }
-.nav-dropdown a:hover {
-  background: rgba(67, 238, 147, 0.1);
-  color: var(--page-text);
-  transform: translateX(3px);
-}
-
-.nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: 1.5px solid rgba(67, 238, 147, 0.25);
-  color: var(--page-text);
-  padding: 7px 18px;
-  border-radius: 50px;
-  font-family: var(--font-label);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: transform, box-shadow, border-color, color;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.nav-cta .nav-shine {
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(67, 238, 147, 0.2), transparent);
-  transition: left 0.6s ease;
-}
-.nav-cta:hover .nav-shine { left: 100%; }
-.nav-cta .nav-bg {
-  position: absolute;
-  inset: 0;
-  border-radius: 50px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  z-index: -1;
-  will-change: transform;
-}
-.nav-cta:hover .nav-bg {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-.nav-cta:hover {
-  border-color: var(--accent);
-  color: var(--ink);
-  box-shadow: 0 0 40px rgba(67, 238, 147, 0.2);
-  transform: translateY(-2px);
-}
+.has-dropdown:hover .nav-dropdown a, .has-dropdown:focus-within .nav-dropdown a { opacity: 1; transform: translateY(0); }
+.nav-dropdown a:hover { background: rgba(67, 238, 147, .1); color: var(--page-text); transform: translateX(3px); }
 
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 6px 4px;
-  z-index: 850;
-  background: none;
-  border: none;
-  outline: none;
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 6px 4px; z-index: 850; background: none; border: none; flex-shrink: 0;
 }
-.hamburger:hover { transform: scale(1.05); }
-.hamburger span {
-  display: block;
-  width: 26px;
-  height: 2.5px;
-  border-radius: 4px;
-  background: var(--page-text);
-  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-origin: center;
-  will-change: transform, opacity;
-}
+.hamburger span { display: block; width: 26px; height: 2.5px; border-radius: 4px; background: var(--page-text); transition: all .35s var(--transition-smooth); transform-origin: center; }
 .hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
 .theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(var(--fg-rgb), 0.12);
-  background: rgba(var(--fg-rgb), 0.04);
-  color: var(--page-text);
-  cursor: pointer;
-  position: relative;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+  border: 1px solid rgba(var(--fg-rgb), .12); background: rgba(var(--fg-rgb), .04);
+  color: var(--page-text); cursor: pointer; position: relative;
+  transition: border-color .3s ease, background .3s ease, transform .3s ease;
 }
-.theme-toggle:hover {
-  border-color: rgba(67, 238, 147, 0.4);
-  transform: translateY(-1px);
-}
-.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle:hover { border-color: rgba(67, 238, 147, .4); transform: translateY(-1px); }
 .theme-icon {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.6) rotate(-40deg);
-  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 16px; height: 16px; position: absolute; opacity: 0;
+  transform: scale(.6) rotate(-40deg);
+  transition: opacity .35s var(--transition-smooth), transform .35s var(--transition-smooth);
 }
 .theme-toggle[data-mode="system"] .theme-icon-system,
-.theme-toggle[data-mode="dark"] .theme-icon-dark {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
+.theme-toggle[data-mode="dark"] .theme-icon-dark { opacity: 1; transform: scale(1) rotate(0deg); }
 
 .mobile-theme-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
-  padding: 5px;
-  border-radius: 999px;
-  background: rgba(var(--fg-rgb), 0.04);
-  border: 1px solid rgba(var(--fg-rgb), 0.1);
+  display: flex; gap: 8px; margin-top: 6px; padding: 5px; border-radius: 999px;
+  background: rgba(var(--fg-rgb), .04); border: 1px solid rgba(var(--fg-rgb), .1);
 }
 .mobile-theme-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  color: rgba(var(--fg-rgb), 0.45);
-  cursor: pointer;
-  font-family: var(--font-label);
-  font-size: 0.6rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: background 0.3s ease, color 0.3s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 8px 16px; border-radius: 999px; border: none; background: transparent;
+  color: rgba(var(--fg-rgb), .6); cursor: pointer; font-family: var(--font-sans);
+  font-size: .6rem; letter-spacing: .04em; text-transform: uppercase;
+  transition: background .3s ease, color .3s ease;
 }
 .mobile-theme-option svg { width: 17px; height: 17px; }
-.mobile-theme-option.active {
-  background: rgba(67, 238, 147, 0.14);
-  color: var(--accent);
-}
+.mobile-theme-option.active { background: rgba(67, 238, 147, .14); color: var(--accent); }
 
 .mobile-menu {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 750;
-  background: rgba(10, 8, 30, 0.97);
+  position: fixed; inset: 0; z-index: 750;
+  background: rgba(10, 8, 30, .97);
   backdrop-filter: blur(32px) saturate(1.4);
   -webkit-backdrop-filter: blur(32px) saturate(1.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  padding: 40px 24px;
-  overflow-y: auto;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .5s var(--transition-smooth);
+  padding: 40px 24px; overflow-y: auto;
 }
+[data-theme="midnight"] .mobile-menu { background: rgba(3, 4, 8, .97); }
 .mobile-menu.open { opacity: 1; pointer-events: all; }
 .mobile-menu a {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: rgba(var(--fg-rgb), 0.5);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 8px 0;
-  position: relative;
-}
-.mobile-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  width: 0; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.4s ease, left 0.4s ease;
+  font-size: 1.25rem; font-weight: 600; color: rgba(var(--fg-rgb), .9);
+  text-decoration: none; letter-spacing: .04em;
+  transition: color .3s ease, transform .3s ease; padding: 6px 0;
 }
 .mobile-menu a:hover { color: #fff; transform: scale(1.04); }
-.mobile-menu a:hover::after { width: 100%; left: 0; }
 .mobile-menu .mobile-cta {
-  margin-top: 16px;
-  padding: 14px 44px;
-  border-radius: 50px;
-  background: var(--accent);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 40px rgba(67, 238, 147, 0.15);
+  margin-top: 14px; padding: 13px 40px; border-radius: 50px;
+  background: var(--accent); color: var(--ink); font-weight: 700; font-size: .85rem;
+  text-transform: uppercase; letter-spacing: .06em;
 }
-.mobile-menu .mobile-cta:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 60px rgba(67, 238, 147, 0.3);
-}
-.mobile-menu .close-hint {
-  position: absolute;
-  bottom: 40px;
-  font-size: 0.65rem;
-  color: rgba(var(--fg-rgb), 0.15);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 300;
-}
-.mobile-accordion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.mobile-accordion-trigger {
-  background: none;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-family: var(--font-label);
-}
-.mobile-accordion-caret {
-  width: 13px; height: 13px;
-  opacity: 0.5;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
+.mobile-accordion { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.mobile-accordion-trigger { background: none; border: none; display: inline-flex; align-items: center; gap: 8px; color: inherit; cursor: pointer; font-family: inherit; }
+.mobile-accordion-caret { width: 13px; height: 13px; opacity: .5; transition: transform .4s var(--transition-smooth); }
 .mobile-accordion.open .mobile-accordion-caret { transform: rotate(180deg); }
 .mobile-submenu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  max-height: 0;
-  overflow: hidden;
-  width: 100%;
-  transition: max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
-  opacity: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  max-height: 0; overflow: hidden; width: 100%;
+  transition: max-height .45s var(--transition-smooth), opacity .35s ease; opacity: 0;
 }
-.mobile-accordion.open .mobile-submenu {
-  max-height: 420px;
-  opacity: 1;
-  margin-top: 6px;
-}
-.mobile-sublink {
-  font-size: 0.95rem !important;
-  font-weight: 500 !important;
-  color: rgba(var(--fg-rgb), 0.45) !important;
-  padding: 7px 0 !important;
-}
-.mobile-sublink:hover { color: #fff !important; }
+.mobile-accordion.open .mobile-submenu { max-height: 420px; opacity: 1; margin-top: 6px; }
+.mobile-sublink { font-size: .92rem !important; font-weight: 500 !important; color: rgba(var(--fg-rgb), .86) !important; padding: 6px 0 !important; }
 
+/* HERO */
 #hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:140px 48px 100px;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--bg-hero-radial);transition:background .3s}
@@ -939,205 +648,198 @@ section{position:relative;transition:background .3s,color .3s}
 #cta .btn-primary{color:#fff;border-color:rgba(67,238,147,.35)}
 
 /* ============================================================
-   FOOTER — matches aboutus.html
+   FOOTER (identical to cloud-compliance.html)
    ============================================================ */
 footer {
   border-top: 1px solid var(--line);
   padding: 56px 48px 28px;
   background: var(--bg-primary);
   backdrop-filter: blur(4px);
-  transition: background .4s;
+  transition: background .5s ease;
 }
 .footer-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 36px;
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 36px;
 }
 .footer-brand .nav-logo {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
+  font-size: 1.5rem; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--page-text); font-weight: 800;
+  background: transparent;
 }
-.footer-brand .nav-logo img { height: 38px; width: auto; display: block; }
-.footer-brand .nav-logo span { color: var(--accent); }
+.footer-brand .nav-logo img { height: 64px; width: auto; display: block; }
+.footer-brand .nav-logo img.logo-for-dark { display: none; }
+html[data-theme-pref="dark"] .footer-brand .nav-logo img.logo-for-system { display: none; }
+html[data-theme-pref="dark"] .footer-brand .nav-logo img.logo-for-dark { display: block; }
 .footer-brand p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  max-width: 380px;
-  line-height: 1.7;
+  color: rgba(var(--fg-rgb), .86);
+  font-size: .88rem; max-width: 380px; line-height: 1.7;
 }
-.footer-col h5 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  color: var(--text-primary);
-  margin-bottom: 14px;
-  font-weight: 600;
+.footer-offices {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 20px; max-width: 400px;
 }
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.footer-office-item { display: flex; align-items: flex-start; gap: 10px; }
+.footer-office-icon { font-size: .85rem; line-height: 1.45; flex-shrink: 0; opacity: .85; }
+.footer-office-label {
+  display: block; font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 3px;
 }
+.footer-office-addr {
+  font-size: .8rem; line-height: 1.55;
+  color: rgba(var(--fg-rgb), .86); margin: 0; max-width: 360px;
+}
+.footer-office-item:hover .footer-office-addr { color: var(--page-text); transition: color .3s ease; }
+.footer-col h3 {
+  font-family: var(--font-sans);
+  font-size: .9rem; text-transform: uppercase; letter-spacing: .04em;
+  color: #ffffff; margin-bottom: 14px; font-weight: 600;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; padding: 0; margin: 0; }
 .footer-col ul a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.88rem;
-  transition: all 0.25s ease;
-  display: inline-block;
+  color: rgba(var(--fg-rgb), .86); text-decoration: none;
+  font-size: .88rem; transition: all .25s ease; display: inline-block;
 }
-.footer-col ul a:hover {
-  color: var(--accent);
-  transform: translateX(4px);
-}
-
+.footer-col ul a:hover { color: var(--accent); transform: translateX(4px); }
 .newsletter-block {
-  max-width: 1280px;
-  margin: 0 auto 36px;
-  padding: 28px 32px;
-  border: 1px solid var(--border-card);
-  border-radius: 20px;
+  max-width: 1280px; margin: 0 auto 36px; padding: 28px 32px;
+  border: 1px solid var(--border-card); border-radius: 20px;
   background: var(--surface-card);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 28px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(6px);
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 28px; align-items: center; position: relative;
+  overflow: hidden; backdrop-filter: blur(6px);
 }
 .newsletter-block::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan));
-  opacity: .7;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--accent), var(--cyan)); opacity: .7;
 }
-.nl-text h4 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--text-primary);
-}
+.nl-text h3 { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; color: #ffffff; }
 .nl-text p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 10px;
-  max-width: 520px;
+  font-size: .88rem; color: rgba(var(--fg-rgb), .86);
+  line-height: 1.6; margin-bottom: 10px; max-width: 520px;
 }
 .nl-email {
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  font-size: .85rem; color: var(--accent); font-weight: 600;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
 }
 .nl-email:hover { color: var(--cyan); }
-.nl-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+.nl-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.nl-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.nl-input {
+  min-width: 220px; padding: 12px 18px; border-radius: 50px;
+  border: 1px solid rgba(var(--fg-rgb), .25);
+  background: rgba(var(--fg-rgb), .06); color: #fff;
+  font: inherit; font-size: .85rem;
 }
+.nl-input::placeholder { color: rgba(var(--fg-rgb), .55); }
+.nl-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .nl-signup-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 50px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 50px;
   background: linear-gradient(135deg, var(--accent), var(--cyan));
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+  color: var(--ink); font-weight: 700; font-size: .82rem;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
   transition: transform .25s, box-shadow .3s;
-  box-shadow: 0 6px 24px rgba(67,238,147,.25);
+  box-shadow: 0 6px 24px rgba(67, 238, 147, .25);
+  font-family: inherit;
 }
-.nl-signup-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 36px rgba(67,238,147,.4);
-}
-.nl-privacy {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: .04em;
-  transition: color .3s;
-}
+.nl-signup-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 36px rgba(67, 238, 147, .4); }
+.nl-privacy { font-size: .72rem; color: rgba(var(--fg-rgb), .72); text-decoration: none; letter-spacing: .04em; transition: color .3s; }
 .nl-privacy:hover { color: var(--accent); }
-
+.nl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.nl-status { font-size: .75rem; min-height: 1em; margin: 0; }
+.nl-status.ok { color: var(--accent); }
+.nl-status.err { color: #ff8a8a; }
 .footer-follow {
-  max-width: 1280px;
-  margin: 0 auto 28px;
-  padding: 20px 0;
+  max-width: 1280px; margin: 0 auto 28px; padding: 20px 0;
   border-top: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
 }
 .footer-follow-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  color: var(--text-muted);
-  font-weight: 600;
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .16em;
+  color: rgba(var(--fg-rgb), .78); font-weight: 600;
 }
-.footer-follow-socials {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
+.footer-follow-socials { display: flex; gap: 12px; align-items: center; }
 .footer-follow-socials a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  width: 42px; height: 42px; border-radius: 50%;
   border: 1px solid var(--border-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(var(--fg-rgb), .86); font-size: .95rem;
+  text-decoration: none; transition: all .3s var(--transition-smooth);
   background: var(--surface-card);
 }
 .footer-follow-socials a:hover {
-  color: var(--ink);
-  background: var(--accent);
+  color: var(--ink); background: var(--accent);
   border-color: var(--accent);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(67, 238, 147, .3);
+}
+.footer-bottom {
+  max-width: 1280px; margin: 0 auto; padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .8rem; color: rgba(var(--fg-rgb), .7);
+  flex-wrap: wrap; gap: 14px;
+}
+
+/* ============================================================
+   INSTAGRAM ACCOUNT PICKER (identical to cloud-compliance.html)
+   ============================================================ */
+.ig-picker { position: relative; display: inline-flex; }
+.ig-trigger {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(var(--fg-rgb), 0.86); font-size: 0.95rem;
+  background: var(--surface-card); cursor: pointer;
+  padding: 0; font-family: inherit;
+  transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ig-trigger:hover,
+.ig-trigger[aria-expanded="true"] {
+  color: var(--ink); background: var(--accent); border-color: var(--accent);
   transform: translateY(-3px) scale(1.08);
   box-shadow: 0 8px 24px rgba(67,238,147,.3);
 }
-
-.footer-bottom {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-faint);
-  flex-wrap: wrap;
-  gap: 14px;
+.ig-menu {
+  position: absolute; bottom: calc(100% + 12px); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 240px; padding: 8px; box-sizing: border-box;
+  background: var(--nav-bg-scrolled);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(var(--fg-rgb), 0.12);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  display: flex; flex-direction: column; gap: 4px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .3s ease, transform .3s cubic-bezier(0.23,1,0.32,1), visibility .3s;
+  z-index: 900;
+}
+.ig-menu.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.ig-menu a {
+  display: flex; flex-direction: column; align-items: flex-start;
+  justify-content: center; gap: 2px;
+  padding: 10px 14px; border-radius: 10px;
+  text-decoration: none; white-space: nowrap;
+  width: 100%; box-sizing: border-box; text-align: left;
+  transition: background .25s ease, transform .25s ease;
+}
+.ig-menu a:hover,
+.ig-menu a:focus-visible { background: rgba(67,238,147,.12); transform: translateX(3px); }
+.ig-menu-name { font-size: 0.8rem; font-weight: 700; color: #ffffff; line-height: 1.2; }
+.ig-menu-handle { font-size: 0.68rem; color: rgba(var(--fg-rgb), 0.7); line-height: 1.2; }
+.ig-menu a:hover .ig-menu-handle { color: var(--accent); }
+@media (max-width: 520px) {
+  .ig-menu { left: auto; right: 0; transform: translateX(0) translateY(8px); }
+  .ig-menu.open { transform: translateX(0) translateY(0); }
 }
 
 .float-cta{position:fixed;bottom:36px;right:36px;z-index:700;display:flex;align-items:center;gap:12px;background:var(--blue);color:#fff;padding:13px 24px;border-radius:50px;font-family:var(--font-label);font-size:.82rem;font-weight:500;text-decoration:none;box-shadow:0 8px 40px rgba(7,120,182,.45);transition:transform .3s,box-shadow .3s,background .3s}
@@ -1146,7 +848,7 @@ footer {
 [data-theme="midnight"] .float-cta:hover{background:#3a3a3a;box-shadow:0 12px 50px rgba(0,0,0,.7)}
 
 /* ============================================================
-   ANIMATED SECTION VISUALS — replace static dashboard mockups
+   ANIMATED SECTION VISUALS
    ============================================================ */
 @keyframes daBarGrow {
   0%, 100% { transform: scaleY(.72); filter: brightness(.9); }
@@ -1190,7 +892,7 @@ footer {
   100% { stroke-dashoffset: -260; opacity: 0; }
 }
 
-/* ---------- HERO — Live dashboard ---------- */
+/* ---------- HERO - Live dashboard ---------- */
 .live-dash {
   position: relative;
   z-index: 2;
@@ -1296,7 +998,7 @@ footer {
   margin-top: 4px;
 }
 
-/* ---------- INFO VISUAL — Data pipeline ---------- */
+/* ---------- INFO VISUAL - Data pipeline ---------- */
 .dp-wrap {
   position: relative;
   z-index: 2;
@@ -1441,37 +1143,49 @@ footer {
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .flow-grid > *, .orb, .hero-glyph-card, .dept-panel, .flow-node, .flow-arrow { animation: none !important; }
   .live-bar, .live-bars::before, .live-pill::before, .live-kpi-val, .live-spark path,
   .dp-src, .dp-src::before, .dp-pipe i, .dp-engine::before, .dp-out-bars span { animation: none !important; }
   .live-spark path { stroke-dashoffset: 0; }
 }
+
+/* ── Large tablet / small desktop ── */
+@media (max-width:1280px){
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: .68rem; letter-spacing: .05em; }
+}
+@media (max-width:1100px) and (min-width:821px){
+  nav { left: 20px; right: 20px; padding: 0 18px; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: .62rem; letter-spacing: .03em; }
+  .nav-cta { padding: 6px 12px; font-size: .6rem; }
+  .nav-logo { font-size: 1.15rem; }
+  .nav-logo img { height: 38px; }
+}
+
+/* ── Tablet ── */
 @media (max-width:1024px){
   .dept-wrap{grid-template-columns:1fr;gap:20px}
-  .dept-rail{flex-direction:row;overflow-x:auto;padding-bottom:6px;gap:8px}
+  .dept-rail{flex-direction:row;overflow-x:auto;padding-bottom:6px;gap:8px; scrollbar-width: thin;}
   .dept-btn{flex-shrink:0;width:auto}
   .flow-pipeline{grid-template-columns:1fr 1fr;gap:16px}
   .flow-arrow{display:none}
-}
-@media (max-width:900px){
-  nav {
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 0 20px;
-    border-radius: 0 0 18px 18px;
-  }
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .hamburger { display: flex; }
 
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .newsletter-block { grid-template-columns: 1fr; gap: 18px; }
+  .nl-actions { align-items: flex-start; }
+}
+
+/* ── Tablet portrait / mobile ── */
+@media (max-width:900px){
   #hero{padding:120px 24px 80px;min-height:auto}
   .hero-inner{grid-template-columns:1fr;gap:50px}
   .hero-glyph-card{width:240px;height:240px;padding:20px}
   .info-inner{grid-template-columns:1fr;gap:50px}
-  .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
-  footer { padding: 56px 24px 32px; }
   section,.info-section,.badge-section,.faq-section,.caps-section,.dept-section,.flow-section{padding-left:24px !important;padding-right:24px !important}
   .hero-title{font-size:clamp(2rem,5vw,3.2rem)}
   .dept-kpis{grid-template-columns:repeat(2,1fr)}
@@ -1481,19 +1195,48 @@ footer {
   .live-kpi{padding:6px 3px}
   .live-kpi-val{font-size:.8rem}
   .live-kpi-lbl{font-size:.42rem}
+
+  .caps-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .section-head { margin-bottom: 44px; }
+  .caps-head, .flow-head, .dept-head { margin-bottom: 40px; }
 }
+
+/* ── Small tablet / phone (nav/footer) ── */
+@media (max-width:820px){
+  nav { top: 0; left: 0; right: 0; padding: 0 20px; border-radius: 0 0 18px 18px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  footer { padding: 40px 20px 24px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand .nav-logo img { height: 52px; }
+  .nl-actions { align-items: flex-start; }
+}
+
+/* ── Phone ── */
 @media (max-width:600px){
   .cta-actions{flex-direction:column;width:100%}
-  .cta-actions .btn-primary{width:100%;justify-content:center}
+  .cta-actions .btn-primary,
+  .cta-actions .btn-ghost{width:100%;justify-content:center}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
   .float-cta{bottom:20px;right:20px;padding:10px 18px;font-size:.75rem}
   .float-cta span{display:none}
   .hero-glyph-card{width:180px;height:180px;padding:16px}
   .badge-chip{font-size:.78rem;padding:10px 18px}
-  .footer-inner{grid-template-columns:1fr;gap:32px}
-  .newsletter-block{grid-template-columns:1fr;gap:18px;padding:22px 20px}
-  .nl-actions{align-items:flex-start}
+  .footer-inner{grid-template-columns:1fr;gap:24px;margin-bottom:24px}
+  .footer-brand .nav-logo img { height: 52px; }
+  .footer-brand p { font-size: .78rem; }
+  .footer-offices { gap: 10px; margin-top: 16px; }
+  .footer-office-label { font-size: .63rem; }
+  .footer-office-addr { font-size: .73rem; }
+  .footer-col h3 { font-size: .78rem; margin-bottom: 8px; }
+  .footer-col ul a { font-size: .75rem; }
   .footer-follow{flex-direction:column;align-items:flex-start;gap:14px}
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; padding-top: 14px; }
+  .footer-bottom p { font-size: .68rem; }
+  footer { padding: 32px 16px 20px; }
+  .nl-form { justify-content: flex-start; }
+  .nl-input { min-width: 0; flex: 1 1 180px; }
   .dept-panel{padding:24px 20px}
   .dept-kpis{grid-template-columns:1fr 1fr}
   .flow-pipeline{grid-template-columns:1fr}
@@ -1517,86 +1260,124 @@ footer {
   .dp-out-kpis span{font-size:.6rem;padding:4px 2px}
   .dp-pipe{height:16px;gap:12px}
   .dp-pipe i{height:10px}
+
+  .faq-q { padding: 18px 20px; font-size: 0.92rem; }
+  .faq-a-inner { padding: 0 20px 20px; }
+
+  #cta { padding: 72px 24px; }
+  .section-head p { font-size: 0.92rem; }
+  .caps-head p,
+  .flow-head p,
+  .dept-head p { font-size: 0.92rem; }
+
+  .dept-panel-title { font-size: 1.1rem; }
+  .dept-panel-ico { width: 44px; height: 44px; font-size: 1.25rem; }
+  .dept-panel-desc { font-size: 0.88rem; }
+  .dept-kpi-val { font-size: 1.15rem; }
+  .dept-chart { height: 56px; }
+}
+
+/* ── Small phone ── */
+@media (max-width:520px){
+  :root{--nav-height:52px}
+  nav{padding:0 16px}
+  .nav-logo{font-size:1rem}
+  .nav-logo img{height:38px}
+  .hamburger span{width:20px;height:2px}
+  footer{padding:32px 16px 20px}
+  .footer-inner{grid-template-columns:1fr;gap:24px;margin-bottom:24px}
+  .footer-brand .nav-logo img{height:52px}
+  .footer-brand p{font-size:.75rem}
+  .nl-actions{align-items:flex-start}
+  .footer-follow{flex-direction:column;align-items:flex-start;gap:14px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center;padding-top:14px}
+  .nl-input{min-width:0;flex:1 1 180px}
+}
+
+@media (max-width:480px){
+  .hero-title{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .hero-actions { gap: 12px; }
+  .btn-primary { padding: 12px 22px; font-size: .8rem; }
+
+  .caps-grid { grid-template-columns: 1fr; }
+  .dept-rail { gap: 6px; }
+  .dept-btn { font-size: 0.82rem; padding: 12px 14px; }
+
+  .mobile-menu { padding: 76px 14px 32px; }
+  .mobile-menu .mobile-link,
+  .mobile-menu .mobile-accordion-trigger { font-size: 1rem; padding: 14px 14px; }
+  .mobile-menu .mobile-sublink { font-size: .88rem !important; padding: 9px 12px !important; }
 }
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<a href="#cta" class="float-cta"><span>📊 Book a Session</span></a>
+<a href="contact.html" class="float-cta"><span>📊 Book a Session</span></a>
 
-<!-- ===== NAVBAR (exactly like index.html) ===== -->
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR (identical to cloud-compliance.html)
+     ═══════════════════════════════════════════════════════════ -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" />
-    <span class="logo-text">SEE<span>SEC</span></span>
+    <img class="logo-for-system" src="logo/seesec-white.png" alt="SEESEC Logo" width="277" height="240" />
+    <img class="logo-for-dark" src="logo/seesec-dark.png" alt="SEESEC Logo" width="278" height="240" />
   </a>
-
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="has-dropdown">
-      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
-        Services
+      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Services
         <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </a>
       <div class="nav-dropdown">
-        <a href="aws-managed.html">AWS Managed Services</a>
+        <a href="aws.html">AWS T&C</a>
+        <a href="cloud-compliance.html">Cloud Compliance</a>
+        <a href="cloud-migration.html">Cloud Migration</a>
         <a href="cloud-optimization.html">Cloud Optimization</a>
         <a href="cloud-security.html">Cloud Security</a>
+        <a href="data-analytics.html">Data Analytics</a>
         <a href="gen-ai.html">Gen AI</a>
-        <a href="data-analytics.html" class="active">Data Analytics</a>
-        <a href="cloud-compliance.html">Cloud Compliance</a>
       </div>
     </li>
     <li class="has-dropdown">
-      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">
-        Solutions
+      <a class="dropdown-trigger" tabindex="0" role="button" aria-haspopup="true">Solutions
         <svg class="dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </a>
       <div class="nav-dropdown">
         <a href="chat-a-lot.html">Chat-A-Lot</a>
-        <a href="talk-track.html">Talk Track</a>
-        <a href="sms-sense.html">SMS Sense</a>
-        <a href="interactive-email.html">Interactive Email</a>
+        <a href="dpdp-solutions.html">Dpdp Solutions</a>
         <a href="email-archival.html">Email Archival</a>
+        <a href="enterprise-ai.html">Enterprise AI</a>
+        <a href="interactive-email.html">Interactive Email</a>
+        <a href="sms-sense.html">SMS Sense</a>
+        <a href="talk-track.html">Talk Track</a>
+        <a href="content-automation.html">Content AI</a>
       </div>
     </li>
     <li><a href="content-automation.html">Content AI</a></li>
     <li><a href="aboutus.html">About Us</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="partners-page.html" class="active">Partners</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+    <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
   </ul>
-
-  <a href="#cta" class="nav-cta">
-    <span class="nav-shine"></span>
-    <span class="nav-bg"></span>
-    Get a Quote →
-  </a>
-
+  <a href="contact.html" class="nav-cta"><span class="nav-bg"></span>Get a Quote →</a>
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Theme: System">
     <svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
     <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"></path></svg>
   </button>
-
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" class="mobile-link">Home</a>
-
   <div class="mobile-accordion" data-accordion>
-    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
-      Services
+    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">Services
       <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
     <div class="mobile-submenu">
-      <a href="aws-managed.html" class="mobile-sublink">AWS Managed Services</a>
+      <a href="aws.html" class="mobile-sublink">AWS Managed Services</a>
+      <a href="cloud-migration.html" class="mobile-sublink">Cloud Migration</a>
       <a href="cloud-optimization.html" class="mobile-sublink">Cloud Optimization</a>
       <a href="cloud-security.html" class="mobile-sublink">Cloud Security</a>
       <a href="gen-ai.html" class="mobile-sublink">Gen AI</a>
@@ -1604,10 +1385,8 @@ footer {
       <a href="cloud-compliance.html" class="mobile-sublink">Cloud Compliance</a>
     </div>
   </div>
-
   <div class="mobile-accordion" data-accordion>
-    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">
-      Solutions
+    <button type="button" class="mobile-link mobile-accordion-trigger" aria-expanded="false">Solutions
       <svg class="mobile-accordion-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
     <div class="mobile-submenu">
@@ -1618,14 +1397,12 @@ footer {
       <a href="email-archival.html" class="mobile-sublink">Email Archival</a>
     </div>
   </div>
-
   <a href="content-automation.html" class="mobile-link">Content AI</a>
   <a href="aboutus.html" class="mobile-link">About Us</a>
-  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="partners-page.html" class="mobile-link">Partners</a>
   <a href="contact.html" class="mobile-link">Contact</a>
-  <a href="https://seesec.io/blogs" target="_blank" class="mobile-link">Blogs</a>
-  <a href="#cta" class="mobile-cta">Get a Quote →</a>
-
+  <a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer" class="mobile-link">Blogs</a>
+  <a href="contact.html" class="mobile-cta">Get a Quote →</a>
   <div class="mobile-theme-row" role="group" aria-label="Color theme">
     <button class="mobile-theme-option" data-mode="system" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
@@ -1636,8 +1413,7 @@ footer {
       <span>Dark</span>
     </button>
   </div>
-
-  <span class="close-hint">Tap to close</span>
+  <span style="position:absolute;bottom:34px;font-size:.62rem;color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase;">Tap to close</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -1649,10 +1425,9 @@ footer {
     <div class="hero-content">
       <p class="hero-eyebrow">Data Analytics Services</p>
       <h1 class="hero-title">Data Doesn't Drive Decisions.<br /><span class="typewriter" id="typewriter"></span></h1>
-      <p class="hero-sub">Every organization generates massive volumes of data every day — from customer interactions and operations to financial transactions. The challenge isn't collecting data. It's turning it into timely, actionable intelligence. SEESEC transforms fragmented data into real-time dashboards, predictive insights, and decision-ready analytics.</p>
+      <p class="hero-sub">Every organization generates massive volumes of data every day - from customer interactions and operations to financial transactions. The challenge isn't collecting data. It's turning it into timely, actionable intelligence. SEESEC transforms fragmented data into real-time dashboards, predictive insights, and decision-ready analytics.</p>
       <div class="hero-actions">
         <a href="#cta" class="btn-primary">Talk to Our Data Experts →</a>
-        <a href="#cta" class="btn-ghost">Schedule a Data Assessment <span class="arrow">→</span></a>
       </div>
     </div>
     <div class="hero-glyph">
@@ -1691,8 +1466,8 @@ footer {
     <div class="info-text reveal">
       <p class="section-label">From Raw Data</p>
       <h2>To Business <em>Intelligence</em>.</h2>
-      <p>Data lives everywhere — ERPs, CRMs, spreadsheets, cloud databases, third-party APIs. SEESEC engineers the pipeline that turns that fragmented information into real-time dashboards, executive reporting, and AI-powered insights.</p>
-      <p>Every dashboard is built for the decision-maker who uses it — from CXO strategic KPIs to operations-team efficiency metrics.</p>
+      <p>Data lives everywhere - ERPs, CRMs, spreadsheets, cloud databases, third-party APIs. SEESEC engineers the pipeline that turns that fragmented information into real-time dashboards, executive reporting, and AI-powered insights.</p>
+      <p>Every dashboard is built for the decision-maker who uses it - from CXO strategic KPIs to operations-team efficiency metrics.</p>
       <div class="cta-row"><a href="#capabilities" class="btn-primary">See Capabilities →</a></div>
     </div>
     <div class="info-visual reveal">
@@ -1733,18 +1508,18 @@ footer {
   <div class="caps-head reveal">
     <p class="section-label centered">Capabilities</p>
     <h2>Analytics engineered for <em>every decision maker</em>.</h2>
-    <p>Eleven capabilities that cover the full data value chain — from ingestion and modeling to executive dashboards and predictive intelligence.</p>
+    <p>Eleven capabilities that cover the full data value chain - from ingestion and modeling to executive dashboards and predictive intelligence.</p>
   </div>
   <div class="caps-grid flow-grid">
     <div class="cap-card reveal"><div class="cap-icon">🔗</div><div class="cap-title">Data Engineering &amp; Integration</div><p class="cap-desc">Connect ERPs, CRMs, HRMS, spreadsheets, APIs, and third-party apps into one unified data layer.</p></div>
     <div class="cap-card reveal"><div class="cap-icon">🏛️</div><div class="cap-title">Enterprise Data Warehousing</div><p class="cap-desc">Modern, cloud-native warehouses on AWS engineered for scale and query performance.</p></div>
-    <div class="cap-card reveal"><div class="cap-icon">📊</div><div class="cap-title">Executive Dashboards</div><p class="cap-desc">Strategic KPI views built for leadership — the numbers that matter, always fresh.</p></div>
-    <div class="cap-card reveal"><div class="cap-icon">💡</div><div class="cap-title">Business Intelligence</div><p class="cap-desc">Self-serve BI across departments — teams answer their own questions without waiting on data.</p></div>
+    <div class="cap-card reveal"><div class="cap-icon">📊</div><div class="cap-title">Executive Dashboards</div><p class="cap-desc">Strategic KPI views built for leadership - the numbers that matter, always fresh.</p></div>
+    <div class="cap-card reveal"><div class="cap-icon">💡</div><div class="cap-title">Business Intelligence</div><p class="cap-desc">Self-serve BI across departments - teams answer their own questions without waiting on data.</p></div>
     <div class="cap-card reveal"><div class="cap-icon">🔮</div><div class="cap-title">Predictive Analytics</div><p class="cap-desc">Forecasting, propensity, and pattern models that turn history into forward-looking decisions.</p></div>
-    <div class="cap-card reveal"><div class="cap-icon">🎯</div><div class="cap-title">KPI Monitoring</div><p class="cap-desc">Continuous tracking of the metrics that define success — with alerting when they drift.</p></div>
-    <div class="cap-card reveal"><div class="cap-icon">⚡</div><div class="cap-title">Real-Time Reporting</div><p class="cap-desc">Live operational visibility — no more end-of-month surprises or stale weekly PDFs.</p></div>
+    <div class="cap-card reveal"><div class="cap-icon">🎯</div><div class="cap-title">KPI Monitoring</div><p class="cap-desc">Continuous tracking of the metrics that define success - with alerting when they drift.</p></div>
+    <div class="cap-card reveal"><div class="cap-icon">⚡</div><div class="cap-title">Real-Time Reporting</div><p class="cap-desc">Live operational visibility - no more end-of-month surprises or stale weekly PDFs.</p></div>
     <div class="cap-card reveal"><div class="cap-icon">👥</div><div class="cap-title">Customer Analytics</div><p class="cap-desc">Understand who buys, what they value, and how their behavior changes over time.</p></div>
-    <div class="cap-card reveal"><div class="cap-icon">📈</div><div class="cap-title">Sales &amp; Marketing Analytics</div><p class="cap-desc">Pipeline, funnel, campaign performance — attribution you can actually act on.</p></div>
+    <div class="cap-card reveal"><div class="cap-icon">📈</div><div class="cap-title">Sales &amp; Marketing Analytics</div><p class="cap-desc">Pipeline, funnel, campaign performance - attribution you can actually act on.</p></div>
     <div class="cap-card reveal"><div class="cap-icon">⚙️</div><div class="cap-title">Operational Intelligence</div><p class="cap-desc">Efficiency, throughput, and bottleneck detection across every operational workflow.</p></div>
     <div class="cap-card reveal"><div class="cap-icon">🤖</div><div class="cap-title">AI-Powered Insights</div><p class="cap-desc">Machine learning surfaces the anomalies and trends humans would miss.</p></div>
   </div>
@@ -1755,7 +1530,7 @@ footer {
   <div class="flow-head reveal">
     <p class="section-label centered">End-to-End Data Pipeline</p>
     <h2>From sources to <em>decisions</em>.</h2>
-    <p>A single connected flow — from the moment raw data arrives to the moment a decision-maker sees it on a dashboard. Each stage is engineered, monitored, and optimized by SEESEC.</p>
+    <p>A single connected flow - from the moment raw data arrives to the moment a decision-maker sees it on a dashboard. Each stage is engineered, monitored, and optimized by SEESEC.</p>
   </div>
 
   <div class="flow-pipeline reveal">
@@ -1801,7 +1576,7 @@ footer {
   <div class="dept-head reveal">
     <p class="section-label centered">Built for Every Decision Maker</p>
     <h2>Analytics tailored to <em>every function</em>.</h2>
-    <p>Whether you're a CXO tracking strategic KPIs, a sales leader measuring pipeline performance, or an operations team monitoring efficiency — SEESEC builds analytics platforms tailored to your business goals. Select a department to see a live dashboard example.</p>
+    <p>Whether you're a CXO tracking strategic KPIs, a sales leader measuring pipeline performance, or an operations team monitoring efficiency - SEESEC builds analytics platforms tailored to your business goals. Select a department to see a live dashboard example.</p>
   </div>
 
   <div class="dept-wrap reveal">
@@ -1824,7 +1599,7 @@ footer {
           <div class="dept-panel-sub" id="deptPanelSub">Strategic KPI View</div>
         </div>
       </div>
-      <p class="dept-panel-desc" id="deptPanelDesc">A single view of the metrics that define the business — revenue trajectory, customer growth, operational efficiency, and risk signals — refreshed live for the executive team.</p>
+      <p class="dept-panel-desc" id="deptPanelDesc">A single view of the metrics that define the business - revenue trajectory, customer growth, operational efficiency, and risk signals - refreshed live for the executive team.</p>
 
       <div class="dept-kpis" id="deptKpis"></div>
 
@@ -1832,7 +1607,7 @@ footer {
 
       <div class="dept-insight">
         <span class="dept-insight-ico">💡</span>
-        <p id="deptInsight">Revenue trending 12% above forecast — margin holds despite higher acquisition spend.</p>
+        <p id="deptInsight">Revenue trending 12% above forecast - margin holds despite higher acquisition spend.</p>
       </div>
     </div>
   </div>
@@ -1847,19 +1622,19 @@ footer {
   <div class="faq-list">
     <div class="faq-item open">
       <button class="faq-q" type="button"><span>Can SEESEC integrate multiple business systems into one dashboard?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Yes. We integrate data from ERPs, CRMs, HRMS platforms, cloud databases, spreadsheets, APIs, and third-party applications into unified analytics platforms — one view across every system that matters.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes. We integrate data from ERPs, CRMs, HRMS platforms, cloud databases, spreadsheets, APIs, and third-party applications into unified analytics platforms - one view across every system that matters.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>Do you build real-time dashboards?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Absolutely. We develop interactive dashboards that provide real-time visibility into business performance and operational metrics — updated live as events happen, not overnight in batch.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely. We develop interactive dashboards that provide real-time visibility into business performance and operational metrics - updated live as events happen, not overnight in batch.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>What AWS services do you build on?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Redshift, Athena, Glue, S3, QuickSight, SageMaker, and Bedrock for AI-powered layers — with the specific stack chosen to fit your data volume, latency, and cost profile.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Redshift, Athena, Glue, S3, QuickSight, SageMaker, and Bedrock for AI-powered layers - with the specific stack chosen to fit your data volume, latency, and cost profile.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>Can predictive analytics work with our data?</span><span class="faq-marker">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Yes — provided the data has enough history and structure. We start with a data assessment to identify which predictive use cases are viable now and which need groundwork first.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes - provided the data has enough history and structure. We start with a data assessment to identify which predictive use cases are viable now and which need groundwork first.</div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" type="button"><span>How long does a typical engagement take?</span><span class="faq-marker">+</span></button>
@@ -1875,93 +1650,147 @@ footer {
     <h2>Your data already contains <em>the answers</em>.</h2>
     <p class="cta-sub">We help you discover them. Book a data strategy session or explore how AI unlocks the intelligence hidden in your operations.</p>
     <div class="cta-actions">
-      <a href="https://seesec.io/contact/" target="_blank" class="btn-primary">📅 Book a Data Strategy Session →</a>
-      <a href="enterprise-ai.html" class="btn-ghost">Explore Enterprise AI <span class="arrow">→</span></a>
+      <a href="contact.html" target="_blank" class="btn-primary">📅 Book a Data Strategy Session →</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER — matches aboutus.html ===== -->
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — identical to cloud-compliance.html
+     ═══════════════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a href="#" class="nav-logo">
-        <img src="https://seesec.io/wp-content/uploads/2025/03/logo.png" alt="SEESEC Logo" loading="lazy" />
-        <span>SEE<span>SEC</span></span>
+      <a href="index.html" class="nav-logo">
+        <img class="logo-for-system" src="logo/seesec-white.webp" alt="SEESEC Logo" width="277" height="240" loading="lazy" />
+        <img class="logo-for-dark" src="logo/seesec-dark.webp" alt="SEESEC Logo" width="278" height="240" loading="lazy" />
       </a>
       <p>At SEESEC, we empower businesses to transform their operations with secure, cost-effective, and innovative solutions. From cloud migration and cloud optimization to AI-driven growth and NEW-AGE communication tools, we help you achieve operational excellence and competitive advantage.</p>
-      <p style="margin-top:12px; font-size:0.7rem; color:var(--text-faint);">
-        <a href="admin.html" style="color:inherit; text-decoration:none; border-bottom:1px dashed var(--line);">
-          <i class="fas fa-lock" style="margin-right:4px;"></i> Admin
-        </a>
-      </p>
+
+      <div class="footer-offices">
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">🏢</span>
+          <div>
+            <strong class="footer-office-label">Head Office</strong>
+            <p class="footer-office-addr">Signature Tower 3, Sec-15, Gurugram</p>
+          </div>
+        </div>
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong class="footer-office-label">Regional Office 1</strong>
+            <p class="footer-office-addr">Majestic Omnia, 3rd Floor, Sector 4, Noida, UP 201301</p>
+          </div>
+        </div>
+        <div class="footer-office-item">
+          <span class="footer-office-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong class="footer-office-label">Regional Office 2</strong>
+            <p class="footer-office-addr">Sanskar Chand Road, Jaipur</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px; font-size:0.78rem; color:var(--text-secondary);">📞 +91-922-055-0666</p>
     </div>
     <div class="footer-col">
-      <h5>Services</h5>
+      <h3>Services</h3>
       <ul>
-        <li><a href="aws-managed.html">AWS Managed</a></li>
+        <li><a href="aws.html">AWS T&C</a></li>
+        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+        <li><a href="cloud-migration.html">Cloud Migration</a></li>
         <li><a href="cloud-optimization.html">Cloud Optimization</a></li>
         <li><a href="cloud-security.html">Cloud Security</a></li>
-        <li><a href="gen-ai.html">Gen AI</a></li>
         <li><a href="data-analytics.html">Data Analytics</a></li>
-        <li><a href="cloud-compliance.html">Cloud Compliance</a></li>
+        <li><a href="gen-ai.html">Gen AI</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Solutions</h5>
+      <h3>Solutions</h3>
       <ul>
         <li><a href="chat-a-lot.html">Chat-A-Lot</a></li>
-        <li><a href="talk-track.html">Talk Track</a></li>
-        <li><a href="sms-sense.html">SMS Sense</a></li>
-        <li><a href="interactive-email.html">Interactive Email</a></li>
+        <li><a href="dpdp-solutions.html">Dpdp Solutions</a></li>
         <li><a href="email-archival.html">Email Archival</a></li>
+        <li><a href="enterprise-ai.html">Enterprise AI</a></li>
+        <li><a href="interactive-email.html">Interactive Email</a></li>
+        <li><a href="sms-sense.html">SMS Sense</a></li>
+        <li><a href="talk-track.html">Talk Track</a></li>
+        <li><a href="content-automation.html">Content AI</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Company</h5>
+      <h3>Company</h3>
       <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="https://seesec.io/blogs" target="_blank">Blogs</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="partners-page.html">Partners</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="news.html">Newsletter</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="aws.html">AWS Terms &amp; Conditions</a></li>
+        <li><a href="https://seesec.io/blogs" target="_blank" rel="noopener noreferrer">Blogs</a></li>
       </ul>
     </div>
   </div>
-
   <div class="newsletter-block">
     <div class="nl-text">
-      <h4>Newsletter</h4>
+      <h3>Newsletter</h3>
       <p>Subscribe to our newsletter for day to day cloud updates!</p>
-      <a href="mailto:contactus@seesec.io" class="nl-email">
-        <i class="fas fa-envelope"></i> contactus@seesec.io
-      </a>
+      <a href="mailto:contactus@seesec.io" class="nl-email"><i class="fas fa-envelope"></i> contactus@seesec.io</a>
     </div>
     <div class="nl-actions">
-      <a href="mailto:contactus@seesec.io?subject=Newsletter%20Signup" class="nl-signup-btn">
-        Sign Up →
-      </a>
-      <a href="#" class="nl-privacy">Privacy Policy</a>
+      <form class="nl-form" id="nlForm" novalidate>
+        <label for="nlEmail" class="nl-sr">Email address</label>
+        <input type="email" id="nlEmail" name="email" class="nl-input" placeholder="you@company.com" autocomplete="email" required />
+        <button type="submit" class="nl-signup-btn">Sign Up →</button>
+      </form>
+      <p class="nl-status" id="nlStatus" role="status" aria-live="polite"></p>
+      <a href="privacy-policy.html" class="nl-privacy">Privacy Policy</a>
     </div>
   </div>
-
   <div class="footer-follow">
     <span class="footer-follow-label">Follow Us</span>
     <div class="footer-follow-socials">
       <a href="mailto:contactus@seesec.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/company/seesec" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/seesec" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@seesec" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.linkedin.com/company/seesec-infotech/posts/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <!-- Instagram → opens a picker with two account choices -->
+      <div class="ig-picker" id="igPicker">
+        <button type="button"
+                class="ig-trigger"
+                id="igTrigger"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="igMenu"
+                aria-label="Choose an Instagram account"
+                title="Open Instagram menu">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </button>
+        <div class="ig-menu" id="igMenu" role="menu" aria-label="Choose an Instagram account">
+          <a href="https://www.instagram.com/seesec.io"
+             target="_blank"
+             rel="noopener noreferrer"
+             role="menuitem">
+            <span class="ig-menu-name">SEESEC</span>
+            <span class="ig-menu-handle">@seesec.io</span>
+          </a>
+          <a href="https://www.instagram.com/inside.seesec?cplk=aWcydWFycTQyM2N6"
+             target="_blank"
+             rel="noopener noreferrer"
+             role="menuitem">
+            <span class="ig-menu-name">Inside SEESEC</span>
+            <span class="ig-menu-handle">@inside.seesec</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="https://www.youtube.com/@Seesec_io" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 SEESEC Infotech. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© <span id="copyrightYear">2026</span> SEESEC Infotech. All rights reserved.</p></div>
 </footer>
 
 <script>
 /* ============================================================
-   THEME TOGGLE — ported from index.html
-   'system' → purple theme, 'dark' → midnight theme
+   THEME TOGGLE — ported from cloud-compliance.html
    ============================================================ */
 (function() {
   const root = document.documentElement;
@@ -2161,6 +1990,50 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 });
 
 /* ============================================================
+   FOOTER YEAR + NEWSLETTER
+   ============================================================ */
+(function(){
+  const y = document.getElementById('copyrightYear');
+  if (y) y.textContent = new Date().getFullYear();
+
+  const NEWSLETTER_ENDPOINT = '';
+  const form = document.getElementById('nlForm');
+  const status = document.getElementById('nlStatus');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = (document.getElementById('nlEmail').value || '').trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    status.className = 'nl-status';
+    if (!ok) {
+      status.textContent = 'Please enter a valid email address.';
+      status.classList.add('err');
+      return;
+    }
+    if (!NEWSLETTER_ENDPOINT) {
+      window.location.href = 'mailto:contactus@seesec.io?subject=' +
+        encodeURIComponent('Newsletter Signup') + '&body=' +
+        encodeURIComponent('Please subscribe this address: ' + email);
+      return;
+    }
+    status.textContent = 'Subscribing…';
+    fetch(NEWSLETTER_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    }).then(r => {
+      if (!r.ok) throw new Error();
+      status.textContent = 'Thanks! You are subscribed.';
+      status.classList.add('ok');
+      form.reset();
+    }).catch(() => {
+      status.textContent = 'Something went wrong. Please try again or email contactus@seesec.io.';
+      status.classList.add('err');
+    });
+  });
+})();
+
+/* ============================================================
    TYPEWRITER
    ============================================================ */
 (function(){
@@ -2197,14 +2070,14 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   const insightEl = document.getElementById('deptInsight');
 
   const data = {
-    leadership:{ico:'👔',title:'Leadership Dashboard',sub:'Strategic KPI View',desc:'A single view of the metrics that define the business — revenue trajectory, customer growth, operational efficiency, and risk signals — refreshed live for the executive team.',kpis:[{v:'$42M',l:'Revenue'},{v:'+18%',l:'YoY Growth'},{v:'94%',l:'Margin'},{v:'A-',l:'Risk Score'}],bars:[52,68,60,82,74,90],insight:'Revenue trending 12% above forecast — margin holds despite higher acquisition spend.'},
-    finance:{ico:'💰',title:'Finance Dashboard',sub:'Cash · Cost · Controls',desc:'Cash position, AR/AP ageing, cost-center performance, and compliance signals — always reconciled, always audit-ready.',kpis:[{v:'$8.2M',l:'Cash'},{v:'42d',l:'DSO'},{v:'−6%',l:'Cost Δ'},{v:'99%',l:'Close %'}],bars:[60,55,70,62,80,75],insight:'DSO improved by 5 days this month — working capital freed up for Q4 investment.'},
-    sales:{ico:'📈',title:'Sales Dashboard',sub:'Pipeline · Funnel · Quota',desc:'Pipeline health, conversion velocity, rep performance, and forecast confidence — one view for the revenue team.',kpis:[{v:'$14M',l:'Pipeline'},{v:'32%',l:'Win Rate'},{v:'86%',l:'Quota'},{v:'12d',l:'Cycle'}],bars:[40,58,72,66,85,92],insight:'Enterprise segment pacing 24% above plan — mid-market needs coaching on late-stage conversions.'},
-    marketing:{ico:'🎯',title:'Marketing Dashboard',sub:'Campaigns · Funnel · ROAS',desc:'Channel performance, campaign ROI, funnel conversion, and attribution — connected to real revenue outcomes.',kpis:[{v:'$3.4M',l:'Spend'},{v:'4.2x',l:'ROAS'},{v:'2.1%',l:'CVR'},{v:'−18%',l:'CAC'}],bars:[55,68,60,78,70,88],insight:'Paid search ROAS down 12% but organic up 30% — budget shift recommended for next quarter.'},
-    operations:{ico:'⚙️',title:'Operations Dashboard',sub:'Throughput · SLAs · Bottlenecks',desc:'Real-time throughput, SLA adherence, exception tracking, and process bottlenecks across every operational workflow.',kpis:[{v:'1.2K/hr',l:'Throughput'},{v:'98.4%',l:'SLA'},{v:'14',l:'Open Exc.'},{v:'−22%',l:'Cycle'}],bars:[70,65,82,76,88,84],insight:'Warehouse B throughput up 22% — bottleneck has shifted to outbound shipping.'},
-    hr:{ico:'👥',title:'HR Dashboard',sub:'Headcount · Attrition · Engagement',desc:'Headcount, attrition, engagement, hiring velocity, and skills coverage — the people metrics that drive business outcomes.',kpis:[{v:'842',l:'Headcount'},{v:'6.4%',l:'Attrition'},{v:'4.6/5',l:'Engagement'},{v:'38d',l:'Time-Hire'}],bars:[58,62,66,70,74,80],insight:'Engineering attrition dropped to 4.1% post-compensation review — retention initiative working.'},
-    supply:{ico:'🚚',title:'Supply Chain Dashboard',sub:'Inventory · Vendors · Lead Time',desc:'Inventory turns, vendor performance, lead times, and stock-out risk — end-to-end supply visibility.',kpis:[{v:'6.8x',l:'Turns'},{v:'94%',l:'On-Time'},{v:'28d',l:'Lead Time'},{v:'3%',l:'Stock-Out'}],bars:[62,70,58,76,82,78],insight:'Two Tier-1 vendors showing 15% lead-time drift — dual-sourcing recommended for Q1.'},
-    success:{ico:'💚',title:'Customer Success Dashboard',sub:'NPS · Churn · Health',desc:'NPS, churn risk, product adoption, and renewal pipeline — everything CSMs need to keep customers growing.',kpis:[{v:'62',l:'NPS'},{v:'4.2%',l:'Churn'},{v:'78%',l:'Adoption'},{v:'$5.8M',l:'Renewals'}],bars:[64,72,66,80,84,90],insight:'Accounts using the mobile app show 2.3× higher expansion revenue — adoption campaign launched.'}
+    leadership:{ico:'👔',title:'Leadership Dashboard',sub:'Strategic KPI View',desc:'A single view of the metrics that define the business - revenue trajectory, customer growth, operational efficiency, and risk signals - refreshed live for the executive team.',kpis:[{v:'$42M',l:'Revenue'},{v:'+18%',l:'YoY Growth'},{v:'94%',l:'Margin'},{v:'A-',l:'Risk Score'}],bars:[52,68,60,82,74,90],insight:'Revenue trending 12% above forecast - margin holds despite higher acquisition spend.'},
+    finance:{ico:'💰',title:'Finance Dashboard',sub:'Cash · Cost · Controls',desc:'Cash position, AR/AP ageing, cost-center performance, and compliance signals - always reconciled, always audit-ready.',kpis:[{v:'$8.2M',l:'Cash'},{v:'42d',l:'DSO'},{v:'−6%',l:'Cost Δ'},{v:'99%',l:'Close %'}],bars:[60,55,70,62,80,75],insight:'DSO improved by 5 days this month - working capital freed up for Q4 investment.'},
+    sales:{ico:'📈',title:'Sales Dashboard',sub:'Pipeline · Funnel · Quota',desc:'Pipeline health, conversion velocity, rep performance, and forecast confidence - one view for the revenue team.',kpis:[{v:'$14M',l:'Pipeline'},{v:'32%',l:'Win Rate'},{v:'86%',l:'Quota'},{v:'12d',l:'Cycle'}],bars:[40,58,72,66,85,92],insight:'Enterprise segment pacing 24% above plan - mid-market needs coaching on late-stage conversions.'},
+    marketing:{ico:'🎯',title:'Marketing Dashboard',sub:'Campaigns · Funnel · ROAS',desc:'Channel performance, campaign ROI, funnel conversion, and attribution - connected to real revenue outcomes.',kpis:[{v:'$3.4M',l:'Spend'},{v:'4.2x',l:'ROAS'},{v:'2.1%',l:'CVR'},{v:'−18%',l:'CAC'}],bars:[55,68,60,78,70,88],insight:'Paid search ROAS down 12% but organic up 30% - budget shift recommended for next quarter.'},
+    operations:{ico:'⚙️',title:'Operations Dashboard',sub:'Throughput · SLAs · Bottlenecks',desc:'Real-time throughput, SLA adherence, exception tracking, and process bottlenecks across every operational workflow.',kpis:[{v:'1.2K/hr',l:'Throughput'},{v:'98.4%',l:'SLA'},{v:'14',l:'Open Exc.'},{v:'−22%',l:'Cycle'}],bars:[70,65,82,76,88,84],insight:'Warehouse B throughput up 22% - bottleneck has shifted to outbound shipping.'},
+    hr:{ico:'👥',title:'HR Dashboard',sub:'Headcount · Attrition · Engagement',desc:'Headcount, attrition, engagement, hiring velocity, and skills coverage - the people metrics that drive business outcomes.',kpis:[{v:'842',l:'Headcount'},{v:'6.4%',l:'Attrition'},{v:'4.6/5',l:'Engagement'},{v:'38d',l:'Time-Hire'}],bars:[58,62,66,70,74,80],insight:'Engineering attrition dropped to 4.1% post-compensation review - retention initiative working.'},
+    supply:{ico:'🚚',title:'Supply Chain Dashboard',sub:'Inventory · Vendors · Lead Time',desc:'Inventory turns, vendor performance, lead times, and stock-out risk - end-to-end supply visibility.',kpis:[{v:'6.8x',l:'Turns'},{v:'94%',l:'On-Time'},{v:'28d',l:'Lead Time'},{v:'3%',l:'Stock-Out'}],bars:[62,70,58,76,82,78],insight:'Two Tier-1 vendors showing 15% lead-time drift - dual-sourcing recommended for Q1.'},
+    success:{ico:'💚',title:'Customer Success Dashboard',sub:'NPS · Churn · Health',desc:'NPS, churn risk, product adoption, and renewal pipeline - everything CSMs need to keep customers growing.',kpis:[{v:'62',l:'NPS'},{v:'4.2%',l:'Churn'},{v:'78%',l:'Adoption'},{v:'$5.8M',l:'Renewals'}],bars:[64,72,66,80,84,90],insight:'Accounts using the mobile app show 2.3× higher expansion revenue - adoption campaign launched.'}
   };
 
   const buttons = deptRail.querySelectorAll('.dept-btn');
@@ -2227,6 +2100,61 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 
   buttons.forEach(b => b.addEventListener('click', () => render(b.dataset.dept)));
   render('leadership');
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   INSTAGRAM ACCOUNT PICKER — identical to cloud-compliance.html
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var picker  = document.getElementById('igPicker');
+  var trigger = document.getElementById('igTrigger');
+  var menu    = document.getElementById('igMenu');
+  if (!picker || !trigger || !menu) return;
+
+  function openMenu() {
+    menu.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    menu.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+  function toggleIgMenu() {
+    if (menu.classList.contains('open')) closeMenu();
+    else openMenu();
+  }
+
+  trigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleIgMenu();
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!picker.contains(e.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+      trigger.focus();
+    }
+  });
+
+  menu.addEventListener('keydown', function (e) {
+    var items = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    var idx = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      (items[idx + 1] || items[0]).focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      (items[idx - 1] || items[items.length - 1]).focus();
+    }
+  });
+
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
 })();
 </script>
 </body>
